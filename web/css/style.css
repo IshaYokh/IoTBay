@@ -1,0 +1,76 @@
+body{
+	margin: 0px;
+	margin-top:-20px;
+	font-family: 'Bebas Neue', cursive;
+}
+
+.navbar{
+	width:100%;
+	background-color:#FFF;
+	padding-top:0.5em;
+	height:5em;
+	box-shadow:0 1px 5px rgb(190 190 190 / 50%);
+	position:absolute;
+}
+
+.navbar ul{
+	padding-top:0.7em;
+}
+
+.navbar ul li{
+	display:inline;
+	padding-left:1em;
+	padding-right:1em;
+	text-align:center;
+	font-size:2em;
+
+}
+
+.logo{
+	margin-left:1em;
+	margin-right:0.5em;
+	float:left;
+	font-size:3em;
+	padding-top:0.4em;
+
+}
+
+.navbar a{
+	text-decoration:none;
+	color:black;
+}
+
+.navbar a:hover{
+	color:red;	
+}
+
+.container{
+	padding-top:3em;
+	margin:auto;
+	width:80%;
+	z-index:0;
+	padding-bottom:3em;
+}
+
+.container p{
+	font-family: 'Open Sans', sans-serif;
+}
+
+img{
+	display:block;
+	width: 95%;
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:5em;
+}
+
+footer{
+	bottom:0;
+	width:100%;
+	background-color:#111;
+	color:#fff;
+	font-family: 'Open Sans', sans-serif;
+	text-align: center;
+	padding-top:2em;
+	height:4em;
+}
