@@ -10,7 +10,7 @@ body{
 	padding-top:0.5em;
 	height:5em;
 	box-shadow:0 1px 5px rgb(190 190 190 / 50%);
-	position:absolute;
+	position: fixed;
 }
 
 .navbar ul{
@@ -29,10 +29,18 @@ body{
 .logo{
 	margin-left:1em;
 	margin-right:0.5em;
-	float:left;
-	font-size:3em;
+	float: left;
 	padding-top:0.4em;
+	width:10em;
 
+}
+
+.login{
+	float: right;
+}
+
+.logo img{
+	margin-top: -65px;
 }
 
 .navbar a{
@@ -41,7 +49,7 @@ body{
 }
 
 .navbar a:hover{
-	color:red;	
+	color: #992222;	
 }
 
 .container{
