@@ -11,6 +11,7 @@ body{
 	height:5em;
 	box-shadow:0 1px 5px rgb(190 190 190 / 50%);
 	position: fixed;
+	z-index: 999;
 }
 
 .navbar ul{
@@ -84,6 +85,7 @@ body{
 	margin-right:auto;
 	padding-left: 2em;
 	overflow: hidden;
+	position:relative;
 }
 
 .mainpicture h1{
@@ -169,6 +171,7 @@ a:hover{
 	float:left;
 	width: 49%;
 	height: 25em;
+	position:relative;
 }
 
 .pic2{
@@ -180,6 +183,7 @@ a:hover{
 	float:right;
 	width: 49%;
 	height: 25em;
+	position:relative;
 }
 
 .pic3{
@@ -192,6 +196,7 @@ a:hover{
 	float:left;
 	width: 49%;
 	height: 25em;
+	position:relative;
 }
 
 .pic4{
@@ -204,6 +209,7 @@ a:hover{
 	float:right;
 	width: 49%;
 	height: 25em;
+	position:relative;
 }
 
 .pic5{
@@ -216,17 +222,19 @@ a:hover{
 	float:right;
 	width: 100%;
 	height: 25em;
+	position:relative;
 }
 
 footer{
-	margin-bottom:0;
-	width:100%;
-	background-color: #173d7b;
-	color:#fff;
+	color: #173d7b;
 	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	font-style: italic;
 	text-align: center;
-	padding-top:1em;
-	height:2.5em;
-	position: fixed;
-	bottom: 0;
+	padding-top: 2em;
+	font-size: 1em;
+}
+
+footer p{
+	padding-top: 76em;
 }
