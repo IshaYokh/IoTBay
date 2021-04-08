@@ -30,7 +30,13 @@
         <div class="form" id="createForm">
             <form action="welcome.jsp" method="post" class="form-container">
               <h1 class="form-container-header">Create Account</h1>
-          
+              
+              <label for="fname">First Name</label>
+              <input type="text" placeholder="Enter First Name" name="fname" required>
+              
+              <label for="lname">Last Name</label>
+              <input type="text" placeholder="Enter Last Name" name="lname" required>
+              
               <label for="email">Email</label>
               <input type="text" placeholder="Enter Email" name="email" required>
           
