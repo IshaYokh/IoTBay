@@ -18,7 +18,7 @@
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
                 <ul>
-                    <a href="index.html"><li>Home</li></a>
+                    <a href="index.jsp"><li>Home</li></a>
                     <a href="#"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
@@ -30,7 +30,13 @@
         <div class="form" id="createForm">
             <form action="welcome.jsp" method="post" class="form-container">
               <h1 class="form-container-header">Create Account</h1>
-          
+              
+              <label for="fname">First Name</label>
+              <input type="text" placeholder="Enter First Name" name="fname" required>
+              
+              <label for="lname">Last Name</label>
+              <input type="text" placeholder="Enter Last Name" name="lname" required>
+              
               <label for="email">Email</label>
               <input type="text" placeholder="Enter Email" name="email" required>
           
@@ -67,7 +73,7 @@
               <p>By creating an account you agree to our <a href="#"> &nbsp;Terms & Privacy</a></p>
               <button type="submit" class="btn-create">Create Account</button>
               <div class="placeholder"></div>
-              <p class="already-have-account">Already have an account? <a href="#">&nbsp;Login</a></p>
+              <p class="already-have-account">Already have an account? <a href="login.jsp">&nbsp;Login</a></p>
             </form>
         </div>
         <footer>

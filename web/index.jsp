@@ -20,7 +20,11 @@
 				<a href="#"><li>Store</li></a>
 				<a href="#"><li>About</li></a>
 				<a href="#"><li>Contact</li></a>
+<<<<<<< HEAD
 				<a href="register.jsp"><li class="login">Sign Up / Login</li></a>
+=======
+				<a href="login.jsp"><li class="login">Sign up / Login</li></a>
+>>>>>>> 8841dfd314231d696c4726b5ba2740d8ff4560ee
 			</ul>
 		</div>
 		<div class="placeholder"></div>
