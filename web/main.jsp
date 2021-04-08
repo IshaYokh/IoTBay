@@ -93,12 +93,13 @@
                     </div>
                 </button>
 
-                <button type="button" onclick="alert('Hello world!')" > 
-
-                    <div class="logout">
-                        <span>Logout</span>
-                    </div>
-                </button>
+                <a href="logout.jsp">
+                    <button type="button"> 
+                        <div class="logout">
+                            <span>Logout</span>
+                        </div>
+                    </button>
+                </a>
             </div>
         </div>
     </body>
