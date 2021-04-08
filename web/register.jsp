@@ -22,6 +22,7 @@
                     <a href="#"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
+                    <a href="login.jsp"><li class="login">Sign up / Login</li></a>
 		</ul>
 	</div>
         
@@ -71,7 +72,7 @@
               <input type="text" placeholder="Enter Country" name="country" required>
                 
               <p>By creating an account you agree to our <a href="#"> &nbsp;Terms & Privacy</a></p>
-              <button type="submit" class="btn-create">Create Account</button>
+              <button href="welcome.jsp" type="submit" class="btn-create">Create Account</button>
               <div class="placeholder"></div>
               <p class="already-have-account">Already have an account? <a href="login.jsp">&nbsp;Login</a></p>
             </form>

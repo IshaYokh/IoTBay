@@ -48,7 +48,7 @@
 
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
-                <button type="submit" class="btn login">Login</button>
+                <button href="welcome.jsp" type="submit" class="btn login">Login</button>
                 <p>Need an account? <a href="register.jsp">&nbsp;Sign Up</a></p>
                 <p>Forgot your password? <a href="#">&nbsp;Reset password</a></p>
             </form>

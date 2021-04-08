@@ -16,18 +16,18 @@
     </head>	
     <body>
         <% 
-            String firstName = request.getParamter("fname");
-            String lastName = request.getParamter("lname");
-            String email = request.getParamter("email");
-            String password = request.getParamter("psw");
-            String phoneNumber = request.getParamter("number");
-            String streetNumber = request.getParamter("street-number");
-            String streetName = request.getParamter("street-name");
-            String streetType = request.getParamter("street-type");
-            String suburb = request.getParamter("suburb");
-            String state = request.getParamter("state");
-            String postcode = request.getParamter("postcode");
-            String country = request.getParamter("country");
+            String firstName = request.getParameter("fname");
+            String lastName = request.getParameter("lname");
+            String email = request.getParameter("email");
+            String password = request.getParameter("psw");
+            String phoneNumber = request.getParameter("number");
+            String streetNumber = request.getParameter("street-number");
+            String streetName = request.getParameter("street-name");
+            String streetType = request.getParameter("street-type");
+            String suburb = request.getParameter("suburb");
+            String state = request.getParameter("state");
+            String postcode = request.getParameter("postcode");
+            String country = request.getParameter("country");
         %>
         
         <div class="navbar">
