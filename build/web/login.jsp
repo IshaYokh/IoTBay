@@ -18,7 +18,7 @@
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png" /></div>
             <ul>
-                <a href="index.html">
+                <a href="index.jsp">
                     <li>Home</li>
                 </a>
                 <a href="#">
