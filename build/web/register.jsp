@@ -22,6 +22,7 @@
                     <a href="#"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
+                    <a href="login.jsp"><li class="login">Sign up / Login</li></a>
 		</ul>
 	</div>
         
