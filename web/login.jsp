@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
         <title>Login</title>
     </head>
-    <body class="background">
+    <body>
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png" /></div>
             <ul>
@@ -38,21 +38,20 @@
         
         <div class="placeholder"></div>
     
-        <div class="background">
-            <div class="form-popup" id="loginForm">
-                <form action="welcome.jsp" method="post" class="form-container">
-                    <h1>Login</h1>
+        
+        <div class="form-popup" id="loginForm">
+            <form action="welcome.jsp" method="post" class="form-container-login">
+                <h1>Login</h1>
                 
-                    <label for="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" required>
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required>
 
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-                    <button type="submit" class="btn login">Login</button>
-                    <p>Need an account? <a href="register.jsp">&nbsp;Sign Up</a></p>
-                    <p>Forgot your password? <a href="#">&nbsp;Reset password</a></p>
-                </form>
-            </div>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+                <button type="submit" class="btn login">Login</button>
+                <p>Need an account? <a href="register.jsp">&nbsp;Sign Up</a></p>
+                <p>Forgot your password? <a href="#">&nbsp;Reset password</a></p>
+            </form>
         </div>
         <footer>
             <p>Copyright Not Group 14 2021</p>
