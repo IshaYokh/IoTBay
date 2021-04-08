@@ -67,7 +67,7 @@
               <p>By creating an account you agree to our <a href="#"> &nbsp;Terms & Privacy</a></p>
               <button type="submit" class="btn-create">Create Account</button>
               <div class="placeholder"></div>
-              <p class="already-have-account">Already have an account? <a href="#">&nbsp;Login</a></p>
+              <p class="already-have-account">Already have an account? <a href="login.jsp">&nbsp;Login</a></p>
             </form>
         </div>
         <footer>

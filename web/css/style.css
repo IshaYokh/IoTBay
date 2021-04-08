@@ -293,3 +293,53 @@ input[type=text], input[type=password] {
 .already-have-account a{
 	text-align: left;
 }
+
+/* Login Page Styles */
+
+.form-container-login {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    width: 640px;
+    height: 640px;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.form-container-login button {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    background: #173D7B;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    z-index: 0;
+  }
+
+.form-container-login h1{
+    text-align: center;
+}
+
+.form-container-login a{
+    color: #173D7B;
+    text-decoration: underline;
+}
