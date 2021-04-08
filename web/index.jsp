@@ -3,7 +3,7 @@
     Created on : 06/04/2021, 00:00:00 AM
     Author     : Rebecca Gong
 --%>
-
+<%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -20,7 +20,17 @@
                     <a href="#"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
-                    <a href="login.jsp"><li class="login">Sign Up / Login</li></a>		
+                    <% 
+                        String msg = "Sign up / Login";
+                        String path = "login.jsp";
+                        User user = (User)session.getAttribute("user");
+                        
+                        if(user != null){
+                            msg = "My Account";
+                            path = "main.jsp";
+                        }
+                    %>
+                    <a href="<%= path%>"><li class="login"><%= msg%></li></a>
 		</ul>
 	</div>
 	<div class="placeholder"></div>

@@ -344,3 +344,311 @@ input[type=text], input[type=password] {
     color: #173D7B;
     text-decoration: underline;
 }
+
+
+/* Welcome page styles */
+
+.welcome_title{
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	left: 99px;
+	top: 201px;
+	position: absolute;
+	overflow: visible;
+	width: 1279px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 50px;
+	color: rgba(112,112,112,1);
+	left: 700px;
+	top: 120px;	   
+ }
+
+ .welcome_email{
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	left: 99px;
+	top: 201px;
+	position: absolute;
+	overflow: visible;
+	width: 1279px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(112,112,112,1);
+	left: 850px;
+	top: 220px;
+		   
+ }
+
+#Box_2 {
+	fill: #183e7c;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+
+.Box_2 {
+	overflow: visible;
+	position: absolute;
+	width: 473px;
+	height: 129px;
+	left: 390px;
+	top: 601px;
+	transform: matrix(1,0,0,1,0,0);
+}
+
+#Return_to_Shopping_ {
+	left: 424px;
+	top: 646px;
+	position: absolute;
+	overflow: visible;
+	width: 407px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgb(255, 255, 255);
+}
+
+#Box_3 {
+	fill: #183e7c;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+
+.Box_3 {
+	overflow: visible;
+	position: absolute;
+	width: 473px;
+	height: 129px;
+	left: 1029px;
+	top: 601px;
+	transform: matrix(1,0,0,1,0,0);
+}
+
+#View_Account {
+	left: 1063px;
+	top: 646px;
+	position: absolute;
+	overflow: visible;
+	width: 407px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+}
+
+/* Main page styles */
+
+#Rectangle_1 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: round;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_1 {
+	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.185));
+	position: absolute;
+	overflow: visible;
+	width: 336px;
+	height: 336px;
+	left: 243px;
+	top: 250px;
+}
+.Rectangle_4 {
+	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.185));
+	position: absolute;
+	overflow: visible;
+	width: 336px;
+	height: 336px;
+	left: 1377px;
+	top: 250px;
+}
+#Rectangle_4 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+#Rectangle_2 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_2 {
+	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.185));
+	position: absolute;
+	overflow: visible;
+	width: 335px;
+	height: 335px;
+	left: 810px;
+	top: 250px;
+}
+#Welcome__Account_Name {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	left: 99px;
+	top: 201px;
+	position: absolute;
+	overflow: visible;
+	width: 1279px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 50px;
+	color: rgba(112,112,112,1);
+}
+#_View_Cart {
+	left: 265px;
+	top: 450px;
+	position: absolute;
+	overflow: visible;
+	width: 257px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(112,112,112,1);
+}
+#View_Orders {
+	left: 832px;
+	top: 450px;
+	position: absolute;
+	overflow: visible;
+	width: 257px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(112,112,112,1);
+}
+#Account_Details {
+	left: 1399px;
+	top: 450px;
+	position: absolute;
+	overflow: visible;
+	width: 257px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 35px;
+	color: rgba(112,112,112,1);
+}
+#Rectangle_3 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_3 {
+	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.185));
+	position: absolute;
+	overflow: visible;
+	width: 1469px;
+	height: 220px;
+	left: 243px;
+	top: 722px;
+}
+#Submit_Support_Ticket {
+	left: 418px;
+	top: 785px;
+	position: absolute;
+	overflow: visible;
+	width: 1086px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Helvetica Neue;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 50px;
+	color: rgba(112,112,112,1);
+}
+#ic_person_outline_24px {
+	fill: rgba(23,61,123,1);
+}
+.ic_person_outline_24px {
+	overflow: visible;
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	left: 1477px;
+	top: 312px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#ic_assignment_24px {
+	fill: rgba(23,61,123,1);
+}
+.ic_assignment_24px {
+	overflow: visible;
+	position: absolute;
+	width: 90px;
+	height: 100px;
+	left: 915px;
+	top: 312px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#ic_shopping_basket_24px {
+	fill: rgba(23,61,123,1);
+}
+.ic_shopping_basket_24px {
+	overflow: visible;
+	position: absolute;
+	width: 115.911px;
+	height: 100px;
+	left: 335.044px;
+	top: 312px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#myContainer{
+	zoom: 0.75;
+	-moz-transform: scale(0.75);
+	position: relative;
+	left: 270px;
+}
+.logout{
+	position:absolute;
+	top: 930px;
+	left: 936px;
+	font-size: 20px;
+  
+}
+.logout:hover {
+	text-decoration: underline;
+
+}

@@ -30,6 +30,17 @@
             String country = request.getParameter("country");
         %>
         
+        <%
+            if((firstName != null) && (lastName != null)){
+                User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
+                session.setAttribute("user", user);
+            }
+            else{
+                User user = (User)session.getAttribute("user");
+                firstName = user.getFirstName();
+            }
+        %>
+        
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
@@ -37,7 +48,17 @@
                 <a href="#"><li>Store</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
-                <a href="login.jsp"><li class="login">Sign up / Login</li></a>
+                <% 
+                    User user = (User)session.getAttribute("user");
+                    String msg = "Sign up / Login";
+                    String path = "login.jsp";
+                        
+                    if(user != null){
+                        msg = "My Account";
+                        path = "main.jsp";
+                    }
+                %>
+                <a href="<%= path%>"><li class="login"><%= msg%></li></a>
             </ul>
         </div>
 	<div class="welcome_title">
@@ -49,35 +70,33 @@
 	
         </div>
 	<div >
-            <button type="button" onclick="alert('Hello world!')">
-                <svg class="Box_2" viewBox="0 0 473 129">
-                    <path id="Box_2" d="M 22 0 L 451 0 C 463.1502685546875 0 473 9.849735260009766 473 22 L 473 107 C 473 119.1502685546875 463.1502685546875 129 451 129 L 22 129 C 9.849735260009766 129 0 119.1502685546875 0 107 L 0 22 C 0 9.849735260009766 9.849735260009766 0 22 0 Z">
-                    </path>
-		</svg>
-		<div id="Return_to_Shopping_">
-                    <span>Return to Shopping </span>
-		</div>
-            </button>
+            <a href="index.jsp">
+                <button type="button">
+                    <svg class="Box_2" viewBox="0 0 473 129">
+                        <path id="Box_2" d="M 22 0 L 451 0 C 463.1502685546875 0 473 9.849735260009766 473 22 L 473 107 C 473 119.1502685546875 463.1502685546875 129 451 129 L 22 129 C 9.849735260009766 129 0 119.1502685546875 0 107 L 0 22 C 0 9.849735260009766 9.849735260009766 0 22 0 Z">
+                        </path>
+                    </svg>
+                    <div id="Return_to_Shopping_">
+                        <span>Return to Shopping </span>
+                    </div>
+                </button>
+            <a/>
 
-	<button type="button" onclick="alert('Hello world!')">
-            <svg class="Box_3" viewBox="0 0 473 129">
-                <path id="Box_3" d="M 22 0 L 451 0 C 463.1502685546875 0 473 9.849735260009766 473 22 L 473 107 C 473 119.1502685546875 463.1502685546875 129 451 129 L 22 129 C 9.849735260009766 129 0 119.1502685546875 0 107 L 0 22 C 0 9.849735260009766 9.849735260009766 0 22 0 Z">
-		</path>
-            </svg>
-            <div id="View_Account">
-                <span>View Account</span>
-            </div>			
-	</button>
+            <a href="main.jsp">
+                <button type="button">
+                    <svg class="Box_3" viewBox="0 0 473 129">
+                        <path id="Box_3" d="M 22 0 L 451 0 C 463.1502685546875 0 473 9.849735260009766 473 22 L 473 107 C 473 119.1502685546875 463.1502685546875 129 451 129 L 22 129 C 9.849735260009766 129 0 119.1502685546875 0 107 L 0 22 C 0 9.849735260009766 9.849735260009766 0 22 0 Z">
+                        </path>
+                    </svg>
+                    <div id="View_Account">
+                        <span>View Account</span>
+                    </div>			
+                </button>
+            </a>
 	</div>
 		
 	<footer>
             <p>Copyright Not Group 14 2021</p>
 	</footer>
-        
-        <%
-            User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
-            session.setAttribute("user", user);
-        %>
-        
     </body>
 </html>
