@@ -15,22 +15,22 @@
                 shape-rendering: auto;
             }
             .Rectangle_1 {
-                filter: drop-shadow(20px 20px 10px rgba(0, 0, 0, 0.361));
+                filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.185));
                 position: absolute;
                 overflow: visible;
                 width: 336px;
                 height: 336px;
                 left: 243px;
-                top: 340px;
+                top: 250px;
             }
             .Rectangle_4 {
-                filter: drop-shadow(20px 20px 10px rgba(0, 0, 0, 0.361));
+                filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.185));
                 position: absolute;
                 overflow: visible;
                 width: 336px;
                 height: 336px;
                 left: 1377px;
-                top: 340px;
+                top: 250px;
             }
             #Rectangle_4 {
                 fill: rgba(255,255,255,1);
@@ -51,13 +51,13 @@
                 shape-rendering: auto;
             }
             .Rectangle_2 {
-                filter: drop-shadow(20px 20px 10px rgba(0, 0, 0, 0.361));
+                filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.185));
                 position: absolute;
                 overflow: visible;
                 width: 335px;
                 height: 335px;
                 left: 810px;
-                top: 340px;
+                top: 250px;
             }
             #Welcome__Account_Name {
                 filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
@@ -76,7 +76,7 @@
             }
             #_View_Cart {
                 left: 265px;
-                top: 540px;
+                top: 450px;
                 position: absolute;
                 overflow: visible;
                 width: 257px;
@@ -90,7 +90,7 @@
             }
             #View_Orders {
                 left: 832px;
-                top: 540px;
+                top: 450px;
                 position: absolute;
                 overflow: visible;
                 width: 257px;
@@ -104,7 +104,7 @@
             }
             #Account_Details {
                 left: 1399px;
-                top: 540px;
+                top: 450px;
                 position: absolute;
                 overflow: visible;
                 width: 257px;
@@ -126,7 +126,7 @@
                 shape-rendering: auto;
             }
             .Rectangle_3 {
-                filter: drop-shadow(20px 20px 10px rgba(0, 0, 0, 0.361));
+                filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.185));
                 position: absolute;
                 overflow: visible;
                 width: 1469px;
@@ -157,7 +157,7 @@
                 width: 100px;
                 height: 100px;
                 left: 1477px;
-                top: 402px;
+                top: 312px;
                 transform: matrix(1,0,0,1,0,0);
             }
             #ic_assignment_24px {
@@ -169,7 +169,7 @@
                 width: 90px;
                 height: 100px;
                 left: 915px;
-                top: 402px;
+                top: 312px;
                 transform: matrix(1,0,0,1,0,0);
             }
             #ic_shopping_basket_24px {
@@ -181,14 +181,25 @@
                 width: 115.911px;
                 height: 100px;
                 left: 335.044px;
-                top: 402px;
+                top: 312px;
                 transform: matrix(1,0,0,1,0,0);
             }
             #myContainer{
                 zoom: 0.75;
                 -moz-transform: scale(0.75);
                 position: relative;
-                left: 280px;
+                left: 270px;
+            }
+            .logout{
+              position:absolute;
+              top: 930px;
+              left: 936px;
+              font-size: 20px;
+              
+            }
+            .logout:hover {
+                text-decoration: underline;
+
             }
         </style>
 	</head>	
@@ -277,7 +288,13 @@
                 </div>
             </button>
 
+            <button type="button" onclick="alert('Hello world!')" > 
+                    
+                <div class="logout">
+                    <span>Logout</span>
+                </div>
 
+                </button>
 
             
         </div>
