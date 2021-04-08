@@ -1,3 +1,10 @@
+<%-- 
+    Document   : Index
+    Created on : 06/04/2021, 00:00:00 AM
+    Author     : Rebecca Gong
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 	<head>
