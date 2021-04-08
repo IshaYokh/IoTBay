@@ -20,7 +20,7 @@
 				<a href="#"><li>Store</li></a>
 				<a href="#"><li>About</li></a>
 				<a href="#"><li>Contact</li></a>
-				<a href="login.jsp"><li class="login">Sign up / Login</li></a>
+				<a href="register.jsp"><li class="login">Sign Up / Login</li></a>
 			</ul>
 		</div>
 		<div class="placeholder"></div>
