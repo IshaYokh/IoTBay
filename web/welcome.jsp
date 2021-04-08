@@ -41,7 +41,7 @@
             </ul>
         </div>
 	<div class="welcome_title">
-            <span> Welcome "Account name"</span>
+            <span> Welcome <%= fname%></span>
 
 	</div>
 	<div class="welcome_email">
