@@ -41,7 +41,7 @@
             </ul>
         </div>
 	<div class="welcome_title">
-            <span> Welcome <%= fname%></span>
+            <span> Welcome <%= firstName%></span>
 
 	</div>
 	<div class="welcome_email">

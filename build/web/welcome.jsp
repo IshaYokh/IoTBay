@@ -41,11 +41,11 @@
             </ul>
         </div>
 	<div class="welcome_title">
-            <span> Welcome "Account name"</span>
+            <span> Welcome <%= firstName%></span>
 
 	</div>
 	<div class="welcome_email">
-            <span> Email: "Customers Email"</span>
+            <span> Email: <%= email%></span>
 	
         </div>
 	<div >
