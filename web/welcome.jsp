@@ -4,6 +4,7 @@
     Author     : kaushikdeshpande
 --%>
 
+<%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -14,6 +15,21 @@
 		
     </head>	
     <body>
+        <% 
+            String firstName = request.getParamter("fname");
+            String lastName = request.getParamter("lname");
+            String email = request.getParamter("email");
+            String password = request.getParamter("psw");
+            String phoneNumber = request.getParamter("number");
+            String streetNumber = request.getParamter("street-number");
+            String streetName = request.getParamter("street-name");
+            String streetType = request.getParamter("street-type");
+            String suburb = request.getParamter("suburb");
+            String state = request.getParamter("state");
+            String postcode = request.getParamter("postcode");
+            String country = request.getParamter("country");
+        %>
+        
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
@@ -57,4 +73,11 @@
 	<footer>
             <p>Copyright Not Group 14 2021</p>
 	</footer>
+        
+        <%
+            User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
+            session.setAttribute("user", user);
+        %>
+        
+    </body>
 </html>
