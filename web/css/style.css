@@ -349,109 +349,50 @@ input[type=text], input[type=password] {
 /* Welcome page styles */
 
 .welcome_title{
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	left: 99px;
-	top: 201px;
 	position: absolute;
 	overflow: visible;
 	width: 1279px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Helvetica Neue;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 50px;
-	color: rgba(112,112,112,1);
-	left: 700px;
-	top: 120px;	   
+	text-align: center;
+	font-size: 60px;
+	color: black;
+	top: 10%;	 
+	left: 17%;  
  }
 
- .welcome_email{
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	left: 99px;
-	top: 201px;
+.cont-shopping-btn{
+	background-color: #173D7B;
+  	border: none;
+  	color: white;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 35px;
+	top: 25%;
+	left: 40%;
 	position: absolute;
-	overflow: visible;
-	width: 1279px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: Helvetica Neue;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 25px;
-	color: rgba(112,112,112,1);
-	left: 850px;
-	top: 220px;
-		   
- }
-
-#Box_2 {
-	fill: #183e7c;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-
-.Box_2 {
-	overflow: visible;
-	position: absolute;
-	width: 473px;
-	height: 129px;
-	left: 390px;
-	top: 601px;
-	transform: matrix(1,0,0,1,0,0);
-}
-
-#Return_to_Shopping_ {
-	left: 424px;
-	top: 646px;
-	position: absolute;
-	overflow: visible;
-	width: 407px;
-	white-space: nowrap;
 	text-align: center;
-	font-family: Helvetica Neue;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 35px;
-	color: rgb(255, 255, 255);
+	border-radius: 5px;
+	width: 400px;
+	cursor: pointer;
 }
 
-#Box_3 {
-	fill: #183e7c;
-	stroke: rgba(112,112,112,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
-
-.Box_3 {
-	overflow: visible;
+.view-account-btn{
+	background-color: #173D7B;
+  	border: none;
+  	color: white;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 35px;
+	top: 35%;
+	left: 40%;
+	width: 400px;
 	position: absolute;
-	width: 473px;
-	height: 129px;
-	left: 1029px;
-	top: 601px;
-	transform: matrix(1,0,0,1,0,0);
-}
-
-#View_Account {
-	left: 1063px;
-	top: 646px;
-	position: absolute;
-	overflow: visible;
-	width: 407px;
-	white-space: nowrap;
 	text-align: center;
-	font-family: Helvetica Neue;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 35px;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 /* Main page styles */

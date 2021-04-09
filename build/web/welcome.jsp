@@ -62,38 +62,20 @@
             </ul>
         </div>
 	<div class="welcome_title">
-            <span> Welcome <%= firstName%></span>
-
+            <span> Welcome <%= firstName%>!</span>
 	</div>
-	<div class="welcome_email">
-            <span> Email: <%= email%></span>
 	
-        </div>
-	<div >
-            <a href="index.jsp">
-                <button type="button">
-                    <svg class="Box_2" viewBox="0 0 473 129">
-                        <path id="Box_2" d="M 22 0 L 451 0 C 463.1502685546875 0 473 9.849735260009766 473 22 L 473 107 C 473 119.1502685546875 463.1502685546875 129 451 129 L 22 129 C 9.849735260009766 129 0 119.1502685546875 0 107 L 0 22 C 0 9.849735260009766 9.849735260009766 0 22 0 Z">
-                        </path>
-                    </svg>
-                    <div id="Return_to_Shopping_">
-                        <span>Return to Shopping </span>
-                    </div>
-                </button>
-            <a/>
-
-            <a href="main.jsp">
-                <button type="button">
-                    <svg class="Box_3" viewBox="0 0 473 129">
-                        <path id="Box_3" d="M 22 0 L 451 0 C 463.1502685546875 0 473 9.849735260009766 473 22 L 473 107 C 473 119.1502685546875 463.1502685546875 129 451 129 L 22 129 C 9.849735260009766 129 0 119.1502685546875 0 107 L 0 22 C 0 9.849735260009766 9.849735260009766 0 22 0 Z">
-                        </path>
-                    </svg>
-                    <div id="View_Account">
-                        <span>View Account</span>
-                    </div>			
-                </button>
-            </a>
-	</div>
+        <a href="index.jsp">
+            <button class="cont-shopping-btn">
+                Continue Shopping
+            </button>
+        </a>
+        
+        <a href="main.jsp">
+            <button class="view-account-btn">
+                View Account
+            </button>
+        <a/>
 		
 	<footer>
             <p>Copyright Not Group 14 2021</p>
