@@ -77,8 +77,5 @@
               <p class="already-have-account">Already have an account? <a href="login.jsp">&nbsp;Login</a></p>
             </form>
         </div>
-        <footer>
-            <p>Copyright Not Group 14 2021</p>
-        </footer>
     </body>
 </html>

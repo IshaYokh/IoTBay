@@ -53,8 +53,5 @@
                 <p>Forgot your password? <a href="#">&nbsp;Reset password</a></p>
             </form>
         </div>
-        <footer>
-            <p>Copyright Not Group 14 2021</p>
-        </footer>
     </body>
 </html>

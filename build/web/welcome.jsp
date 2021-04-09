@@ -61,24 +61,23 @@
                 <a href="<%= path%>"><li class="login"><%= msg%></li></a>
             </ul>
         </div>
+        <div class="placeholder"></div>
 	<div class="welcome_title">
             <span> Welcome <%= firstName%>!</span>
 	</div>
-	
-        <a href="index.jsp">
-            <button class="cont-shopping-btn">
-                Continue Shopping
-            </button>
-        </a>
-        
-        <a href="main.jsp">
-            <button class="view-account-btn">
-                View Account
-            </button>
-        <a/>
-		
-	<footer>
-            <p>Copyright Not Group 14 2021</p>
-	</footer>
+        <div class="btns-container">
+            <a href="index.jsp">
+                <button class="cont-shopping-btn">
+                    Continue Shopping
+                </button>
+            </a>
+            <br/>
+            <br/>
+            <a href="main.jsp">
+                <button class="view-account-btn">
+                    View Account
+                </button>
+            <a/>
+        </div>
     </body>
 </html>
