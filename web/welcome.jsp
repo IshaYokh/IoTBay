@@ -12,7 +12,7 @@
         <link href="css/style.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
-		
+	<script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>	
     </head>	
     <body>
         <% 
@@ -68,14 +68,14 @@
         <div class="btns-container">
             <a href="index.jsp">
                 <button class="cont-shopping-btn">
-                    Continue Shopping
+                    <i class="fas fa-user-circle"></i> &nbsp;Continue Shopping
                 </button>
             </a>
             <br/>
             <br/>
             <a href="main.jsp">
                 <button class="view-account-btn">
-                    View Account
+                    <i class="fas fa-shopping-cart"></i> &nbsp;View Account
                 </button>
             <a/>
         </div>

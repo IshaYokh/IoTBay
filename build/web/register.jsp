@@ -71,10 +71,10 @@
               <label for="Country">Country</label>
               <input type="text" placeholder="Enter Country" name="country" required>
                 
-              <p>By creating an account you agree to our <a href="#"> &nbsp;Terms & Privacy</a></p>
+              <p>By creating an account you agree to our&nbsp;<a href="#">Terms & Privacy</a></p>
               <button href="welcome.jsp" type="submit" class="btn-create">Create Account</button>
               <div class="placeholder"></div>
-              <p class="already-have-account">Already have an account? <a href="login.jsp">&nbsp;Login</a></p>
+              <p class="already-have-account">Already have an account?&nbsp;<a href="login.jsp">Login</a></p>
             </form>
         </div>
     </body>

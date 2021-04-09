@@ -11,7 +11,7 @@
         <link href="css/style.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
-
+        <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>
     </head>	
     <body>
         <div class="navbar">
@@ -35,7 +35,7 @@
         <div class="btns-container">
             <a href="#">
                 <button class="view-cart-btn">
-                    View Cart
+                    <i class="fas fa-shopping-cart"></i> &nbsp;View Cart
                 </button>
             <a/>
             
@@ -44,7 +44,7 @@
             
             <a href="#">
                 <button class="view-orders-btn">
-                    View Orders
+                    <i class="fas fa-money-check"></i> &nbsp;View Orders
                 </button>
             <a/>
             
@@ -53,7 +53,7 @@
             
             <a href="#">
                 <button class="account-details-btn">
-                    Account Details
+                    <i class="fas fa-user-circle"></i> &nbsp;Account Details
                 </button>
             <a/>
             
@@ -62,7 +62,7 @@
             
             <a href="#">
                 <button class="support-ticket-btn">
-                    Submit Support Ticket
+                    <i class="fas fa-question-circle"></i> &nbsp;Submit Support Ticket
                 </button>
             <a/>
             
@@ -71,7 +71,7 @@
             
             <a href="logout.jsp">
                 <button class="logout-btn">
-                    Logout
+                    <i class="fas fa-sign-out-alt"></i> &nbsp;Logout
                 </button>
             <a/>
         </div>
