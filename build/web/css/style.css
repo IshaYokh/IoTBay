@@ -344,3 +344,57 @@ input[type=text], input[type=password] {
     color: #173D7B;
     text-decoration: underline;
 }
+
+
+/* Welcome page styles */
+
+.welcome_title{
+	position: absolute;
+	text-align: center;
+	font-size: 60px;
+	color: black;
+	top: 10%;	 
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+ }
+
+.btns-container{
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10%;
+	text-align: center;
+}
+
+.cont-shopping-btn, .view-account-btn{
+	background-color: #173D7B;
+  	border: none;
+  	color: white;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	font-size: 35px;
+	border-radius: 5px;
+	width: 25%;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Main page styles */
+
+.view-cart-btn, .view-orders-btn, .account-details-btn, .account-details-btn, .support-ticket-btn, .logout-btn{
+	background-color: #173D7B;
+  	border: none;
+  	color: white;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	font-size: 35px;
+	border-radius: 5px;
+	width: 25%;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+}
