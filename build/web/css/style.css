@@ -239,66 +239,14 @@ footer p{
 	padding-top: 76em;
 }
 
-/* Register page styles */
+/* Register/login page styles */
 
-.form-container p a{
-	position: absolute;
-	width: 188px;
-	height: 29px;
-	color: #173D7B;
-	text-decoration: underline;
+.create-account-title{
+	text-align: center;
 }
 
-.btn-create{
-	color: white;
-	position: absolute;
-	width: 200px;
-	height: 50px;
-	background: #173D7B;
-	border: none;
-	border-radius: 5px;
-	cursor:pointer;
-	font-size: medium;
-	top: 176%;
-	left: 50%;
-    transform: translate(-50%);
-}
-
-.form-container {
+.form-container-register, .form-container-login {
 	font-family: Arial, Helvetica, sans-serif;
-	position: absolute;
-	width: 640px;
-	height: 640px;
-	background: #FFFFFF;
-	left: 50%;
-	top: 40%;
-	bottom: 40%;
-	transform: translate(-50%,-50%);
-	z-index: 0;
-}
-
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-
-.already-have-account{
-	  text-align: center;
-	  margin-right: 7%;
-  }
-
-.already-have-account a{
-	text-align: left;
-}
-
-/* Login Page Styles */
-
-.form-container-login {
-    font-family: Arial, Helvetica, sans-serif;
     width: 30%;
     height: 50%;
     background: #FFFFFF;
@@ -308,7 +256,15 @@ input[type=text], input[type=password] {
 	margin-top: 4em;
 }
 
-.form-container-login button {
+.form-container-register p a{
+	position: absolute;
+	width: 188px;
+	height: 29px;
+	color: #173D7B;
+	text-decoration: underline;
+}
+
+.btn-create, .form-container-login button{
 	margin-top: 2em;
 	padding: 10px 5px;
 	left: 50%;
@@ -331,6 +287,26 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+  }
+
+.already-have-account{
+	  text-align: center;
+	  margin-right: 7%;
+  }
+
+.already-have-account a{
+	text-align: left;
+}
+
+/* Login Page Styles */
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
     z-index: 0;
   }
 
@@ -342,7 +318,6 @@ input[type=text], input[type=password] {
     color: #173D7B;
     text-decoration: underline;
 }
-
 
 /* Welcome page styles */
 

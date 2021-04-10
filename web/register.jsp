@@ -29,8 +29,8 @@
         <div class="placeholder"></div>
         
         <div class="form" id="createForm">
-            <form action="welcome.jsp" method="post" class="form-container">
-              <h1 class="form-container-header">Create Account</h1>
+            <form action="welcome.jsp" method="post" class="form-container-register">
+              <h1 class="create-account-title">Create Account</h1>
               
               <label for="fname">First Name</label>
               <input type="text" placeholder="Enter First Name" name="fname" required>
