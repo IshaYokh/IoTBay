@@ -1,7 +1,7 @@
 <%-- 
     Document   : newjsp
     Created on : 04/04/2021, 11:08:33 AM
-    Author     : kaushikdeshpande
+    Author     : IshaYokh/kaushikdeshpande
 --%>
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

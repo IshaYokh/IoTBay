@@ -247,10 +247,10 @@ footer p{
 
 .form-container-register, .form-container-login {
 	font-family: Arial, Helvetica, sans-serif;
-    width: 30%;
-    height: 50%;
-    background: #FFFFFF;
-    box-sizing: border-box;
+        width: 30%;
+        height: 50%;
+        background: #FFFFFF;
+        box-sizing: border-box;
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 4em;
@@ -271,22 +271,22 @@ footer p{
 	transform: translate(-50%, -50%);
 	width: 10%;
 	position: absolute;
-    background: #173D7B;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
+        background: #173D7B;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
 }
 
 input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
   }
 
 .already-have-account{
@@ -301,22 +301,22 @@ input[type=text], input[type=password] {
 /* Login Page Styles */
 
 input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    z-index: 0;
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        z-index: 0;
   }
 
 .form-container-login h1{
-    text-align: center;
+        text-align: center;
 }
 
 .form-container-login a{
-    color: #173D7B;
-    text-decoration: underline;
+        color: #173D7B;
+        text-decoration: underline;
 }
 
 /* Welcome page styles */
