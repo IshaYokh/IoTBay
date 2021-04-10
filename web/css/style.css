@@ -299,7 +299,7 @@ input[type=text], input[type=password] {
 
 .form-container-login {
     font-family: Arial, Helvetica, sans-serif;
-    width: 60%;
+    width: 30%;
     height: 50%;
     background: #FFFFFF;
     box-sizing: border-box;
@@ -309,7 +309,7 @@ input[type=text], input[type=password] {
 }
 
 .form-container-login button {
-	margin-top: 14%;
+	margin-top: 2em;
 	padding: 10px 5px;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -322,12 +322,6 @@ input[type=text], input[type=password] {
     border-radius: 5px;
     border: none;
     cursor: pointer;
-}
-
-@media only screen and (max-device-width: 700px) {
-	.form-container-login button{
-		margin-top: 25%;
-	}
 }
 
 input[type=text], input[type=password] {
