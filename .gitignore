@@ -9,6 +9,8 @@ nbdist/
 test/
 .DS_Store
 nbproject/.DS_Store
+src/.DS_Store
+web/.DS_Store
 
 # Compiled class file
 *.class
