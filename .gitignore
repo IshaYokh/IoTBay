@@ -8,6 +8,7 @@ nbdist/
 .nb-gradle/
 test/
 .DS_Store
+nbproject/.DS_Store
 
 # Compiled class file
 *.class
