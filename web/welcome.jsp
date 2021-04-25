@@ -1,10 +1,10 @@
 <%-- 
     Document   : newjsp
     Created on : 04/04/2021, 11:08:33 AM
-    Author     : IshaYokh/kaushikdeshpande
+    Author     : IshaYokh/kaushikdeshpande/Tada33
 --%>
 
-<%@page import="iotbay.g15.model.User"%>
+<%@page import="iotbay.g15.model.User, java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -34,6 +34,16 @@
             if((firstName != null) && (lastName != null)){
                 User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
                 session.setAttribute("user", user);
+                
+                Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/IoTBayDB", "ISD", "admin");
+                Statement st = conn.createStatement();
+                st.executeUpdate("insert into Customer(firstname, lastname, email, password, phonenumber," +
+                                                      "streetnumber, streetname, streettype," +
+                                                      "suburb, state, postcode, country)" +
+                                 "values ('" + firstName + "', '" + lastName + "', '" + email + "', '" + password + "', '" +
+                                              phoneNumber + "', '" + streetNumber + "', '" + streetName + "', '" + streetType + "', '" +
+                                              suburb + "', '" + state + "', '" + postcode + "', '" + country + "')");
+                conn.close();
             }
             else{
                 User user = (User)session.getAttribute("user");
