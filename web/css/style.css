@@ -247,10 +247,10 @@ footer p{
 
 .form-container-register, .form-container-login {
 	font-family: Arial, Helvetica, sans-serif;
-        width: 30%;
-        height: 50%;
-        background: #FFFFFF;
-        box-sizing: border-box;
+    width: 30%;
+    height: 50%;
+    background: #FFFFFF;
+    box-sizing: border-box;
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 4em;
@@ -271,22 +271,22 @@ footer p{
 	transform: translate(-50%, -50%);
 	width: 10%;
 	position: absolute;
-        background: #173D7B;
-        color: white;
-        font-size: 20px;
-        font-weight: bold;
-        border-radius: 5px;
-        border: none;
-        cursor: pointer;
+    background: #173D7B;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
 
 input[type=text], input[type=password] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
   }
 
 .already-have-account{
@@ -301,22 +301,22 @@ input[type=text], input[type=password] {
 /* Login Page Styles */
 
 input[type=text], input[type=password] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        z-index: 0;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    z-index: 0;
   }
 
 .form-container-login h1{
-        text-align: center;
+    text-align: center;
 }
 
 .form-container-login a{
-        color: #173D7B;
-        text-decoration: underline;
+    color: #173D7B;
+    text-decoration: underline;
 }
 
 /* Welcome page styles */
@@ -370,4 +370,78 @@ input[type=text], input[type=password] {
 	cursor: pointer;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+
+/* Checkout page styles */
+
+.checkout-header, .order-summary, .payment-details, .shipping-details{
+	font-family: Arial, Helvetica, sans-serif;
+    width: 30%;
+    height: 50%;
+    background: #FFFFFF;
+    box-sizing: border-box;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 2em;
+	font-size: 35px;
+	text-align: left;
+}
+
+.ordersummary-header, .paymentdetails-header, .shippingdetails-header{
+	font-size: 20px;
+}
+
+.order-summary, .payment-details, .shipping-details{
+	font-size: 18px;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: thin;
+	padding: 5px;
+}
+
+.shipping-details, .payment-details{
+	margin-top: 3em;
+}
+
+.pay-btn, .back-to-cart{
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1%;
+	text-align: center;
+}
+
+.pay-btn button, .back-to-cart button{
+	background-color: #173D7B;
+  	border: none;
+  	color: white;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	font-size: 20px;
+	border-radius: 5px;
+	width: 20%;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pay-btn{
+	margin-bottom: 1%;
+}
+
+.pay-btn button:hover{
+	background-color: #4277CC;
+}
+
+.back-to-cart{
+	margin-top: 2em;
+}
+
+.back-to-cart button{
+	padding: 5px 10px;
+	font-size: 15px;
+	border-radius: 2px;
+	width: 15em;
 }
