@@ -1,6 +1,6 @@
 <%-- 
-    Document   : updatePayment
-    Created on : 25/04/2021, 11:42:39 PM
+    Document   : deletePaymentInfo
+    Created on : 27/04/2021, 8:28:52 AM
     Author     : Isha Yokhanna
 --%>
 

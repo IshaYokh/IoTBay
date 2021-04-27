@@ -64,7 +64,7 @@
             <h5>Payment method &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mastercard ending with 4789</h5>
             <h5>Billing address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 77 jackson streeet</h5>
             <button href="" type="submit" class="view-payment">View Payment Details</button>
-            <a href="updatePayment.jsp">
+            <a href="updatePaymentInfo.jsp">
                 <button class="updatepayment-btn">
                     Update Payment Details
                 </button>
