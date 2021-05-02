@@ -99,8 +99,12 @@
             </form>
             
             <!-- Submit or cancel buttons -->
-            <button href="" type="submit" class="btn-submit-billing-info">Save</button>
-            <button href="" type="submit" class="btn-cancel-billing-info">Cancel</button>
+            <div class="save-btn-container">
+                <button href="" type="submit">Save</button>
+            </div>
+            <div class="cancel-btn-container">
+                <button href="" type="submit">Cancel</button>
+            </div>
         </div>
     </body>
 </html>

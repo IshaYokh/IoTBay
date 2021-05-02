@@ -445,3 +445,96 @@ input[type=text], input[type=password] {
     border-radius: 2px;
     width: 15em;
 }
+
+/* updatePaymentInfo and addPaymentInfo page styles */
+
+
+.billing-address-title, .card-details-title{
+    text-align: center;
+}
+
+.billing-address-title{
+    margin-top: 2em;
+}
+
+.form-container-update-billing, .form-container-update-card {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 30%;
+    height: 50%;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1em;
+}
+
+.save-btn-container button, .cancel-btn-container button{
+    margin-top: 2em;
+    padding: 10px 5px;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 10%;
+    position: absolute;
+    background: #173D7B;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.cancel-btn-container button{
+    left: 60%;
+}
+
+
+/* viewPaymentHistory page styles */
+
+.search-inputs input[type=text]{
+    width: 10%;  
+}
+
+.search-payment-history-title{
+    margin-top: 2%;
+    text-align: center
+}
+
+.search-btn-container{
+    margin-bottom: 2%;
+}
+
+.search-btn-container button{
+    width: 10%;
+    background: #173D7B;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.payment-history-table{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.payment-history-table th, .payment-history-table td{
+    text-align: center;
+    padding: 12px;
+}
+
+payment-history-table tr{
+    border-bottom: 1px solid #173D7B;;
+}
+
+.payment-history-table tr.header, .payment-history-table tr:hover{
+    background-color: #f1f1f1;
+}
