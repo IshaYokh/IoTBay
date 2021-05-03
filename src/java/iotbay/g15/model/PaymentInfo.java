@@ -6,25 +6,35 @@ package iotbay.g15.model;
  */
 public class PaymentInfo {
     private int paymentInfoID;
+    private int userID;
     private int cardNumber;
-    private String expiryDate;
-    private int cvc;
+    private String cardExpiryDate;
+    private int cardCVC;
     private String cardHolderName;
 
-    public PaymentInfo(int paymentInfoID, int cardNumber, String expiryDate, int cvc, String cardHolderName) {
+    public PaymentInfo(int paymentInfoID, int userID, int cardNumber, String cardExpiryDate, int cardCVC, String cardHolderName) {
         this.paymentInfoID = paymentInfoID;
+        this.userID = userID;
         this.cardNumber = cardNumber;
-        this.expiryDate = expiryDate;
-        this.cvc = cvc;
+        this.cardExpiryDate = cardExpiryDate;
+        this.cardCVC = cardCVC;
         this.cardHolderName = cardHolderName;
     }
 
     public int getPaymentInfoID() {
         return paymentInfoID;
     }
-
+    
     public void setPaymentInfoID(int paymentInfoID) {
         this.paymentInfoID = paymentInfoID;
+    }
+    
+    public int getUserID(){
+        return userID;
+    }
+    
+    public void setUserID(int userID){
+        this.userID = userID;
     }
 
     public int getCardNumber() {
@@ -35,20 +45,20 @@ public class PaymentInfo {
         this.cardNumber = cardNumber;
     }
 
-    public String getExpiryDate() {
-        return expiryDate;
+    public String getCardExpiryDate() {
+        return cardExpiryDate;
     }
 
-    public void setExpiryDate(String expiryDate) {
-        this.expiryDate = expiryDate;
+    public void setExpiryDate(String cardExpiryDate) {
+        this.cardExpiryDate = cardExpiryDate;
     }
 
-    public int getCvc() {
-        return cvc;
+    public int getCardCVC() {
+        return cardCVC;
     }
 
-    public void setCvc(int cvc) {
-        this.cvc = cvc;
+    public void setCardCvc(int cvc) {
+        this.cardCVC = cardCVC;
     }
 
     public String getCardHolderName() {
