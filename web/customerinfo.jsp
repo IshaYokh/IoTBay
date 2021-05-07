@@ -4,7 +4,7 @@
     Author     : Tada33
 --%>
 
-<%@ page import="iotbay.g15.model.User, java.sql.*, java.util.HashMap, java.util.List, java.util.ArrayList" %>
+<%@ page import="java.sql.*, java.util.HashMap, java.util.List, java.util.ArrayList" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -14,8 +14,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>	
-
+        <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous" type="text/javascript"></script>	
         <title>Customer Information</title>
     </head>
     <body>
@@ -26,6 +25,7 @@
             List<HashMap<String, String>> customerList = new ArrayList<HashMap<String, String>>();
             while (rs.next()) {
                 HashMap<String, String> row = new HashMap<String, String>();
+                row.put("id", rs.getString("id"));
                 row.put("firstName", rs.getString("firstName"));
                 row.put("lastName", rs.getString("lastName"));
                 row.put("email", rs.getString("email"));
@@ -42,6 +42,13 @@
             }
             request.setAttribute("customerList", customerList);
             request.getRequestDispatcher("customerinfo.jsp");
+            
+            if (request.getParameter("deleteCustomer") != null) {
+                System.out.println("asdf");
+                System.out.println(request.getParameter("deleteCustomer"));
+                st.executeUpdate("DELETE FROM Customer WHERE id = " + request.getParameter("deleteCustomer"));
+            }
+            
             conn.close();
         %>
         <div class="navbar">
@@ -57,23 +64,43 @@
         <div class="placeholder"></div>
         <div class="placeholder"></div>
         <div>
-            <table>
+            <table border="2" width="100%">
+                <caption>Customer Information</caption>
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Email</td>
+                    <td>Phone Number</td>
+                    <td>Street Number</td>
+                    <td>Street Name</td>
+                    <td>Street Type</td>
+                    <td>Suburb</td>
+                    <td>State</td>
+                    <td>Postcode</td>
+                    <td>Country</td>
+                </tr>
                 <c:forEach items="${customerList}" var="item">
                     <tr>
-                       <td>${item["firstName"]}</td>
-                       <td>${item["lastName"]}</td>
-                       <td>${item["email"]}</td>
-                       <td>${item["phoneNumber"]}</td>
-                       <td>${item["streetNumber"]}</td>
-                       <td>${item["streetName"]}</td>
-                       <td>${item["streetType"]}</td>
-                       <td>${item["suburb"]}</td>
-                       <td>${item["state"]}</td>
-                       <td>${item["postcode"]}</td>
-                       <td>${item["country"]}</td>
-                       <td>
-                           <button type="button">edit</button>
-                       </td>
+                        <td>${item["firstName"]}</td>
+                        <td>${item["lastName"]}</td>
+                        <td>${item["email"]}</td>
+                        <td>${item["phoneNumber"]}</td>
+                        <td>${item["streetNumber"]}</td>
+                        <td>${item["streetName"]}</td>
+                        <td>${item["streetType"]}</td>
+                        <td>${item["suburb"]}</td>
+                        <td>${item["state"]}</td>
+                        <td>${item["postcode"]}</td>
+                        <td>${item["country"]}</td>
+                        <td>
+                            <button type="button">edit</button>
+                        </td>
+                        <td>
+                            <form action="" onsubmit="setTimeout(function () {window.location.reload();}, 3)">
+                                <input type="submit" value="delete">
+                                <input type="hidden" name="deleteCustomer" value="${item['id']}">
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>
