@@ -1,9 +1,9 @@
 <%-- 
     Document   : newjsp
     Created on : 04/04/2021, 11:08:33 AM
-    Author     : IshaYokh/kaushikdeshpande
+    Author     : IshaYokh/kaushikdeshpande/Tada33
 --%>
-<%@page import="iotbay.g15.model.User"%>
+<%@page import="iotbay.g15.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -22,8 +22,8 @@
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
                 <% 
-                    User user = (User)session.getAttribute("user");
-                    String accountName = user.getFirstName();
+                    Customer c = (Customer)session.getAttribute("customer");
+                    String accountName = c.getFirstName();
                 %>
                 <a href="main.jsp"><li class="login">My Account</li></a>
             </ul>

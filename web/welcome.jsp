@@ -4,7 +4,7 @@
     Author     : IshaYokh/kaushikdeshpande/Tada33
 --%>
 
-<%@page import="iotbay.g15.model.User, java.sql.*"%>
+<%@page import="iotbay.g15.model.Customer, java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -32,8 +32,8 @@
         
         <%
             if((firstName != null) && (lastName != null)){
-                User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
-                session.setAttribute("user", user);
+                Customer c = new Customer(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
+                session.setAttribute("customer", c);
                 
                 Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/IoTBayDB", "ISD", "admin");
                 Statement st = conn.createStatement();
@@ -46,8 +46,8 @@
                 conn.close();
             }
             else{
-                User user = (User)session.getAttribute("user");
-                firstName = user.getFirstName();
+                Customer c = (Customer)session.getAttribute("customer");
+                firstName = c.getFirstName();
             }
         %>
         
@@ -59,11 +59,11 @@
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
                 <% 
-                    User user = (User)session.getAttribute("user");
+                    Customer customer = (Customer)session.getAttribute("customer");
                     String msg = "Sign up / Login";
                     String path = "login.jsp";
                         
-                    if(user != null){
+                    if(customer != null){
                         msg = "My Account";
                         path = "main.jsp";
                     }
