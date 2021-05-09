@@ -9,17 +9,18 @@ package iotbay.g15.model;
  *
  * @author Kevin
  */
-public class Staff extends User {
+public class Staff {
 
     private String DOB;
     private int siteAccessLevel;
+    private int userID;
 
     public Staff() {
-        super();
+        
     }
 
-    public Staff(String DOB, int siteAccessLevel) {
-        super();
+    public Staff(int userID, String DOB, int siteAccessLevel) {
+        this.userID = userID;
         this.DOB = DOB;
         this.siteAccessLevel = siteAccessLevel;
     }
@@ -38,5 +39,13 @@ public class Staff extends User {
 
     public void setSiteAccessLevel(int siteAccessLevel) {
         this.siteAccessLevel = siteAccessLevel;
+    }
+    
+    public int getUserID() {
+        return userID;
+    }
+    
+    public void setUserID() {
+        this.userID = userID;
     }
 }

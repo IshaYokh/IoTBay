@@ -9,21 +9,29 @@ package iotbay.g15.model;
  *
  * @author Kevin
  */
-public class Customer extends User {
+public class Customer {
+
     private int loyaltyPoints;
-    
-    public Customer(String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country, int loyaltyPoints) {
-        super(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
+    private int userID;
+
+    public Customer(int loyaltyPoints, int userID) {
         this.loyaltyPoints = loyaltyPoints;
+        this.userID = userID;
     }
-    
+
     public int getLoyaltyPoints() {
         return loyaltyPoints;
     }
-    
+
     public void setLoyaltyPoints(int loyaltyPoints) {
         this.loyaltyPoints = loyaltyPoints;
     }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID() {
+        this.userID = userID;
+    }
 }
-
-
