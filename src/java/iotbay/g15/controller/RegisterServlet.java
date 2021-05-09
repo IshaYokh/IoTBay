@@ -1,0 +1,73 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package iotbay.g15.controller;
+
+/**
+ *
+ * @author kaushikdeshpande
+ */
+import java.io.IOException;
+
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import iotbay.g15.model.User;
+import iotbay.g15.model.dao.DBManager;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+
+
+public class RegisterServlet extends HttpServlet {
+    
+    
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+        String firstName = request.getParameter("fname");
+        String lastName = request.getParameter("lname");
+        String email = request.getParameter("email");
+        String password = request.getParameter("psw");
+        String password1 = request.getParameter("psw1");
+        String phoneNumber = request.getParameter("number");
+        String streetNumber = request.getParameter("street-number");
+        String streetName = request.getParameter("street-name");
+        String streetType = request.getParameter("street-type");
+        String suburb = request.getParameter("suburb");
+        String state = request.getParameter("state");
+        String postcode = request.getParameter("postcode");
+        String country = request.getParameter("country");
+        DBManager manager = (DBManager)session.getAttribute("manager");
+        if(password.equals(password1)){
+            try {
+                if(manager.checkUserEmail(email)){ //email has not been used
+                    User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
+                    session.setAttribute("user", user);
+                    manager.addUser(firstName,lastName,password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, email);
+                    //redirect to home
+                    request.getRequestDispatcher("welcome.jsp").include(request, response);
+                }else{
+                    session.setAttribute("emailUsed", "Email has already been used please sign in");
+                    request.getRequestDispatcher("register.jsp").include(request, response);
+                
+                }
+            } 
+            catch (SQLException ex) {
+                //Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                ex.getMessage();
+            }
+        }
+        else{
+            session.setAttribute("passNoMatch", "Passwords do not Match");
+            request.getRequestDispatcher("register.jsp").include(request, response);
+        }
+    }
+}

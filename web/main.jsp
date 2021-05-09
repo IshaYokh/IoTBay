@@ -51,7 +51,7 @@
             <br/>
             <br/>
             
-            <a href="#">
+            <a href="Accountdetails.jsp">
                 <button class="account-details-btn">
                     <i class="fas fa-user-circle"></i> &nbsp;Account Details
                 </button>
