@@ -39,10 +39,10 @@
                 Statement st = conn.createStatement();
                 st.executeUpdate("insert into Customer(firstname, lastname, email, password, phonenumber," +
                                                       "streetnumber, streetname, streettype," +
-                                                      "suburb, state, postcode, country)" +
+                                                      "suburb, state, postcode, country, status)" +
                                  "values ('" + firstName + "', '" + lastName + "', '" + email + "', '" + password + "', '" +
                                               phoneNumber + "', '" + streetNumber + "', '" + streetName + "', '" + streetType + "', '" +
-                                              suburb + "', '" + state + "', '" + postcode + "', '" + country + "')");
+                                              suburb + "', '" + state + "', '" + postcode + "', '" + country + "', true)");
                 conn.close();
             }
             else{

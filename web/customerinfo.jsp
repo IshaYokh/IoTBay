@@ -38,6 +38,7 @@
                 row.put("state", rs.getString("state"));
                 row.put("postcode", rs.getString("postcode"));
                 row.put("country", rs.getString("country"));
+                row.put("status", rs.getString("status"));
                 customerList.add(row);
             }
             request.setAttribute("customerList", customerList);
@@ -78,6 +79,7 @@
                     <td>State</td>
                     <td>Postcode</td>
                     <td>Country</td>
+                    <td>Status</td>
                 </tr>
                 <c:forEach items="${customerList}" var="item">
                     <tr>
@@ -92,6 +94,7 @@
                         <td>${item["state"]}</td>
                         <td>${item["postcode"]}</td>
                         <td>${item["country"]}</td>
+                        <td>${item["status"]}</td>
                         <td>
                             <button type="button">edit</button>
                         </td>
