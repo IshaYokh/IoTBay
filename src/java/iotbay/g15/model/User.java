@@ -40,7 +40,9 @@ public class User {
         this.state = state;
         this.postcode = postcode;
         this.country = country;
+        this.userID = userID;
     }
+  
     public int getUserID() {
         return userID;
     }

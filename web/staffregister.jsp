@@ -1,7 +1,7 @@
 <%-- 
-    Document   : register
-    Created on : 08/04/2021, 1:07:00 AM
-    Author     : Isha Yokhanna
+    Document   : staffregister
+    Created on : 10/05/2021, 7:01:11 PM
+    Author     : kaushikdeshpande
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -34,8 +34,8 @@
         String phoneNoErr = (String) session.getAttribute("phoneNoErr");
         %>
         <div class="form" id="createForm">
-            <form action="RegisterServlet" method="POST" class="form-container-register">
-              <h1 class="create-account-title">Create Account</h1>
+            <form action="StaffregisterServlet" method="POST" class="form-container-register">
+              <h1 class="create-account-title">Create Staff Account</h1>
               
               <label for="fname">First Name</label>
               <input type="text" placeholder="Enter First Name" name="fname" required>
@@ -48,13 +48,18 @@
           
               <label for="psw">Password</label>
               <input type="password" placeholder="<%=(passNoMatch != null ? passNoMatch : "Enter Password")%>" name="psw" required>
+              
 
               <label for="psw">Confirm Password</label>
               <input type="password" placeholder="Confirm Password" name="psw1" required>
 
               <label for="number">Phone Number</label>
               <input type="text" placeholder="<%=(phoneNoErr != null ? phoneNoErr : "Enter Phone Number")%>" name="number" required>
-
+              
+              <label for="dob">Date of Birth</label>
+              <input type="date" placeholder="Enter Date of birth" name="dob" required>
+              <br>
+              <br>
               <label for="street-number">Street Number</label>
               <input type="text" placeholder="Enter Street Number" name="street-number" required>
 

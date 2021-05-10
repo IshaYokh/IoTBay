@@ -25,10 +25,36 @@
         <servlet-name>UpdateUser</servlet-name>
         <servlet-class>controller.admin.user.UpdateUser</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>ConnServlet</servlet-name>
-        <url-pattern>/ConnServlet</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffRegisterServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.StaffRegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteAccServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.DeleteAccServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AccountDetailsServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.AccountDetailsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AccLogsServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.AccLogsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.LoginServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.LogoutServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdminHub</servlet-name>
         <url-pattern>/admin/hub</url-pattern>
@@ -49,9 +75,43 @@
         <servlet-name>UpdateUser</servlet-name>
         <url-pattern>/admin/user/update</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffRegisterServlet</servlet-name>
+        <url-pattern>/StaffRegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteAccServlet</servlet-name>
+        <url-pattern>/DeleteAccServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountDetailsServlet</servlet-name>
+        <url-pattern>/AccountDetailsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccLogsServlet</servlet-name>
+        <url-pattern>/AccLogsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConnServlet</servlet-name>
+        <url-pattern>/ConnServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
-        </session-timeout>
+
+               30
+
+           </session-timeout>
     </session-config>
 </web-app>
