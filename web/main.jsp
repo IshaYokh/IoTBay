@@ -51,7 +51,7 @@
             <br/>
             <br/>
             
-            <a href="#">
+            <a href="Accountdetails.jsp">
                 <button class="account-details-btn">
                     <i class="fas fa-user-circle"></i> &nbsp;Account Details
                 </button>
@@ -69,7 +69,7 @@
             <br/>
             <br/>
             
-            <a href="logout.jsp">
+            <a href="LogoutServlet">
                 <button class="logout-btn">
                     <i class="fas fa-sign-out-alt"></i> &nbsp;Logout
                 </button>
