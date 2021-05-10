@@ -20,53 +20,45 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import iotbay.g15.model.User;
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.LoginLogoutDAO;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 
 public class LoginServlet extends HttpServlet {
-    
-   @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        DBManager manager = (DBManager)session.getAttribute("manager");
+        LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
         String email = request.getParameter("email");
         String password = request.getParameter("psw");
-       try {
-           if(manager.checkUser(email, password)){
-               //getUser();
-               User user1 = manager.getUser(email, password);
-               int userID = manager.getUserID(email, password);
-               manager.addlogslogin(userID);
-               session.setAttribute("user", user1);
-               request.getRequestDispatcher("main.jsp").include(request, response);
-               
-               
-               
-               
-               
-               
-           }else{
-               
-               session.setAttribute("incorrectpass", "Incorrect Email or Password");
-               request.getRequestDispatcher("login.jsp").include(request, response);
-               
-               
-               
-               
-           }
-           //if email and password are correct
-           //grab sql info
-           //set the sql info as a user object in session
-           
-           //request.getRequestDispatcher("main.jsp").include(request, response);
-           //else
-           // return Incorrect Email or password prompt
-           // session.setAttribute("incorrectpass", "Incorrect Email or Password");
-       } catch (SQLException ex) {
-           Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-       }
-    
+        try {
+            if (manager.checkUser(email, password)) {
+                //getUser();
+                User user1 = manager.getUser(email, password);
+                int userID = manager.getUserID(email, password);
+                manager.addlogslogin(userID);
+                session.setAttribute("user", user1);
+                request.getRequestDispatcher("main.jsp").include(request, response);
+
+            } else {
+
+                session.setAttribute("incorrectpass", "Incorrect Email or Password");
+                request.getRequestDispatcher("login.jsp").include(request, response);
+
+            }
+            //if email and password are correct
+            //grab sql info
+            //set the sql info as a user object in session
+
+            //request.getRequestDispatcher("main.jsp").include(request, response);
+            //else
+            // return Incorrect Email or password prompt
+            // session.setAttribute("incorrectpass", "Incorrect Email or Password");
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
-    
+
 }

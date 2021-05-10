@@ -5,8 +5,6 @@
  */
 package iotbay.g15.controller;
 
-
-
 /**
  *
  * @author kaushikdeshpande
@@ -22,17 +20,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import iotbay.g15.model.User;
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.LoginLogoutDAO;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 
-
 public class StaffregisterServlet extends HttpServlet {
-    
-    
+
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession();
         String firstName = request.getParameter("fname");
         String lastName = request.getParameter("lname");
@@ -48,13 +44,12 @@ public class StaffregisterServlet extends HttpServlet {
         String postcode = request.getParameter("postcode");
         String country = request.getParameter("country");
         String dob = request.getParameter("dob");
-        DBManager manager = (DBManager)session.getAttribute("manager");
-        if(password.equals(password1)){
+        LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
+        if (password.equals(password1)) {
             try {
-                if(manager.checkUserEmail(email)){ //email has not been used
-                    
-                   
-                    manager.addUser(firstName,lastName,password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, email);
+                if (manager.checkUserEmail(email)) { //email has not been used
+
+                    manager.addUser(firstName, lastName, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, email);
                     //getUserID
                     int userID = manager.getUserID(email, password);
                     User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, userID);
@@ -64,21 +59,19 @@ public class StaffregisterServlet extends HttpServlet {
                     manager.addlogsregister(userI);
                     session.setAttribute("user", user);
                     request.getRequestDispatcher("admin/admin.jsp").include(request, response);
-                }else{
+                } else {
                     session.setAttribute("emailUsed", "Email has already been used please sign in");
                     request.getRequestDispatcher("staffregister.jsp").include(request, response);
-                
+
                 }
-            } 
-            catch (SQLException ex) {
+            } catch (SQLException ex) {
                 //Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
                 ex.getMessage();
             }
-        }
-        else{
+        } else {
             session.setAttribute("passNoMatch", "Passwords do not Match");
             request.getRequestDispatcher("staffregister.jsp").include(request, response);
         }
-        }
-        
+    }
+
 }

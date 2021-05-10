@@ -22,80 +22,75 @@
                 <a href="#"><li>Store</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
-                <% 
-                    User user = (User)session.getAttribute("user");
-                    String accountName = user.getFirstName();
-                %>
+                        <%
+                            User user = (User) session.getAttribute("user");
+                            String accountName = user.getFirstName();
+                        %>
                 <a href="main.jsp"><li class="login">My Account</li></a>
             </ul>
         </div>
-                
+
         <div class="placeholder"></div>
         <%
-        String accupdated = (String) session.getAttribute("accupdated");
-        
+            String accupdated = (String) session.getAttribute("accupdated");
+
         %>
-        
+
         <div class="form" id="createForm">
             <form action="AccountdetailServlet" method="post" class="form-container-register">
-              <h1 class="create-account-title"><%=(accupdated != null ? accupdated : "Update Account")%></h1>
-              
-              <label for="fname">First Name</label>
-              <input type="text" value= "<%= user.getFirstName() %>" name="fname" >
-              
-              <label for="lname">Last Name</label>
-              <input type="text" value="<%= user.getLastName() %>" name="lname">
-              
-              <label for="email">Email</label>
-              <input type="text" value="<%= user.getEmail() %>" name="email" >
-              
-              <label for="pws">Password</label>
-              <input type="text" value="<%= user.getPassword() %>" name="pws" >
-          
-              <label for="number">Phone Number</label>
-              <input type="text" value="<%= user.getPhoneNumber() %>" name="number" >
+                <h1 class="create-account-title"><%=(accupdated != null ? accupdated : "Update Account")%></h1>
 
-              <label for="street-number">Street Number</label>
-              <input type="text" value="<%= user.getStreetNumber() %>" name="street-number" >
+                <label for="fname">First Name</label>
+                <input type="text" value= "<%= user.getFirstName()%>" name="fname" >
 
-              <label for="street-name">Street Name</label>
-              <input type="text" value="<%= user.getStreetName() %>" name="street-name" >
+                <label for="lname">Last Name</label>
+                <input type="text" value="<%= user.getLastName()%>" name="lname">
 
-              <label for="street-type">Street Type</label>
-              <input type="text" value="<%= user.getStreetType() %>" name="street-type" >
+                <label for="email">Email</label>
+                <input type="text" value="<%= user.getEmail()%>" name="email" >
 
-              <label for="suburb">Suburb</label>
-              <input type="text" value="<%= user.getSuburb() %>" name="suburb" >
+                <label for="pws">Password</label>
+                <input type="text" value="<%= user.getPassword()%>" name="pws" >
 
-              <label for="state">State</label>
-              <input type="text" value="<%= user.getState() %>" name="state" >
+                <label for="number">Phone Number</label>
+                <input type="text" value="<%= user.getPhoneNumber()%>" name="number" >
 
-              <label for="postcode">Postcode</label>
-              <input type="text" value="<%= user.getPostcode() %>" name="postcode" >
+                <label for="street-number">Street Number</label>
+                <input type="text" value="<%= user.getStreetNumber()%>" name="street-number" >
 
-              <label for="Country">Country</label>
-              <input type="text" value="<%= user.getCountry() %>" name="country" >
-              <div class="placeholder"></div>
-              <button href="editaccdetails.jsp" type="submit" class="btn-create">Update details</button>
-              <div class="placeholder"></div>
-              
+                <label for="street-name">Street Name</label>
+                <input type="text" value="<%= user.getStreetName()%>" name="street-name" >
+
+                <label for="street-type">Street Type</label>
+                <input type="text" value="<%= user.getStreetType()%>" name="street-type" >
+
+                <label for="suburb">Suburb</label>
+                <input type="text" value="<%= user.getSuburb()%>" name="suburb" >
+
+                <label for="state">State</label>
+                <input type="text" value="<%= user.getState()%>" name="state" >
+
+                <label for="postcode">Postcode</label>
+                <input type="text" value="<%= user.getPostcode()%>" name="postcode" >
+
+                <label for="Country">Country</label>
+                <input type="text" value="<%= user.getCountry()%>" name="country" >
+                <div class="placeholder"></div>
+                <button href="editaccdetails.jsp" type="submit" class="btn-create">Update details</button>
+                <div class="placeholder"></div>
+
             </form>
-              
-            
-            
-              
-                <a href="AcclogsServlet">
-               <button href="AcclogsServlet" type="submit" class="btn-create" > View  Account Logs</button>
-                </a>
-            
-              <form action="deleteaccServlet" method="post" class="form-container-register">
-                
+
+            <a href="AcclogsServlet">
+                <button href="AcclogsServlet" type="submit" class="btn-create" > View  Account Logs</button>
+            </a>
+
+            <form action="deleteaccServlet" method="post" class="form-container-register">
+
                 <button href="deleteaccServlet" type="submit" class="btn-create">Delete Account</button>
-    
+
             </form>
-             
-              
-              
+
         </div>
     </body>
 </html>

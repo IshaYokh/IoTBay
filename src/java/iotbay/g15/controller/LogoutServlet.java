@@ -20,20 +20,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import iotbay.g15.model.User;
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.LoginLogoutDAO;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 
-
 public class LogoutServlet extends HttpServlet {
-    
-    
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession();
-        DBManager manager = (DBManager)session.getAttribute("manager");
-        User user = (User)session.getAttribute("user");
+        LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
+        User user = (User) session.getAttribute("user");
         String email = user.getEmail();
         String password = user.getPassword();
         int userID;
@@ -43,21 +41,10 @@ public class LogoutServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        session.invalidate(); 
+
+        session.invalidate();
         response.sendRedirect("index.jsp");
-        
-        
-        
-        
-        
-        
+
     }
-
-
-
-
-
-
 
 }

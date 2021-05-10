@@ -16,7 +16,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>
-        
+
     </head>	
     <body>
         <div class="navbar">
@@ -26,46 +26,39 @@
                 <a href="#"><li>Store</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
-                <% 
-                    User user = (User)session.getAttribute("user");
-                    String accountName = user.getFirstName();
-                %>
+                        <%
+                            User user = (User) session.getAttribute("user");
+                            String accountName = user.getFirstName();
+                        %>
                 <a href="main.jsp"><li class="login">My Account</li></a>
             </ul>
         </div>
         <%
-        ArrayList logs = (ArrayList) session.getAttribute("logs");
-        ArrayList tlogs = (ArrayList) session.getAttribute("tlogs");
-         %>
+            ArrayList logs = (ArrayList) session.getAttribute("logs");
+            ArrayList tlogs = (ArrayList) session.getAttribute("tlogs");
+        %>
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
-         <table class="table table-bordered table-striped mb-0 log-table">
-            <thead>
-                <tr>
-                    <th>Action</th>
-                    <th> Date and Time </th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <%
-                        for(int i = 0; i < logs.size(); i++)
-                        {   
-                %>
-                <tr>
-                        <td><%= logs.get(i) %></td>
+            <table class="table table-bordered table-striped mb-0 log-table">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th> Date and Time </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        for (int i = 0; i < logs.size(); i++) {
+                    %>
+                    <tr>
+                        <td><%= logs.get(i)%></td>
                         <td> <%= tlogs.get(i)%></td>
-               
-                </tr>
-                <%
-                }
-                %>
+
+                    </tr>
+                    <%
+                        }
+                    %>
             </table>
-         </div>
-       
-
-
- 
-        
-
+        </div>
     </body>
 </html>

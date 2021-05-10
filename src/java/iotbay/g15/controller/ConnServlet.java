@@ -9,7 +9,6 @@ package iotbay.g15.controller;
  *
  * @author kaushikdeshpande
  */
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,82 +21,70 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import iotbay.g15.model.dao.*;
 
- 
+public class ConnServlet extends HttpServlet {
 
-   public class ConnServlet extends HttpServlet {
+    private DBConnector db;
 
- 
+    private LoginLogoutDAO manager;
 
-       private DBConnector db;
+    private Connection conn;
 
-       private DBManager manager;
+    @Override //Create and instance of DBConnector for the deployment session
 
-       private Connection conn;
+    public void init() {
 
-        
+        try {
 
-       @Override //Create and instance of DBConnector for the deployment session
+            db = new DBConnector();
 
-       public void init() {
+        } catch (ClassNotFoundException | SQLException ex) {
 
-           try {
+            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
 
-               db = new DBConnector();
+        }
 
-           } catch (ClassNotFoundException | SQLException ex) {
+    }
 
-               Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+    @Override //Add the DBConnector, DBManager, Connection instances to the session
 
-           }      
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-       }
+        response.setContentType("text/html;charset=UTF-8");
 
-      
+        HttpSession session = request.getSession();
 
-       @Override //Add the DBConnector, DBManager, Connection instances to the session
+        conn = db.openConnection();
 
-       protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        try {
 
-               throws ServletException, IOException {
+            manager = new LoginLogoutDAO(conn);
 
-           response.setContentType("text/html;charset=UTF-8");       
+        } catch (SQLException ex) {
 
-           HttpSession session = request.getSession();
+            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
 
-           conn = db.openConnection();       
+        }
 
-           try {
+        //export the DB manager to the view-session (JSPs)
+        session.setAttribute("manager", manager);
 
-               manager = new DBManager(conn);
+    }
 
-           } catch (SQLException ex) {
+    @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
 
-               Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+    public void destroy() {
 
-           }
+        try {
 
-           //export the DB manager to the view-session (JSPs)
+            db.closeConnection();
 
-           session.setAttribute("manager", manager);           
+        } catch (SQLException ex) {
 
-       }   
+            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
 
-        
+        }
 
-       @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
+    }
 
-        public void destroy() {
-
-           try {
-
-               db.closeConnection();
-
-           } catch (SQLException ex) {
-
-               Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
-
-           }
-
-       }
-
-   }
+}
