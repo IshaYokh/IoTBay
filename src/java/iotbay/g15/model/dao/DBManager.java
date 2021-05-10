@@ -22,30 +22,19 @@ public class DBManager {
     //read user's order history
     public ArrayList<Order> findAllCustomerOrders(int userID) throws SQLException{
         ArrayList<Order> orderList = new ArrayList<Order>();
-        String fetch1 = "SELECT * FROM ORDERS WHERE USERID = " + userID;
+        String fetch = "SELECT * FROM ORDERS WHERE USERID = " + userID;
         System.out.println(userID);
-        ResultSet rs1 = st.executeQuery(fetch1);
-        System.out.println(rs1);
+        ResultSet rs = st.executeQuery(fetch);
+        System.out.println(rs);
+        String orderDate = "";
         
-        while(rs1.next()){
-            ArrayList<OrderLineItem> items = new ArrayList<OrderLineItem>();
-            String orderID = rs1.getString(1);
-            //String customerID = rs1.getString(2);
-            //String courierID = rs1.getString(3);
-            String orderDate = rs1.getString(4);
-            String orderStatus = rs1.getString(5);
-            
-            //String fetch2 = "SELECT * FROM ORDERLINE WHERE ORDERID = " + orderID;
-            //ResultSet rs2 = st.executeQuery(fetch2);
-            
-            //while(rs2.next()){
-            //    String itemID = rs2.getString(1);
-            //    items.add(new OrderLineItem(Integer.parseInt(itemID), Integer.parseInt(orderID)));
-            //}
-        orderList.add(new Order(Integer.parseInt(orderID),orderDate, orderStatus));
-        return orderList;
+        while(rs.next()){
+            String orderID = rs.getString(1);
+            orderDate = rs.getString(4);
+            String orderStatus = rs.getString(5);
+            orderList.add(new Order(Integer.parseInt(orderID),orderDate, orderStatus));
         }
-    return null;
+    return orderList;
     }
     
     

@@ -31,7 +31,7 @@ public class AddOrderServlet extends HttpServlet{
         String orderStatus = request.getParameter("orderStatus");
         
         DBManager manager = (DBManager) session.getAttribute("manager");
-        
+        System.out.println("ddddddddddddddddddd");
         Order order = new Order(Integer.parseInt(orderID), orderDate, orderStatus);
         
         try{
