@@ -10,6 +10,7 @@ package iotbay.g15.model;
  * @author Isha Yokhanna
  */
 public class User {
+    private int userID;
     private String firstName;
     private String lastName;
     private String email;
@@ -23,7 +24,8 @@ public class User {
     private String postcode;
     private String country;
 
-    public User(String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) {
+    public User(int userID, String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) {
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -38,6 +40,14 @@ public class User {
         this.country = country;
     }
 
+    public int getUserID(){
+        return userID;
+    }
+    
+    public void setUserID(int userID){
+        this.userID = userID;
+    }
+    
     public String getFirstName() {
         return firstName;
     }

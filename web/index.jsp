@@ -3,6 +3,7 @@
     Created on : 06/04/2021, 00:00:00 AM
     Author     : Rebecca Gong
 --%>
+<jsp:include page="/ConnServlet" flush="true"/>
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>

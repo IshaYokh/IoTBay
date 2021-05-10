@@ -1,9 +1,9 @@
 <%-- 
-    Document   : orderhistory
-    Created on : 03/05/2021, 10:54:36 PM
+    Document   : AddOrder
+    Created on : 09/05/2021, 11:50:10 PM
     Author     : rebecca
 --%>
-<%@page import="java.util.ArrayList"%>
+<jsp:include page="/ConnServlet" flush="true"/>
 <%@page import="iotbay.g15.model.User"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -42,23 +42,24 @@
 	</div>
 	<div class="placeholder"></div>
         
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col">Order ID</th>
-                    <th scope="col">Item ID</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>no</td>
-                    <td>no</td>
-                </tr>
-            </tbody>
-        </table>
+        
+        
+        <div class="order">
             
-            <% String orders = (String)session.getAttribute("msg"); %>
-            <p><%= orders%></p>
+            <form method = "post" action = 'AddOrderServlet'>
+                
+                <label for="orderID">Order ID</label>
+                <input type="text" placeholder="Enter Order ID" name="orderID" required>
+
+                <label for="orderDate">Order Date</label>
+                <input type="text" placeholder="Enter Order Date" name="orderDate" required>
+
+                <label for="orderStatus">Order Status</label>
+                <input type="text" placeholder="Enter Order Status" name="orderStatus" required>
+
+                <button type="submit" class="btn-create">Add Order</button>
+            
+            </form>
         </div>
     </body>
 </html>
