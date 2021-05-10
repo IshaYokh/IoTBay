@@ -31,7 +31,7 @@ public class DBManager {
     //removes user
     public void addCustomer(int userID) throws SQLException{
     
-     String fetch = "INSERT INTO TEMP.CUSTOMER VALUES (" + userID + ", 0, 0)" ;
+     String fetch = "INSERT INTO TEMP.CUSTOMER VALUES (" + userID + ", 0)" ;
      st.execute(fetch);
     }
     public void addStaff(int userID, String dob) throws SQLException{
