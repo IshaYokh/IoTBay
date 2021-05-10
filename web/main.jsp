@@ -69,7 +69,7 @@
             <br/>
             <br/>
             
-            <a href="logout.jsp">
+            <a href="LogoutServlet">
                 <button class="logout-btn">
                     <i class="fas fa-sign-out-alt"></i> &nbsp;Logout
                 </button>

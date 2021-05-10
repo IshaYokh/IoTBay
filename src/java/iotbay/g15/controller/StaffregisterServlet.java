@@ -5,6 +5,8 @@
  */
 package iotbay.g15.controller;
 
+
+
 /**
  *
  * @author kaushikdeshpande
@@ -25,7 +27,7 @@ import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 
 
-public class RegisterServlet extends HttpServlet {
+public class StaffregisterServlet extends HttpServlet {
     
     
     @Override
@@ -45,6 +47,7 @@ public class RegisterServlet extends HttpServlet {
         String state = request.getParameter("state");
         String postcode = request.getParameter("postcode");
         String country = request.getParameter("country");
+        String dob = request.getParameter("dob");
         DBManager manager = (DBManager)session.getAttribute("manager");
         if(password.equals(password1)){
             try {
@@ -57,13 +60,13 @@ public class RegisterServlet extends HttpServlet {
                     User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, userID);
                     //manager.addCustomer(userID);
                     int userI = manager.getUserID(email, password);
-                    manager.addCustomer(userI);
+                    manager.addStaff(userI, dob);
                     manager.addlogsregister(userI);
                     session.setAttribute("user", user);
-                    request.getRequestDispatcher("welcome.jsp").include(request, response);
+                    request.getRequestDispatcher("admin/admin.jsp").include(request, response);
                 }else{
                     session.setAttribute("emailUsed", "Email has already been used please sign in");
-                    request.getRequestDispatcher("register.jsp").include(request, response);
+                    request.getRequestDispatcher("staffregister.jsp").include(request, response);
                 
                 }
             } 
@@ -74,7 +77,8 @@ public class RegisterServlet extends HttpServlet {
         }
         else{
             session.setAttribute("passNoMatch", "Passwords do not Match");
-            request.getRequestDispatcher("register.jsp").include(request, response);
+            request.getRequestDispatcher("staffregister.jsp").include(request, response);
         }
-    }
+        }
+        
 }

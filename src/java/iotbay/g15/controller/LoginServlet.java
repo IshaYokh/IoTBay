@@ -36,6 +36,8 @@ public class LoginServlet extends HttpServlet {
            if(manager.checkUser(email, password)){
                //getUser();
                User user1 = manager.getUser(email, password);
+               int userID = manager.getUserID(email, password);
+               manager.addlogslogin(userID);
                session.setAttribute("user", user1);
                request.getRequestDispatcher("main.jsp").include(request, response);
                

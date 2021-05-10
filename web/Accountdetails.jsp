@@ -31,10 +31,14 @@
         </div>
                 
         <div class="placeholder"></div>
+        <%
+        String accupdated = (String) session.getAttribute("accupdated");
+        
+        %>
         
         <div class="form" id="createForm">
-            <form action="editaccdetails.jsp" method="post" class="form-container-register">
-              <h1 class="create-account-title">Update Account</h1>
+            <form action="AccountdetailServlet" method="post" class="form-container-register">
+              <h1 class="create-account-title"><%=(accupdated != null ? accupdated : "Update Account")%></h1>
               
               <label for="fname">First Name</label>
               <input type="text" value= "<%= user.getFirstName() %>" name="fname" >
@@ -44,6 +48,9 @@
               
               <label for="email">Email</label>
               <input type="text" value="<%= user.getEmail() %>" name="email" >
+              
+              <label for="pws">Password</label>
+              <input type="text" value="<%= user.getPassword() %>" name="pws" >
           
               <label for="number">Phone Number</label>
               <input type="text" value="<%= user.getPhoneNumber() %>" name="number" >
@@ -73,6 +80,22 @@
               <div class="placeholder"></div>
               
             </form>
+              
+            
+            
+              
+                <a href="AcclogsServlet">
+               <button href="AcclogsServlet" type="submit" class="btn-create" > View  Account Logs</button>
+                </a>
+            
+              <form action="deleteaccServlet" method="post" class="form-container-register">
+                
+                <button href="deleteaccServlet" type="submit" class="btn-create">Delete Account</button>
+    
+            </form>
+             
+              
+              
         </div>
     </body>
 </html>
