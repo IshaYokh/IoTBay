@@ -6,7 +6,7 @@
 package controller.admin.user;
 
 import iotbay.g15.model.User;
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.UserManagementDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -59,7 +59,7 @@ public class UpdateUser extends HttpServlet {
             String id = request.getParameter("id");
             HttpSession session = request.getSession();
             session.setAttribute("updateUserId", id);
-            DBManager manager = (DBManager) session.getAttribute("manager");
+            UserManagementDAO manager = (UserManagementDAO) session.getAttribute("manager");
             System.out.println("MANAGER---------->");
             // search that user by id
             User toBeUpdatedUser = manager.getUserById(Integer.parseInt(id));
@@ -78,7 +78,7 @@ public class UpdateUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        DBManager manager = (DBManager) session.getAttribute("manager");
+        UserManagementDAO manager = (UserManagementDAO) session.getAttribute("manager");
 
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");

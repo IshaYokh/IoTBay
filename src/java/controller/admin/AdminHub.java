@@ -5,7 +5,7 @@
  */
 package controller.admin;
 
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.UserManagementDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;

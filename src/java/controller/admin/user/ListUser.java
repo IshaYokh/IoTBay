@@ -6,7 +6,7 @@
 package controller.admin.user;
 
 import iotbay.g15.model.User;
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.UserManagementDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -45,7 +45,7 @@ public class ListUser extends HttpServlet {
             throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
-            DBManager manager = (DBManager) session.getAttribute("manager"); 
+            UserManagementDAO manager = (UserManagementDAO) session.getAttribute("manager"); 
             List<User> users = manager.getUsers();
             session.setAttribute("userdata", users);
             RequestDispatcher view = request.getRequestDispatcher("/admin/user/list.jsp");

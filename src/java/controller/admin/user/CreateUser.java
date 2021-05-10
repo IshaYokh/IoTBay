@@ -5,7 +5,7 @@
  */
 package controller.admin.user;
 
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.UserManagementDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -50,7 +50,7 @@ public class CreateUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        DBManager manager = (DBManager)session.getAttribute("manager");
+        UserManagementDAO manager = (UserManagementDAO)session.getAttribute("manager");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");

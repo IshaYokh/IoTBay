@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Kevin
  */
-public class UpgradeUser extends HttpServlet {
+public class CustomerManagement extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

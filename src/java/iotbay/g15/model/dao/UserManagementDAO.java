@@ -15,14 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /* 
-* DBManager is the primary DAO class to interact with the database. 
+* UserManagementDAO is the primary DAO class to interact with the database. 
 * Complete the existing methods of this classes to perform CRUD operations with the db.
  */
-public class DBManager {
+public class UserManagementDAO {
 
     private Statement st;
 
-    public DBManager(Connection conn) throws SQLException {
+    public UserManagementDAO(Connection conn) throws SQLException {
         st = conn.createStatement();
     }
 
@@ -45,7 +45,6 @@ public class DBManager {
                 + " ' " + streetType + " ', " + " ' " + suburb + " ', " + " ' " + state + " ', " + " " + postcode + ", "
                 + " ' " + country + " ' "
                 + ")");
-
     }
 
     public List<User> getUsers() throws SQLException {

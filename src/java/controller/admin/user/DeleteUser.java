@@ -5,7 +5,7 @@
  */
 package controller.admin.user;
 
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.UserManagementDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -59,7 +59,7 @@ public class DeleteUser extends HttpServlet {
         try {
             String id = request.getParameter("id");
             HttpSession session = request.getSession();
-            DBManager manager = (DBManager) session.getAttribute("manager");
+            UserManagementDAO manager = (UserManagementDAO) session.getAttribute("manager");
             manager.deleteUser(Integer.parseInt(id));
             // redirect back to list of users
             response.sendRedirect("/admin/users");

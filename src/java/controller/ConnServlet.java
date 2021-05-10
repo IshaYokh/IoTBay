@@ -6,7 +6,7 @@
 package controller;
 
 import iotbay.g15.model.dao.DBConnector;
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.UserManagementDAO;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -26,7 +26,7 @@ public class ConnServlet extends HttpServlet {
 
     private DBConnector db;
 
-    private DBManager manager;
+    private UserManagementDAO manager;
 
     private Connection conn;
 
@@ -47,7 +47,7 @@ public class ConnServlet extends HttpServlet {
         }
     }
 
-    @Override //Add the DBConnector, DBManager, Connection instances to the session
+    @Override //Add the DBConnector, UserManagementDAO, Connection instances to the session
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -60,7 +60,7 @@ public class ConnServlet extends HttpServlet {
 
         try {
 
-            manager = new DBManager(conn);
+            manager = new UserManagementDAO(conn);
 
         } catch (SQLException ex) {
 
