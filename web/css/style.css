@@ -280,7 +280,7 @@ footer p{
     cursor: pointer;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=month] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -449,12 +449,13 @@ input[type=text], input[type=password] {
 /* updatePaymentInfo and addPaymentInfo page styles */
 
 
-.billing-address-title, .card-details-title{
+.billing-address-title, .card-details-title, .paymentinfo-feedback h1{
     text-align: center;
 }
 
-.billing-address-title{
+.paymentinfo-feedback h1, .card-details-title{
     margin-top: 2em;
+    margin-bottom: 1em;
 }
 
 .form-container-update-billing, .form-container-update-card {
@@ -470,14 +471,14 @@ input[type=text], input[type=password] {
 
 .save-btn-container button, .cancel-btn-container button{
     margin-top: 2em;
-    padding: 10px 5px;
+    padding: 10px;
     left: 40%;
     transform: translate(-50%, -50%);
     width: 10%;
     position: absolute;
     background: #173D7B;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     border-radius: 5px;
     border: none;
@@ -486,6 +487,27 @@ input[type=text], input[type=password] {
 
 .cancel-btn-container button{
     left: 60%;
+}
+
+.paymentinfo-feedback{
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.paymentinfo-feedback h1{
+    background-color: rgba(39, 174, 96, 0.5);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-radius: 5px;
+    font-weight: 5;
+}
+
+.paymentinfo-feedback h1 a{
+    color: blue;
+    font-size: 20px;
+    text-decoration: underline;
 }
 
 

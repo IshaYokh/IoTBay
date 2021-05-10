@@ -38,16 +38,33 @@
 	</div>
 	<div class="placeholder"></div>
         
-        <!-- Form for updating billing and payment info -->
-        <h1 class="billing-address-title">Billing Address</h1>
+        
+        <!-- PaymentInfo addition feedback box -->
+        <% 
+            try{
+                String paymentInfoAddFeedback = (String)session.getAttribute("paymentInfoAddFeedback");
+                if(paymentInfoAddFeedback.equals("success")){ %>
+            <div class="paymentinfo-feedback">
+                <h1>Payment information has been added successfully! <a href="#">Return to account page</a></h1>
+            </div>
+        <%
+            }}
+            catch(NullPointerException ex){
+            }
+        %>
+       
+        <!-- Form for new card and billing details -->
+        <h1 class="card-details-title">Billing Address & Card Details</h1>
         <div class="form" id="createForm">
-            <form action="" method="post" class="form-container-update-billing">
+            <form action="AddPaymentInfoServlet" method="post" class="form-container-update-card">
+              <label for="street-number">Street Number</label>
+              <input type="text" placeholder="Enter Street number" name="street-number" required>
               
-              <label for="address-line-1">Address Line 1</label>
-              <input type="text" placeholder="Address Line 1" name="address-line-1" required>
+              <label for="street-name">Street Name</label>
+              <input type="text" placeholder="Enter Street Name" name="street-name" required>
               
-              <label for="address-line-2">Address Line 1</label>
-              <input type="text" placeholder="Address Line 2" name="address-line-2">
+              <label for="street-type">Street Type</label>
+              <input type="text" placeholder="Enter Street Type" name="street-type">
               
               <label for="suburb">Suburb</label>
               <input type="text" placeholder="Enter Suburb" name="suburb" required>
@@ -57,54 +74,32 @@
 
               <label for="postcode">Enter Postcode</label>
               <input type="text" placeholder="Enter Postcode" name="postcode" required>
-
-              <label for="number">Phone Number</label>
-              <input type="text" placeholder="Enter Phone Number" name="number" required>
-
-              <label for="street-number">Street Number</label>
-              <input type="text" placeholder="Enter Street Number" name="street-number" required>
-
-              <label for="street-name">Street Name</label>
-              <input type="text" placeholder="Enter Street Name" name="street-name" required>
-
-              <label for="street-type">Street Type</label>
-              <input type="text" placeholder="Enter Street Type" name="street-type" required>
-
-              <label for="suburb">Suburb</label>
-              <input type="text" placeholder="Enter Suburb" name="suburb" required>
-
-              <label for="state">State</label>
-              <input type="text" placeholder="Enter State" name="state" required>
-
-              <label for="postcode">Postcode</label>
-              <input type="text" placeholder="Enter Postcode" name="postcode" required>
-
+              
               <label for="Country">Country</label>
               <input type="text" placeholder="Enter Country" name="country" required>
-            </form>
-        </div>
-        <!-- Form for new card details -->
-        <h1 class="card-details-title">Card Details</h1>
-        <div class="form" id="createForm">
-            <form action="" method="post" class="form-container-update-card">
               
+              <div class="placeholder"></div>
+              
+              <label for="card-holder-name">Card Holder Name</label>
+              <input type="text" placeholder="John Citizen" name="card-holder-name" required>
+                
               <label for="card-number">Card Number</label>
-              <input type="text" placeholder="Enter Card Number" name="card-number" required>
+              <input type="text" placeholder="0000 0000 0000 0000" name="card-number" required>
               
-              <label for="expiry-date">Expiry Date</label>
-              <input type="text" placeholder="Enter Expiry Date" name="expiry-date">
+              <label for="card-expiry-date">Expiry Date</label>
+              <input type="text" placeholder="MM/YYYY" name="card-expiry-date" min="2021-05-14">
               
               <label for="card-cvc">CVC</label>
-              <input type="password" placeholder="Enter Card CVC" name="card-cvc" required>
+              <input type="password" placeholder="000" name="card-cvc" required>
+              
+              <!-- Submit or cancel buttons -->
+              <div class="save-btn-container">
+                <button type="submit">Save</button>
+              </div>
+              <div class="cancel-btn-container">
+                <button type="submit">Cancel</button>
+              </div>
             </form>
-            
-            <!-- Submit or cancel buttons -->
-            <div class="save-btn-container">
-                <button href="" type="submit">Save</button>
-            </div>
-            <div class="cancel-btn-container">
-                <button href="" type="submit">Cancel</button>
-            </div>
         </div>
     </body>
 </html>

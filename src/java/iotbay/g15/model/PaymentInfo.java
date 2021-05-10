@@ -1,10 +1,12 @@
 package iotbay.g15.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Isha Yokhanna
  */
-public class PaymentInfo {
+public class PaymentInfo implements Serializable{
     private int paymentInfoID;
     private int userID;
     private int cardNumber;
@@ -57,7 +59,7 @@ public class PaymentInfo {
         return cardCVC;
     }
 
-    public void setCardCvc(int cvc) {
+    public void setCardCvc(int cardCVC) {
         this.cardCVC = cardCVC;
     }
 

@@ -1,8 +1,6 @@
 package iotbay.g15.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,62 +13,25 @@ import iotbay.g15.model.PaymentInfo;
  * @author Isha Yokhanna
  */
 public class PaymentInfoDAO {
-    private String dbUrl;
-    private String dbUsername;
-    private String dbPassword;
-    private Connection conn;
+    private Statement st;
     
-    protected void BookDAO(String dbUrl, String dbUsername, String dbPassword){
-        this.dbUrl = dbUrl;
-        this.dbUsername = dbUsername;
-        this.dbPassword = dbPassword;
+    public PaymentInfoDAO(Connection conn) throws SQLException{
+        st = conn.createStatement();
     }
     
-    protected void connect() throws SQLException{
-        if(conn == null || conn.isClosed()){
-            try{
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch(ClassNotFoundException e){
-                throw new SQLException(e);
-            }
-            
-            conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-        }
+    // Inserts a PaymentInfo object in the database
+    public void insertPaymentInfo(int paymentInfoID, int userID, String cardHolderName, int cardNumber, String cardExpiryDate, int cardCVC) throws SQLException{
+        String sql = "INSERT INTO iotbay.PaymentInfo (PaymentInfoID, UserID, CardholderName, CardNumber, CardExpiryDate, CardCVC) "
+                + "VALUES ("+paymentInfoID+","+userID+",'"+cardHolderName+"', "+cardNumber+", '"+cardExpiryDate+"', "+cardCVC+")";
+       
+        st.executeUpdate(sql);
     }
     
-    protected void disconnect() throws SQLException{
-        if(conn != null && !conn.isClosed()){
-            conn.close();
-        }
-    }
-    
-    public boolean insertPaymentInfo(PaymentInfo paymentInfo) throws SQLException{
-        String sql = "INSERT INTO PaymentInfo "
-                + "(PaymentInfoID, UserID, CardholderName, CardNumber, CardExpiryDate, CardCVC) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        connect();
-        
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setInt(1, paymentInfo.getPaymentInfoID());
-        statement.setInt(2, paymentInfo.getUserID());
-        statement.setString(3, paymentInfo.getCardHolderName());
-        statement.setInt(4, paymentInfo.getCardNumber());
-        statement.setString(5, paymentInfo.getCardExpiryDate());
-        statement.setInt(6, paymentInfo.getCardCVC());
-        
-        boolean rowInserted = statement.executeUpdate() > 0;
-        statement.close();
-        disconnect();
-        return rowInserted;
-    }
-    
+    // Returns a list of all PaymentInfo instances from the database
     public List<PaymentInfo> listAllPaymentInfos() throws SQLException{
         List<PaymentInfo> paymentInfos = new ArrayList<>();
         String sql = "SELECT * FROM PaymentInfo";
-        connect();
-        
-        Statement statement = conn.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql);
+        ResultSet resultSet = st.executeQuery(sql);
         
         while(resultSet.next()){
             int paymentInfoID = resultSet.getInt("PaymentInfoID");
@@ -83,58 +44,31 @@ public class PaymentInfoDAO {
             PaymentInfo paymentInfo = new PaymentInfo(paymentInfoID, userID, cardNumber, cardExpiryDate, cardCVC, cardholderName);
             paymentInfos.add(paymentInfo);
         }
-        
-        resultSet.close();
-        statement.close();
-        disconnect();
-        
+     
         return paymentInfos; 
     }
     
-    public boolean deletePaymentInfo(PaymentInfo paymentInfo) throws SQLException{
-        String sql = "DELETE FROM PaymentInfo WHERE PaymentInfoID = ?";
-        connect();
-        
-        PreparedStatement statement = conn.prepareCall(sql);
-        statement.setInt(1, paymentInfo.getPaymentInfoID());
-        
-        boolean rowDeleted = statement.executeUpdate() > 0;
-        statement.close();
-        disconnect();
-        
-        return rowDeleted;
+    // Deletes from database
+    public void deletePaymentInfo(int paymentInfoID) throws SQLException{
+        String sql = "DELETE FROM PaymentInfo WHERE PaymentInfoID = "+paymentInfoID;
+        st.executeUpdate(sql);
     }
     
-    public boolean updatePaymentInfo(PaymentInfo paymentInfo) throws SQLException{
-        String sql = "UPDATE PaymentInfo SET PaymentInfoID = ?, UserID = ?, CardHolderName = ?, "
-                + "CardNumber = ?, CardExpiryDate = ?, CardCVC = ?";
-        sql += "WHERE PaymentInfoID = ?";
-        connect();
-        
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setInt(1, paymentInfo.getPaymentInfoID());
-        statement.setInt(2, paymentInfo.getUserID());
-        statement.setString(3, paymentInfo.getCardHolderName());
-        statement.setInt(4, paymentInfo.getCardNumber());
-        statement.setString(5, paymentInfo.getCardExpiryDate());
-        statement.setInt(6, paymentInfo.getCardCVC());
-        
-        boolean rowUpdated = statement.executeUpdate() > 0;
-        statement.close();
-        disconnect();
-        
-        return rowUpdated;
+    // Updates a specified instances of PaymentInfo in the database
+    public void updatePaymentInfo(int paymentInfoID, int userID, String cardHolderName, int cardNumber, String cardExpiryDate, int cardCVC) throws SQLException{
+        String sql = "UPDATE PaymentInfo SET PaymentInfoID = "+paymentInfoID+", UserID = "+userID+", CardHolderName = '"+cardHolderName+"', "
+                + "CardNumber = "+cardNumber+", CardExpiryDate = '"+cardExpiryDate+"', CardCVC = "+cardCVC;
+        sql += "WHERE PaymentInfoID = "+paymentInfoID;
+
+        st.executeUpdate(sql);
     }
     
+    // Returns an instances of PaymentInfo from the database based on the paymentInfoID
     public PaymentInfo getPaymentInfo(int paymentInfoID) throws SQLException{
         PaymentInfo paymentInfo = null;
         String sql = "SELECT * FROM PaymentInfo WHERE PaymentInfoID = ?";
-        connect();
         
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setInt(1, paymentInfoID);
-        
-        ResultSet resultSet = statement.executeQuery();
+        ResultSet resultSet = st.executeQuery(sql);
         
         if(resultSet.next()){
             paymentInfoID = resultSet.getInt("PaymentInfoID");
@@ -146,11 +80,7 @@ public class PaymentInfoDAO {
             
             paymentInfo = new PaymentInfo(paymentInfoID, userID, cardNumber, cardExpiryDate, cardCVC, cardholderName);
         }
-        
-        resultSet.close();
-        statement.close();
-        disconnect();
-        
+
         return paymentInfo;
     }
 }

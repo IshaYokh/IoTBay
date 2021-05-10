@@ -5,6 +5,7 @@
 --%>
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="/ConnServlet" flush="true"/>
 <!doctype html>
 <html lang="en">
     <head>
