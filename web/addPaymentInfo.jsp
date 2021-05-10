@@ -100,6 +100,6 @@
                 <button type="submit">Cancel</button>
               </div>
             </form>
-        </div>
+        </div>  
     </body>
 </html>

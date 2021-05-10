@@ -9,18 +9,33 @@ import java.io.Serializable;
 public class PaymentInfo implements Serializable{
     private int paymentInfoID;
     private int userID;
-    private int cardNumber;
+    private String cardNumber;
     private String cardExpiryDate;
-    private int cardCVC;
+    private String cardCVC;
     private String cardHolderName;
+    private String streetNumber;
+    private String streetName;
+    private String streetType;
+    private String suburb;
+    private String state;
+    private String postcode;
+    private String country;
 
-    public PaymentInfo(int paymentInfoID, int userID, int cardNumber, String cardExpiryDate, int cardCVC, String cardHolderName) {
+    public PaymentInfo(int paymentInfoID, int userID, String cardNumber, String cardExpiryDate, String cardCVC, String cardHolderName,
+            String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) {
         this.paymentInfoID = paymentInfoID;
         this.userID = userID;
         this.cardNumber = cardNumber;
         this.cardExpiryDate = cardExpiryDate;
         this.cardCVC = cardCVC;
         this.cardHolderName = cardHolderName;
+        this.streetNumber = streetNumber;
+        this.streetName = streetName;
+        this.streetType = streetType;
+        this.suburb = suburb;
+        this.state = state;
+        this.postcode = postcode;
+        this.country = country;
     }
 
     public int getPaymentInfoID() {
@@ -39,11 +54,11 @@ public class PaymentInfo implements Serializable{
         this.userID = userID;
     }
 
-    public int getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(int cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
@@ -55,11 +70,11 @@ public class PaymentInfo implements Serializable{
         this.cardExpiryDate = cardExpiryDate;
     }
 
-    public int getCardCVC() {
+    public String getCardCVC() {
         return cardCVC;
     }
 
-    public void setCardCvc(int cardCVC) {
+    public void setCardCvc(String cardCVC) {
         this.cardCVC = cardCVC;
     }
 
@@ -69,5 +84,61 @@ public class PaymentInfo implements Serializable{
 
     public void setCardHolderName(String cardHolderName) {
         this.cardHolderName = cardHolderName;
+    }
+    
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getStreetType() {
+        return streetType;
+    }
+
+    public void setStreetType(String streetType) {
+        this.streetType = streetType;
+    }
+
+    public String getSuburb() {
+        return suburb;
+    }
+
+    public void setSuburb(String suburb) {
+        this.suburb = suburb;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

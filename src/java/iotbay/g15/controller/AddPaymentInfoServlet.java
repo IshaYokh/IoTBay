@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import iotbay.g15.dao.*;
 import iotbay.g15.model.*;
+import java.util.Random;
 
 /**
  *
@@ -27,23 +28,23 @@ public class AddPaymentInfoServlet extends HttpServlet{
         String suburb = request.getParameter("suburb");
         String state = request.getParameter("state");
         String postcode = request.getParameter("postcode");
+        String country = request.getParameter("country");
         String cardHolderName = request.getParameter("card-holder-name");
         String cardNumber = request.getParameter("card-number");
-        String cardExpiryDate = request.getParameter("expiry-date");
+        String cardExpiryDate = request.getParameter("card-expiry-date");
         String cardCVC = request.getParameter("card-cvc");
-        
         
         // Getting the DAO instances from the session and creating model objects based on the data returned from the JSP view
         PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
-        BillingAddressDAO billingAddressDBmanager = (BillingAddressDAO)session.getAttribute("billingAddressDBmanager");
+        PaymentInfo paymentInfo = new PaymentInfo(3, 2, cardNumber, cardExpiryDate, cardCVC, cardHolderName,
+            streetNumber, streetName, streetType, suburb, state, postcode, country);
         
-        PaymentInfo paymentInfo = new PaymentInfo(2, 1, 4565464, "2001-04-03", 13211, cardHolderName);
-        
-        
-        // Storing new payment info data in the database
+        // Storing new data in the database
         try{
             paymentInfoDBmanager.insertPaymentInfo(paymentInfo.getPaymentInfoID(), paymentInfo.getUserID(), paymentInfo.getCardHolderName(),
-                    paymentInfo.getCardNumber(), paymentInfo.getCardExpiryDate(), paymentInfo.getCardCVC());
+                    paymentInfo.getCardNumber(), paymentInfo.getCardExpiryDate(), paymentInfo.getCardCVC(),
+                    paymentInfo.getStreetNumber(), paymentInfo.getStreetName(), paymentInfo.getStreetType(),
+                    paymentInfo.getSuburb(), paymentInfo.getState(), paymentInfo.getPostcode(), paymentInfo.getCountry());
         }
         catch (SQLException ex){
             Logger.getLogger(AddPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);

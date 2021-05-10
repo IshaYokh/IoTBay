@@ -20,9 +20,13 @@ public class PaymentInfoDAO {
     }
     
     // Inserts a PaymentInfo object in the database
-    public void insertPaymentInfo(int paymentInfoID, int userID, String cardHolderName, int cardNumber, String cardExpiryDate, int cardCVC) throws SQLException{
-        String sql = "INSERT INTO iotbay.PaymentInfo (PaymentInfoID, UserID, CardholderName, CardNumber, CardExpiryDate, CardCVC) "
-                + "VALUES ("+paymentInfoID+","+userID+",'"+cardHolderName+"', "+cardNumber+", '"+cardExpiryDate+"', "+cardCVC+")";
+    public void insertPaymentInfo(int paymentInfoID, int userID, String cardHolderName, String cardNumber, String cardExpiryDate, String cardCVC,
+            String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) throws SQLException{
+        String sql = "INSERT INTO iotbay.PaymentInfo (PaymentInfoID, UserID, CardholderName, CardNumber, CardExpiryDate, CardCVC,"
+                + "StreetNumber, StreetName, StreetType, Suburb, State, Postcode, Country)"
+                + "VALUES ("+paymentInfoID+","+userID+",'"+cardHolderName+"', '"+cardNumber+"', '"+cardExpiryDate+"', '"+cardCVC+"', '"
+                + streetNumber + "', '" + streetName + "', '" + streetType + "', '" + suburb + "', '" + state + "', '" + postcode + "', '"
+                + country +"');";
        
         st.executeUpdate(sql);
     }
@@ -37,11 +41,19 @@ public class PaymentInfoDAO {
             int paymentInfoID = resultSet.getInt("PaymentInfoID");
             int userID = resultSet.getInt("UserID");
             String cardholderName = resultSet.getString("CardholderName");
-            int cardNumber = resultSet.getInt("CardNumber");
+            String cardNumber = resultSet.getString("CardNumber");
             String cardExpiryDate = resultSet.getString("CardExpiryDate");
-            int cardCVC = resultSet.getInt("CardCVC");
+            String cardCVC = resultSet.getString("CardCVC");
+            String streetNumber = resultSet.getString("StreetNumber");
+            String streetName = resultSet.getString("StreetName");
+            String streetType = resultSet.getString("StreetType");
+            String suburb = resultSet.getString("Suburb");
+            String state = resultSet.getString("State");
+            String postcode = resultSet.getString("Postcode");
+            String country = resultSet.getString("Country");
             
-            PaymentInfo paymentInfo = new PaymentInfo(paymentInfoID, userID, cardNumber, cardExpiryDate, cardCVC, cardholderName);
+            PaymentInfo paymentInfo = new PaymentInfo(paymentInfoID, userID, cardNumber, cardExpiryDate, cardCVC, cardholderName,
+            streetNumber, streetName, streetType, suburb, state, postcode, country);
             paymentInfos.add(paymentInfo);
         }
      
@@ -55,9 +67,12 @@ public class PaymentInfoDAO {
     }
     
     // Updates a specified instances of PaymentInfo in the database
-    public void updatePaymentInfo(int paymentInfoID, int userID, String cardHolderName, int cardNumber, String cardExpiryDate, int cardCVC) throws SQLException{
+    public void updatePaymentInfo(int paymentInfoID, int userID, String cardHolderName, int cardNumber, String cardExpiryDate, int cardCVC,
+            String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) throws SQLException{
         String sql = "UPDATE PaymentInfo SET PaymentInfoID = "+paymentInfoID+", UserID = "+userID+", CardHolderName = '"+cardHolderName+"', "
-                + "CardNumber = "+cardNumber+", CardExpiryDate = '"+cardExpiryDate+"', CardCVC = "+cardCVC;
+                + "CardNumber = '"+cardNumber+"', CardExpiryDate = '"+cardExpiryDate+"', CardCVC = '"+cardCVC+"', StreetNumber = '" + streetNumber
+                + "', StreetName = '" + streetName + "', StreetType = '" + streetType + "', Suburb = '" + suburb + "', State = '" + state +"'"
+                + ", Postcode  = '" + postcode + "', Country = " + country + "';";
         sql += "WHERE PaymentInfoID = "+paymentInfoID;
 
         st.executeUpdate(sql);
@@ -74,11 +89,19 @@ public class PaymentInfoDAO {
             paymentInfoID = resultSet.getInt("PaymentInfoID");
             int userID = resultSet.getInt("UserID");
             String cardholderName = resultSet.getString("CardholderName");
-            int cardNumber = resultSet.getInt("CardNumber");
+            String cardNumber = resultSet.getString("CardNumber");
             String cardExpiryDate = resultSet.getString("CardExpiryDate");
-            int cardCVC = resultSet.getInt("CardCVC");
+            String cardCVC = resultSet.getString("CardCVC");
+            String streetNumber = resultSet.getString("StreetNumber");
+            String streetName = resultSet.getString("StreetName");
+            String streetType = resultSet.getString("StreetType");
+            String suburb = resultSet.getString("Suburb");
+            String state = resultSet.getString("State");
+            String postcode = resultSet.getString("Postcode");
+            String country = resultSet.getString("Country");
             
-            paymentInfo = new PaymentInfo(paymentInfoID, userID, cardNumber, cardExpiryDate, cardCVC, cardholderName);
+            paymentInfo = new PaymentInfo(paymentInfoID, userID, cardNumber, cardExpiryDate, cardCVC, cardholderName,
+            streetNumber, streetName, streetType, suburb, state, postcode, country);
         }
 
         return paymentInfo;

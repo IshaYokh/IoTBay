@@ -45,7 +45,7 @@ public class ConnServlet extends HttpServlet {
            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
        }
 
-       //export the DB manager to the view-session (JSPs)
+       //export the DB managers to the view-session (JSPs)
        session.setAttribute("paymentInfoDBmanager", paymentInfoDBmanager);
    }
 
