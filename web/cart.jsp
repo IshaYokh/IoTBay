@@ -1,18 +1,18 @@
 <%-- 
-    Document   : orderhistory
-    Created on : 03/05/2021, 10:54:36 PM
+    Document   : cart
+    Created on : 11/05/2021, 2:10:50 AM
     Author     : rebecca
 --%>
+
+<%@page import="iotbay.g15.model.Item"%>
 <%@page import="java.util.List"%>
-<%@page import="iotbay.g15.model.Order"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="iotbay.g15.model.User"%>
+<%@page import="iotbay.g15.model.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<% List<Order> orderData = (ArrayList) session.getAttribute("orderList"); %>
 
 <!DOCTYPE html>
 <html>
@@ -47,43 +47,30 @@
 	</div>
 	<div class="placeholder"></div>
         
-        <form method = "post" action = 'OrderHistoryServlet'>
+        <form method = "post" action = 'AddToCartServlet'>
                 
-                <label for="userID">User ID</label>
-                <input type="text" placeholder="Enter User ID" name="userID" required>
+                <label for="itemID">Item ID</label>
+                <input type="text" placeholder="Enter Item ID" name="itemID" required>
+                
+                <label for="itemSerialNumber">Item Serial Number</label>
+                <input type="text" placeholder="Enter Item Serial Number" name="itemSerialNumber" required>
+                
+                <label for="itemCategory">Item Category</label>
+                <input type="text" placeholder="Enter Item Category" name="itemCategory" required>
+                
+                <label for="itemBrand">Item Brand</label>
+                <input type="text" placeholder="Enter Item Brand" name="itemBrand" required>
+                
+                <label for="itemName">Item Name</label>
+                <input type="text" placeholder="Enter Item Name" name="itemName" required>
+                
+                <label for="itemImage">Item Image</label>
+                <input type="text" placeholder="Enter Item Image" name="itemImage" required>
 
-                <button type="submit" class="btn-create">Insert User</button>
+                <button type="submit" class="btn-create">Add Item to Cart</button>
             
             </form>
-        
-        <%
-            ArrayList orders = (ArrayList) session.getAttribute("orderList");
-        %>
-
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Order Date</th>
-                    <th>Order Status</th>
-                </tr>    
-            </thead>
-            <tbody>
-
-            <% for(Order O : orderData){%>
-
-            <tr>
-                <td><%= O.getID() %></td>
-                <td><%= O.getOrderDate() %></td>
-                <td><%= O.getOrderStatus() %></td>
-            </tr>
-
-            <%
-                }
-            %>
-            </table>
-        
-        
+            
             
         </div>
     </body>

@@ -6,21 +6,18 @@
 package iotbay.g15.model;
 
 import java.io.Serializable;
-import java.sql.*;
 import java.util.ArrayList;
 
 /**
  *
  * @author rebecca
  */
-public class Order implements Serializable {
+public class Order implements Serializable{
     private int orderID;
     private Customer customer;
     private ArrayList<OrderLineItem> items;
     private String orderDate;
     private String orderStatus;
-    private String shippingAddress;
-    private String billingAddress;
 
     public Order(int orderID, String orderDate, String orderStatus){
         this.orderID = orderID;
@@ -65,22 +62,6 @@ public class Order implements Serializable {
     }
     public void setOrderStatus(String status){
         this.orderStatus = status;
-    }
-
-    public String getShippingAddress(){
-        return shippingAddress;
-    }
-    
-    public void setShippingAddress(String shippingAddress){
-        this.shippingAddress = shippingAddress;
-    }
-    
-    public String getBillingAddress(){
-        return billingAddress;
-    }
-    
-    public void setBillingAddress(String billingAddress){
-        this.billingAddress = billingAddress;
     }
 
 }

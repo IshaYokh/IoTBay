@@ -5,7 +5,7 @@
  */
 package iotbay.g15.controller;
 import iotbay.g15.model.Order;
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.OrderDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -30,7 +30,7 @@ public class AddOrderServlet extends HttpServlet{
         String orderDate = request.getParameter("orderDate");
         String orderStatus = request.getParameter("orderStatus");
         
-        DBManager manager = (DBManager) session.getAttribute("manager");
+        OrderDAO manager = (OrderDAO) session.getAttribute("manager");
         System.out.println("ddddddddddddddddddd");
         Order order = new Order(Integer.parseInt(orderID), orderDate, orderStatus);
         

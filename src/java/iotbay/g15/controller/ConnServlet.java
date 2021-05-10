@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import iotbay.g15.model.dao.*;
 import iotbay.g15.model.dao.DBConnector;
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.OrderDAO;
 
 public class ConnServlet extends HttpServlet {
     private DBConnector db;
-    private DBManager manager;
+    private OrderDAO manager;
     private Connection conn;
     @Override //Create and instance of DBConnector for the deployment session
 
@@ -37,7 +37,7 @@ public class ConnServlet extends HttpServlet {
         HttpSession session = request.getSession();
         conn = db.getConnection();       
         try {
-            manager = new DBManager(conn);
+            manager = new OrderDAO(conn);
         } catch (SQLException ex) {
             Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -11,10 +11,11 @@ import java.util.ArrayList;
  *
  * @author rebecca
  */
-public class DBManager {
+public class OrderDAO {
     private Statement st;
+    private ArrayList<Item> cart = new ArrayList<Item>();
     
-    public DBManager(Connection conn) throws SQLException{
+    public OrderDAO(Connection conn) throws SQLException{
         st = conn.createStatement();
     }
     
@@ -32,15 +33,23 @@ public class DBManager {
             String orderID = rs.getString(1);
             orderDate = rs.getString(4);
             String orderStatus = rs.getString(5);
-            orderList.add(new Order(Integer.parseInt(orderID),orderDate, orderStatus));
+            orderList.add(new Order(Integer.parseInt(orderID), orderDate, orderStatus));
         }
     return orderList;
     }
     
-    
     //adds row for order to db
     public void addOrder(int orderID, String orderDate, String orderStatus) throws SQLException{
         st.executeUpdate("INSERT INTO ORDERS (ORDERID, ORDERDATE, ORDERSTATUS) VALUES(" + orderID + ", '" + orderDate + "', '" + orderStatus + "')");
+    }
+    
+    public void addToCart(Item item) throws SQLException{
+        cart.add(item);
+        System.out.println("cart size: " + cart.size());
+    }
+    
+    public ArrayList<Item> getCart() throws SQLException{
+        return cart;
     }
     
 }

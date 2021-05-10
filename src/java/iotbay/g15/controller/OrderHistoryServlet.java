@@ -5,11 +5,10 @@
  */
 package iotbay.g15.controller;
 import iotbay.g15.model.Order;
-import iotbay.g15.model.dao.DBManager;
+import iotbay.g15.model.dao.OrderDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -29,10 +28,11 @@ public class OrderHistoryServlet extends HttpServlet{
         ArrayList<Order> orders = new ArrayList<Order>();
         
         String userID = request.getParameter("userID");
-        DBManager manager = (DBManager) session.getAttribute("manager");
-        String msg = "";
+        OrderDAO manager = (OrderDAO) session.getAttribute("manager");
         System.out.println("ssssss");
+        
         int user = Integer.parseInt(userID);
+        System.out.println("The user ID is: " + user);
         
         try{
             orders = manager.findAllCustomerOrders(user);
@@ -44,8 +44,7 @@ public class OrderHistoryServlet extends HttpServlet{
             System.out.println("uyyyy");
         }
         
-        session.setAttribute("message", msg);
-        session.setAttribute("orders", "hey");
+        
         request.getRequestDispatcher("orderhistory.jsp").include(request, response);
         
     }
