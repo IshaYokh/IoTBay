@@ -37,7 +37,7 @@
         %>
 
         <div class="form" id="createForm">
-            <form action="AccountdetailServlet" method="post" class="form-container-register">
+            <form action="AccountDetailsServlet" method="post" class="form-container-register">
                 <h1 class="create-account-title"><%=(accupdated != null ? accupdated : "Update Account")%></h1>
 
                 <label for="fname">First Name</label>
@@ -76,18 +76,18 @@
                 <label for="Country">Country</label>
                 <input type="text" value="<%= user.getCountry()%>" name="country" >
                 <div class="placeholder"></div>
-                <button href="editaccdetails.jsp" type="submit" class="btn-create">Update details</button>
+                <button type="submit" class="btn-create">Update details</button>
                 <div class="placeholder"></div>
 
             </form>
 
-            <a href="AcclogsServlet">
-                <button href="AcclogsServlet" type="submit" class="btn-create" > View  Account Logs</button>
+            <a href="AccLogsServlet">
+                <button href="AccLogsServlet" type="submit" class="btn-create" > View  Account Logs</button>
             </a>
 
-            <form action="deleteaccServlet" method="post" class="form-container-register">
+            <form action="DeleteAccServlet" method="post" class="form-container-register">
 
-                <button href="deleteaccServlet" type="submit" class="btn-create">Delete Account</button>
+                <button href="DeleteAccServlet" type="submit" class="btn-create">Delete Account</button>
 
             </form>
 

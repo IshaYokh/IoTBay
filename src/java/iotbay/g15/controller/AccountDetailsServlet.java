@@ -24,7 +24,7 @@ import iotbay.g15.model.dao.LoginLogoutDAO;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 
-public class AccountdetailServlet extends HttpServlet {
+public class AccountDetailsServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -62,8 +62,8 @@ public class AccountdetailServlet extends HttpServlet {
             user.setState(state);
             user.setPostcode(postcode);
             user.setCountry(country);
-            request.getRequestDispatcher("Accountdetails.jsp").include(request, response);
             session.setAttribute("accupdated", "Account has been updated");
+            request.getRequestDispatcher("accountDetails.jsp").include(request, response);
         } catch (SQLException ex) {
 
         }

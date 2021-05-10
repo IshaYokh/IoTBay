@@ -25,7 +25,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 
-public class AcclogsServlet extends HttpServlet {
+public class AccLogsServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,10 +42,10 @@ public class AcclogsServlet extends HttpServlet {
             ArrayList tlogs = manager.getTLogs(userID);
             session.setAttribute("logs", logs);
             session.setAttribute("tlogs", tlogs);
-            request.getRequestDispatcher("AccountLogs.jsp").include(request, response);
+            request.getRequestDispatcher("accountLogs.jsp").include(request, response);
 
         } catch (SQLException ex) {
-            Logger.getLogger(AcclogsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AccLogsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

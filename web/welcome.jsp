@@ -15,10 +15,7 @@
 	<script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>	
     </head>	
     <body>
-       
-        
-       
-        
+
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>

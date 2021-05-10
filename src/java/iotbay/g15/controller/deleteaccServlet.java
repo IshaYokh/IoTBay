@@ -24,7 +24,7 @@ import iotbay.g15.model.dao.LoginLogoutDAO;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 
-public class deleteaccServlet extends HttpServlet {
+public class DeleteAccServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,7 +41,7 @@ public class deleteaccServlet extends HttpServlet {
             manager.deleteUser(userID);
             manager.deleteCustomer(userID);
         } catch (SQLException ex) {
-            Logger.getLogger(deleteaccServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteAccServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         session.invalidate();
         response.sendRedirect("index.jsp");

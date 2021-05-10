@@ -24,7 +24,7 @@ import iotbay.g15.model.dao.LoginLogoutDAO;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 
-public class StaffregisterServlet extends HttpServlet {
+public class StaffRegisterServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
