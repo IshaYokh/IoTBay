@@ -55,7 +55,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Staffs</h5>
                     <p class="card-text">Staffs of IoTBay</p>
-                    <a href="/admin/user/create" class="btn btn-primary m-2">Create</a>
+                    <a href="/admin/staff/create" class="btn btn-primary m-2">Create</a>
                 </div>
             </div>
         </div>

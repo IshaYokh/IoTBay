@@ -80,7 +80,6 @@
                         <td>
                             <a class="btn btn-success" href="/admin/user/update?id=<%=U.getUserID()%>">Update</a>
                             <a class="btn btn-danger" href="/admin/user/delete?id=<%=U.getUserID()%>">Delete</a>
-                            <a class="btn btn-info" href="/admin/user/upgrade?id=<%=U.getUserID()%>">Upgrade</a>
                         </td>
                     </tr>
                     <% }%>
