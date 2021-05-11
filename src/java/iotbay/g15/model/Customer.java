@@ -22,8 +22,9 @@ public class Customer {
     private String state;
     private String postcode;
     private String country;
+    private boolean status;
 
-    public Customer(String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) {
+    public Customer(String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country, boolean status) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -36,6 +37,7 @@ public class Customer {
         this.state = state;
         this.postcode = postcode;
         this.country = country;
+        this.status = status;
     }
 
     public String getFirstName() {
@@ -132,5 +134,13 @@ public class Customer {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+    
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

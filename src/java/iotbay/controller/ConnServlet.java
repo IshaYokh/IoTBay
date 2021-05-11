@@ -30,7 +30,6 @@ public class ConnServlet extends HttpServlet {
 
     @Override //Add the DBConnector, CustomerDAO, Connection instances to the session
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");       
         HttpSession session = request.getSession();
@@ -46,8 +45,7 @@ public class ConnServlet extends HttpServlet {
     }   
 
     @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
-
-     public void destroy() {
+    public void destroy() {
         try {
             db.closeConnection();
         } catch (SQLException ex) {

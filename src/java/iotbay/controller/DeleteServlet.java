@@ -21,7 +21,7 @@ import java.io.IOException;
  *
  * @author tada33
  */
-public class AddServlet extends HttpServlet {
+public class DeleteServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,35 +37,18 @@ public class AddServlet extends HttpServlet {
             throws ServletException, IOException {       
                 
         HttpSession session = request.getSession();
-        String firstName = request.getParameter("fname");
-        String lastName = request.getParameter("lname");
         String email = request.getParameter("email");
-        String password = request.getParameter("pwd");
-        String phoneNumber = request.getParameter("number");
-        String streetNumber = request.getParameter("street-number");
-        String streetName = request.getParameter("street-name");
-        String streetType = request.getParameter("street-type");
-        String suburb = request.getParameter("suburb");
-        String state = request.getParameter("state");
-        String postcode = request.getParameter("postcode");
-        String country = request.getParameter("country");
-        boolean status = Boolean.parseBoolean(request.getParameter("status"));
-        Customer customer = new Customer(firstName, lastName,
-                                         email, password, phoneNumber,
-                                         streetNumber, streetName, streetType,
-                                         suburb, state, postcode, country, status);
         CustomerDAO manager = (CustomerDAO) session.getAttribute("manager");
          
         try {       
-            session.setAttribute("customer", customer);
-            manager.addCustomer(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
-            session.setAttribute("added", "add was successful");
-            request.getRequestDispatcher("welcome.jsp").include(request, response);
+            manager.deleteCustomer(email);
+            session.setAttribute("deleted", "delete was successful");
+            request.getRequestDispatcher("customerinfo.jsp").include(request, response);
         } catch (SQLException ex) {  
             Logger.getLogger(EditServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        response.sendRedirect("welcome.jsp");
+        response.sendRedirect("customerinfo.jsp");
     }
 }
  

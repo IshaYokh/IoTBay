@@ -4,7 +4,7 @@
     Author     : Tada33
 --%>
 
-<%@ page import="java.sql.*, java.util.HashMap, java.util.List, java.util.ArrayList" %>
+<%@ page import="iotbay.g15.model.*, iotbay.g15.model.dao.*, java.util.HashMap" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -19,38 +19,17 @@
     </head>
     <body>
         <%
-            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/IoTBayDB", "ISD", "admin");
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Customer");
-            List<HashMap<String, String>> customerList = new ArrayList<HashMap<String, String>>();
-            while (rs.next()) {
-                HashMap<String, String> row = new HashMap<String, String>();
-                row.put("id", rs.getString("id"));
-                row.put("firstName", rs.getString("firstName"));
-                row.put("lastName", rs.getString("lastName"));
-                row.put("email", rs.getString("email"));
-                row.put("password", rs.getString("password"));
-                row.put("phoneNumber", rs.getString("phoneNumber"));
-                row.put("streetNumber", rs.getString("streetNumber"));
-                row.put("streetName", rs.getString("streetName"));
-                row.put("streetType", rs.getString("streetType"));
-                row.put("suburb", rs.getString("suburb"));
-                row.put("state", rs.getString("state"));
-                row.put("postcode", rs.getString("postcode"));
-                row.put("country", rs.getString("country"));
-                row.put("status", rs.getString("status"));
-                customerList.add(row);
-            }
-            request.setAttribute("customerList", customerList);
-            request.getRequestDispatcher("customerinfo.jsp");
+            CustomerDAO cd = (CustomerDAO)session.getAttribute("manager");
+            HashMap<Integer, Customer> customers = cd.fetchCustomer();
             
-            if (request.getParameter("deleteCustomer") != null) {
-                System.out.println("asdf");
-                System.out.println(request.getParameter("deleteCustomer"));
-                st.executeUpdate("DELETE FROM Customer WHERE id = " + request.getParameter("deleteCustomer"));
-            }
+//            session.setAttribute("customerEdit", 0);
+//            if (request.getParameter("editCustomer") != null) {
+//                session.setAttribute("customerEdit", request.getParameter("editCustomer"));
+//            }
             
-            conn.close();
+//            if (request.getParameter("deleteCustomer") != null) {
+//                st.executeUpdate("DELETE FROM Customer WHERE id = " + request.getParameter("deleteCustomer"));
+//            }
         %>
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
@@ -64,10 +43,15 @@
         </div>
         <div class="placeholder"></div>
         <div class="placeholder"></div>
+        <div class="placeholder"></div>
         <div>
-            <table border="2" width="100%">
-                <caption>Customer Information</caption>
-                <tr>
+            <table class="tbl1">
+                <caption class="welcome_title">Customer Information</caption>
+                <input type="search" name="search" placeholder="key word">
+                <input type="submit" name="submit" value="search">
+                <button href="createnewcustomer.jsp" type="submit" class="btn1">Create New Customer</button>
+                <%--<a href="createnewcustomer.jsp" class="btn1"><li>Create New Customer</a> --%>       
+                <tr class="thead">
                     <td>First Name</td>
                     <td>Last Name</td>
                     <td>Email</td>
@@ -81,29 +65,39 @@
                     <td>Country</td>
                     <td>Status</td>
                 </tr>
-                <c:forEach items="${customerList}" var="item">
-                    <tr>
-                        <td>${item["firstName"]}</td>
-                        <td>${item["lastName"]}</td>
-                        <td>${item["email"]}</td>
-                        <td>${item["phoneNumber"]}</td>
-                        <td>${item["streetNumber"]}</td>
-                        <td>${item["streetName"]}</td>
-                        <td>${item["streetType"]}</td>
-                        <td>${item["suburb"]}</td>
-                        <td>${item["state"]}</td>
-                        <td>${item["postcode"]}</td>
-                        <td>${item["country"]}</td>
-                        <td>${item["status"]}</td>
-                        <td>
-                            <button type="button">edit</button>
-                        </td>
-                        <td>
-                            <form action="" onsubmit="setTimeout(function () {window.location.reload();}, 3)">
-                                <input type="submit" value="delete">
-                                <input type="hidden" name="deleteCustomer" value="${item['id']}">
-                            </form>
-                        </td>
+                <c:forEach items="<%=customers%>" var="item">
+                    <tr class="last">
+                        <c:choose>
+                            <c:when test="1 eq 0">
+                                
+                            </c:when>
+                            <c:otherwise>
+                                <td><p>${item.value.getFirstName()}</p></td>
+                                <td><p>${item.value.getLastName()}</p></td>
+                                <td><p>${item.value.getEmail()}</p></td>
+                                <td><p>${item.value.getPhoneNumber()}</p></td>
+                                <td><p>${item.value.getStreetNumber()}</p></td>
+                                <td><p>${item.value.getStreetName()}</p></td>
+                                <td><p>${item.value.getStreetType()}</p></td>
+                                <td><p>${item.value.getSuburb()}</p></td>
+                                <td><p>${item.value.getState()}</p></td>
+                                <td><p>${item.value.getPostcode()}</p></td>
+                                <td><p>${item.value.getCountry()}</p></td>
+                                <td><p>${item.value.getStatus()}</p></td>
+                                <td>
+                                    <form onsubmit="setTimeout(function () {window.location.reload();}, 3)">
+                                        <input type="submit" value="edit">
+                                        <input type="hidden" name="editCustomer" value="${item.key}">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="DeleteServlet" method="post">
+                                        <input type="hidden" name="email" value="${item.value.getEmail()}">
+                                        <button>delete</button>
+                                    </form>
+                                </td>
+                            </c:otherwise>
+                        </c:choose>
                     </tr>
                 </c:forEach>
             </table>

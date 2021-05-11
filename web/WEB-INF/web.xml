@@ -9,6 +9,10 @@
         <servlet-class>iotbay.controller.ConnServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>iotbay.controller.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>EditServlet</servlet-name>
         <servlet-class>iotbay.controller.EditServlet</servlet-class>
     </servlet>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/DeleteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EditServlet</servlet-name>

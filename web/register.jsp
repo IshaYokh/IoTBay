@@ -30,51 +30,53 @@
         
         <div class="form" id="createForm">
             <form action="AddServlet" method="post" class="form-container-register">
-              <h1 class="create-account-title">Create Account</h1>
-              
-              <label for="fname">First Name</label>
-              <input type="text" placeholder="Enter First Name" name="fname" required>
-              
-              <label for="lname">Last Name</label>
-              <input type="text" placeholder="Enter Last Name" name="lname" required>
-              
-              <label for="email">Email</label>
-              <input type="text" placeholder="Enter Email" name="email" required>
-          
-              <label for="psw">Password</label>
-              <input type="password" placeholder="Enter Password" name="pwd" required>
+                <h1 class="create-account-title">Create Account</h1>
 
-              <label for="psw">Confirm Password</label>
-              <input type="password" placeholder="Confirm Password" name="pwd" required>
+                <label for="fname">First Name</label>
+                <input type="text" placeholder="Enter First Name" name="fname" required>
 
-              <label for="number">Phone Number</label>
-              <input type="text" placeholder="Enter Phone Number" name="number" required>
+                <label for="lname">Last Name</label>
+                <input type="text" placeholder="Enter Last Name" name="lname" required>
 
-              <label for="street-number">Street Number</label>
-              <input type="text" placeholder="Enter Street Number" name="street-number" required>
+                <label for="email">Email</label>
+                <input type="text" placeholder="Enter Email" name="email" required>
 
-              <label for="street-name">Street Name</label>
-              <input type="text" placeholder="Enter Street Name" name="street-name" required>
+                <label for="psw">Password</label>
+                <input type="password" placeholder="Enter Password" name="pwd" required>
 
-              <label for="street-type">Street Type</label>
-              <input type="text" placeholder="Enter Street Type" name="street-type" required>
+                <label for="psw">Confirm Password</label>
+                <input type="password" placeholder="Confirm Password" name="pwd" required>
 
-              <label for="suburb">Suburb</label>
-              <input type="text" placeholder="Enter Suburb" name="suburb" required>
+                <label for="number">Phone Number</label>
+                <input type="text" placeholder="Enter Phone Number" name="number" required>
 
-              <label for="state">State</label>
-              <input type="text" placeholder="Enter State" name="state" required>
+                <label for="street-number">Street Number</label>
+                <input type="text" placeholder="Enter Street Number" name="street-number" required>
 
-              <label for="postcode">Postcode</label>
-              <input type="text" placeholder="Enter Postcode" name="postcode" required>
+                <label for="street-name">Street Name</label>
+                <input type="text" placeholder="Enter Street Name" name="street-name" required>
 
-              <label for="Country">Country</label>
-              <input type="text" placeholder="Enter Country" name="country" required>
-                
-              <p>By creating an account you agree to our&nbsp;<a href="#">Terms & Privacy</a></p>
-              <button class="btn-create">Create Account</button>
-              <div class="placeholder"></div>
-              <p class="already-have-account">Already have an account?&nbsp;<a href="login.jsp">Login</a></p>
+                <label for="street-type">Street Type</label>
+                <input type="text" placeholder="Enter Street Type" name="street-type" required>
+
+                <label for="suburb">Suburb</label>
+                <input type="text" placeholder="Enter Suburb" name="suburb" required>
+
+                <label for="state">State</label>
+                <input type="text" placeholder="Enter State" name="state" required>
+
+                <label for="postcode">Postcode</label>
+                <input type="text" placeholder="Enter Postcode" name="postcode" required>
+
+                <label for="Country">Country</label>
+                <input type="text" placeholder="Enter Country" name="country" required>
+
+                <input type="hidden" name="status" value="true" required>
+
+                <p>By creating an account you agree to our&nbsp;<a href="#">Terms & Privacy</a></p>
+                <button class="btn-create">Create Account</button>
+                <div class="placeholder"></div>
+                <p class="already-have-account">Already have an account?&nbsp;<a href="login.jsp">Login</a></p>
             </form>
         </div>
     </body>
