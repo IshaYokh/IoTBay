@@ -64,7 +64,7 @@
               <input type="text" placeholder="Enter Street Name" name="street-name" required>
               
               <label for="street-type">Street Type</label>
-              <input type="text" placeholder="Enter Street Type" name="street-type">
+              <input type="text" placeholder="Enter Street Type" name="street-type" required>
               
               <label for="suburb">Suburb</label>
               <input type="text" placeholder="Enter Suburb" name="suburb" required>

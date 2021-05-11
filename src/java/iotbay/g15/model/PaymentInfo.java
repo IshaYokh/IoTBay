@@ -11,18 +11,21 @@ public class PaymentInfo implements Serializable{
     private int userID;
     private String cardNumber;
     private String cardExpiryDate;
-    private String cardCVC;
+    private int cardCVC;
     private String cardHolderName;
-    private String streetNumber;
+    private int streetNumber;
     private String streetName;
     private String streetType;
     private String suburb;
     private String state;
-    private String postcode;
+    private int postcode;
     private String country;
+    private double credit;
+    private boolean active;
 
-    public PaymentInfo(int paymentInfoID, int userID, String cardNumber, String cardExpiryDate, String cardCVC, String cardHolderName,
-            String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) {
+    public PaymentInfo(int paymentInfoID, int userID, String cardNumber, String cardExpiryDate, int cardCVC, String cardHolderName,
+            int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country, double credit,
+            boolean active) {
         this.paymentInfoID = paymentInfoID;
         this.userID = userID;
         this.cardNumber = cardNumber;
@@ -36,6 +39,8 @@ public class PaymentInfo implements Serializable{
         this.state = state;
         this.postcode = postcode;
         this.country = country;
+        this.credit = credit;
+        this.active = active;
     }
 
     public int getPaymentInfoID() {
@@ -70,11 +75,11 @@ public class PaymentInfo implements Serializable{
         this.cardExpiryDate = cardExpiryDate;
     }
 
-    public String getCardCVC() {
+    public int getCardCVC() {
         return cardCVC;
     }
 
-    public void setCardCvc(String cardCVC) {
+    public void setCardCvc(int cardCVC) {
         this.cardCVC = cardCVC;
     }
 
@@ -86,11 +91,11 @@ public class PaymentInfo implements Serializable{
         this.cardHolderName = cardHolderName;
     }
     
-    public String getStreetNumber() {
+    public int getStreetNumber() {
         return streetNumber;
     }
 
-    public void setStreetNumber(String streetNumber) {
+    public void setStreetNumber(int streetNumber) {
         this.streetNumber = streetNumber;
     }
 
@@ -126,11 +131,11 @@ public class PaymentInfo implements Serializable{
         this.state = state;
     }
 
-    public String getPostcode() {
+    public int getPostcode() {
         return postcode;
     }
 
-    public void setPostcode(String postcode) {
+    public void setPostcode(int postcode) {
         this.postcode = postcode;
     }
 
@@ -140,5 +145,21 @@ public class PaymentInfo implements Serializable{
 
     public void setCountry(String country) {
         this.country = country;
+    }
+    
+    public double getCredit(){
+        return this.credit;
+    }
+    
+    public void setCredit(double credit){
+        this.credit = credit;
+    }
+    
+    public boolean isActive(){
+        return this.active;
+    }
+    
+    public void setActive(boolean val){
+        this.active = val;
     }
 }

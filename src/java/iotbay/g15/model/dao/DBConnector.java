@@ -1,4 +1,4 @@
-package iotbay.g15.dao;
+package iotbay.g15.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

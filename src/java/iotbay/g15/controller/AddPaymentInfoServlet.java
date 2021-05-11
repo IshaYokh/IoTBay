@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import iotbay.g15.dao.*;
+import iotbay.g15.model.dao.*;
 import iotbay.g15.model.*;
-import java.util.Random;
 
 /**
  *
@@ -34,17 +33,21 @@ public class AddPaymentInfoServlet extends HttpServlet{
         String cardExpiryDate = request.getParameter("card-expiry-date");
         String cardCVC = request.getParameter("card-cvc");
         
+        int streetNumberInt = Integer.parseInt(streetNumber);
+        int postcodeInt = Integer.parseInt(postcode);
+        int cardCVCInt = Integer.parseInt(cardCVC);
+        
         // Getting the DAO instances from the session and creating model objects based on the data returned from the JSP view
         PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
-        PaymentInfo paymentInfo = new PaymentInfo(3, 2, cardNumber, cardExpiryDate, cardCVC, cardHolderName,
-            streetNumber, streetName, streetType, suburb, state, postcode, country);
+        PaymentInfo paymentInfo = new PaymentInfo(3, 2, cardNumber, cardExpiryDate, cardCVCInt, cardHolderName,
+            streetNumberInt, streetName, streetType, suburb, state, postcodeInt, country, 500.00, true);
         
         // Storing new data in the database
         try{
             paymentInfoDBmanager.insertPaymentInfo(paymentInfo.getPaymentInfoID(), paymentInfo.getUserID(), paymentInfo.getCardHolderName(),
                     paymentInfo.getCardNumber(), paymentInfo.getCardExpiryDate(), paymentInfo.getCardCVC(),
                     paymentInfo.getStreetNumber(), paymentInfo.getStreetName(), paymentInfo.getStreetType(),
-                    paymentInfo.getSuburb(), paymentInfo.getState(), paymentInfo.getPostcode(), paymentInfo.getCountry());
+                    paymentInfo.getSuburb(), paymentInfo.getState(), paymentInfo.getPostcode(), paymentInfo.getCountry(), true);
         }
         catch (SQLException ex){
             Logger.getLogger(AddPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);

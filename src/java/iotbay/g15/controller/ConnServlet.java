@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import iotbay.g15.dao.*;
+import iotbay.g15.model.dao.*;
 
 public class ConnServlet extends HttpServlet {
    private DBConnector db;
