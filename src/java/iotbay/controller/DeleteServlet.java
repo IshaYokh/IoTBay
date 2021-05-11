@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import iotbay.g15.model.*;
 import iotbay.g15.model.dao.CustomerDAO;
 import java.io.IOException;
 
@@ -38,7 +37,7 @@ public class DeleteServlet extends HttpServlet {
                 
         HttpSession session = request.getSession();
         String email = request.getParameter("email");
-        CustomerDAO manager = (CustomerDAO) session.getAttribute("manager");
+        CustomerDAO manager = (CustomerDAO)session.getAttribute("manager");
          
         try {       
             manager.deleteCustomer(email);

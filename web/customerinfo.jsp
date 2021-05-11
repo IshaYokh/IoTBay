@@ -26,10 +26,6 @@
 //            if (request.getParameter("editCustomer") != null) {
 //                session.setAttribute("customerEdit", request.getParameter("editCustomer"));
 //            }
-            
-//            if (request.getParameter("deleteCustomer") != null) {
-//                st.executeUpdate("DELETE FROM Customer WHERE id = " + request.getParameter("deleteCustomer"));
-//            }
         %>
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
