@@ -35,6 +35,10 @@
         <servlet-class>iotbay.g15.controller.LogoutServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>AddPaymentInfoServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.AddPaymentInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -66,6 +70,10 @@
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPaymentInfoServlet</servlet-name>
+        <url-pattern>/AddPaymentInfoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
