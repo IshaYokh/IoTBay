@@ -4,7 +4,7 @@
     Author     : IshaYokh/kaushikdeshpande/Tada33
 --%>
 
-<%@page import="iotbay.g15.model.Customer, java.sql.*"%>
+<%@page import="iotbay.g15.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -15,42 +15,6 @@
 	<script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>	
     </head>	
     <body>
-        <% 
-            String firstName = request.getParameter("fname");
-            String lastName = request.getParameter("lname");
-            String email = request.getParameter("email");
-            String password = request.getParameter("psw");
-            String phoneNumber = request.getParameter("number");
-            String streetNumber = request.getParameter("street-number");
-            String streetName = request.getParameter("street-name");
-            String streetType = request.getParameter("street-type");
-            String suburb = request.getParameter("suburb");
-            String state = request.getParameter("state");
-            String postcode = request.getParameter("postcode");
-            String country = request.getParameter("country");
-        %>
-        
-        <%
-            if((firstName != null) && (lastName != null)){
-                Customer c = new Customer(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
-                session.setAttribute("customer", c);
-                
-                Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/IoTBayDB", "ISD", "admin");
-                Statement st = conn.createStatement();
-                st.executeUpdate("insert into Customer(firstname, lastname, email, password, phonenumber," +
-                                                      "streetnumber, streetname, streettype," +
-                                                      "suburb, state, postcode, country, status)" +
-                                 "values ('" + firstName + "', '" + lastName + "', '" + email + "', '" + password + "', '" +
-                                              phoneNumber + "', '" + streetNumber + "', '" + streetName + "', '" + streetType + "', '" +
-                                              suburb + "', '" + state + "', '" + postcode + "', '" + country + "', true)");
-                conn.close();
-            }
-            else{
-                Customer c = (Customer)session.getAttribute("customer");
-                firstName = c.getFirstName();
-            }
-        %>
-        
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
@@ -59,11 +23,12 @@
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
                 <% 
-                    Customer customer = (Customer)session.getAttribute("customer");
+                    Customer c = (Customer)session.getAttribute("customer");
+                    String firstName = c.getFirstName();
                     String msg = "Sign up / Login";
                     String path = "login.jsp";
                         
-                    if(customer != null){
+                    if(c != null){
                         msg = "My Account";
                         path = "main.jsp";
                     }

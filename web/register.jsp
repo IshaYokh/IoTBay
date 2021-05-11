@@ -29,7 +29,7 @@
         <div class="placeholder"></div>
         
         <div class="form" id="createForm">
-            <form action="welcome.jsp" method="post" class="form-container-register">
+            <form action="AddServlet" method="post" class="form-container-register">
               <h1 class="create-account-title">Create Account</h1>
               
               <label for="fname">First Name</label>
@@ -42,10 +42,10 @@
               <input type="text" placeholder="Enter Email" name="email" required>
           
               <label for="psw">Password</label>
-              <input type="password" placeholder="Enter Password" name="psw" required>
+              <input type="password" placeholder="Enter Password" name="pwd" required>
 
               <label for="psw">Confirm Password</label>
-              <input type="password" placeholder="Confirm Password" name="psw" required>
+              <input type="password" placeholder="Confirm Password" name="pwd" required>
 
               <label for="number">Phone Number</label>
               <input type="text" placeholder="Enter Phone Number" name="number" required>
@@ -72,7 +72,7 @@
               <input type="text" placeholder="Enter Country" name="country" required>
                 
               <p>By creating an account you agree to our&nbsp;<a href="#">Terms & Privacy</a></p>
-              <button href="welcome.jsp" type="submit" class="btn-create">Create Account</button>
+              <button class="btn-create">Create Account</button>
               <div class="placeholder"></div>
               <p class="already-have-account">Already have an account?&nbsp;<a href="login.jsp">Login</a></p>
             </form>
