@@ -2,11 +2,8 @@ package iotbay.g15.model;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Isha Yokhanna
- */
 public class User implements Serializable{
+    private int userID;
     private String firstName;
     private String lastName;
     private String email;
@@ -20,7 +17,7 @@ public class User implements Serializable{
     private String postcode;
     private String country;
 
-    public User(String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) {
+    public User(String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country, int userID) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -33,6 +30,7 @@ public class User implements Serializable{
         this.state = state;
         this.postcode = postcode;
         this.country = country;
+        this.userID = userID;
     }
 
     public String getFirstName() {

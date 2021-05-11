@@ -1,10 +1,5 @@
 package iotbay.g15.controller;
 
-/**
- *
- * @author Isha Yokhanna
- */
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -39,6 +34,7 @@ public class ConnServlet extends HttpServlet {
        conn = db.openConnection();       
 
        try {
+           manager = new LoginLogoutDAO(conn);
            paymentInfoDBmanager = new PaymentInfoDAO(conn);
        }
        catch (SQLException ex){
@@ -46,6 +42,7 @@ public class ConnServlet extends HttpServlet {
        }
 
        //export the DB managers to the view-session (JSPs)
+       session.setAttribute("manager", manager);
        session.setAttribute("paymentInfoDBmanager", paymentInfoDBmanager);
    }
 
