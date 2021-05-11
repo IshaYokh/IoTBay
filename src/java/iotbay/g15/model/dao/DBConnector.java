@@ -20,3 +20,4 @@ public class DBConnector extends DB{
     public void closeConnection() throws SQLException {
         this.conn.close();
     }
+}

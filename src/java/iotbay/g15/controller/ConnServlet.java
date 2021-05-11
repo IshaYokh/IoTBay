@@ -16,6 +16,7 @@ public class ConnServlet extends HttpServlet {
    private DBConnector db;
    private Connection conn;
    private PaymentInfoDAO paymentInfoDBmanager;
+   private LoginLogoutDAO manager;
 
    @Override //Create and instance of DBConnector for the deployment session
    public void init() {
