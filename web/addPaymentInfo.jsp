@@ -41,11 +41,12 @@
         
         <!-- PaymentInfo addition feedback box -->
         <% 
+            String userName = user.getFirstName();
             try{
                 String paymentInfoAddFeedback = (String)session.getAttribute("paymentInfoAddFeedback");
                 if(paymentInfoAddFeedback.equals("success")){ %>
             <div class="paymentinfo-feedback">
-                <h1>Payment information has been added successfully! <a href="#">Return to account page</a></h1>
+                <h1>Thanks <%= userName%>! your payment information has been added successfully! <a href="accountDetails.jsp">Return to account page</a></h1>
             </div>
         <%
             }}

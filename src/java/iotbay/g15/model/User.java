@@ -128,4 +128,8 @@ public class User implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
+    
+    public int getID(){
+        return this.userID;
+    }
 }

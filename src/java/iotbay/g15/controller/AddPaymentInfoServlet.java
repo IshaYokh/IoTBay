@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Random;
 import iotbay.g15.model.dao.*;
 import iotbay.g15.model.*;
 
@@ -37,9 +38,14 @@ public class AddPaymentInfoServlet extends HttpServlet{
         int postcodeInt = Integer.parseInt(postcode);
         int cardCVCInt = Integer.parseInt(cardCVC);
         
+        User user = (User)session.getAttribute("user");
+        
+        Random random = new Random();
+        int paymentInfoID = random.nextInt(10);
+        
         // Getting the DAO instances from the session and creating model objects based on the data returned from the JSP view
         PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
-        PaymentInfo paymentInfo = new PaymentInfo(3, 2, cardNumber, cardExpiryDate, cardCVCInt, cardHolderName,
+        PaymentInfo paymentInfo = new PaymentInfo(paymentInfoID, user.getID(), cardNumber, cardExpiryDate, cardCVCInt, cardHolderName,
             streetNumberInt, streetName, streetType, suburb, state, postcodeInt, country, 500.00, true);
         
         // Storing new data in the database
@@ -47,7 +53,7 @@ public class AddPaymentInfoServlet extends HttpServlet{
             paymentInfoDBmanager.insertPaymentInfo(paymentInfo.getPaymentInfoID(), paymentInfo.getUserID(), paymentInfo.getCardHolderName(),
                     paymentInfo.getCardNumber(), paymentInfo.getCardExpiryDate(), paymentInfo.getCardCVC(),
                     paymentInfo.getStreetNumber(), paymentInfo.getStreetName(), paymentInfo.getStreetType(),
-                    paymentInfo.getSuburb(), paymentInfo.getState(), paymentInfo.getPostcode(), paymentInfo.getCountry(), true);
+                    paymentInfo.getSuburb(), paymentInfo.getState(), paymentInfo.getPostcode(), paymentInfo.getCountry());
         }
         catch (SQLException ex){
             Logger.getLogger(AddPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);

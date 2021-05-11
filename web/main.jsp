@@ -47,6 +47,15 @@
                     <i class="fas fa-money-check"></i> &nbsp;View Orders
                 </button>
             <a/>
+             
+            <br/>
+            <br/>
+            
+            <a href="addPaymentInfo.jsp">
+                <button class="add-paymentinfo-btn">
+                    <i class="far fa-credit-card"></i> &nbsp;Add Payment Information
+                </button>
+            <a/>
             
             <br/>
             <br/>
