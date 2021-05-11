@@ -1,10 +1,10 @@
 <%-- 
     Document   : register
     Created on : 08/04/2021, 1:07:00 AM
-    Author     : Isha Yokhanna
+    Author     : Isha Yokhanna, Tada33
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
