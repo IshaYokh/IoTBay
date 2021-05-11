@@ -371,3 +371,21 @@ input[type=text], input[type=password] {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+/*Customer Info page styles */
+
+.btn1{
+        float: right;
+}
+table {
+        border-collapse: collapse;
+        border: solid 2px black;
+}
+table th, table td {
+        border: solid 1px black;
+}
+
+.thead{
+        background-color: navy;
+        color: white;
+}
