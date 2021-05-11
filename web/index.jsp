@@ -70,6 +70,7 @@
                 <!--empty div-->
             </div>
 	</div>
+        <jsp:include page="/ConnServlet" flush="true"/>
     </body>
     <footer>
         <p>Copyright Not Group 14 2021</p>

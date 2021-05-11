@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
-<glassfish-web-app error-url="">
-  <context-root>/</context-root>
-  <class-loader delegate="true"/>
-  <jsp-config>
-    <property name="keepgenerated" value="true">
-      <description>Keep a copy of the generated servlet class' java code.</description>
-    </property>
-  </jsp-config>
+<glassfish-web-app error-url="" version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee (Links to an external site.)" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance (Links to an external site.)" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee (Links to an external site.) http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd (Links to an external site.)">
+  <servlet>
+    <servlet-name>ConnServlet</servlet-name>
+    <servlet-class>iotbay.g15.controller.ConnServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>iotbay.g15.controller.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddPaymentInfoServlet</servlet-name>
+    <servlet-class>iotbay.g15.controller.AddPaymentInfoServlet</servlet-class>
+   </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ConnServlet</servlet-name>
+    <url-pattern>/ConnServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddPaymentInfoServlet</servlet-name>
+    <url-pattern>/AddPaymentInfoServlet</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>
+
+               30
+
+           </session-timeout>
+  </session-config>
 </glassfish-web-app>
