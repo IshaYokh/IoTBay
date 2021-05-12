@@ -51,6 +51,10 @@
         <servlet-name>UpdatePaymentInfoServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.UpdatePaymentInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeletePaymentInfoServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.DeletePaymentInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -98,6 +102,10 @@
     <servlet-mapping>
         <servlet-name>UpdatePaymentInfoServlet</servlet-name>
         <url-pattern>/UpdatePaymentInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePaymentInfoServlet</servlet-name>
+        <url-pattern>/DeletePaymentInfoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

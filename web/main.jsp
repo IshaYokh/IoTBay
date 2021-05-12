@@ -72,7 +72,7 @@
 
             <a href="ViewPaymentInfoServlet">
                 <button class="add-paymentinfo-btn">
-                    <i class="far fa-credit-card"></i> &nbsp;View/Update Payment Information
+                    <i class="far fa-credit-card"></i> &nbsp;View/Update/Delete Payment Information
                 </button>
             <a/>
 

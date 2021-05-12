@@ -87,7 +87,7 @@ public class PaymentInfoDAO {
     // Returns an instances of PaymentInfo from the database based on the paymentInfoID
     public PaymentInfo getPaymentInfo(int userID) throws SQLException{
         PaymentInfo paymentInfo = null;
-        String sql = "SELECT * FROM iotbay.PaymentInfo WHERE userID = " + userID;
+        String sql = "SELECT * FROM iotbay.PaymentInfo WHERE userID = " + userID + " AND Active = 'true'";
         
         ResultSet resultSet = st.executeQuery(sql);
         
@@ -118,9 +118,14 @@ public class PaymentInfoDAO {
         return paymentInfo;
     }
     
+    public void setInactive(int paymentInfoID) throws SQLException{
+        String sql = "UPDATE iotbay.PaymentInfo SET Active = 'false' WHERE PaymentInfoID = " + paymentInfoID;
+        st.executeUpdate(sql);
+    }
+    
     // Confirms if a user has payment info in the database
     public String hasUser(int userID) throws SQLException{
-        String sql = "SELECT * FROM PaymentInfo WHERE userID = " + userID;
+        String sql = "SELECT * FROM PaymentInfo WHERE userID = " + userID + " AND Active = 'true'";
         ResultSet resultSet = st.executeQuery(sql);
 
         int i = 0;

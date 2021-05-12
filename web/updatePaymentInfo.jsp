@@ -64,7 +64,7 @@
         %>
         
         <!-- Form for new card and billing details -->
-        <h1 class="card-details-title">View/Update Billing Address & Card Details</h1>
+        <h1 class="card-details-title">View/Update/Delete Billing Address & Card Details</h1>
         <div class="form" id="createForm">
             <form action="UpdatePaymentInfoServlet" method="post" class="form-container-update-card">
               <label for="street-number">Street Number</label>
@@ -102,11 +102,16 @@
               <label for="card-cvc">CVC</label>
               <input type="password" value="<%= paymentInfo.getCardCVC()%>" name="card-cvc" required>
 
-              <!-- Submit or cancel buttons -->
+              <!-- Submit, Delete or cancel buttons -->
               <div class="save-btn-container">
                 <button type="submit">Save</button>
               </div>
             </form>
+            <a href="DeletePaymentInfoServlet">
+                <div class="delete-btn-container">
+                    <button type="submit">Delete</button>
+                </div>
+            </a>
             <a href="main.jsp">
                 <div class="cancel-btn-container">
                     <button type="submit">Cancel</button>

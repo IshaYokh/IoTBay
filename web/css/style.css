@@ -449,11 +449,11 @@ input[type=text], input[type=password] {
 /* updatePaymentInfo and addPaymentInfo page styles */
 
 
-.billing-address-title, .card-details-title, .paymentinfo-feedback h1{
+.billing-address-title, .card-details-title, .paymentinfo-feedback h1, .paymentinfo-deletion-feedback h1{
     text-align: center;
 }
 
-.paymentinfo-feedback h1, .card-details-title{
+.paymentinfo-feedback h1, .card-details-title, .paymentinfo-deletion-feedback h1{
     margin-top: 2em;
     margin-bottom: 1em;
 }
@@ -469,12 +469,12 @@ input[type=text], input[type=password] {
     margin-top: 1em;
 }
 
-.save-btn-container button, .cancel-btn-container button{
+.save-btn-container button, .cancel-btn-container button, .delete-btn-container button{
     margin-top: 2em;
     padding: 10px;
     left: 40%;
     transform: translate(-50%, -50%);
-    width: 10%;
+    width: 7%;
     position: absolute;
     background: #173D7B;
     color: white;
@@ -489,12 +489,16 @@ input[type=text], input[type=password] {
     left: 60%;
 }
 
-.paymentinfo-feedback{
+.delete-btn-container button{
+    left: 50%;
+}
+
+.paymentinfo-feedback, .paymentinfo-deletion-feedback{
     padding-left: 20%;
     padding-right: 20%;
 }
 
-.paymentinfo-feedback h1{
+.paymentinfo-feedback h1, .paymentinfo-deletion-feedback h1{
     background-color: rgba(39, 174, 96, 0.5);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
@@ -504,7 +508,7 @@ input[type=text], input[type=password] {
     font-weight: 5;
 }
 
-.paymentinfo-feedback h1 a{
+.paymentinfo-feedback h1 a, .paymentinfo-deletion-feedback h1 a{
     color: blue;
     font-size: 20px;
     text-decoration: underline;
@@ -574,4 +578,20 @@ payment-history-table tr{
         display: block;
 }
 .log-table{    
+}
+
+
+/* deletePaymentInfo page styles */
+
+
+.paymentinfo-deletion-feedback h1{
+    margin-top: 2em;
+    font-size: 35px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.paymentinfo-deletion-feedback h1 a{
+    font-size: 30px;
 }
