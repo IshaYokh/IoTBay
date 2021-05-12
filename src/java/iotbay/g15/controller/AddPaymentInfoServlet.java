@@ -41,7 +41,7 @@ public class AddPaymentInfoServlet extends HttpServlet{
         User user = (User)session.getAttribute("user");
         
         Random random = new Random();
-        int paymentInfoID = random.nextInt(10);
+        int paymentInfoID = random.nextInt(9999);
         
         // Getting the DAO instances from the session and creating model objects based on the data returned from the JSP view
         PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");

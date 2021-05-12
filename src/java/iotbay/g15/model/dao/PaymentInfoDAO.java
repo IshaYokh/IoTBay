@@ -118,4 +118,19 @@ public class PaymentInfoDAO {
 
         return paymentInfo;
     }
+    
+    // Confirms if a user has payment info in the database
+    public String hasUser(int userID) throws SQLException{
+        String sql = "SELECT * FROM PaymentInfo WHERE userID = " + userID;
+        ResultSet resultSet = st.executeQuery(sql);
+
+        int i = 0;
+        while(resultSet.next())
+            i++;
+
+        if(i > 0)
+            return "true";
+
+        return "false";
+    }
 }

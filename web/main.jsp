@@ -14,6 +14,7 @@
         <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>
     </head>	
     <body>
+        <jsp:include page="/ConfirmUserPaymentInfoServlet"/>
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
@@ -47,15 +48,45 @@
                     <i class="fas fa-money-check"></i> &nbsp;View Orders
                 </button>
             <a/>
-             
+            
             <br/>
             <br/>
+            
+            <%
+                // Validating if a user has payment info records to decide wether to display add or edit payment info
+                
+                try{
+                    String userHasPaymentInfo = (String)session.getAttribute("userHasPaymentInfo");
+                    if(userHasPaymentInfo.equals("false")){
+            %>
             
             <a href="addPaymentInfo.jsp">
                 <button class="add-paymentinfo-btn">
                     <i class="far fa-credit-card"></i> &nbsp;Add Payment Information
                 </button>
             <a/>
+
+            <% 
+                }else{
+            %>
+
+            <a href="updatePaymentInfo.jsp">
+                <button class="add-paymentinfo-btn">
+                    <i class="far fa-credit-card"></i> &nbsp;Update Payment Information
+                </button>
+            <a/>
+
+            <% 
+                }}catch(NullPointerException ex){
+            %>
+            
+            <a href="addPaymentInfo.jsp">
+                <button class="add-paymentinfo-btn">
+                    <i class="far fa-credit-card"></i> &nbsp;Add Payment Information
+                </button>
+            <a/>
+            
+            <% } %>
             
             <br/>
             <br/>
