@@ -27,11 +27,10 @@ public class OrderDAO {
         System.out.println(userID);
         ResultSet rs = st.executeQuery(fetch);
         System.out.println(rs);
-        String orderDate = "";
         
         while(rs.next()){
             String orderID = rs.getString(1);
-            orderDate = rs.getString(4);
+            String orderDate = rs.getString(4);
             String orderStatus = rs.getString(5);
             orderList.add(new Order(Integer.parseInt(orderID), orderDate, orderStatus));
         }
@@ -51,5 +50,5 @@ public class OrderDAO {
     public ArrayList<Item> getCart() throws SQLException{
         return cart;
     }
-    
+   
 }

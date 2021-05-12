@@ -56,9 +56,6 @@
             
             </form>
         
-        <%
-            ArrayList orders = (ArrayList) session.getAttribute("orderList");
-        %>
 
         <table border="1">
             <thead>

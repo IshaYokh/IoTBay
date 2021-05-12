@@ -26,7 +26,7 @@ public class OrderHistoryServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
         ArrayList<Order> orders = new ArrayList<Order>();
-        
+        System.out.println("jjjjjjjjj");
         String userID = request.getParameter("userID");
         OrderDAO manager = (OrderDAO) session.getAttribute("manager");
         System.out.println("ssssss");
