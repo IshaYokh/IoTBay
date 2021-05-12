@@ -5,6 +5,7 @@
  */
 package iotbay.g15.controller;
 import iotbay.g15.model.Order;
+import iotbay.g15.model.OrderLineItem;
 import iotbay.g15.model.dao.OrderDAO;
 import java.io.IOException;
 import java.sql.SQLException;

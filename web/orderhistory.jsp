@@ -3,10 +3,9 @@
     Created on : 03/05/2021, 10:54:36 PM
     Author     : rebecca
 --%>
+<%@page import="iotbay.g15.model.*"%>
 <%@page import="java.util.List"%>
-<%@page import="iotbay.g15.model.Order"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="iotbay.g15.model.User"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -56,6 +55,18 @@
             
             </form>
         
+        <form method = "post" action = 'OrderHistoryServlet'>
+                
+                <label for="orderID">Order Number</label>
+                <input type="text" placeholder="Enter Order Number" name="orderID">
+                
+                <label for="orderDate">Order Date</label>
+                <input type="Date" placeholder="Enter Order Date" name="orderDate">
+
+                <button type="submit" class="btn-create">Search</button>
+            
+            </form>
+        
 
         <table border="1">
             <thead>
@@ -82,8 +93,27 @@
             %>
             </table>
         
-        
-            
+            <%
+                if(orderData!= null){
+                    for(Order O : orderData){%>
+            <div>
+                <p><%= O.getID() %></p>
+                <p><%= O.getOrderDate() %></p>
+                <p><%= O.getOrderStatus() %></p>
+                
+                <% List<Item> itemList = (ArrayList) O.getOrderedProducts();
+                    for (Item o : itemList){ %> 
+                <p><%= o.getItemName() %></p>
+                <img src="assets/items/<%= o.getItemImage() %>"
+                <% }
+                %>
+                
+                
+                
+            </div>
+            <%
+                }}
+            %>
         </div>
     </body>
 </html>

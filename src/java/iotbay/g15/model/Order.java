@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Order implements Serializable{
     private int orderID;
     private Customer customer;
-    private ArrayList<OrderLineItem> items;
+    private ArrayList<Item> items;
     private String orderDate;
     private String orderStatus;
 
@@ -23,6 +23,7 @@ public class Order implements Serializable{
         this.orderID = orderID;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
+        this.items = new ArrayList<Item>();
     }
 
     public int getID() {
@@ -41,11 +42,15 @@ public class Order implements Serializable{
         this.customer = customer;
     }
 
-    public ArrayList<OrderLineItem> getOrderedProducts(){
+    public ArrayList<Item> getOrderedProducts(){
         return items;
     }
     
-    public void setOrderedItems(ArrayList<OrderLineItem> items){
+    public void addOrderedProduct(Item item){
+        items.add(item);
+    }
+    
+    public void setOrderedItems(ArrayList<Item> items){
         this.items = items;
     }
 
