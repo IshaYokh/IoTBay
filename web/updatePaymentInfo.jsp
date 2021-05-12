@@ -6,7 +6,6 @@
 
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -16,7 +15,6 @@
         <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        
         <!-- Navbar -->
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
@@ -51,7 +49,7 @@
                     session.removeAttribute("paymentInfoAddFeedback");
         %> 
             <div class="paymentinfo-feedback">
-                <h1>Thanks <%= userName%>! your payment information has been added successfully! <a href="main.jsp">Return to account page</a></h1>
+                <h1>Thanks <%= userName%>! your payment information has been updated successfully! <a href="main.jsp">Return to account page</a></h1>
             </div>
         <%
             }}
@@ -60,7 +58,7 @@
         %>
        
         <!-- Form for new card and billing details -->
-        <h1 class="card-details-title">Billing Address & Card Details</h1>
+        <h1 class="card-details-title">View/Update Billing Address & Card Details</h1>
         <div class="form" id="createForm">
             <form action="AddPaymentInfoServlet" method="post" class="form-container-update-card">
               <label for="street-number">Street Number</label>
@@ -102,10 +100,13 @@
               <div class="save-btn-container">
                 <button type="submit">Save</button>
               </div>
-              <div class="cancel-btn-container">
-                <button type="submit">Cancel</button>
-              </div>
             </form>
-        </div>  
+            <a href="main.jsp">
+                <div class="cancel-btn-container">
+                    <button type="submit">Cancel</button>
+                </div>
+            </a>
+        </div>
+        <div class="placeholder"></div>
     </body>
 </html>

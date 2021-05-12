@@ -15,6 +15,10 @@ import iotbay.g15.model.*;
 /**
  *
  * @author Isha Yokhanna
+ * 
+ * This servlet class is used to update the customer's payment
+ * information
+ * 
  */
 public class UpdatePaymentInfoServlet {
     

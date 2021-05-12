@@ -58,7 +58,7 @@
         %>
        
         <!-- Form for new card and billing details -->
-        <h1 class="card-details-title">Billing Address & Card Details</h1>
+        <h1 class="card-details-title">Add Billing Address & Card Details</h1>
         <div class="form" id="createForm">
             <form action="AddPaymentInfoServlet" method="post" class="form-container-update-card">
               <label for="street-number">Street Number</label>
@@ -100,10 +100,13 @@
               <div class="save-btn-container">
                 <button type="submit">Save</button>
               </div>
-              <div class="cancel-btn-container">
-                <button type="submit">Cancel</button>
-              </div>
             </form>
-        </div>  
+            <a href="main.jsp">
+                <div class="cancel-btn-container">
+                    <button type="submit">Cancel</button>
+                </div>
+            </a>
+        </div>
+        <div class="placeholder"></div>
     </body>
 </html>

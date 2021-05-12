@@ -16,6 +16,10 @@ import iotbay.g15.model.*;
 /**
  *
  * @author Isha Yokhanna
+ * 
+ * This servlet class is used to retrieve the customer's payment information
+ * and display them on the view
+ * 
  */
 public class ViewPaymentInfoServlet extends HttpServlet {
     
