@@ -66,7 +66,7 @@
         <!-- Form for new card and billing details -->
         <h1 class="card-details-title">View/Update Billing Address & Card Details</h1>
         <div class="form" id="createForm">
-            <form action="AddPaymentInfoServlet" method="post" class="form-container-update-card">
+            <form action="UpdatePaymentInfoServlet" method="post" class="form-container-update-card">
               <label for="street-number">Street Number</label>
               <input type="text" value="<%= paymentInfo.getStreetNumber()%>" name="street-number" required>
 
@@ -91,7 +91,7 @@
               <div class="placeholder"></div>
               
               <label for="card-holder-name">Card Holder Name</label>
-              <input type="text" value=<%= paymentInfo.getCardHolderName()%> name="card-holder-name" required>
+              <input type="text" value="<%= paymentInfo.getCardHolderName()%>" name="card-holder-name" required>
                 
               <label for="card-number">Card Number</label>
               <input type="text" value="<%= paymentInfo.getCardNumber()%>" name="card-number" required>
