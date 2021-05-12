@@ -44,10 +44,10 @@
         <% 
             String userName = user.getFirstName();
             try{
-                String paymentInfoAddFeedback = (String)session.getAttribute("paymentInfoAddFeedback");
-                if(paymentInfoAddFeedback.equals("success")){ 
+                String paymentInfoUpdateFeedback = (String)session.getAttribute("paymentInfoUpdateFeedback");
+                if(paymentInfoUpdateFeedback.equals("success")){ 
                     session.setAttribute("userHasPaymentInfo", "true");
-                    session.removeAttribute("paymentInfoAddFeedback");
+                    session.removeAttribute("paymentInfoUpdateFeedback");
         %> 
             <div class="paymentinfo-feedback">
                 <h1>Thanks <%= userName%>! your payment information has been updated successfully! <a href="main.jsp">Return to account page</a></h1>

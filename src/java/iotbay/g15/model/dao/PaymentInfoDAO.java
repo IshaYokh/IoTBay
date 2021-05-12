@@ -73,14 +73,13 @@ public class PaymentInfoDAO {
     }
     
     // Updates a specified instances of PaymentInfo in the database
-    public void updatePaymentInfo(int paymentInfoID, int userID, String cardHolderName, String cardNumber, String cardExpiryDate, int cardCVC,
-            int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country, double credit,
-            String active) throws SQLException{
-        String sql = "UPDATE PaymentInfo SET PaymentInfoID = "+paymentInfoID+", UserID = "+userID+", CardHolderName = '"+cardHolderName+"', "
+    public void updatePaymentInfo(int userID, String cardHolderName, String cardNumber, String cardExpiryDate, int cardCVC,
+            int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country) throws SQLException{
+        String sql = "UPDATE iotbay.PaymentInfo SET CardHolderName = '"+cardHolderName+"', "
                 + "CardNumber = '"+cardNumber+"', CardExpiryDate = '"+cardExpiryDate+"', CardCVC = "+cardCVC+", StreetNumber = " + streetNumber
                 + ", StreetName = '" + streetName + "', StreetType = '" + streetType + "', Suburb = '" + suburb + "', State = '" + state +"'"
-                + ", Postcode  = " + postcode + ", Country = '" + country + "', Credit = " + credit + ", Active = " + active;
-        sql += "WHERE PaymentInfoID = " + paymentInfoID;
+                + ", Postcode  = " + postcode + ", Country = '" + country + "'";
+        sql += "WHERE UserID = " + userID;
 
         st.executeUpdate(sql);
     }
