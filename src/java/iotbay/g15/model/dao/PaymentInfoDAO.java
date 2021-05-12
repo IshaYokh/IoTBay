@@ -21,13 +21,13 @@ public class PaymentInfoDAO {
     
     // Inserts a PaymentInfo object in the database
     public void insertPaymentInfo(int paymentInfoID, int userID, String cardHolderName, String cardNumber, String cardExpiryDate, int cardCVC,
-            int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country)
+            int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country, double credit, String active)
             throws SQLException{
         String sql = "INSERT INTO iotbay.PaymentInfo (PaymentInfoID, UserID, CardholderName, CardNumber, CardExpiryDate, CardCVC,"
-                + "StreetNumber, StreetName, StreetType, Suburb, State, Postcode, Country)"
+                + "StreetNumber, StreetName, StreetType, Suburb, State, Postcode, Country, Credit, Active)"
                 + " VALUES ("+paymentInfoID+","+userID+",'"+cardHolderName+"', '"+cardNumber+"', '"+cardExpiryDate+"', "+cardCVC+", "
                 + streetNumber + ", '" + streetName + "', '" + streetType + "', '" + suburb + "', '" + state + "', " + postcode + ", '"
-                + country + "')";
+                + country + "', " + credit + ", '" + active + "')";
         
         st.executeUpdate(sql);
     }
@@ -53,10 +53,13 @@ public class PaymentInfoDAO {
             int postcode = resultSet.getInt("Postcode");
             String country = resultSet.getString("Country");
             double credit = resultSet.getDouble("Credit");
-            boolean active = resultSet.getBoolean("Active");
+            String active = resultSet.getString("Active");
+            
+            boolean activeStatus = false;
+            if(active.equals("true")) activeStatus = true;
             
             PaymentInfo paymentInfo = new PaymentInfo(paymentInfoID, userID, cardNumber, cardExpiryDate, cardCVC, cardholderName,
-            streetNumber, streetName, streetType, suburb, state, postcode, country, credit, active);
+            streetNumber, streetName, streetType, suburb, state, postcode, country, credit, activeStatus);
             paymentInfos.add(paymentInfo);
         }
      
@@ -72,7 +75,7 @@ public class PaymentInfoDAO {
     // Updates a specified instances of PaymentInfo in the database
     public void updatePaymentInfo(int paymentInfoID, int userID, String cardHolderName, String cardNumber, String cardExpiryDate, int cardCVC,
             int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country, double credit,
-            boolean active) throws SQLException{
+            String active) throws SQLException{
         String sql = "UPDATE PaymentInfo SET PaymentInfoID = "+paymentInfoID+", UserID = "+userID+", CardHolderName = '"+cardHolderName+"', "
                 + "CardNumber = '"+cardNumber+"', CardExpiryDate = '"+cardExpiryDate+"', CardCVC = "+cardCVC+", StreetNumber = " + streetNumber
                 + ", StreetName = '" + streetName + "', StreetType = '" + streetType + "', Suburb = '" + suburb + "', State = '" + state +"'"
@@ -83,15 +86,15 @@ public class PaymentInfoDAO {
     }
     
     // Returns an instances of PaymentInfo from the database based on the paymentInfoID
-    public PaymentInfo getPaymentInfo(int paymentInfoID) throws SQLException{
+    public PaymentInfo getPaymentInfo(int userID) throws SQLException{
         PaymentInfo paymentInfo = null;
-        String sql = "SELECT * FROM PaymentInfo WHERE PaymentInfoID = " + paymentInfoID;
+        String sql = "SELECT * FROM PaymentInfo WHERE userID = " + userID;
         
         ResultSet resultSet = st.executeQuery(sql);
         
         if(resultSet.next()){
-            paymentInfoID = resultSet.getInt("PaymentInfoID");
-            int userID = resultSet.getInt("UserID");
+            int paymentInfoID = resultSet.getInt("PaymentInfoID");
+            userID = resultSet.getInt("UserID");
             String cardholderName = resultSet.getString("CardholderName");
             String cardNumber = resultSet.getString("CardNumber");
             String cardExpiryDate = resultSet.getString("CardExpiryDate");
@@ -104,10 +107,13 @@ public class PaymentInfoDAO {
             int postcode = resultSet.getInt("Postcode");
             String country = resultSet.getString("Country");
             double credit = resultSet.getDouble("credit");
-            boolean active = resultSet.getBoolean("Active");
+            String active = resultSet.getString("Active");
+            
+            boolean activeStatus = false;
+            if(active.equals("true")) activeStatus = true;
             
             paymentInfo = new PaymentInfo(paymentInfoID, userID, cardNumber, cardExpiryDate, cardCVC, cardholderName,
-            streetNumber, streetName, streetType, suburb, state, postcode, country, credit, active);
+            streetNumber, streetName, streetType, suburb, state, postcode, country, credit, activeStatus);
         }
 
         return paymentInfo;

@@ -53,7 +53,8 @@ public class AddPaymentInfoServlet extends HttpServlet{
             paymentInfoDBmanager.insertPaymentInfo(paymentInfo.getPaymentInfoID(), paymentInfo.getUserID(), paymentInfo.getCardHolderName(),
                     paymentInfo.getCardNumber(), paymentInfo.getCardExpiryDate(), paymentInfo.getCardCVC(),
                     paymentInfo.getStreetNumber(), paymentInfo.getStreetName(), paymentInfo.getStreetType(),
-                    paymentInfo.getSuburb(), paymentInfo.getState(), paymentInfo.getPostcode(), paymentInfo.getCountry());
+                    paymentInfo.getSuburb(), paymentInfo.getState(), paymentInfo.getPostcode(), paymentInfo.getCountry(),
+                    500.00, "true");
         }
         catch (SQLException ex){
             Logger.getLogger(AddPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
