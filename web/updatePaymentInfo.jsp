@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="iotbay.g15.model.User"%>
+<%@page import="iotbay.g15.model.PaymentInfo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -57,45 +58,50 @@
             }
         %>
        
+        <% 
+            // Grabbing customer payment info details
+            PaymentInfo paymentInfo = (PaymentInfo)session.getAttribute("paymentInfo");
+        %>
+        
         <!-- Form for new card and billing details -->
         <h1 class="card-details-title">View/Update Billing Address & Card Details</h1>
         <div class="form" id="createForm">
             <form action="AddPaymentInfoServlet" method="post" class="form-container-update-card">
               <label for="street-number">Street Number</label>
-              <input type="text" placeholder="Enter Street number" name="street-number" required>
-              
+              <input type="text" value="<%= paymentInfo.getStreetNumber()%>" name="street-number" required>
+
               <label for="street-name">Street Name</label>
-              <input type="text" placeholder="Enter Street Name" name="street-name" required>
+              <input type="text" value="<%= paymentInfo.getStreetName()%>" name="street-name" required>
               
               <label for="street-type">Street Type</label>
-              <input type="text" placeholder="Enter Street Type" name="street-type" required>
+              <input type="text" value="<%= paymentInfo.getStreetType()%>" name="street-type" required>
               
               <label for="suburb">Suburb</label>
-              <input type="text" placeholder="Enter Suburb" name="suburb" required>
+              <input type="text" value="<%= paymentInfo.getSuburb()%>" name="suburb" required>
           
               <label for="state">State</label>
-              <input type="text" placeholder="Enter State" name="state" required>
+              <input type="text" value="<%= paymentInfo.getState()%>" name="state" required>
 
               <label for="postcode">Enter Postcode</label>
-              <input type="text" placeholder="Enter Postcode" name="postcode" required>
+              <input type="text" value="<%= paymentInfo.getPostcode()%>" name="postcode" required>
               
               <label for="Country">Country</label>
-              <input type="text" placeholder="Enter Country" name="country" required>
+              <input type="text" value="<%= paymentInfo.getCountry()%>" name="country" required>
               
               <div class="placeholder"></div>
               
               <label for="card-holder-name">Card Holder Name</label>
-              <input type="text" placeholder="John Citizen" name="card-holder-name" required>
+              <input type="text" value=<%= paymentInfo.getCardHolderName()%> name="card-holder-name" required>
                 
               <label for="card-number">Card Number</label>
-              <input type="text" placeholder="0000 0000 0000 0000" name="card-number" required>
+              <input type="text" value="<%= paymentInfo.getCardNumber()%>" name="card-number" required>
               
               <label for="card-expiry-date">Expiry Date</label>
-              <input type="text" placeholder="MM/YYYY" name="card-expiry-date" min="2021-05-14">
+              <input type="text" value="<%= paymentInfo.getCardExpiryDate()%>" name="card-expiry-date">
               
               <label for="card-cvc">CVC</label>
-              <input type="password" placeholder="000" name="card-cvc" required>
-              
+              <input type="password" value="<%= paymentInfo.getCardCVC()%>" name="card-cvc" required>
+
               <!-- Submit or cancel buttons -->
               <div class="save-btn-container">
                 <button type="submit">Save</button>

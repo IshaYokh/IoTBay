@@ -70,7 +70,7 @@
                 }else{
             %>
 
-            <a href="updatePaymentInfo.jsp">
+            <a href="ViewPaymentInfoServlet">
                 <button class="add-paymentinfo-btn">
                     <i class="far fa-credit-card"></i> &nbsp;View/Update Payment Information
                 </button>

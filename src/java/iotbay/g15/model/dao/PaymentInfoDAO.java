@@ -88,7 +88,7 @@ public class PaymentInfoDAO {
     // Returns an instances of PaymentInfo from the database based on the paymentInfoID
     public PaymentInfo getPaymentInfo(int userID) throws SQLException{
         PaymentInfo paymentInfo = null;
-        String sql = "SELECT * FROM PaymentInfo WHERE userID = " + userID;
+        String sql = "SELECT * FROM iotbay.PaymentInfo WHERE userID = " + userID;
         
         ResultSet resultSet = st.executeQuery(sql);
         
@@ -115,7 +115,7 @@ public class PaymentInfoDAO {
             paymentInfo = new PaymentInfo(paymentInfoID, userID, cardNumber, cardExpiryDate, cardCVC, cardholderName,
             streetNumber, streetName, streetType, suburb, state, postcode, country, credit, activeStatus);
         }
-
+        
         return paymentInfo;
     }
     

@@ -22,5 +22,20 @@ import iotbay.g15.model.*;
  * 
  */
 public class ViewPaymentInfoServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("user");
+        PaymentInfo paymentInfo = null;
+        PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
+        
+        try{
+            paymentInfo = paymentInfoDBmanager.getPaymentInfo(user.getID());
+        }catch(SQLException ex){
+            Logger.getLogger(ViewPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        session.setAttribute("paymentInfo", paymentInfo);
+        request.getRequestDispatcher("updatePaymentInfo.jsp").include(request, response);
+    }
     
 }

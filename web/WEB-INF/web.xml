@@ -43,6 +43,10 @@
         <servlet-name>ConfirmUserPaymentInfoServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.ConfirmUserPaymentInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewPaymentInfoServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.ViewPaymentInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -82,6 +86,10 @@
     <servlet-mapping>
         <servlet-name>ConfirmUserPaymentInfoServlet</servlet-name>
         <url-pattern>/ConfirmUserPaymentInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewPaymentInfoServlet</servlet-name>
+        <url-pattern>/ViewPaymentInfoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
