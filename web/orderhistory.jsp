@@ -67,7 +67,9 @@
             </thead>
             <tbody>
 
-            <% for(Order O : orderData){%>
+            <%
+                if(orderData!= null){
+                    for(Order O : orderData){%>
 
             <tr>
                 <td><%= O.getID() %></td>
@@ -76,7 +78,7 @@
             </tr>
 
             <%
-                }
+                }}
             %>
             </table>
         
