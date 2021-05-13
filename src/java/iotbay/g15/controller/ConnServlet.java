@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package iotbay.g15.controller;
 
-/**
- *
- * @author kaushikdeshpande
- */
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,69 +13,49 @@ import javax.servlet.http.HttpSession;
 import iotbay.g15.model.dao.*;
 
 public class ConnServlet extends HttpServlet {
+   private DBConnector db;
+   private Connection conn;
+   private PaymentInfoDAO paymentInfoDBmanager;
+   private LoginLogoutDAO manager;
+   private ShowItemDAO showItem;
 
-    private DBConnector db;
+   @Override //Create and instance of DBConnector for the deployment session
+   public void init() {
+       try {
+           db = new DBConnector();
+       } catch (ClassNotFoundException | SQLException ex) {
+           Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+       }      
+   }
 
-    private LoginLogoutDAO manager;
+   @Override //Add the DBConnector, DBManager, Connection instances to the session
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+       response.setContentType("text/html;charset=UTF-8");       
+       HttpSession session = request.getSession();
+       conn = db.openConnection();       
 
-    private Connection conn;
+       try {
+           manager = new LoginLogoutDAO(conn);
+           paymentInfoDBmanager = new PaymentInfoDAO(conn);
+           showItem = new ShowItemDAO(conn);
+       }
+       catch (SQLException ex){
+           Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+       }
 
-    @Override //Create and instance of DBConnector for the deployment session
+       //export the DB managers to the view-session (JSPs)
+       session.setAttribute("manager", manager);
+       session.setAttribute("paymentInfoDBmanager", paymentInfoDBmanager);
+       session.setAttribute("showItem", showItem);
+   }
 
-    public void init() {
-
-        try {
-
-            db = new DBConnector();
-
-        } catch (ClassNotFoundException | SQLException ex) {
-
-            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
-
-    }
-
-    @Override //Add the DBConnector, DBManager, Connection instances to the session
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        response.setContentType("text/html;charset=UTF-8");
-
-        HttpSession session = request.getSession();
-
-        conn = db.openConnection();
-
-        try {
-
-            manager = new LoginLogoutDAO(conn);
-
-        } catch (SQLException ex) {
-
-            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
-
-        //export the DB manager to the view-session (JSPs)
-        session.setAttribute("manager", manager);
-
-    }
-
-    @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
-
+   @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
     public void destroy() {
-
-        try {
-
-            db.closeConnection();
-
-        } catch (SQLException ex) {
-
-            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
-
-    }
-
+       try {
+           db.closeConnection();
+       } catch (SQLException ex) {
+           Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+       }
+   }
 }

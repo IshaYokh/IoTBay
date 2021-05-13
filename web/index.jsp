@@ -5,6 +5,7 @@
 --%>
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="/ConnServlet" flush="true"/>
 <!doctype html>
 <html lang="en">
     <head>
@@ -17,7 +18,7 @@
             <div class="logo"><img src="assets/logo.png"/></div>
                 <ul>
                     <a href="#"><li>Home</li></a>
-                    <a href="#"><li>Store</li></a>
+                    <a href="ViewCategoriesServlet"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
                     <% 

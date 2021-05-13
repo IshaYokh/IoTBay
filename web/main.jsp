@@ -18,7 +18,7 @@
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
                 <a href="index.jsp"><li>Home</li></a>
-                <a href="#"><li>Store</li></a>
+                <a href="ViewCategoriesServlet"><li>Store</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
                 <% 
@@ -45,6 +45,15 @@
             <a href="#">
                 <button class="view-orders-btn">
                     <i class="fas fa-money-check"></i> &nbsp;View Orders
+                </button>
+            <a/>
+             
+            <br/>
+            <br/>
+            
+            <a href="addPaymentInfo.jsp">
+                <button class="add-paymentinfo-btn">
+                    <i class="far fa-credit-card"></i> &nbsp;Add Payment Information
                 </button>
             <a/>
             
