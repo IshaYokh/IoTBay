@@ -85,6 +85,16 @@ public class OrderDAO {
         System.out.println("cart size: " + cart.size());
     }
     
+    public int quantityInCart(Item item) throws SQLException{
+        int count = 0;
+        for(Item i : this.getCart()){
+            if(i.getItemID() == item.getItemID()){
+                count++;
+            }
+        }
+        return count;
+    }
+    
     public ArrayList<Item> getCart() throws SQLException{
         return cart;
     }

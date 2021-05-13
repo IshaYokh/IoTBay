@@ -21,6 +21,10 @@
         <servlet-name>deleteFromCartServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.deleteFromCartServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateCartServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.UpdateCartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -40,6 +44,10 @@
         <servlet-mapping>
         <servlet-name>deleteFromCartServlet</servlet-name>
         <url-pattern>/deleteFromCartServlet</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>UpdateCartServlet</servlet-name>
+        <url-pattern>/UpdateCartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

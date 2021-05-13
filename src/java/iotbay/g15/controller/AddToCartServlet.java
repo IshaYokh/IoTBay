@@ -32,8 +32,11 @@ public class AddToCartServlet extends HttpServlet{
         String itemBrand = request.getParameter("itemBrand");
         String itemName = request.getParameter("itemName");
         String itemImage = request.getParameter("itemImage");
+        //String quantity = request.getParameter("itemQty");
         
         OrderDAO manager = (OrderDAO) session.getAttribute("manager");
+        int qty = 2;
+        
         int id = Integer.parseInt(itemID);
         int serial = Integer.parseInt(itemSerialNumber);
         
@@ -44,10 +47,10 @@ public class AddToCartServlet extends HttpServlet{
         
         
         try{
-            cart = manager.addToCart(new Item(id, serial, itemCategory, itemBrand, itemName, itemImage));
-            System.out.println("77777777777");
+            for(int i=0; i<qty; i++){
+             cart = manager.addToCart(new Item(id, serial, itemCategory, itemBrand, itemName, itemImage));
+            }
             session.setAttribute("cartItems", cart);
-            System.out.println("bbbbbbbbbbbbb");
             //session.setAttribute("cart", manager.getCart());
         }catch(SQLException ex){
             Logger.getLogger(AddToCartServlet.class.getName()).log(Level.SEVERE, null, ex);

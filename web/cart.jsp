@@ -60,6 +60,8 @@
                     <th>Item Brand</th>
                     <th>Item Name</th>
                     <th>Item Image</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
                     <th>Actions</th>
                 </tr>    
             </thead>
@@ -72,10 +74,12 @@
                 <td><%= I.getItemID() %></td>
                 <td><%= I.getItemBrand() %></td>
                 <td><%= I.getItemName() %></td>
+                <td>Quantity</td>
+                <td>Price</td>
                 <td><img src="assets/items/<%= I.getItemImage() %>"/></td>
                 
                 <td>
-                    <a class="btn btn-success"  href="#">Update</a>
+                        <a class="btn btn-success"  href="#">Update</a>
                         <a class="btn btn-danger" type="submit" href="/deleteFromCartServlet?itemID=<%=I.getItemID()%>">Delete</a>
                 </td>
             </tr>
