@@ -9,6 +9,7 @@ import iotbay.g15.model.Item;
 import iotbay.g15.model.dao.OrderDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +25,7 @@ public class AddToCartServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
         
-        //ArrayList<Item> cart = new ArrayList<Item>();
+        ArrayList<Item> cart = new ArrayList<Item>();
         String itemID = request.getParameter("itemID");
         String itemSerialNumber = request.getParameter("itemSerialNumber");
         String itemCategory = request.getParameter("itemCategory");
@@ -43,12 +44,13 @@ public class AddToCartServlet extends HttpServlet{
         
         
         try{
+            cart = manager.addToCart(new Item(id, serial, itemCategory, itemBrand, itemName, itemImage));
             System.out.println("77777777777");
-            manager.addToCart(new Item(id, serial, itemCategory, itemBrand, itemName, itemImage));
+            session.setAttribute("cartItems", cart);
             System.out.println("bbbbbbbbbbbbb");
             //session.setAttribute("cart", manager.getCart());
         }catch(SQLException ex){
-            Logger.getLogger(OrderHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddToCartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         request.getRequestDispatcher("cart.jsp").include(request, response);

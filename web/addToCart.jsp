@@ -13,7 +13,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<% List<Item> cartData = (ArrayList) session.getAttribute("cartItems"); %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,46 +48,29 @@
 	</div>
 	<div class="placeholder"></div>
         
-        <%
-            ArrayList orders = (ArrayList) session.getAttribute("orderList");
-            if(cartData!= null){
-        %>
-
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Item ID</th>
-                    <th>Item Brand</th>
-                    <th>Item Name</th>
-                    <th>Item Image</th>
-                    <th>Actions</th>
-                </tr>    
-            </thead>
-            <tbody>
-
-            <% for(Item I : cartData)
-            {%>
-
-            <tr>
-                <td><%= I.getItemID() %></td>
-                <td><%= I.getItemBrand() %></td>
-                <td><%= I.getItemName() %></td>
-                <td><img src="assets/items/<%= I.getItemImage() %>"/></td>
+        <form method = "post" action = 'AddToCartServlet'>
                 
-                <td>
-                    <a class="btn btn-success"  href="#">Update</a>
-                        <a class="btn btn-danger" type="submit" href="/deleteFromCartServlet?itemID=<%=I.getItemID()%>">Delete</a>
-                </td>
-            </tr>
+                <label for="itemID">Item ID</label>
+                <input type="text" placeholder="Enter Item ID" name="itemID" required>
+                
+                <label for="itemSerialNumber">Item Serial Number</label>
+                <input type="text" placeholder="Enter Item Serial Number" name="itemSerialNumber" required>
+                
+                <label for="itemCategory">Item Category</label>
+                <input type="text" placeholder="Enter Item Category" name="itemCategory" required>
+                
+                <label for="itemBrand">Item Brand</label>
+                <input type="text" placeholder="Enter Item Brand" name="itemBrand" required>
+                
+                <label for="itemName">Item Name</label>
+                <input type="text" placeholder="Enter Item Name" name="itemName" required>
+                
+                <label for="itemImage">Item Image</label>
+                <input type="text" placeholder="Enter Item Image" name="itemImage" required>
 
-            <%
-                }}else{
-            %>
-            <p>Your cart is empty.</p>
-            <%
-                }
-            %>
-            </table>
+                <button type="submit" class="btn-create">Add Item to Cart</button>
+            
+            </form>
             
             
         </div>

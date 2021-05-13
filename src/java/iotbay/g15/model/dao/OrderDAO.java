@@ -61,15 +61,27 @@ public class OrderDAO {
     return orderList;
     }
     
-    
-    
     //adds row for order to db
     public void addOrder(int orderID, String orderDate, String orderStatus) throws SQLException{
         st.executeUpdate("INSERT INTO ORDERS (ORDERID, ORDERDATE, ORDERSTATUS) VALUES(" + orderID + ", '" + orderDate + "', '" + orderStatus + "')");
     }
     
-    public void addToCart(Item item) throws SQLException{
+    public ArrayList<Item> addToCart(Item item) throws SQLException{
         cart.add(item);
+        System.out.println("cart size: " + cart.size());
+        return cart;
+    }
+    
+    public Item getItemByID(int id)throws SQLException{
+        for(Item i : this.getCart()){
+            if(i.getItemID() == id)
+                return i;
+        }
+        return null;
+    }
+    
+    public void removeFromCart(Item item) throws SQLException{
+        cart.remove(item);
         System.out.println("cart size: " + cart.size());
     }
     

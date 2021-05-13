@@ -19,6 +19,7 @@
         <link href="css/style.css" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>
         <title>Order History</title>
@@ -68,43 +69,19 @@
             </form>
         
 
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Order Date</th>
-                    <th>Order Status</th>
-                </tr>    
-            </thead>
-            <tbody>
-
-            <%
-                if(orderData!= null){
-                    for(Order O : orderData){%>
-
-            <tr>
-                <td><%= O.getID() %></td>
-                <td><%= O.getOrderDate() %></td>
-                <td><%= O.getOrderStatus() %></td>
-            </tr>
-
-            <%
-                }}
-            %>
-            </table>
         
             <%
                 if(orderData!= null){
                     for(Order O : orderData){%>
             <div>
-                <p><%= O.getID() %></p>
-                <p><%= O.getOrderDate() %></p>
-                <p><%= O.getOrderStatus() %></p>
+                <p>Order Number: <%= O.getID() %></p>
+                <p>Order Date: <%= O.getOrderDate() %></p>
+                <p>Order Status: <%= O.getOrderStatus() %></p>
                 
                 <% List<Item> itemList = (ArrayList) O.getOrderedProducts();
                     for (Item o : itemList){ %> 
-                <p><%= o.getItemName() %></p>
-                <img src="assets/items/<%= o.getItemImage() %>"
+                <p>Item Name: <%= o.getItemName() %></p>
+                <img src="assets/items/<%= o.getItemImage() %>"/>
                 <% }
                 %>
                 
