@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package iotbay.g15.controller;
-
 import java.io.IOException;
-
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -51,9 +51,17 @@
         <servlet-name>AddPaymentInfoServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.AddPaymentInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addItemServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.addItemServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addItemServlet</servlet-name>
+        <url-pattern>/addItemServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewCategoriesServlet</servlet-name>

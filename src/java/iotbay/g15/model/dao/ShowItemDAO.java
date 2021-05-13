@@ -20,9 +20,12 @@ public class ShowItemDAO {
 private final Statement st;
 private final Statement st1;
 
+
     public ShowItemDAO(Connection conn) throws SQLException {
         st = conn.createStatement();
         st1 = conn.createStatement();
+        
+        
     }
     
     // get item
@@ -121,8 +124,6 @@ private final Statement st1;
      }
     
     public ArrayList getProductlistImage(String category) throws SQLException{
-        
-    
     String fetch = "SELECT * from IOTBAY.ITEM WHERE ITEMCATEGORY = '" + category + "'" ;
     ResultSet rs = st.executeQuery(fetch);
     ArrayList proListImage = new ArrayList();
@@ -137,4 +138,20 @@ private final Statement st1;
     
      return proListImage;
     }
+    public void AddItem3(int itemID, int itemserial,String cat, String name, String brand, int quantity, double price) throws SQLException{
+        
+        String image = "nothing";
+        String fetch = "INSERT INTO IOTBAY.ITEM (ITEMID, ITEMSERIALNUMBER, ITEMCATEGORY, ITEMBRAND, ITEMNAME, ITEMIMAGE) VALUES (" +itemID+ ", " + itemserial + ", '" + cat + "', '" + brand +"', '" + name + "', '" + image +"')";
+        st.execute(fetch);
+        
+        
+        //if suplier id exsists
+         // get suplier if (itemID)
+            //if suplier id exsists
+        String fetch1 = "INSERT INTO IOTBAY.CATALOGUE VALUES (2,"+ itemID+ ",'nothin', " + quantity + ", " + price + ")";
+        st1.execute(fetch1);
+        
+
+    }
+    
 }
