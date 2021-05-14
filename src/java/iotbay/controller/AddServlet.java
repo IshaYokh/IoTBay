@@ -62,7 +62,7 @@ public class AddServlet extends HttpServlet {
             manager.addCustomer(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
             session.setAttribute("added", "add was successful");
         } catch (SQLException ex) {  
-            Logger.getLogger(EditServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         if (source.equals("register")) {

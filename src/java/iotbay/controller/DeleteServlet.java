@@ -43,7 +43,7 @@ public class DeleteServlet extends HttpServlet {
             manager.deleteCustomer(email);
             session.setAttribute("deleted", "delete was successful");
         } catch (SQLException ex) {  
-            Logger.getLogger(EditServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         response.sendRedirect("customerinfo.jsp");

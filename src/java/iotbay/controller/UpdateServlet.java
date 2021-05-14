@@ -57,7 +57,7 @@ public class UpdateServlet extends HttpServlet {
                                    suburb, state, postcode, country);
             session.setAttribute("updated", "update was successful");
         } catch (SQLException ex) {  
-            Logger.getLogger(EditServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         request.getRequestDispatcher("customerinfo.jsp").include(request, response);
