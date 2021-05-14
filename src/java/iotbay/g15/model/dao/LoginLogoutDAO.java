@@ -22,7 +22,7 @@ public class LoginLogoutDAO {
     }
 
     //adds user to the database
-    public void addUser(String firstname, String lastname, String password, String phonenumber, String streetnumber, String streetname, String streettype, String suburb, String state, String postcode, String country, String email) throws SQLException {
+    public void addUser(String firstname, String lastname, String password, int phonenumber, int streetnumber, String streetname, String streettype, String suburb, String state, int postcode, String country, String email) throws SQLException {
         //st.executeUpdate();
         String fetch = "INSERT INTO IOTBAY.USERS (USERID,FIRSTNAME, LASTNAME, PASSWORD, PHONENUMBER, STREETNUMBER, STREETNAME, STREETTYPE, SUBURB, STATE, POSTCODE, COUNTRY, EMAIL) VALUES (DEFAULT,'" + firstname + "', '" + lastname + "', '" + password + "'," + phonenumber + ", " + streetnumber + ", '" + streetname + "', '" + streettype + "', '" + suburb + "', '" + state + "'," + postcode + ", '" + country + "', '" + email + "')";
 
@@ -77,7 +77,7 @@ public class LoginLogoutDAO {
 
             String emails = rs.getString(1);
             String passwords = rs.getString(2);
-
+            
             if ((password.equals(passwords)) && email.equals(emails)) {
                 return true;
 
@@ -98,16 +98,16 @@ public class LoginLogoutDAO {
             String lastname = rs.getString(3);
             String emails = rs.getString(4);
             String passwords = rs.getString(5);
-            String phonenumber = rs.getString(6);
-            String streetnumber = rs.getString(7);
+            int phonenumber =  Integer.parseInt(rs.getString(6));
+            int streetnumber = Integer.parseInt(rs.getString(7));
             String streetname = rs.getString(8);
             String streettype = rs.getString(9);
             String suburb = rs.getString(10);
             String state = rs.getString(11);
-            String postcode = rs.getString(12);
+            int postcode = Integer.parseInt(rs.getString(12));
             String country = rs.getString(13);
 
-            User user = new User(firstname, lastname, emails, passwords, phonenumber, streetnumber, streetname, streettype, suburb, state, postcode, country, userID);
+            User user = new User(userID, firstname, lastname, emails, passwords, phonenumber, streetnumber, streetname, streettype, suburb, state, postcode, country);
             return user;
         }
 
@@ -115,7 +115,7 @@ public class LoginLogoutDAO {
 
     }
 
-    public void editUser(String firstname, String lastname, String password, String phonenumber, String streetnumber, String streetname, String streettype, String suburb, String state, String postcode, String country, String email, int userID) throws SQLException {
+    public void editUser(String firstname, String lastname, String password, int phonenumber, int streetnumber, String streetname, String streettype, String suburb, String state, int postcode, String country, String email, int userID) throws SQLException {
         //st.executeUpdate();
         String fetch = "UPDATE IOTBAY.USERS SET FIRSTNAME = '" + firstname + "', LASTNAME = '" + lastname + "', PASSWORD = '" + password + "', PHONENUMBER = " + phonenumber + ", STREETNUMBER = " + streetnumber + ", STREETNAME = '" + streetname + "', STREETTYPE = '" + streettype + "', SUBURB= '" + suburb + "', STATE = '" + state + "', postcode =" + postcode + ", COUNTRY='" + country + "', EMAIL ='" + email + "' WHERE USERID =" + userID;
         //+ "(DEFAULT,'" + firstname + "', '" + lastname + "', '"+ password + "'," + phonenumber + ", " + streetnumber +", '" + streetname +"', '" + streettype + "', '" + suburb + "', '" + state + "'," + postcode + ", '" +country+ "', '"+email+"')";

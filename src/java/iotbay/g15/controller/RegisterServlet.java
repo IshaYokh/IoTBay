@@ -35,13 +35,13 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("psw");
         String password1 = request.getParameter("psw1");
-        String phoneNumber = request.getParameter("number");
-        String streetNumber = request.getParameter("street-number");
+        int phoneNumber = Integer.parseInt(request.getParameter("number"));
+        int streetNumber = Integer.parseInt(request.getParameter("street-number"));
         String streetName = request.getParameter("street-name");
         String streetType = request.getParameter("street-type");
         String suburb = request.getParameter("suburb");
         String state = request.getParameter("state");
-        String postcode = request.getParameter("postcode");
+        int postcode = Integer.parseInt(request.getParameter("postcode"));
         String country = request.getParameter("country");
         LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
         if (password.equals(password1)) {
@@ -51,7 +51,7 @@ public class RegisterServlet extends HttpServlet {
                     manager.addUser(firstName, lastName, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, email);
                     //getUserID
                     int userID = manager.getUserID(email, password);
-                    User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, userID);
+                    User user = new User(userID, firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
                     //manager.addCustomer(userID);
                     int userI = manager.getUserID(email, password);
                     manager.addCustomer(userI);
