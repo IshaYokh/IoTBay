@@ -14,6 +14,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <% List<Item> cartData = (ArrayList) session.getAttribute("cartItems"); %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -52,38 +53,50 @@
             ArrayList orders = (ArrayList) session.getAttribute("orderList");
             if(cartData!= null){
         %>
-
-        <table border="1">
+        <div class='container'>
+        <table class="table">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Item ID</th>
                     <th>Item Brand</th>
                     <th>Item Name</th>
-                    <th>Item Image</th>
-                    <th>Quantity</th>
                     <th>Price</th>
-                    <th>Actions</th>
+                    <th>Quantity</th>
+                    <th></th>
                 </tr>    
             </thead>
             <tbody>
 
-            <% for(Item I : cartData)
-            {%>
+            <% 
+                double cartPrice = 0;
+                for(Item I : cartData)
+                    
+            {  
+                    cartPrice = cartPrice + I.getItemPrice();
+                    session.setAttribute("cartPrice", cartPrice);
+            %>
 
             <tr>
+                <td><img id="picture" class="img-thumbnail" src="assets/items/<%= I.getItemImage() %>"/></td>
                 <td><%= I.getItemID() %></td>
                 <td><%= I.getItemBrand() %></td>
                 <td><%= I.getItemName() %></td>
-                <td>Quantity</td>
-                <td>Price</td>
-                <td><img src="assets/items/<%= I.getItemImage() %>"/></td>
+                <td><%= I.getItemPrice() %></td>
+                <td>
+                    <form method = "get" action = 'UpdateCartServlet'>
+                        <input type="hidden" id="itemIDQuantityUpdate" name="itemIDQuantityUpdate" value="<%= I.getItemID() %>">
+                        <input type="text" placeholder="#" name="itemUpdateQuantity" value="<%= I.getUserQuantity() %>" <br />
+                        <button type="submit" class="btn btn-success" href="/UpdateCartServlet?itemUpdateQuantity=<%=I.getItemID()%>">Update</button>
+                    </form>
+                </td>
                 
                 <td>
-                        <a class="btn btn-success"  href="#">Update</a>
-                        <a class="btn btn-danger" type="submit" href="/deleteFromCartServlet?itemID=<%=I.getItemID()%>">Delete</a>
+                        <a class="btn btn-danger" type="submit" href="/DeleteFromCartServlet?itemID=<%=I.getItemID()%>">Delete</a>
                 </td>
             </tr>
-
+            
+                
             <%
                 }}else{
             %>
@@ -91,9 +104,28 @@
             <%
                 }
             %>
+            
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <p>Subtotal: <%= session.getAttribute("cartPrice") %></p>
+                </td>
+                <td>
+                    <form method = "post" action = 'EmptyCartServlet'>
+                        <button type="submit" class="btn btn-danger">Empty Cart</button>
+                    </form>
+                </td>
+                <td>
+                    <form method = "post" action = '#'>
+                <button type="submit" class="btn btn-success">Checkout</button>
+                    </form>
+                </td>
+            </tr>
+                
             </table>
-            
-            
         </div>
+    </div>
     </body>
 </html>

@@ -51,22 +51,25 @@
         <form method = "post" action = 'AddToCartServlet'>
                 
                 <label for="itemID">Item ID</label>
-                <input type="text" placeholder="Enter Item ID" name="itemID" required>
+                <input type="text" placeholder="Enter Item ID" name="itemID" value="1" required>
                 
                 <label for="itemSerialNumber">Item Serial Number</label>
-                <input type="text" placeholder="Enter Item Serial Number" name="itemSerialNumber" required>
+                <input type="text" placeholder="Enter Item Serial Number" name="itemSerialNumber" value="1" required>
                 
                 <label for="itemCategory">Item Category</label>
-                <input type="text" placeholder="Enter Item Category" name="itemCategory" required>
+                <input type="text" placeholder="Enter Item Category" name="itemCategory" value="1" required>
                 
                 <label for="itemBrand">Item Brand</label>
-                <input type="text" placeholder="Enter Item Brand" name="itemBrand" required>
+                <input type="text" placeholder="Enter Item Brand" name="itemBrand" value="1" required>
                 
                 <label for="itemName">Item Name</label>
-                <input type="text" placeholder="Enter Item Name" name="itemName" required>
+                <input type="text" placeholder="Enter Item Name" name="itemName" value="1" required>
                 
                 <label for="itemImage">Item Image</label>
-                <input type="text" placeholder="Enter Item Image" name="itemImage" required>
+                <input type="text" placeholder="Enter Item Image" name="itemImage" value="1.png" required>
+                
+                <label for="itemQuantity">Item Quantity</label>
+                <input type="text" placeholder="Enter Item Quantity" name="itemQuantity" value="1" required>
 
                 <button type="submit" class="btn-create">Add Item to Cart</button>
             

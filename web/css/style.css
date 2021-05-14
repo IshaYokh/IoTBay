@@ -371,3 +371,7 @@ input[type=text], input[type=password] {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+table #picture{
+    max-width: 200px;
+}

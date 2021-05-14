@@ -18,12 +18,16 @@
         <servlet-class>iotbay.g15.controller.AddToCartServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>deleteFromCartServlet</servlet-name>
-        <servlet-class>iotbay.g15.controller.deleteFromCartServlet</servlet-class>
+        <servlet-name>DeleteFromCartServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.DeleteFromCartServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateCartServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.UpdateCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmptyCartServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.EmptyCartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
@@ -41,13 +45,17 @@
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
-        <servlet-name>deleteFromCartServlet</servlet-name>
-        <url-pattern>/deleteFromCartServlet</url-pattern>
+    <servlet-mapping>
+        <servlet-name>DeleteFromCartServlet</servlet-name>
+        <url-pattern>/DeleteFromCartServlet</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>UpdateCartServlet</servlet-name>
         <url-pattern>/UpdateCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmptyCartServlet</servlet-name>
+        <url-pattern>/EmptyCartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

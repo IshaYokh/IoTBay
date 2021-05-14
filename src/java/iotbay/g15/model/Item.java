@@ -16,6 +16,8 @@ public class Item {
     private String itemBrand;
     private String itemName;
     private String itemImage;
+    private int userQuantity;
+    private double itemPrice;
     
     public Item(int itemID, int itemSerialNumber, String itemCategory, String itemBrand, String itemName, String itemImage){
         this.itemID = itemID;
@@ -74,4 +76,19 @@ public class Item {
         this.itemImage = itemImage;
     }
     
+    public int getUserQuantity() {
+        return userQuantity;
+    }
+
+    public void setUserQuantity(int qty) {
+        this.userQuantity = qty;
+    }
+    
+    public double getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(double price) {
+        this.itemPrice = price;
+    }
 }

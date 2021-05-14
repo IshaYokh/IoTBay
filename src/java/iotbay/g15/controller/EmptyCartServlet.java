@@ -11,6 +11,7 @@ import iotbay.g15.model.dao.OrderDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,27 +24,22 @@ import javax.servlet.http.HttpSession;
  *
  * @author rebecca
  */
-public class UpdateCartServlet extends HttpServlet{
+public class EmptyCartServlet extends HttpServlet{
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
-        int itemUpdateQuantity = Integer.parseInt(request.getParameter("itemUpdateQuantity"));
-        int itemIDQuantityUpdate = Integer.parseInt(request.getParameter("itemIDQuantityUpdate"));
+        List<Item> cartData = (ArrayList) session.getAttribute("cartItems");
         ArrayList<Item> cart;
-        
         OrderDAO manager = (OrderDAO) session.getAttribute("manager");
         User user = (User) session.getAttribute("user");
-        
         try{
-            manager.getItemByID(user.getUserID(), itemIDQuantityUpdate);
-            manager.updateItemQuantity(user.getUserID(), itemIDQuantityUpdate, itemUpdateQuantity);
+            manager.emptyCart(user.getUserID());
             cart = manager.getCart(user.getUserID());
             session.setAttribute("cartItems", cart);
-            
-        }catch(SQLException ex){
-            Logger.getLogger(UpdateCartServlet.class.getName()).log(Level.SEVERE, null, ex);
+            session.setAttribute("cartPrice", 0);
+        } catch (SQLException ex) {
+            Logger.getLogger(DeleteFromCartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         request.getRequestDispatcher("cart.jsp").include(request, response);
         
     }
