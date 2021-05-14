@@ -123,6 +123,15 @@
             <br/>
             <br/>
             
+            <a href="viewPaymentHistory.jsp">
+                <button class="view-payment-history-btn">
+                    <i class="fas fa-history"></i> &nbsp;Search Payment History
+                </button>
+            <a/>
+            
+            <br/>
+            <br/>
+            
             <a href="#">
                 <button class="support-ticket-btn">
                     <i class="fas fa-question-circle"></i> &nbsp;Submit Support Ticket

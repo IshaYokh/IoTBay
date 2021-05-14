@@ -363,7 +363,7 @@ input[type=text], input[type=password] {
 
 /* Main page styles */
 
-.view-cart-btn, .view-orders-btn, .account-details-btn, .account-details-btn, .support-ticket-btn, .logout-btn, .add-paymentinfo-btn{
+.view-cart-btn, .view-orders-btn, .account-details-btn, .account-details-btn, .support-ticket-btn, .logout-btn, .add-paymentinfo-btn, .view-payment-history-btn{
     background-color: #173D7B;
     border: none;
     color: white;
