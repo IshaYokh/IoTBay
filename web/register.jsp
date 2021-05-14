@@ -32,6 +32,7 @@
         String emailUsed = (String) session.getAttribute("emailUsed");
         String postcodeErr = (String) session.getAttribute("postcodeErr");
         String phoneNoErr = (String) session.getAttribute("phoneNoErr");
+        String streetNoErr = (String) session.getAttribute("streetNoErr");
         %>
         <div class="form" id="createForm">
             <form action="RegisterServlet" method="POST" class="form-container-register">
@@ -47,16 +48,16 @@
               <input type="text" name="email" placeholder="<%=(emailUsed != null ? emailUsed : "Enter Email")%>" required>
           
               <label for="psw">Password</label>
-              <input type="password" placeholder="<%=(passNoMatch != null ? passNoMatch : "Enter Password")%>" name="psw" required>
+              <input type="password" placeholder="<%=(passNoMatch != null ? "Enter Correct Password" : "Enter Password")%>" name="psw" required>
 
               <label for="psw">Confirm Password</label>
               <input type="password" placeholder="Confirm Password" name="psw1" required>
-
+              <p class="already-have-account"><%=(passNoMatch != null ? passNoMatch : " ")%></p>
               <label for="number">Phone Number</label>
               <input type="text" placeholder="<%=(phoneNoErr != null ? phoneNoErr : "Enter Phone Number")%>" name="number" required>
 
               <label for="street-number">Street Number</label>
-              <input type="text" placeholder="Enter Street Number" name="street-number" required>
+              <input type="text" placeholder="<%=(streetNoErr != null ? streetNoErr : "Enter Street Number")%>" name="street-number" required>
 
               <label for="street-name">Street Name</label>
               <input type="text" placeholder="Enter Street Name" name="street-name" required>

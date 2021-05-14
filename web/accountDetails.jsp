@@ -76,6 +76,16 @@
                     session.removeAttribute("accupdated");
                 %>
                 
+                <%
+                    String passNoMatch = (String) session.getAttribute("passNoMatch1");
+                    String emailUsed = (String) session.getAttribute("emailUsed1");
+                    String postcodeErr = (String) session.getAttribute("postcodeErr1");
+                    String phoneNoErr = (String) session.getAttribute("phoneNoErr1");
+                    String streetNoErr = (String) session.getAttribute("streetNoErr1");
+                %>
+                
+                
+                
 
                 <label for="fname">First Name</label>
                 <input type="text" value= "<%= user.getFirstName()%>" name="fname" >
@@ -85,15 +95,20 @@
 
                 <label for="email">Email</label>
                 <input type="text" value="<%= user.getEmail()%>" name="email" >
-
+                
+                <p class="already-have-account"><%=(emailUsed!= null ? emailUsed : " ")%></p>
                 <label for="pws">Password</label>
                 <input type="text" value="<%= user.getPassword()%>" name="pws" >
+                <p class="already-have-account"><%=(passNoMatch!= null ? passNoMatch: " ")%></p>
 
                 <label for="number">Phone Number</label>
                 <input type="text" value="<%= user.getPhoneNumber()%>" name="number" >
+                
+                <p class="already-have-account"><%=(phoneNoErr!= null ? phoneNoErr: " ")%></p>
 
                 <label for="street-number">Street Number</label>
                 <input type="text" value="<%= user.getStreetNumber()%>" name="street-number" >
+                <p class="already-have-account"><%=(streetNoErr!= null ? streetNoErr : " ")%></p>
 
                 <label for="street-name">Street Name</label>
                 <input type="text" value="<%= user.getStreetName()%>" name="street-name" >
@@ -109,6 +124,7 @@
 
                 <label for="postcode">Postcode</label>
                 <input type="text" value="<%= user.getPostcode()%>" name="postcode" >
+                <p class="already-have-account"><%=( postcodeErr!= null ? postcodeErr : " ")%></p>
 
                 <label for="Country">Country</label>
                 <input type="text" value="<%= user.getCountry()%>" name="country" >

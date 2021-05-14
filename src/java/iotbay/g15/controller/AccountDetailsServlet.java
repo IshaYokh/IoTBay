@@ -9,6 +9,7 @@ package iotbay.g15.controller;
  *
  * @author kaushikdeshpande
  */
+import iotbay.g15.model.RegisterUpdateValidator;
 import java.io.IOException;
 
 import java.sql.SQLException;
@@ -30,38 +31,72 @@ public class AccountDetailsServlet extends HttpServlet {
         String firstName = request.getParameter("fname");
         String lastName = request.getParameter("lname");
         String email = request.getParameter("email");
-        int phoneNumber = Integer.parseInt(request.getParameter("number"));
         String password = request.getParameter("pws");
-        int streetNumber = Integer.parseInt(request.getParameter("street-number"));
         String streetName = request.getParameter("street-name");
         String streetType = request.getParameter("street-type");
         String suburb = request.getParameter("suburb");
         String state = request.getParameter("state");
-        int postcode = Integer.parseInt(request.getParameter("postcode"));
         String country = request.getParameter("country");
         User user = (User) session.getAttribute("user");
         String oldemail = user.getEmail();
         String oldpassword = user.getPassword();
+        
+        RegisterUpdateValidator validate = new RegisterUpdateValidator();
+      
+        session.setAttribute("emailUsed1",validate.validateEmail(email));
+        session.setAttribute("passNoMatch1", validate.validatePassword(password));
+        session.setAttribute("phoneNoErr1", validate.validatePhone(request.getParameter("number")));
+        session.setAttribute("postcodeErr1", validate.validatePostCode(request.getParameter("postcode")));
+        session.setAttribute("streetNoErr1", validate.validateStreetNo(request.getParameter("street-number")));
+        if((validate.validateEmail(email)==null) && (validate.validatePassword(password)==null) && (validate.validatePhone(request.getParameter("number"))== null) 
+            && (validate.validatePostCode(request.getParameter("postcode"))== null) &&(validate.validateStreetNo(request.getParameter("street-number"))== null)){
+            int phoneNumber;
+            phoneNumber = Integer.parseInt(request.getParameter("number"));
+            int streetNumber = Integer.parseInt(request.getParameter("street-number"));
+            int postcode = Integer.parseInt(request.getParameter("postcode"));
+        
+        
+        
+        
+        
+        
+        
+        
 
-        try {
-            int userID = manager.getUserID(oldemail, oldpassword);
-            manager.editUser(firstName, lastName, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, email, userID);
+            try {
+                int userID = manager.getUserID(oldemail, oldpassword);
+                manager.editUser(firstName, lastName, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, email, userID);
 
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setEmail(email);
-            user.setPhoneNumber(phoneNumber);
-            user.setStreetNumber(streetNumber);
-            user.setStreetName(streetName);
-            user.setStreetType(streetType);
-            user.setSuburb(suburb);
-            user.setState(state);
-            user.setPostcode(postcode);
-            user.setCountry(country);
-            session.setAttribute("accupdated", "Account has been updated");
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setEmail(email);
+                user.setPhoneNumber(phoneNumber);
+                user.setStreetNumber(streetNumber);
+                user.setStreetName(streetName);
+                user.setStreetType(streetType);
+                user.setSuburb(suburb);
+                user.setState(state);
+                user.setPostcode(postcode);
+                user.setCountry(country);
+                session.setAttribute("user", user);
+                //reset Error Variables
+                session.setAttribute("emailUsed1", null);
+                session.setAttribute("passNoMatch1", null);
+                session.setAttribute("phoneNoErr1", null);
+                session.setAttribute("postcodeErr1", null);
+                session.setAttribute("streetNoErr1", null);
+                
+                session.setAttribute("accupdated", "Account has been updated");
+                request.getRequestDispatcher("accountDetails.jsp").include(request, response);
+            } catch (SQLException ex) {
+
+            }
+        }else{
+            
             request.getRequestDispatcher("accountDetails.jsp").include(request, response);
-        } catch (SQLException ex) {
-
+        
+        
+        
         }
 
     }
