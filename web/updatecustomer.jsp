@@ -31,16 +31,17 @@
         <div class="placeholder"></div>
         
         <%
-            int id = Integer.parseInt(request.getParameter("edit"));
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
             CustomerDAO cd = (CustomerDAO)session.getAttribute("manager");
-            Customer c = cd.findCustomer(id);
+            Customer c = cd.findCustomer(email, password);
         %>
         <form action="UpdateServlet" method="post">
             <table>
-                <tr style="display: none;"><td></td><td><input type="text" name="id" value="<%=id%>"></td></tr>
                 <tr><td>First Name: </td><td><input type="text" name="fname" value="<%=c.getFirstName()%>"></td></tr>
                 <tr><td>Last Name: </td><td><input type="text" name="lname" value="<%=c.getLastName()%>"></td></tr>
-                <tr><td>Email: </td><td><input type="text" name="email" value="<%=c.getEmail()%>"></td></tr>
+                <tr style="display: none;"><td></td><td><input type="text" name="email" value="<%=c.getEmail()%>"></td></tr>
+                <tr style="display: none;"><td></td><td><input type="text" name="password" value="<%=c.getPassword()%>"></td></tr>
                 <tr><td>Phone Number: </td><td><input type="text" name="number" value="<%=c.getPhoneNumber()%>"></td></tr>
                 <tr><td>Street Number: </td><td><input type="text" name="street-number" value="<%=c.getStreetNumber()%>"></td></tr>
                 <tr><td>Street Name: </td><td><input type="text" name="street-name" value="<%=c.getStreetName()%>"></td></tr>

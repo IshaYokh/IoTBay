@@ -36,10 +36,10 @@ public class UpdateServlet extends HttpServlet {
             throws ServletException, IOException {       
                 
         HttpSession session = request.getSession();
-        int id = Integer.parseInt(request.getParameter("id"));
         String firstName = request.getParameter("fname");
         String lastName = request.getParameter("lname");
         String email = request.getParameter("email");
+        String password = request.getParameter("password");
         String phoneNumber = request.getParameter("number");
         String streetNumber = request.getParameter("street-number");
         String streetName = request.getParameter("street-name");
@@ -51,9 +51,8 @@ public class UpdateServlet extends HttpServlet {
         CustomerDAO manager = (CustomerDAO)session.getAttribute("manager");
          
         try {       
-            manager.updateCustomer(id,
-                                   firstName, lastName,
-                                   email, phoneNumber,
+            manager.updateCustomer(firstName, lastName,
+                                   email, password, phoneNumber,
                                    streetNumber, streetName, streetType,
                                    suburb, state, postcode, country);
             session.setAttribute("updated", "update was successful");

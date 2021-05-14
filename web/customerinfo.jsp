@@ -4,7 +4,7 @@
     Author     : Tada33
 --%>
 
-<%@ page import="iotbay.g15.model.*, iotbay.g15.model.dao.*, java.util.HashMap" %>
+<%@ page import="iotbay.g15.model.*, iotbay.g15.model.dao.*, java.util.ArrayList" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -31,16 +31,14 @@
         <div class="placeholder"></div>
         <div class="placeholder"></div>
         <div class="placeholder"></div>
+        
         <div>
+            <form action="register.jsp">
+                <input type="hidden" name="source" value="customerinfo">
+                <button class="btn1">Create New Customer</button>
+            </form>
             <table class="tbl1">
                 <caption class="welcome_title">Customer Information</caption>
-                <input type="search" name="search" placeholder="Please enter a customer's full name.">
-                <input type="submit" name="submit" value="search">
-                <form action="register.jsp">
-                    <input type="hidden" name="source" value="customerinfo">
-                    <button class="btn1">Create New Customer</button>
-                </form>
-                <%--<a href="createnewcustomer.jsp" class="btn1"><li>Create New Customer</a> --%>       
                 <tr class="thead">
                     <td>First Name</td>
                     <td>Last Name</td>
@@ -59,41 +57,35 @@
                 </tr>
                 <%
                     CustomerDAO cd = (CustomerDAO)session.getAttribute("manager");
-                    HashMap<Integer, Customer> customers = cd.fetchCustomer();
+                    ArrayList<Customer> customers = cd.fetchCustomer();
                 %>
                 <c:forEach items="<%=customers%>" var="item">
                     <tr class="last">
-                        <c:choose>
-                            <c:when test="${1 eq 0}">
-                                
-                            </c:when>
-                            <c:otherwise>
-                                <td><p>${item.value.getFirstName()}</p></td>
-                                <td><p>${item.value.getLastName()}</p></td>
-                                <td><p>${item.value.getEmail()}</p></td>
-                                <td><p>${item.value.getPhoneNumber()}</p></td>
-                                <td><p>${item.value.getStreetNumber()}</p></td>
-                                <td><p>${item.value.getStreetName()}</p></td>
-                                <td><p>${item.value.getStreetType()}</p></td>
-                                <td><p>${item.value.getSuburb()}</p></td>
-                                <td><p>${item.value.getState()}</p></td>
-                                <td><p>${item.value.getPostcode()}</p></td>
-                                <td><p>${item.value.getCountry()}</p></td>
-                                <td><p>${item.value.getStatus()}</p></td>
-                                <td>
-                                    <form action="updatecustomer.jsp">
-                                        <input type="hidden" name="edit" value="${item.key}">
-                                        <button>edit</button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="DeleteServlet" method="post">
-                                        <input type="hidden" name="email" value="${item.value.getEmail()}">
-                                        <button>delete</button>
-                                    </form>
-                                </td>
-                            </c:otherwise>
-                        </c:choose>
+                        <td><p>${item.getFirstName()}</p></td>
+                        <td><p>${item.getLastName()}</p></td>
+                        <td><p>${item.getEmail()}</p></td>
+                        <td><p>${item.getPhoneNumber()}</p></td>
+                        <td><p>${item.getStreetNumber()}</p></td>
+                        <td><p>${item.getStreetName()}</p></td>
+                        <td><p>${item.getStreetType()}</p></td>
+                        <td><p>${item.getSuburb()}</p></td>
+                        <td><p>${item.getState()}</p></td>
+                        <td><p>${item.getPostcode()}</p></td>
+                        <td><p>${item.getCountry()}</p></td>
+                        <td><p>${item.getStatus()}</p></td>
+                        <td>
+                            <form action="updatecustomer.jsp">
+                                <input type="hidden" name="email" value="${item.getEmail()}">
+                                <input type="hidden" name="password" value="${item.getPassword()}">
+                                <button>edit</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="DeleteServlet" method="post">
+                                <input type="hidden" name="email" value="${item.getEmail()}">
+                                <button>delete</button>
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>
