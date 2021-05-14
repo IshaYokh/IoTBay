@@ -54,13 +54,13 @@ public class AccountDetailsServlet extends HttpServlet {
             user.setFirstName(firstName);
             user.setLastName(lastName);
             user.setEmail(email);
-            user.setPhoneNumber(phoneNumber);
-            user.setStreetNumber(streetNumber);
+            //user.setPhoneNumber(phoneNumber);
+            //user.setStreetNumber(streetNumber);
             user.setStreetName(streetName);
             user.setStreetType(streetType);
             user.setSuburb(suburb);
             user.setState(state);
-            user.setPostcode(postcode);
+            //user.setPostcode(postcode);
             user.setCountry(country);
             session.setAttribute("accupdated", "Account has been updated");
             request.getRequestDispatcher("accountDetails.jsp").include(request, response);

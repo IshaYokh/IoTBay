@@ -107,8 +107,9 @@ public class LoginLogoutDAO {
             String postcode = rs.getString(12);
             String country = rs.getString(13);
 
-            User user = new User(firstname, lastname, emails, passwords, phonenumber, streetnumber, streetname, streettype, suburb, state, postcode, country, userID);
-            return user;
+            //comment out because string not int for attributes
+            //User user = new User(firstname, lastname, emails, passwords, phonenumber, streetnumber, streetname, streettype, suburb, state, postcode, country, userID);
+            return null;
         }
 
         return null;

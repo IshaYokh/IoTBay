@@ -17,6 +17,7 @@ public class ConnServlet extends HttpServlet {
    private Connection conn;
    private PaymentInfoDAO paymentInfoDBmanager;
    private LoginLogoutDAO manager;
+   private UserManagementDAO userManager;
 
    @Override //Create and instance of DBConnector for the deployment session
    public void init() {
@@ -37,6 +38,7 @@ public class ConnServlet extends HttpServlet {
        try {
            manager = new LoginLogoutDAO(conn);
            paymentInfoDBmanager = new PaymentInfoDAO(conn);
+           userManager = new UserManagementDAO(conn);
        }
        catch (SQLException ex){
            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -45,6 +47,7 @@ public class ConnServlet extends HttpServlet {
        //export the DB managers to the view-session (JSPs)
        session.setAttribute("manager", manager);
        session.setAttribute("paymentInfoDBmanager", paymentInfoDBmanager);
+       session.setAttribute("userManager", userManager);
    }
 
    @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)

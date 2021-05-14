@@ -52,12 +52,13 @@ public class StaffRegisterServlet extends HttpServlet {
                     manager.addUser(firstName, lastName, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, email);
                     //getUserID
                     int userID = manager.getUserID(email, password);
-                    User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, userID);
+                    //TODO: commented out so code can compile
+                    //User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, userID);
                     //manager.addCustomer(userID);
                     int userI = manager.getUserID(email, password);
                     manager.addStaff(userI, dob);
                     manager.addlogsregister(userI);
-                    session.setAttribute("user", user);
+                    //session.setAttribute("user", user);
                     request.getRequestDispatcher("admin/admin.jsp").include(request, response);
                 } else {
                     session.setAttribute("emailUsed", "Email has already been used please sign in");
