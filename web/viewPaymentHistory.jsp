@@ -37,35 +37,44 @@
 		</ul>
 	</div>
 	<div class="placeholder"></div>
-        
+
         <div class="search-payment-history-title">
             <h1>Search Payment History</h1>
         </div>
         
-        <div class="search-inputs">
-            <input type="text" placeholder="Enter Payment ID" name="paymentID">
-            <input type="text" placeholder="Enter Payment Date" name="date">
-        </div>
-        <div class="search-btn-container">
-            <button href="" type="submit">Search</button>
-        </div>
-        
+        <form class="search-inputs" action="#" method="POST">
+            <label for="paymentID">PaymentID</label>
+            <input type="text" placeholder="Enter Payment ID" name="paymentID" required>
+            <label for="date">Payment Date</label>
+            <input type="date" placeholder="DD/MM/YYYY" name="date" required>
+            
+            <div class="search-btn-container">
+                <button href="" type="submit">Search</button>
+            </div>
+        </form>
+
         <!-- Payment History table -->
         <table class="payment-history-table">
             <tr class="header">
                 <th>Payment ID</th>
                 <th>Order ID</th>
+                <th>Payment Amount</th>
+                <th>Payment Details</th>
                 <th>Date</th>
             </tr>
             <tr>
                 <td>5465461</td>
                 <td>6548545</td>
-                <td>23/03/2021</td>
+                <td>$532</td>
+                <td>Mastercard 4523215235698745 Expiry Date: 03/2023</td>
+                <td>20/05/2021</td>
             </tr>
             <tr>
                 <td>5445151</td>
                 <td>4545454</td>
-                <td>29/03/2021</td>
+                <td>$328</td>
+                <td>Mastercard 4521569874512365 Expiry Date: 09/2022</td>
+                <td>13/05/2021</td>
             </tr>
         </table>
     </body>

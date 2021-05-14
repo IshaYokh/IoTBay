@@ -239,6 +239,11 @@ footer p{
     padding-top: 76em;
 }
 
+
+button:hover{
+    background-color: #4277CC;
+}
+
 /* Register/login page styles */
 
 .create-account-title{
@@ -487,7 +492,7 @@ order-table, .shipping-table, .payment-table{
     margin-bottom: 1%;
 }
 
-.pay-btn button:hover{
+.pay-btn button:hover, .back-to-cart :hover, .box-buttons a :hover{
     background-color: #4277CC;
 }
 
@@ -567,6 +572,10 @@ order-table, .shipping-table, .payment-table{
     left: 50%;
 }
 
+.save-btn-container :hover, a .cancel-btn-container :hover, a .delete-btn-container :hover{
+    background-color: #4277CC;
+}
+
 .paymentinfo-feedback, .paymentinfo-deletion-feedback, .account-updated-feedback{
     padding-left: 20%;
     padding-right: 20%;
@@ -591,8 +600,32 @@ order-table, .shipping-table, .payment-table{
 
 /* viewPaymentHistory page styles */
 
-.search-inputs input[type=text]{
-    width: 10%;  
+.search-payment-history-title{
+    font-size: 20px;
+    padding-top: 0.1em;
+    padding-bottom: 1%;
+}
+
+.search-inputs label{
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+.search-inputs{
+    width: 10%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-inputs input[type=date], .search-inputs input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 .search-payment-history-title{
@@ -601,11 +634,16 @@ order-table, .shipping-table, .payment-table{
 }
 
 .search-btn-container{
-    margin-bottom: 2%;
+    margin-bottom: 30%;
+    margin-top: 10%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .search-btn-container button{
-    width: 10%;
+    width: 50%;
     background: #173D7B;
     color: white;
     font-size: 20px;
@@ -613,22 +651,33 @@ order-table, .shipping-table, .payment-table{
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    padding: 3%;
+}
+
+.search-btn-container :hover{
+    background-color: #4277CC;
 }
 
 .payment-history-table{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
-    border-collapse: collapse;
-    width: 100%;
+    width: 50%;
     border: 1px solid black;
     font-size: 18px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .payment-history-table th, .payment-history-table td{
     text-align: center;
     padding: 12px;
+}
+
+.payment-history-table th{
+    background-color: #173D7B;
+    color: white;
+    font-weight: 600;
 }
 
 payment-history-table tr{
