@@ -20,12 +20,12 @@ public class PaymentInfoDAO {
     }
     
     // Inserts a PaymentInfo object in the database
-    public void insertPaymentInfo(int paymentInfoID, int userID, String cardHolderName, String cardNumber, String cardExpiryDate, int cardCVC,
+    public void insertPaymentInfo(int userID, String cardHolderName, String cardNumber, String cardExpiryDate, int cardCVC,
             int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country, double credit, String active)
             throws SQLException{
-        String sql = "INSERT INTO iotbay.PaymentInfo (PaymentInfoID, UserID, CardholderName, CardNumber, CardExpiryDate, CardCVC,"
+        String sql = "INSERT INTO iotbay.PaymentInfo (UserID, CardholderName, CardNumber, CardExpiryDate, CardCVC,"
                 + "StreetNumber, StreetName, StreetType, Suburb, State, Postcode, Country, Credit, Active)"
-                + " VALUES ("+paymentInfoID+","+userID+",'"+cardHolderName+"', '"+cardNumber+"', '"+cardExpiryDate+"', "+cardCVC+", "
+                + " VALUES ("+userID+",'"+cardHolderName+"', '"+cardNumber+"', '"+cardExpiryDate+"', "+cardCVC+", "
                 + streetNumber + ", '" + streetName + "', '" + streetType + "', '" + suburb + "', '" + state + "', " + postcode + ", '"
                 + country + "', " + credit + ", '" + active + "')";
         
@@ -79,7 +79,7 @@ public class PaymentInfoDAO {
                 + "CardNumber = '"+cardNumber+"', CardExpiryDate = '"+cardExpiryDate+"', CardCVC = "+cardCVC+", StreetNumber = " + streetNumber
                 + ", StreetName = '" + streetName + "', StreetType = '" + streetType + "', Suburb = '" + suburb + "', State = '" + state +"'"
                 + ", Postcode  = " + postcode + ", Country = '" + country + "'";
-        sql += "WHERE UserID = " + userID;
+        sql += "WHERE UserID = " + userID + " AND Active = 'true'";
 
         st.executeUpdate(sql);
     }
