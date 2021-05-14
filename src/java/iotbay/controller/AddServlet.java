@@ -50,6 +50,7 @@ public class AddServlet extends HttpServlet {
         String postcode = request.getParameter("postcode");
         String country = request.getParameter("country");
         boolean status = Boolean.parseBoolean(request.getParameter("status"));
+        String source = request.getParameter("source");
         Customer customer = new Customer(firstName, lastName,
                                          email, password, phoneNumber,
                                          streetNumber, streetName, streetType,
@@ -60,12 +61,15 @@ public class AddServlet extends HttpServlet {
             session.setAttribute("customer", customer);
             manager.addCustomer(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
             session.setAttribute("added", "add was successful");
-            request.getRequestDispatcher("welcome.jsp").include(request, response);
         } catch (SQLException ex) {  
             Logger.getLogger(EditServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        response.sendRedirect("welcome.jsp");
+        if (source.equals("register")) {
+                request.getRequestDispatcher("welcome.jsp").include(request, response);
+        } else {
+            request.getRequestDispatcher("customerinfo.jsp").include(request, response);
+        }
     }
 }
  

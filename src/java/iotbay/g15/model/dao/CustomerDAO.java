@@ -2,7 +2,6 @@ package iotbay.g15.model.dao;
 
 import iotbay.g15.model.Customer;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /* 
@@ -73,7 +72,7 @@ public class CustomerDAO {
     }
 
     public HashMap<Integer, Customer> fetchCustomer() throws SQLException{
-        String fetch = "select * from CUSTOMER order by id";
+        String fetch = "select * from CUSTOMER order by 1";
         ResultSet rs = st.executeQuery(fetch);
         HashMap<Integer, Customer> customers = new HashMap<>();
 
@@ -98,7 +97,6 @@ public class CustomerDAO {
                                        email, password ,phoneNumber,
                                        streetNumber, streetName, streetType,
                                        suburb, state, postcode, country, status));
-
         }
         
         return customers;

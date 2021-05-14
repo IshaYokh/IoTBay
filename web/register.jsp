@@ -5,6 +5,7 @@
 --%>
 
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,10 +69,25 @@
                 <label for="postcode">Postcode</label>
                 <input type="text" placeholder="Enter Postcode" name="postcode" required>
 
-                <label for="Country">Country</label>
+                <label for="country">Country</label>
                 <input type="text" placeholder="Enter Country" name="country" required>
 
-                <input type="hidden" name="status" value="true" required>
+                <input type="hidden" name="status" value="true">
+                
+                <%
+                    session.setAttribute("source",  request.getParameter("source"));
+                %>
+                <c:choose>
+                    <c:when test="${source == 'customerinfo'}">
+                        <input type="hidden" name="source" value="customerinfo">
+                    </c:when>
+                    <c:otherwise>
+                        <input type="hidden" name="source" value="register">
+                    </c:otherwise>
+                </c:choose>
+                <%
+                    session.removeAttribute("source");
+                %>
 
                 <p>By creating an account you agree to our&nbsp;<a href="#">Terms & Privacy</a></p>
                 <button class="btn-create">Create Account</button>

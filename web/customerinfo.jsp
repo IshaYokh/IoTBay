@@ -43,9 +43,12 @@
         <div>
             <table class="tbl1">
                 <caption class="welcome_title">Customer Information</caption>
-                <input type="search" name="search" placeholder="key word">
+                <input type="search" name="search" placeholder="Please enter a customer's full name.">
                 <input type="submit" name="submit" value="search">
-                <button href="createnewcustomer.jsp" type="submit" class="btn1">Create New Customer</button>
+                <form action="register.jsp">
+                    <input type="hidden" name="source" value="customerinfo">
+                    <button class="btn1">Create New Customer</button>
+                </form>
                 <%--<a href="createnewcustomer.jsp" class="btn1"><li>Create New Customer</a> --%>       
                 <tr class="thead">
                     <td>First Name</td>
@@ -60,11 +63,13 @@
                     <td>Postcode</td>
                     <td>Country</td>
                     <td>Status</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
                 </tr>
                 <c:forEach items="<%=customers%>" var="item">
                     <tr class="last">
                         <c:choose>
-                            <c:when test="1 eq 0">
+                            <c:when test="${1 eq 0}">
                                 
                             </c:when>
                             <c:otherwise>
