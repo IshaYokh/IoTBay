@@ -86,7 +86,9 @@
                         <td>
                             <a class="btn btn-success" href="updateUser.jsp?id=<%=U.getUserID()%>">Update</a>
                             <a class="btn btn-danger" href="deleteUser.jsp?id=<%=U.getUserID()%>">Delete</a>
-                            <a class="btn btn-info" href="/admin/user/upgrade?id=<%=U.getUserID()%>">Upgrade</a>
+                            <a class="btn btn-info" href="upgradeUser.jsp?id=<%=U.getUserID()%>">Upgrade</a>
+                            <a class="btn btn-primary" href="upgradeCustomer.jsp?id=<%=U.getUserID()%>">Manage Customer</a>
+                            
                         </td>
                     </tr>
                     <% }%>

@@ -42,9 +42,9 @@
 
         <div class="container">
             <a href="admin.jsp" class="btn btn-secondary my-4">Go Back</a
-            
+
             <!--Create a form of list of required inputs to create a new user-->
-            
+
             <form method="POST" action="CreateUserServlet">
 
                 <div class="d-flex">
@@ -119,7 +119,7 @@
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">Create User</button>
                 </div>
-                
+
             </form>
 
         </div>

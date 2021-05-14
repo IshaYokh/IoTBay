@@ -7,11 +7,12 @@
 <%@page import="iotbay.g15.model.User"%>
 <%@page import="iotbay.g15.model.dao.UserManagementDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% 
-            String id = request.getParameter("id");
-            UserManagementDAO manager = (UserManagementDAO) session.getAttribute("userManager");
-            // search that user by id
-            User updateUser = manager.getUserById(Integer.parseInt(id));
+<%
+    String id = request.getParameter("id");
+    UserManagementDAO manager = (UserManagementDAO) session.getAttribute("userManager");
+    // search that user by id
+    User updateUser = manager.getUserById(Integer.parseInt(id));
+    String status = (String) session.getAttribute("status");
 %>
 
 <!DOCTYPE html>
@@ -118,6 +119,24 @@
                         <input name="country"  value="<%= updateUser.getCountry()%>" type="text" class="form-control" id="COUNTRY" max="50">
                     </div>    
                 </div>
+
+                <select class="mb-1 mx-auto w-50 form-select" aria-label="Default select example" name="status">
+
+                    <% if (status == null) { %>
+
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <% } else { %>
+                    <% if (status == "active") { %>
+                    <option selected value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <% } else { %>
+                    <option value="active">Active</option>
+                    <option selected value="inactive">Inactive</option>
+                    <%}%>
+
+                    <%}%>
+                </select>
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">Update User</button>

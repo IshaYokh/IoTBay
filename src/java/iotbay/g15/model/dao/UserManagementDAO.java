@@ -5,6 +5,8 @@
  */
 package iotbay.g15.model.dao;
 
+import iotbay.g15.model.Customer;
+import iotbay.g15.model.Staff;
 import iotbay.g15.model.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -116,9 +118,8 @@ public class UserManagementDAO {
                 + "POSTCODE=" + "" + postcode + ","
                 + "COUNTRY=" + "'" + country + "'"
                 + " WHERE USERID=" + userId;
-        
-        
-        System.out.print(SQL);                                      
+
+        System.out.print(SQL);
         st.executeUpdate(SQL);
 
     }
@@ -128,5 +129,62 @@ public class UserManagementDAO {
         String SQL = "DELETE FROM \"USERS\" WHERE USERID=" + id;
         st.executeUpdate(SQL);
     }
-}
 
+    public Staff getStaff(int userID) throws SQLException {
+        String SQL = "SELECT * FROM \"STAFF\" WHERE USERID=" + userID;
+        ResultSet rs = st.executeQuery(SQL);
+        while (rs.next()) {
+            if (userID == rs.getInt("USERID")) {
+                return new Staff(
+                        rs.getInt("USERID"),
+                        rs.getString("DOB"),
+                        rs.getInt("SITEACCESSLEVEL")
+                );
+            }
+        }
+        return null;
+    }
+
+    public void addStaff(int userID, String DOB, int siteAccessLevel) throws SQLException {                   //code for add-operation       
+        st.executeUpdate("INSERT INTO \"STAFF\" (USERID, DOB, SITEACCESSLEVEL) VALUES ("
+                + "" + userID + ", " + " ' " + DOB + " ', " + "" + siteAccessLevel
+                + ")");
+    }
+    
+    public void upgradeStaff(int userID, String DOB, int siteAccessLevel) throws SQLException {                   //code for add-operation         
+        String SQL = "UPDATE \"STAFF\" "
+                + "SET DOB=" + "'" + DOB + "',"
+                + "SITEACCESSLEVEL=" + "" + siteAccessLevel + ""
+                + " WHERE USERID=" + userID;
+
+        st.executeUpdate(SQL);
+    }
+    
+        public Customer getCustomer(int userID) throws SQLException {
+        String SQL = "SELECT * FROM \"CUSTOMER\" WHERE USERID=" + userID;
+        ResultSet rs = st.executeQuery(SQL);
+        while (rs.next()) {
+            if (userID == rs.getInt("USERID")) {
+                return new Customer(
+                        rs.getInt("LOYALTYPOINTS"),
+                        rs.getInt("USERID")
+                );
+            }
+        }
+        return null;
+    }
+
+    public void addCustomer(int userID, int loyaltyPoints) throws SQLException {                   //code for add-operation       
+        st.executeUpdate("INSERT INTO \"CUSTOMER\" (USERID, LOYALTYPOINTS) VALUES ("
+                + "" + userID + ", " + "" + loyaltyPoints
+                + ")");
+    }
+    
+    public void upgradeCustomer(int userID, int loyaltyPoints) throws SQLException {                   //code for add-operation         
+        String SQL = "UPDATE \"CUSTOMER\" "
+                + "SET LOYALTYPOINTS=" + "" + loyaltyPoints + ""
+                + " WHERE USERID=" + userID;
+
+        st.executeUpdate(SQL);
+    }
+}

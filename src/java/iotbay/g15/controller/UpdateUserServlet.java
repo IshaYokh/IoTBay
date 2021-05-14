@@ -42,6 +42,8 @@ public class UpdateUserServlet extends HttpServlet {
         int postcode = Integer.parseInt(request.getParameter("postcode"));
         String country = request.getParameter("country");
         int userId = Integer.parseInt(request.getParameter("id"));
+        String status = request.getParameter("status");
+        session.setAttribute("status", status);
 
         try {
             manager.updateUser(userId, firstName, lastName, email, password,
