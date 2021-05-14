@@ -16,33 +16,32 @@ public class CustomerDAO {
        st = conn.createStatement();   
     }
 
-    //Find user by email and password in the database   
-    public Customer findCustomer(String email, String password) throws SQLException {       
-        String fetch = "select * from ISD.CUSTOMER where EMAIL = '" + email + " and PASSWORD '" + password + "'";
+    //Find user by id in the database   
+    public Customer findCustomer(int id) throws SQLException {       
+        String fetch = "select * from ISD.CUSTOMER where ID = " + id;
         ResultSet rs = st.executeQuery(fetch);
 
-        while (rs.next()){
-            String customerEmail = rs.getString(3);
-            String customerPassword = rs.getString(4);
-            if (customerEmail.equals(email) && customerPassword.equals(password)){
-                String firstName = rs.getString(1);
-                String lastName = rs.getString(2);
-                String phoneNumber = rs.getString(5);
-                String streetNumber = rs.getString(6);
-                String streetName = rs.getString(7);
-                String streetType = rs.getString(8);
-                String suburb = rs.getString(9);
-                String state = rs.getString(10);
-                String postcode = rs.getString(11);
-                String country = rs.getString(12);
-                boolean status = rs.getBoolean(13);
+        if (rs.next()){
+            String firstName = rs.getString(2);
+            String lastName = rs.getString(3);
+            String email = rs.getString(4);
+            String password = rs.getString(5);
+            String phoneNumber = rs.getString(6);
+            String streetNumber = rs.getString(7);
+            String streetName = rs.getString(8);
+            String streetType = rs.getString(9);
+            String suburb = rs.getString(10);
+            String state = rs.getString(11);
+            String postcode = rs.getString(12);
+            String country = rs.getString(13);
+            boolean status = rs.getBoolean(14);
 
-                return new Customer(firstName, lastName,
-                                    email, password, phoneNumber,
-                                    streetNumber, streetName, streetType,
-                                    suburb, state, postcode, country, status);
-            }
+            return new Customer(firstName, lastName,
+                                email, password, phoneNumber,
+                                streetNumber, streetName, streetType,
+                                suburb, state, postcode, country, status);
         }
+        
         return null;   
     }
 
@@ -60,9 +59,20 @@ public class CustomerDAO {
     }
 
     //update a user details in the database   
-    public void updateCustomer(String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) throws SQLException {       
+    public void updateCustomer(int id, String firstName, String lastName, String email, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) throws SQLException {       
         //code for update-operation   
-        st.executeUpdate("UPDATE ISD.Customer SET FIRSTNAME='" + firstName + "', LASTNAME='" + lastName + "', PASSWORD='" + password + "' PHONENUMBER='" + phoneNumber + "' STREETNUMBER='" + streetNumber + "' STREETNAME='" + streetName + "' STREETTYPE='" + streetType + "' SUBURB='" + suburb + "' STATE='" + state + "' POSTCODE='" + postcode + "' COUNTRY='" + country + "', WHERE EMAIL='" + email + "',");
+        st.executeUpdate("UPDATE ISD.Customer SET FIRSTNAME='" + firstName +
+                                              "', LASTNAME='" + lastName +
+                                              "', EMAIL='" + email +
+                                              "', PHONENUMBER='" + phoneNumber +
+                                              "', STREETNUMBER='" + streetNumber +
+                                              "', STREETNAME='" + streetName +
+                                              "', STREETTYPE='" + streetType +
+                                              "', SUBURB='" + suburb +
+                                              "', STATE='" + state +
+                                              "', POSTCODE='" + postcode +
+                                              "', COUNTRY='" + country +
+                         "' WHERE ID=" + id);
     }       
 
     //delete a user from the database   

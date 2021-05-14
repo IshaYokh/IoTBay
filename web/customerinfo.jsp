@@ -18,15 +18,6 @@
         <title>Customer Information</title>
     </head>
     <body>
-        <%
-            CustomerDAO cd = (CustomerDAO)session.getAttribute("manager");
-            HashMap<Integer, Customer> customers = cd.fetchCustomer();
-            
-//            session.setAttribute("customerEdit", 0);
-//            if (request.getParameter("editCustomer") != null) {
-//                session.setAttribute("customerEdit", request.getParameter("editCustomer"));
-//            }
-        %>
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
@@ -66,6 +57,10 @@
                     <td>Edit</td>
                     <td>Delete</td>
                 </tr>
+                <%
+                    CustomerDAO cd = (CustomerDAO)session.getAttribute("manager");
+                    HashMap<Integer, Customer> customers = cd.fetchCustomer();
+                %>
                 <c:forEach items="<%=customers%>" var="item">
                     <tr class="last">
                         <c:choose>
@@ -86,9 +81,9 @@
                                 <td><p>${item.value.getCountry()}</p></td>
                                 <td><p>${item.value.getStatus()}</p></td>
                                 <td>
-                                    <form onsubmit="setTimeout(function () {window.location.reload();}, 3)">
-                                        <input type="submit" value="edit">
-                                        <input type="hidden" name="editCustomer" value="${item.key}">
+                                    <form action="updatecustomer.jsp">
+                                        <input type="hidden" name="edit" value="${item.key}">
+                                        <button>edit</button>
                                     </form>
                                 </td>
                                 <td>
