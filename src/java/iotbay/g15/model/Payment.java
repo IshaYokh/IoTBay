@@ -8,15 +8,16 @@ import java.io.Serializable;
  */
 public class Payment implements Serializable{
     private int paymentID;
+    private int orderID;
+    private int paymentInfoID;
     private String invoice;
-    private String paymentMethod;
     private String paymentDate;
-    private float paymentAmount;
+    private double paymentAmount;
 
-    public Payment(int paymentID, String invoice, String paymentMethod, String paymentDate, float paymentAmount) {
+    public Payment(int paymentID, int orderID, int paymentInfoID, String paymentDate, double paymentAmount) {
         this.paymentID = paymentID;
-        this.invoice = invoice;
-        this.paymentMethod = paymentMethod;
+        this.orderID = orderID;
+        this.paymentInfoID = paymentInfoID;
         this.paymentDate = paymentDate;
         this.paymentAmount = paymentAmount;
     }
@@ -27,22 +28,22 @@ public class Payment implements Serializable{
 
     public void setPaymentID(int paymentID) {
         this.paymentID = paymentID;
+    }    
+    
+    public int getOrderID() {
+        return this.orderID;
     }
 
-    public String getInvoice() {
-        return invoice;
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
     }
-
-    public void setInvoice(String invoice) {
-        this.invoice = invoice;
+    
+    public int getPaymentInfoID(){
+        return this.paymentInfoID;
     }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    
+    public void setPaymentInfoID(int paymentInfoID){
+        this.paymentInfoID = paymentInfoID;
     }
 
     public String getPaymentDate() {
@@ -53,11 +54,11 @@ public class Payment implements Serializable{
         this.paymentDate = paymentDate;
     }
 
-    public float getPaymentAmount() {
+    public double getPaymentAmount() {
         return paymentAmount;
     }
 
-    public void setPaymentAmount(float paymentAmount) {
+    public void setPaymentAmount(double paymentAmount) {
         this.paymentAmount = paymentAmount;
     }
 }
