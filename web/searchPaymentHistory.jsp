@@ -4,6 +4,9 @@
     Author     : Isha Yokhanna
 --%>
 
+<%@page import="iotbay.g15.model.PaymentInfo"%>
+<%@page import="iotbay.g15.model.Payment"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
@@ -54,6 +57,10 @@
         </form>
 
         <!-- Payment History table -->
+        <%
+            ArrayList<Payment> payments = (ArrayList<Payment>)session.getAttribute("payments");
+            ArrayList<PaymentInfo> paymentInfos = (ArrayList<PaymentInfo>)session.getAttribute("paymentInfos");
+        %>
         <table class="payment-history-table">
             <tr class="header">
                 <th>Payment ID</th>
@@ -62,20 +69,28 @@
                 <th>Payment Details</th>
                 <th>Date</th>
             </tr>
+            
+            <%
+                try{
+                    for(Payment payment : payments){
+                        for(PaymentInfo paymentInfo : paymentInfos){
+            %>
             <tr>
-                <td>5465461</td>
-                <td>6548545</td>
-                <td>$532</td>
-                <td>Mastercard 4523215235698745 Expiry Date: 03/2023</td>
-                <td>20/05/2021</td>
+                <td><%= payment.getPaymentID()%></td>
+                <td><%= payment.getOrderID()%></td>
+                <td><%= payment.getPaymentAmount()%></td>
+                
+                <% if(paymentInfo.getPaymentInfoID() == payment.getPaymentInfoID()){%>
+                
+                <td><%paymentInfo.getPaymentInfoID();%></td>
+                
+                <%}%>
+                <td><%= payment.getPaymentDate()%></td>
             </tr>
-            <tr>
-                <td>5445151</td>
-                <td>4545454</td>
-                <td>$328</td>
-                <td>Mastercard 4521569874512365 Expiry Date: 09/2022</td>
-                <td>13/05/2021</td>
-            </tr>
+            
+            <%}}}catch(NullPointerException e){%>
         </table>
+        <h1 class="empty-msg">Your payment history is empty!</h1>
+            <%}%>
     </body>
 </html>

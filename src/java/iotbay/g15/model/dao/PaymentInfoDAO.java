@@ -33,14 +33,14 @@ public class PaymentInfoDAO {
     }
     
     // Returns a list of all PaymentInfo instances from the database
-    public List<PaymentInfo> listAllPaymentInfos() throws SQLException{
-        List<PaymentInfo> paymentInfos = new ArrayList<>();
-        String sql = "SELECT * FROM PaymentInfo";
+    public ArrayList<PaymentInfo> listAllPaymentInfos(int userID) throws SQLException{
+        ArrayList<PaymentInfo> paymentInfos = new ArrayList<>();
+        String sql = "SELECT * FROM PaymentInfo WHERE UserID = " + userID;
         ResultSet resultSet = st.executeQuery(sql);
         
         while(resultSet.next()){
             int paymentInfoID = resultSet.getInt("PaymentInfoID");
-            int userID = resultSet.getInt("UserID");
+            userID = resultSet.getInt("UserID");
             String cardholderName = resultSet.getString("CardholderName");
             String cardNumber = resultSet.getString("CardNumber");
             String cardExpiryDate = resultSet.getString("CardExpiryDate");

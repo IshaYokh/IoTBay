@@ -20,29 +20,30 @@ public class PaymentDAO {
     }
     
     // Inserts a payment object in the database
-    public void insertPayment(int paymentID, int orderID, int paymentInfoID, String paymentDate, double paymentAmount) throws SQLException{
+    public void insertPayment(int paymentID, int orderID, int paymentInfoID, int userID, String paymentDate, double paymentAmount) throws SQLException{
         java.sql.Date paymentD = java.sql.Date.valueOf(paymentDate);
         
-        String sql = "INSERT INTO iotbay.Payment (PaymentID, OrderID, PaymentInfoID, PaymentDate, PaymentAmount)"
-                + " VALUES (" + paymentID + ", " + orderID + ", " + paymentInfoID + ", " + paymentD + ", " + paymentAmount + ")";
+        String sql = "INSERT INTO iotbay.Payment (PaymentID, OrderID, PaymentInfoID, UserID, PaymentDate, PaymentAmount)"
+                + " VALUES (" + paymentID + ", " + orderID + ", " + paymentInfoID + ", " + userID + ", " + paymentD + ", " + paymentAmount + ")";
         
         st.executeUpdate(sql);
     }
     
-    // Returns a list of all payment instances from the database
-    public List<Payment> listAllPaymentInfos() throws SQLException{
-        List<Payment> payments = new ArrayList<>();
-        String sql = "SELECT * FROM Payment";
+    // Returns a list of all payment instances from the database based on userID
+    public ArrayList<Payment> listAllPaymentInfos(int userID) throws SQLException{
+        ArrayList<Payment> payments = new ArrayList<>();
+        String sql = "SELECT * FROM Payment WHERE UserID = " + userID;
         ResultSet resultSet = st.executeQuery(sql);
         
         while(resultSet.next()){
             int paymentID = resultSet.getInt("PaymentID");
             int orderID = resultSet.getInt("OrderID");
             int paymentInfoID = resultSet.getInt("PaymentInfoID");
+            userID = resultSet.getInt("UserID");
             String paymentDate = resultSet.getDate("PaymentDate").toString();
             double paymentAmount = resultSet.getDouble("PaymentAmount");
             
-            Payment payment = new Payment(paymentID, orderID, paymentInfoID, paymentDate, paymentAmount);
+            Payment payment = new Payment(paymentID, orderID, paymentInfoID, userID, paymentDate, paymentAmount);
             payments.add(payment);
         }
         
@@ -56,7 +57,7 @@ public class PaymentDAO {
     }
     
     // Updates a specified instances of Payment in the database
-     public void updatePayment(int paymentID, int orderID, int paymentInfoID, String paymentDate, double paymentAmount) throws SQLException{
+     public void updatePayment(int paymentID, String paymentDate, double paymentAmount) throws SQLException{
           String sql = "UPDATE iotbay.Payment SET PaymentDate = '" + paymentDate + "', PaymentAmount = " + paymentAmount;
           sql += "WHERE PaymentID = " + paymentID;
           
@@ -64,9 +65,10 @@ public class PaymentDAO {
      }
      
      // Returns an instances of Payment from the database based on the PaymentID
-     public Payment getPayment(int paymentID) throws SQLException{
+     public Payment getPayment(int paymentID, String paymentDate) throws SQLException{
         Payment payment = null;
-        String sql = "SELECT * FROM iotbay.Payment WHERE paymentID = " + paymentID;
+        java.sql.Date paymentDt = java.sql.Date.valueOf(paymentDate);
+        String sql = "SELECT * FROM iotbay.Payment WHERE paymentID = " + paymentID + " AND PaymentDate = '" + paymentDt + "'";
         
         ResultSet resultSet = st.executeQuery(sql);
         
@@ -74,10 +76,11 @@ public class PaymentDAO {
             paymentID = resultSet.getInt("PaymentID");
             int orderID = resultSet.getInt("OrderID");
             int paymentInfoID = resultSet.getInt("PaymentInfoID");
-            String paymentDate = resultSet.getDate("PaymentDate").toString();
+            int userID = resultSet.getInt("UserID");
+            String paymentD = resultSet.getDate("PaymentDate").toString();
             double paymentAmount = resultSet.getDouble("PaymentAmount");
             
-            payment = new Payment(paymentID, orderID, paymentInfoID, paymentDate, paymentAmount);
+            payment = new Payment(paymentID, orderID, paymentInfoID, userID, paymentD, paymentAmount);
         }
         
         return payment;

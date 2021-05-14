@@ -123,8 +123,8 @@
             <br/>
             <br/>
             
-            <a href="viewPaymentHistory.jsp">
-                <button class="view-payment-history-btn">
+            <a href="ViewPaymentHistoryServlet">
+                <button class="search-payment-history-btn">
                     <i class="fas fa-history"></i> &nbsp;Search Payment History
                 </button>
             <a/>

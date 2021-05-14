@@ -10,14 +10,16 @@ public class Payment implements Serializable{
     private int paymentID;
     private int orderID;
     private int paymentInfoID;
+    private int userID;
     private String invoice;
     private String paymentDate;
     private double paymentAmount;
 
-    public Payment(int paymentID, int orderID, int paymentInfoID, String paymentDate, double paymentAmount) {
+    public Payment(int paymentID, int orderID, int paymentInfoID, int userID, String paymentDate, double paymentAmount) {
         this.paymentID = paymentID;
         this.orderID = orderID;
         this.paymentInfoID = paymentInfoID;
+        this.userID = userID;
         this.paymentDate = paymentDate;
         this.paymentAmount = paymentAmount;
     }
@@ -44,6 +46,14 @@ public class Payment implements Serializable{
     
     public void setPaymentInfoID(int paymentInfoID){
         this.paymentInfoID = paymentInfoID;
+    }
+    
+    public int getUserID(){
+        return this.userID;
+    }
+    
+    public void setUserID(int userID){
+        this.userID = userID;
     }
 
     public String getPaymentDate() {

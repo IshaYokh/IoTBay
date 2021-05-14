@@ -67,6 +67,10 @@
         <servlet-name>addPaymentInfoFromCheckoutServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.addPaymentInfoFromCheckoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewPaymentHistoryServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.ViewPaymentHistoryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -130,6 +134,10 @@
     <servlet-mapping>
         <servlet-name>addPaymentInfoFromCheckoutServlet</servlet-name>
         <url-pattern>/addPaymentInfoFromCheckoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewPaymentHistoryServlet</servlet-name>
+        <url-pattern>/ViewPaymentHistoryServlet</url-pattern>
     </servlet-mapping>
 
     <session-config>
