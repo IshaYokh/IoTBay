@@ -33,11 +33,49 @@
         <div class="placeholder"></div>
         <%
             String accupdated = (String) session.getAttribute("accupdated");
+            String url = "main.jsp";
+            String pageName = "account page";
+            String redirectedFromCheckout = "false";
         %>
 
         <div class="form" id="createForm">
             <form action="AccountDetailsServlet" method="post" class="form-container-register">
-                <h1 class="create-account-title"><%=(accupdated != null ? accupdated : "Update Account")%></h1>
+                
+                <%
+                    try{
+                        redirectedFromCheckout = (String) session.getAttribute("redirectedFromCheckout");
+                        if(redirectedFromCheckout.equals("true") && accupdated != null){
+                            url = "checkout.jsp";
+                            pageName = "checkout page";
+                %>
+                <div class="account-updated-feedback">
+                    <h1 class="create-account-title"><%=(accupdated != null ? accupdated : "Update Account")%> <a href="<%= url%>">Return to <%= pageName%></a></h1>
+                </div>
+                
+                <%
+                        session.removeAttribute("redirectedFromCheckout"); 
+                    }else{
+                       
+                %>
+                
+                <div class="update-account">
+                    <h1 class="create-account-title"><%=(accupdated != null ? accupdated : "Update Account")%></h1>
+                </div>
+                
+                <%}%>
+                
+                <%
+                    }catch(NullPointerException e){
+                %>
+                
+                <div class="update-account">
+                    <h1 class="create-account-title"><%=(accupdated != null ? accupdated : "Update Account")%></h1>
+                </div>
+                    
+                <%} 
+                    session.removeAttribute("accupdated");
+                %>
+                
 
                 <label for="fname">First Name</label>
                 <input type="text" value= "<%= user.getFirstName()%>" name="fname" >

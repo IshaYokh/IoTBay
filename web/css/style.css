@@ -567,12 +567,12 @@ order-table, .shipping-table, .payment-table{
     left: 50%;
 }
 
-.paymentinfo-feedback, .paymentinfo-deletion-feedback{
+.paymentinfo-feedback, .paymentinfo-deletion-feedback, .account-updated-feedback{
     padding-left: 20%;
     padding-right: 20%;
 }
 
-.paymentinfo-feedback h1, .paymentinfo-deletion-feedback h1{
+.paymentinfo-feedback h1, .paymentinfo-deletion-feedback h1, .account-updated-feedback h1{
     background-color: rgba(39, 174, 96, 0.5);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
@@ -582,7 +582,7 @@ order-table, .shipping-table, .payment-table{
     font-weight: 5;
 }
 
-.paymentinfo-feedback h1 a, .paymentinfo-deletion-feedback h1 a{
+.paymentinfo-feedback h1 a, .paymentinfo-deletion-feedback h1 a, .account-updated-feedback h1 a{
     color: blue;
     font-size: 20px;
     text-decoration: underline;
