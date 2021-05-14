@@ -57,7 +57,7 @@ public class UpdatePaymentInfoServlet extends HttpServlet{
         }
         
         session.setAttribute("paymentInfoUpdateFeedback", "success");
-        response.sendRedirect("ViewPaymentInfoServlet");
+        request.getRequestDispatcher("updatePaymentInfo.jsp").include(request, response);
     }
     
 }

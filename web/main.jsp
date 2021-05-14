@@ -15,6 +15,7 @@
     </head>	
     <body>
         <jsp:include page="/ConfirmUserPaymentInfoServlet"/>
+        <jsp:include page="/ViewPaymentInfoServlet"/>
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
@@ -30,6 +31,28 @@
             </ul>
         </div>
         <div class="placeholder"></div>
+        
+        <% 
+            String checkoutActive = "false";
+            try{
+                checkoutActive = (String)session.getAttribute("checkoutActive");
+                if(checkoutActive.equals("true")){
+        %>
+                
+        <div class="unprocessed-paymentInfo-feedback">
+            <h1><i class="fas fa-exclamation-triangle"></i> You still have unprocessed payment in checkout
+                <a href="checkout.jsp">click here to return to checkout</a></h1>
+        </div>
+        
+        <%
+                }}catch(NullPointerException e){
+        %>
+        
+        <div class="placeholder"></div>
+        <div class="placeholder"></div>
+        
+        <% } %>
+        
         <div class="welcome_title">
             <span> Welcome back <%= accountName%>!</span>
 	</div>
@@ -70,7 +93,7 @@
                 }else{
             %>
 
-            <a href="ViewPaymentInfoServlet">
+            <a href="updatePaymentInfo.jsp">
                 <button class="add-paymentinfo-btn">
                     <i class="far fa-credit-card"></i> &nbsp;View/Update/Delete Payment Information
                 </button>

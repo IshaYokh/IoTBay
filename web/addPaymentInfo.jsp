@@ -42,17 +42,41 @@
         <!-- PaymentInfo addition feedback box -->
         <% 
             String userName = user.getFirstName();
+            String url = "main.jsp";
+            String pageName = "account page";
+            String cancelButtonUrl = "main.jsp";
             try{
                 String paymentInfoAddFeedback = (String)session.getAttribute("paymentInfoAddFeedback");
+                
+                try{
+                        String redirectedFromCheckout = (String)session.getAttribute("redirectedFromCheckout");
+                        if(redirectedFromCheckout.equals("true")){
+                            cancelButtonUrl = "checkout.jsp";
+                        }
+                    }catch(NullPointerException ex){
+                    }
+                
                 if(paymentInfoAddFeedback.equals("success")){ 
                     session.setAttribute("userHasPaymentInfo", "true");
                     session.removeAttribute("paymentInfoAddFeedback");
+                    
+                    try{
+                        String redirectedFromCheckout = (String)session.getAttribute("redirectedFromCheckout");
+                        if(redirectedFromCheckout.equals("true")){
+                            url = "checkout.jsp";
+                            pageName = "checkout page";
+                            cancelButtonUrl = "checkout.jsp";
+                        }
+                    }catch(NullPointerException ex){
+                    }
         %> 
             <div class="paymentinfo-feedback">
-                <h1>Thanks <%= userName%>! your payment information has been added successfully! <a href="main.jsp">Return to account page</a></h1>
+                <h1>Thanks <%= userName%>! your payment information has been added successfully! <a href="<%= url%>">Return to <%= pageName%></a></h1>
             </div>
         <%
-            }}
+            }
+                session.removeAttribute("redirectedFromCheckout");
+            }
             catch(NullPointerException ex){
             }
         %>
@@ -101,7 +125,7 @@
                 <button type="submit">Save</button>
               </div>
             </form>
-            <a href="main.jsp">
+            <a href="<%= cancelButtonUrl%>">
                 <div class="cancel-btn-container">
                     <button type="submit">Cancel</button>
                 </div>

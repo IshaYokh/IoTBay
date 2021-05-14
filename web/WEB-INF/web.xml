@@ -55,6 +55,18 @@
         <servlet-name>DeletePaymentInfoServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.DeletePaymentInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>updatePaymentInfoFromCheckoutServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.updatePaymentInfoFromCheckoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateAccDetailsFromCheckoutServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.updateAccDetailsFromCheckoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addPaymentInfoFromCheckoutServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.addPaymentInfoFromCheckoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -107,6 +119,19 @@
         <servlet-name>DeletePaymentInfoServlet</servlet-name>
         <url-pattern>/DeletePaymentInfoServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updatePaymentInfoFromCheckoutServlet</servlet-name>
+        <url-pattern>/updatePaymentInfoFromCheckoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateAccDetailsFromCheckoutServlet</servlet-name>
+        <url-pattern>/updateAccDetailsFromCheckoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addPaymentInfoFromCheckoutServlet</servlet-name>
+        <url-pattern>/addPaymentInfoFromCheckoutServlet</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
 

@@ -37,6 +37,7 @@ public class DeletePaymentInfoServlet extends HttpServlet{
         }
         
         session.setAttribute("paymentInfoDeleted", "success");
+        session.removeAttribute("paymentInfo");
         request.getRequestDispatcher("deletePaymentInfo.jsp").include(request, response);
     }
 }

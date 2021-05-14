@@ -22,7 +22,7 @@ import iotbay.g15.model.*;
  * 
  */
 public class ViewPaymentInfoServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         PaymentInfo paymentInfo = null;
@@ -35,7 +35,6 @@ public class ViewPaymentInfoServlet extends HttpServlet {
         }
         
         session.setAttribute("paymentInfo", paymentInfo);
-        request.getRequestDispatcher("updatePaymentInfo.jsp").include(request, response);
     }
     
 }

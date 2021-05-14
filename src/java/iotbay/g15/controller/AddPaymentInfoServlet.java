@@ -55,6 +55,8 @@ public class AddPaymentInfoServlet extends HttpServlet{
                     paymentInfo.getStreetNumber(), paymentInfo.getStreetName(), paymentInfo.getStreetType(),
                     paymentInfo.getSuburb(), paymentInfo.getState(), paymentInfo.getPostcode(), paymentInfo.getCountry(),
                     500.00, "true");
+            paymentInfo = paymentInfoDBmanager.getPaymentInfo(user.getID());
+            
         }
         catch (SQLException ex){
             Logger.getLogger(AddPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,6 +64,7 @@ public class AddPaymentInfoServlet extends HttpServlet{
         
         // Storing feedback message of data insertion and redirecting the web page
         session.setAttribute("paymentInfoAddFeedback", "success");
+        session.setAttribute("paymentInfo", paymentInfo);
         request.getRequestDispatcher("addPaymentInfo.jsp").include(request, response);
     }
 }

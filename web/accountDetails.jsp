@@ -33,7 +33,6 @@
         <div class="placeholder"></div>
         <%
             String accupdated = (String) session.getAttribute("accupdated");
-
         %>
 
         <div class="form" id="createForm">

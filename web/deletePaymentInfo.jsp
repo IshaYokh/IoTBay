@@ -39,14 +39,27 @@
         
         <%
             String paymentInfoDeleted = (String)session.getAttribute("paymentInfoDeleted");
+            String redirectedFromCheckout = "false";
+            String pageName = "account page";
+            String pageUrl = "main.jsp";
             if(paymentInfoDeleted.equals("success")){
+                try{
+                    redirectedFromCheckout = (String) session.getAttribute("redirectedFromCheckout");
+                    if(redirectedFromCheckout.equals("true")){
+                        pageName = "checkout page";
+                        pageUrl = "checkout.jsp";
+                    }
         %>
+        
+        <% }catch(NullPointerException e){}%>
+        
         <div class="paymentinfo-deletion-feedback">
-            <h1>Thanks <%= user.getFirstName()%>! your payment information has been deleted successfully! <a href="main.jsp">Return to account page</a></h1>
-        </div>
+            <h1>Thanks <%= user.getFirstName()%>! your payment information has been deleted successfully! <a href="<%= pageUrl%>">Return to <%= pageName%></a></h1>
+        </div>     
         
         <%
                 session.setAttribute("userHasPaymentInfo", "false");
+                session.removeAttribute("redirectedFromCheckout");
             }
         %>
     </body>

@@ -287,7 +287,7 @@ input[type=text], input[type=password], input[type=month] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-  }
+}
 
 .already-have-account{
     text-align: center;
@@ -308,7 +308,7 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
     z-index: 0;
-  }
+}
 
 .form-container-login h1{
     text-align: center;
@@ -330,13 +330,14 @@ input[type=text], input[type=password] {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
- }
+}
 
 .btns-container{
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
+    margin-top: 3%;
+    margin-bottom: 2%;
     text-align: center;
 }
 
@@ -375,33 +376,88 @@ input[type=text], input[type=password] {
 
 /* Checkout and viewPaymentInfopage styles */
 
-.checkout-header, .order-summary, .payment-details, .shipping-details, .billingaddress-details, .card-details{
-    font-family: Arial, Helvetica, sans-serif;
-    width: 30%;
-    height: 50%;
-    background: #FFFFFF;
-    box-sizing: border-box;
+.checkout-header{
+    font-size: 45px;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.order-border, .shipping-border, .payment-border{
+    border: 1px solid #b2bec3;
+    border-radius: 15px;
+    width: 100%;
+    margin-top: 2%;
+    padding: 1%;
+}
+
+.table-container{
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+    width: 50%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 2em;
-    font-size: 35px;
-    text-align: left;
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.order-table, .shipping-table, .payment-table{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+order-table, .shipping-table, .payment-table{
+    border-collapse: collapse;
+    margin-bottom: 5%;
+}
+
+.order-table td.right, .shipping-table td.right, .payment-table td.right{
+    text-align: right;
+}
+
+.table-container td{
+    border: none;
 }
 
 .ordersummary-header, .paymentdetails-header, .shippingdetails-header{
-    font-size: 20px;
+    font-size: 1.3em;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
 }
 
-.order-summary, .payment-details, .shipping-details, .billingaddress-details, .card-details{
-    font-size: 18px;
-    border-style: solid;
+.ordersummary-header{
+    margin-top: 3%;
+}
+
+.box-buttons{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    text-align: center;
+}
+
+.box-buttons button{
+    background-color: #173D7B;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
     border-radius: 5px;
-    border-width: thin;
-    padding: 5px;
-}
-
-.shipping-details, .payment-details{
-    margin-top: 3em;
+    width: 20%;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .pay-btn, .back-to-cart{
@@ -437,16 +493,34 @@ input[type=text], input[type=password] {
 
 .back-to-cart{
     margin-top: 2em;
+    width: 70%;
 }
 
-.back-to-cart button{
-    padding: 5px 10px;
-    font-size: 15px;
-    border-radius: 2px;
-    width: 15em;
+.no-paymentInfo-feedback, .unprocessed-paymentInfo-feedback{
+    font-size: 18px;
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 5%;
 }
 
-/* updatePaymentInfo and addPaymentInfo page styles */
+.unprocessed-paymentInfo-feedback h1{
+    padding-top: 5%;
+}
+
+.unprocessed-paymentInfo-feedback{
+    width: 50%;
+    padding: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.no-paymentInfo-feedback a, .unprocessed-paymentInfo-feedback a{
+    color: #1135ad;
+    text-decoration: underline;
+}
+
+/* updatePaymentInfo, addPaymentInfo and accountdetails page styles */
 
 
 .billing-address-title, .card-details-title, .paymentinfo-feedback h1, .paymentinfo-deletion-feedback h1{
@@ -566,16 +640,16 @@ payment-history-table tr{
 }
 
 .my-custom-scrollbar {
-        position: fixed;
-        height: 500px;
-        overflow: auto;
-        top: 20%;
-        left: 20%;
-        width: 60%;
-        
+    position: fixed;
+    height: 500px;
+    overflow: auto;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+
 }
 .table-wrapper-scroll-y {
-        display: block;
+    display: block;
 }
 .log-table{    
 }

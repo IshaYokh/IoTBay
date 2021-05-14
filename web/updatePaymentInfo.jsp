@@ -16,6 +16,7 @@
         <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <jsp:include page="/ViewPaymentInfoServlet"/>
         <!-- Navbar -->
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
@@ -43,17 +44,41 @@
         <!-- PaymentInfo update feedback box -->
         <% 
             String userName = user.getFirstName();
+            String url = "main.jsp";
+            String pageName = "account page";
+            String cancelButtonUrl = "main.jsp";
             try{
                 String paymentInfoUpdateFeedback = (String)session.getAttribute("paymentInfoUpdateFeedback");
+                
+                try{
+                        String redirectedFromCheckout = (String)session.getAttribute("redirectedFromCheckout");
+                        if(redirectedFromCheckout.equals("true")){
+                            cancelButtonUrl = "checkout.jsp";
+                        }
+                    }catch(NullPointerException ex){
+                    }
+                
                 if(paymentInfoUpdateFeedback.equals("success")){ 
                     session.setAttribute("userHasPaymentInfo", "true");
                     session.removeAttribute("paymentInfoUpdateFeedback");
+                    
+                    try{
+                        String redirectedFromCheckout = (String)session.getAttribute("redirectedFromCheckout");
+                        if(redirectedFromCheckout.equals("true")){
+                            url = "checkout.jsp";
+                            pageName = "checkout page";
+                            cancelButtonUrl = "checkout.jsp";
+                        }
+                    }catch(NullPointerException ex){
+                    }
         %> 
             <div class="paymentinfo-feedback">
-                <h1>Thanks <%= userName%>! your payment information has been updated successfully! <a href="main.jsp">Return to account page</a></h1>
+                <h1>Thanks <%= userName%>! your payment information has been updated successfully! <a href="<%= url%>">Return to <%= pageName%></a></h1>
             </div>
         <%
-            }}
+            }
+                session.removeAttribute("redirectedFromCheckout");
+            }
             catch(NullPointerException ex){
             }
         %>
@@ -112,7 +137,7 @@
                     <button type="submit">Delete</button>
                 </div>
             </a>
-            <a href="main.jsp">
+            <a href="<%= cancelButtonUrl%>">
                 <div class="cancel-btn-container">
                     <button type="submit">Cancel</button>
                 </div>
