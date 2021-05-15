@@ -71,6 +71,10 @@
         <servlet-name>ViewPaymentHistoryServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.ViewPaymentHistoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchPaymentHistoryServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.SearchPaymentHistoryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -138,6 +142,10 @@
     <servlet-mapping>
         <servlet-name>ViewPaymentHistoryServlet</servlet-name>
         <url-pattern>/ViewPaymentHistoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchPaymentHistoryServlet</servlet-name>
+        <url-pattern>/SearchPaymentHistoryServlet</url-pattern>
     </servlet-mapping>
 
     <session-config>

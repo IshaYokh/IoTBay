@@ -76,7 +76,7 @@
             <br/>
             
             <%
-                // Validating if a user has payment info records to decide wether to display add or edit payment info
+                // checking if a user has payment info records to decide wether to display add or edit payment info
                 
                 try{
                     String userHasPaymentInfo = (String)session.getAttribute("userHasPaymentInfo");

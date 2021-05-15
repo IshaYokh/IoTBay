@@ -50,6 +50,27 @@ public class PaymentDAO {
         return payments;
     }
     
+    // Returns a list of all payment instances from the database based on paymentID and date
+    public ArrayList<Payment> listAllPaymentInfos(int paymentID, String paymentDate) throws SQLException{
+        ArrayList<Payment> payments = new ArrayList<>();
+        String sql = "SELECT * FROM iotbay.Payment WHERE PaymentID = " + paymentID + " AND PaymentDate = '" + paymentDate + "'";
+        ResultSet resultSet = st.executeQuery(sql);
+        
+        while(resultSet.next()){
+            paymentID = resultSet.getInt("PaymentID");
+            int orderID = resultSet.getInt("OrderID");
+            int paymentInfoID = resultSet.getInt("PaymentInfoID");
+            int userID = resultSet.getInt("UserID");
+            paymentDate = resultSet.getDate("PaymentDate").toString();
+            double paymentAmount = resultSet.getDouble("PaymentAmount");
+
+            Payment payment = new Payment(paymentID, orderID, paymentInfoID, userID, paymentDate, paymentAmount);
+            payments.add(payment);
+        }
+        
+        return payments;
+    }
+    
     // Deletes payment from database
     public void deletePayment(int paymentID) throws SQLException{
         String sql = "DELETE FROM iotbay.Payment WHERE paymentID = " + paymentID;

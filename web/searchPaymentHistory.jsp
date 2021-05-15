@@ -4,6 +4,7 @@
     Author     : Isha Yokhanna
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="iotbay.g15.model.PaymentInfo"%>
 <%@page import="iotbay.g15.model.Payment"%>
 <%@page import="java.util.ArrayList"%>
@@ -46,7 +47,7 @@
             <h1>Search Payment History</h1>
         </div>
         
-        <form class="search-inputs" action="#" method="POST">
+        <form class="search-inputs" action="SearchPaymentHistoryServlet" method="POST">
             <label for="paymentID">PaymentID</label>
             <input type="text" placeholder="Enter Payment ID" name="paymentID" required>
             <label for="date">Payment Date</label>
@@ -72,6 +73,10 @@
             </tr>
             
             <%
+                if(payments.size() == 0){%>
+                    <h1 class="empty-msg">Your payment history is empty!</h1>
+            
+            <%  }else{
                 try{
                     for(Payment payment : payments){
                         for(PaymentInfo paymentInfo : paymentInfos){    
@@ -79,7 +84,8 @@
             <tr>
                 <td><%= payment.getPaymentID()%></td>
                 <td><%= payment.getOrderID()%></td>
-                <td>$<%= payment.getPaymentAmount()%></td>
+                <%DecimalFormat decimalFormat = new DecimalFormat("0.00");%>
+                <td>$<%= decimalFormat.format(payment.getPaymentAmount())%></td>
                 
                 <% if(paymentInfo.getPaymentInfoID() == payment.getPaymentInfoID()){ 
                    String paymentDate = payment.getPaymentDate().substring(8,10) + "/" + payment.getPaymentDate().substring(5,7)
@@ -92,9 +98,10 @@
                 <td><%= paymentDate%></td>
             </tr>
             
-            <%}}}}catch(NullPointerException e){%>
+            <%}}}}catch(NullPointerException e){}}
+            
+                session.removeAttribute("payments");
+            %>
         </table>
-        <h1 class="empty-msg">Your payment history is empty!</h1>
-            <%}%>
     </body>
 </html>
