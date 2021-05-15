@@ -1,8 +1,9 @@
 <%-- 
-    Document   : productsPage
-    Created on : 25/04/2021, 8:28:10 PM
+    Document   : itemPage
+    Created on : 12/05/2021, 9:46:06 PM
     Author     : Austin
 --%>
+
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
@@ -38,43 +39,40 @@
 	</div>
 	<div class="placeholder"></div>
         <div class="placeholder"></div>
-        <div class="catalogue-container">
-            <a href="itemPage.jsp">
-                <div class="catalogue-item">
-                    <img src="" alt="Item">
-                    <div class="catalogue-item-text-left">
-                        <h1>Item</h1>
-                        <p>$10.00 AUD</p>
-                    </div>
-                    <div class="catalogue-item-text-right">
-                        <p>10 in stock</p>
-                    </div>
+        <div class="item">
+            <div class="item-top">
+                <a href="productsPage.jsp">Back to Catalogue</a>
+            </div>
+            <div class="item-left">
+                <img src="" alt="Item">
+            </div>
+            <div class="item-right">
+                <h1>Item</h1>
+                <div class="item-inline">
+                    <h2>$10.00</h2><p> / Item</p>
                 </div>
-            </a>
-        <a href="itemPage.jsp">
-                <div class="catalogue-item">
-                    <img src="" alt="Item">
-                    <div class="catalogue-item-text-left">
-                        <h1>Item</h1>
-                        <p>$10.00 AUD</p>
-                    </div>
-                    <div class="catalogue-item-text-right">
-                        <p>10 in stock</p>
-                    </div>
+                <br>
+                <div class="item-inline">
+                    <h2>Product ID</h2><p>#</p>
                 </div>
-            </a>
-            <a href="itemPage.jsp">
-                <div class="catalogue-item">
-                    <img src="" alt="Item">
-                    <div class="catalogue-item-text-left">
-                        <h1>Item</h1>
-                        <p>$10.00 AUD</p>
-                    </div>
-                    <div class="catalogue-item-text-right">
-                        <p>10 in stock</p>
-                    </div>
+                <br>
+                <div class="item-inline">
+                    <h2>Category</h2><p>#</p>
                 </div>
-            </a>
+                <br>
+                <div class="item-inline">
+                    <h2>Available</h2><p>#</p>
+                </div>
+                <hr>
+                <p>Quantity</p>
+                <div class="number-input">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                    <input class="quantity" min="0" name="quantity" placeholder="-" type="number" min="1" max="5">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
+                <br><br>
+                <button class="cart" type="button" onclick="add to cart">Add To Cart 🛒</button>
+            </div>
         </div>
     </body>
     <footer>
