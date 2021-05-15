@@ -9,6 +9,7 @@ import iotbay.g15.model.Customer;
 import iotbay.g15.model.Staff;
 import iotbay.g15.model.User;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -128,6 +129,10 @@ public class UserManagementDAO {
     public void deleteUser(int id) throws SQLException {
         String SQL = "DELETE FROM \"USERS\" WHERE USERID=" + id;
         st.executeUpdate(SQL);
+//        String SQL2 = "DELETE FROM \"STAFF\" WHERE USERID=" + id;
+//        st.executeUpdate(SQL2);
+//        String SQL3 = "DELETE FROM \"CUSTOMER\" WHERE USERID=" + id;
+//        st.executeUpdate(SQL3);
     }
 
     public Staff getStaff(int userID) throws SQLException {

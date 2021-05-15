@@ -6,6 +6,11 @@
 
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%  String firstNameError = (String)session.getAttribute("firstNameError");
+    String lastNameError = (String)session.getAttribute("lastNameError");
+    String emailError = (String)session.getAttribute("emailError");
+    String phoneError = (String)session.getAttribute("phoneError");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,12 +18,12 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-        <link href="/css/style.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
         <title>Create User</title>
     </head>
     <body>
         <div class="navbar">
-            <div class="logo"><img src="/assets/logo.png"/></div>
+            <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
                 <a href="#"><li>Home</li></a>
                 <a href="#"><li>Store</li></a>
@@ -49,10 +54,16 @@
 
                 <div class="d-flex">
                     <div class="mb-1 mx-2 w-100">
+
+                        <p class="already-have-account"><%=(firstNameError != null ? firstNameError : " ")%></p>
+
                         <label for="FIRSTNAME" class="form-label">First Name</label>
                         <input name="firstName" type="text" class="form-control" id="FIRSTNAME" max="50">
                     </div>
                     <div class="mb-1 mx-2 w-100">
+
+                        <p class="already-have-account"><%=(lastNameError != null ? lastNameError : " ")%></p>
+
                         <label for="LASTNAME" class="form-label">Last Name</label>
                         <input name="lastName" type="text" class="form-control" id="LASTNAME" max="50">
                     </div>
@@ -60,10 +71,16 @@
 
                 <div class="d-flex">
                     <div class="mb-1 mx-2 w-100">
+                        
+                        <p class="already-have-account"><%=(emailError != null ? emailError : "")%> </p>
+                        
                         <label for="EMAIL" class="form-label">Email Address</label>
                         <input name="email" type="text" class="form-control" id="EMAIL" max="50">
                     </div>
                     <div class="mb-1 mx-2 w-100">
+                        
+                        <p class="already-have-account"><%=(phoneError != null ? phoneError : "")%> </p>
+                        
                         <label for="PHONENUMBER" class="form-label">Phone Number</label>
                         <input name="phoneNumber" type="text" class="form-control" id="PHONENUMBER">
                     </div>

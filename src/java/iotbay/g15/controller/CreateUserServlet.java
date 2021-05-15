@@ -27,12 +27,12 @@ public class CreateUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        UserManagementDAO manager = (UserManagementDAO)session.getAttribute("userManager");
+        UserManagementDAO manager = (UserManagementDAO) session.getAttribute("userManager");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        int phoneNumber = Integer.parseInt(request.getParameter("phoneNumber"));
+        String phoneNumber = request.getParameter("phoneNumber");
         int streetNumber = Integer.parseInt(request.getParameter("streetNumber"));
         String streetName = request.getParameter("streetName");
         String streetType = request.getParameter("streetType");
@@ -40,15 +40,44 @@ public class CreateUserServlet extends HttpServlet {
         String state = request.getParameter("state");
         int postcode = Integer.parseInt(request.getParameter("postcode"));
         String country = request.getParameter("country");
+
+        UserManagementValidator validator = new UserManagementValidator();
+
+        int errorMessage = 0;
+
+        if (!validator.validateName(firstName)) {
+            session.setAttribute("firstNameError", "Please enter a first name");
+            errorMessage++;
+        }
+
+        if (!validator.validateName(lastName)) {
+            session.setAttribute("lastNameError", "Please enter a last name");
+            errorMessage++;
+        }
+
+        if (!validator.validateEmail(email)) {
+            session.setAttribute("emailError", "Please enter a valid email");
+            errorMessage++;
+        }
         
+        if (!validator.validatePhoneNumber(phoneNumber)) {
+            session.setAttribute("phoneError", "Please enter a valid phone number");
+            errorMessage++;
+        }
+
         try {
-            manager.addUser(firstName, lastName, email, password,
-            phoneNumber, streetNumber, streetName, streetType,
-            suburb, state, postcode, country);
-            response.sendRedirect("listUser.jsp");
+            if (errorMessage == 0) {
+                manager.addUser(firstName, lastName, email, password,
+                        Integer.parseInt(phoneNumber), streetNumber, streetName, streetType,
+                        suburb, state, postcode, country);
+                response.sendRedirect("listUser.jsp");
+            } else {
+                response.sendRedirect("createUser.jsp");
+            }
+
         } catch (SQLException error) {
             Logger.getLogger(CreateUserServlet.class.getName()).log(Level.SEVERE, null, error);
         }
-    }
 
+    }
 }

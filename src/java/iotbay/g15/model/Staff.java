@@ -5,6 +5,8 @@
  */
 package iotbay.g15.model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Kevin
