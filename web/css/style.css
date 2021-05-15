@@ -724,3 +724,36 @@ payment-history-table tr{
 .paymentinfo-deletion-feedback h1 a{
     font-size: 30px;
 }
+
+/* processPayment page styles */
+
+.payment-feedback{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    font-size: 25px;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.payment-feedback a{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.successful-payment, .unsuccessful-payment{
+    margin-top: 20%;
+}
+
+.payment-feedback .successful-payment h1{
+    background-color: rgba(0, 128, 0, 0.5);
+    padding: 5%;
+    border-radius: 10px;
+}
+
+.payment-feedback .unsuccessful-payment h1{
+    background-color: rgba(255, 0, 0, 0.5);
+    padding: 5%;
+    border-radius: 10px;
+}

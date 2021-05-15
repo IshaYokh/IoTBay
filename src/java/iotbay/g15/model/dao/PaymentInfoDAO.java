@@ -84,6 +84,14 @@ public class PaymentInfoDAO {
         st.executeUpdate(sql);
     }
     
+    // Updates a specified instances of PaymentInfo in the database
+    public void updatePaymentInfoCredit(int userID, double newCredit) throws SQLException{
+        String sql = "UPDATE iotbay.PaymentInfo SET Credit = " + newCredit;
+        sql += "WHERE UserID = " + userID + " AND Active = 'true'";
+
+        st.executeUpdate(sql);
+    }
+    
     // Returns an instances of PaymentInfo from the database based on the paymentInfoID
     public PaymentInfo getPaymentInfo(int userID) throws SQLException{
         PaymentInfo paymentInfo = null;

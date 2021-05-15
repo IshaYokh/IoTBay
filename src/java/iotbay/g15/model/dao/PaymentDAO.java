@@ -20,11 +20,11 @@ public class PaymentDAO {
     }
     
     // Inserts a payment object in the database
-    public void insertPayment(int paymentID, int orderID, int paymentInfoID, int userID, String paymentDate, double paymentAmount) throws SQLException{
+    public void insertPayment(int orderID, int paymentInfoID, int userID, String paymentDate, double paymentAmount) throws SQLException{
         java.sql.Date paymentD = java.sql.Date.valueOf(paymentDate);
         
-        String sql = "INSERT INTO iotbay.Payment (PaymentID, OrderID, PaymentInfoID, UserID, PaymentDate, PaymentAmount)"
-                + " VALUES (" + paymentID + ", " + orderID + ", " + paymentInfoID + ", " + userID + ", " + paymentD + ", " + paymentAmount + ")";
+        String sql = "INSERT INTO iotbay.Payment (OrderID, PaymentInfoID, UserID, PaymentDate, PaymentAmount)"
+                + " VALUES (" + orderID + ", " + paymentInfoID + ", " + userID + ", '" + paymentD + "', " + paymentAmount + ")";
         
         st.executeUpdate(sql);
     }

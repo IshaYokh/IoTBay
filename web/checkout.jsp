@@ -4,6 +4,7 @@
     Author     : Isha Yokhanna
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="iotbay.g15.model.User"%>
 <%@page import="iotbay.g15.model.PaymentInfo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -65,7 +66,8 @@
 
                         <tr>
                             <td><span class="bold">Order Total:</span></td>
-                            <td class="right"><%= orderSubtotal + 5.00%></td>
+                            <% DecimalFormat decimalFormat = new DecimalFormat("0.00"); %>
+                            <td class="right">$<%= decimalFormat.format(Double.parseDouble(orderSubtotal) + 5.00)%></td>
                         </tr>       
                     </table>
             </div>
@@ -145,9 +147,12 @@
         
         <!-- Pay button -->
         <div class="pay-btn">
-            <button href="" type="submit" class="pay-btn">
-                <i class="fas fa-lock"></i> &nbsp;Proceed with payment
-            </button>  
+            <% session.setAttribute("redirectedFromCheckout", "true"); %>
+            <form method="post" action="AddPaymentServlet">
+                <button type="submit" class="pay-btn">
+                    <i class="fas fa-lock"></i> &nbsp;Proceed with payment
+                </button>
+            </form>
             <%}%>
         </div>
     </body>
