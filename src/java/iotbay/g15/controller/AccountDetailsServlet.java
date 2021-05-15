@@ -25,7 +25,7 @@ public class AccountDetailsServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        //gets all the parameters from the form
         HttpSession session = request.getSession();
         LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
         String firstName = request.getParameter("fname");
@@ -40,7 +40,7 @@ public class AccountDetailsServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         String oldemail = user.getEmail();
         String oldpassword = user.getPassword();
-        
+        //validates paramters
         RegisterUpdateValidator validate = new RegisterUpdateValidator();
       
         session.setAttribute("emailUsed1",validate.validateEmail(email));
@@ -55,14 +55,7 @@ public class AccountDetailsServlet extends HttpServlet {
             int streetNumber = Integer.parseInt(request.getParameter("street-number"));
             int postcode = Integer.parseInt(request.getParameter("postcode"));
         
-        
-        
-        
-        
-        
-        
-        
-
+            // updates sql table and //sets session user details to new details
             try {
                 int userID = manager.getUserID(oldemail, oldpassword);
                 manager.editUser(firstName, lastName, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, email, userID);
@@ -92,7 +85,7 @@ public class AccountDetailsServlet extends HttpServlet {
 
             }
         }else{
-            
+            // returns to accountDetails page and displays any input errors that would of occured
             request.getRequestDispatcher("accountDetails.jsp").include(request, response);
         
         

@@ -36,13 +36,13 @@ public class LoginLogoutDAO {
         String fetch = "INSERT INTO IOTBAY.CUSTOMER VALUES (" + userID + ", 0)";
         st.execute(fetch);
     }
-
+    //add staff
     public void addStaff(int userID, String dob) throws SQLException {
 
         String fetch = "INSERT INTO IOTBAY.STAFF VALUES (" + userID + ", 0,'" + dob + "')";
         st.execute(fetch);
     }
-
+    //deleteCustomer
     public void deleteCustomer(int userID) throws SQLException {
 
         String fetch = "DELETE FROM IOTBAY.CUSTOMER WHERE USERID=" + userID;
@@ -67,7 +67,7 @@ public class LoginLogoutDAO {
         }
         return true;
     }
-
+    //checks if User exists with the same Email and password
     public boolean checkUser(String email, String password) throws SQLException {
 
         String fetch = "SELECT EMAIL, PASSWORD from IOTBAY.USERS WHERE EMAIL = '" + email + "' AND PASSWORD = '" + password + "'";
@@ -86,7 +86,7 @@ public class LoginLogoutDAO {
         return false;
 
     }
-
+    //returns User
     public User getUser(String email, String password) throws SQLException {
 
         String fetch = "SELECT * from IOTBAY.USERS WHERE EMAIL = '" + email + "' AND PASSWORD = '" + password + "'";
@@ -114,7 +114,7 @@ public class LoginLogoutDAO {
         return null;
 
     }
-
+    //Updates User
     public void editUser(String firstname, String lastname, String password, int phonenumber, int streetnumber, String streetname, String streettype, String suburb, String state, int postcode, String country, String email, int userID) throws SQLException {
         //st.executeUpdate();
         String fetch = "UPDATE IOTBAY.USERS SET FIRSTNAME = '" + firstname + "', LASTNAME = '" + lastname + "', PASSWORD = '" + password + "', PHONENUMBER = " + phonenumber + ", STREETNUMBER = " + streetnumber + ", STREETNAME = '" + streetname + "', STREETTYPE = '" + streettype + "', SUBURB= '" + suburb + "', STATE = '" + state + "', postcode =" + postcode + ", COUNTRY='" + country + "', EMAIL ='" + email + "' WHERE USERID =" + userID;
@@ -123,7 +123,7 @@ public class LoginLogoutDAO {
         st.executeUpdate(fetch);
 
     }
-
+    //returns userID given email and password
     public int getUserID(String email, String password) throws SQLException {
 
         String fetch = "SELECT EMAIL, PASSWORD, USERID from IOTBAY.USERS WHERE EMAIL = '" + email + "' AND PASSWORD = '" + password + "'";
@@ -143,7 +143,7 @@ public class LoginLogoutDAO {
         }
         return 0;
     }
-
+    //deletes the user
     public void deleteUser(int userID) throws SQLException {
         //st.executeUpdate();
         String fetch = "DELETE FROM IOTBAY.USERS WHERE USERID=" + userID;
@@ -151,28 +151,28 @@ public class LoginLogoutDAO {
         st.executeUpdate(fetch);
 
     }
-
+    //adds a ccount log to the table when logging out
     public void addlogslogout(int userID) throws SQLException {
         String logout1 = "Logged Out";
         String fetch = "INSERT INTO IOTBAY.ACCLOGS (USERID, ACTION ,Current_Time_Stamp) VALUES (" + userID + ",'" + logout1 + "',CURRENT_TIMESTAMP)";
         st.executeUpdate(fetch);
 
     }
-
+    //adds a loging log to the account log table when signing in
     public void addlogslogin(int userID) throws SQLException {
         String login1 = "Logged In";
         String fetch = "INSERT INTO IOTBAY.ACCLOGS (USERID, ACTION ,Current_Time_Stamp) VALUES (" + userID + ",'" + login1 + "',CURRENT_TIMESTAMP)";
         st.executeUpdate(fetch);
 
     }
-
+    //adds a register log ti the account table when registering
     public void addlogsregister(int userID) throws SQLException {
         String login1 = "Registered";
         String fetch = "INSERT INTO IOTBAY.ACCLOGS (USERID, ACTION ,Current_Time_Stamp) VALUES (" + userID + ",'" + login1 + "',CURRENT_TIMESTAMP)";
         st.executeUpdate(fetch);
 
     }
-
+    //returns an Array list of the account logs related to the userID
     public ArrayList getLogs(int userID) throws SQLException {
 
         ArrayList loglist = new ArrayList();
@@ -189,7 +189,7 @@ public class LoginLogoutDAO {
 
         return loglist;
     }
-
+    //returns account log times in the account log table related to userID
     public ArrayList getTLogs(int userID) throws SQLException {
 
         ArrayList loglist = new ArrayList();
@@ -206,5 +206,15 @@ public class LoginLogoutDAO {
         }
 
         return loglist;
+    }
+    //checks if the staffId exsists
+    public Boolean checkifStaff(int userID) throws SQLException{
+    
+        String fetch = "SELECT * from IOTBAY.STAFF WHERE USERID = " + userID;
+        ResultSet rs = st.executeQuery(fetch);
+        while(rs.next()){
+        return true;
+        }
+    return false;
     }
 }

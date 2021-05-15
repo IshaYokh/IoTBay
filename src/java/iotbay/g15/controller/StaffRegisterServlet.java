@@ -41,12 +41,14 @@ public class StaffRegisterServlet extends HttpServlet {
         String suburb = request.getParameter("suburb");
         String state = request.getParameter("state");
         String country = request.getParameter("country");
+        //validates inputs
         RegisterUpdateValidator validate = new RegisterUpdateValidator();
         session.setAttribute("emailUsed",validate.validateEmail(email));
         session.setAttribute("passNoMatch", validate.validatePassword(password));
         session.setAttribute("phoneNoErr", validate.validatePhone(request.getParameter("number")));
         session.setAttribute("postcodeErr", validate.validatePostCode(request.getParameter("postcode")));
         session.setAttribute("streetNoErr", validate.validateStreetNo(request.getParameter("street-number")));
+        //validates inputs
         if((validate.validateEmail(email)==null) && (validate.validatePassword(password)==null) && (validate.validatePhone(request.getParameter("number"))== null) 
             && (validate.validatePostCode(request.getParameter("postcode"))== null) &&(validate.validateStreetNo(request.getParameter("street-number"))== null)){
             int phoneNumber = Integer.parseInt(request.getParameter("number"));
@@ -67,7 +69,7 @@ public class StaffRegisterServlet extends HttpServlet {
                         manager.addStaff(userI, dob);
                         manager.addlogsregister(userI);
                         session.setAttribute("user", user);
-                        request.getRequestDispatcher("admin/admin.jsp").include(request, response);
+                        request.getRequestDispatcher("Admin.jsp").include(request, response);
                     } else {
                         session.setAttribute("emailUsed", "Email has already been used please sign in");
                         request.getRequestDispatcher("staffregister.jsp").include(request, response);
@@ -79,11 +81,11 @@ public class StaffRegisterServlet extends HttpServlet {
                 }
             } else {
                 session.setAttribute("passNoMatch", "Passwords do not Match");
-                request.getRequestDispatcher("staffregister.jsp").include(request, response);
+                request.getRequestDispatcher("Admin.jsp").include(request, response);
             }
         }else{
         
-            request.getRequestDispatcher("staffRegister.jsp").include(request, response);
+            request.getRequestDispatcher("Admin.jsp").include(request, response);
         
         }
         

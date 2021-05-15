@@ -31,6 +31,7 @@ public class RegisterServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+        
         String firstName = request.getParameter("fname");
         String lastName = request.getParameter("lname");
         String email = request.getParameter("email");

@@ -4,6 +4,7 @@
     Author     : Isha Yokhanna
 --%>
 
+<%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,6 +29,14 @@
         
         <div class="placeholder"></div>
         <%
+            //checks if user Has already logged in
+            User user = (User)session.getAttribute("user");
+            if(user != null){
+            response.sendRedirect("main.jsp");
+            }
+        %>
+        <%
+            //error checking
         String passNoMatch = (String) session.getAttribute("passNoMatch");
         String emailUsed = (String) session.getAttribute("emailUsed");
         String postcodeErr = (String) session.getAttribute("postcodeErr");
@@ -81,6 +90,7 @@
               <button type="submit" class="btn-create">Create Account</button>
               <div class="placeholder"></div>
               <p class="already-have-account">Already have an account?&nbsp;<a href="login.jsp">Login</a></p>
+              <p class="already-have-account">Register as Staff here: &nbsp;<a href="staffRegister.jsp">Staff Register</a></p>
             </form>
         </div>
     
