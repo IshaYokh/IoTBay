@@ -26,7 +26,7 @@ public class ViewPaymentHistoryServlet extends HttpServlet{
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
         PaymentDAO paymentDBManager = (PaymentDAO)session.getAttribute("paymentDBManager");
-        PaymentInfoDAO paymentInfoDBManager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBManager");
+        PaymentInfoDAO paymentInfoDBManager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
         ArrayList<Payment> payments = new ArrayList<>();
         ArrayList<PaymentInfo> paymentInfos = new ArrayList<>();
         
@@ -39,6 +39,5 @@ public class ViewPaymentHistoryServlet extends HttpServlet{
         
         session.setAttribute("payments", payments);
         session.setAttribute("paymentInfos", paymentInfos);
-        request.getRequestDispatcher("searchPaymentHistory.jsp").include(request, response);
     }
 }

@@ -32,7 +32,7 @@ public class PaymentDAO {
     // Returns a list of all payment instances from the database based on userID
     public ArrayList<Payment> listAllPaymentInfos(int userID) throws SQLException{
         ArrayList<Payment> payments = new ArrayList<>();
-        String sql = "SELECT * FROM Payment WHERE UserID = " + userID;
+        String sql = "SELECT * FROM iotbay.Payment WHERE UserID = " + userID;
         ResultSet resultSet = st.executeQuery(sql);
         
         while(resultSet.next()){
@@ -42,7 +42,7 @@ public class PaymentDAO {
             userID = resultSet.getInt("UserID");
             String paymentDate = resultSet.getDate("PaymentDate").toString();
             double paymentAmount = resultSet.getDouble("PaymentAmount");
-            
+
             Payment payment = new Payment(paymentID, orderID, paymentInfoID, userID, paymentDate, paymentAmount);
             payments.add(payment);
         }

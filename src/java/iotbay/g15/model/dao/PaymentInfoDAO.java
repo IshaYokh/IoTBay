@@ -35,7 +35,7 @@ public class PaymentInfoDAO {
     // Returns a list of all PaymentInfo instances from the database
     public ArrayList<PaymentInfo> listAllPaymentInfos(int userID) throws SQLException{
         ArrayList<PaymentInfo> paymentInfos = new ArrayList<>();
-        String sql = "SELECT * FROM PaymentInfo WHERE UserID = " + userID;
+        String sql = "SELECT * FROM iotbay.PaymentInfo WHERE UserID = " + userID;
         ResultSet resultSet = st.executeQuery(sql);
         
         while(resultSet.next()){
@@ -62,8 +62,8 @@ public class PaymentInfoDAO {
             streetNumber, streetName, streetType, suburb, state, postcode, country, credit, activeStatus);
             paymentInfos.add(paymentInfo);
         }
-     
-        return paymentInfos; 
+        
+        return paymentInfos;
     }
     
     // Deletes from database

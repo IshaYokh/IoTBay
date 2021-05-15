@@ -18,6 +18,7 @@
         <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <jsp:include page="/ViewPaymentHistoryServlet"/>
         <!-- Navbar -->
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
@@ -73,22 +74,25 @@
             <%
                 try{
                     for(Payment payment : payments){
-                        for(PaymentInfo paymentInfo : paymentInfos){
+                        for(PaymentInfo paymentInfo : paymentInfos){    
             %>
             <tr>
                 <td><%= payment.getPaymentID()%></td>
                 <td><%= payment.getOrderID()%></td>
-                <td><%= payment.getPaymentAmount()%></td>
+                <td>$<%= payment.getPaymentAmount()%></td>
                 
-                <% if(paymentInfo.getPaymentInfoID() == payment.getPaymentInfoID()){%>
+                <% if(paymentInfo.getPaymentInfoID() == payment.getPaymentInfoID()){ 
+                   String paymentDate = payment.getPaymentDate().substring(8,10) + "/" + payment.getPaymentDate().substring(5,7)
+                           + "/" + payment.getPaymentDate().substring(0,4);
+                %>
+                <td><b>Mastercard number:</b> <%= paymentInfo.getCardNumber()%> <br><b>Expiry Date:</b>
+                    <%= paymentInfo.getCardExpiryDate()%> <br><b>CVC:</b> <%= paymentInfo.getCardCVC()%></td>
+                <%%>
                 
-                <td><%paymentInfo.getPaymentInfoID();%></td>
-                
-                <%}%>
-                <td><%= payment.getPaymentDate()%></td>
+                <td><%= paymentDate%></td>
             </tr>
             
-            <%}}}catch(NullPointerException e){%>
+            <%}}}}catch(NullPointerException e){%>
         </table>
         <h1 class="empty-msg">Your payment history is empty!</h1>
             <%}%>
