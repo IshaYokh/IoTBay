@@ -64,7 +64,7 @@ public class StaffRegisterServlet extends HttpServlet {
                         //getUserID
                         int userID = manager.getUserID(email, password);
                          User user = new User(userID, firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
-                        //manager.addCustomer(userID);
+                        
                         int userI = manager.getUserID(email, password);
                         manager.addStaff(userI, dob);
                         manager.addlogsregister(userI);
@@ -72,20 +72,20 @@ public class StaffRegisterServlet extends HttpServlet {
                         request.getRequestDispatcher("Admin.jsp").include(request, response);
                     } else {
                         session.setAttribute("emailUsed", "Email has already been used please sign in");
-                        request.getRequestDispatcher("staffregister.jsp").include(request, response);
+                        request.getRequestDispatcher("staffRegister.jsp").include(request, response);
 
                     }
                 } catch (SQLException ex) {
-                    //Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
                     ex.getMessage();
                 }
             } else {
                 session.setAttribute("passNoMatch", "Passwords do not Match");
-                request.getRequestDispatcher("Admin.jsp").include(request, response);
+                request.getRequestDispatcher("staffRegister.jsp").include(request, response);
             }
         }else{
         
-            request.getRequestDispatcher("Admin.jsp").include(request, response);
+            request.getRequestDispatcher("staffRegister.jsp").include(request, response);
         
         }
         
