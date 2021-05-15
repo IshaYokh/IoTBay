@@ -54,17 +54,18 @@
                     <tbody>
                         <tr>
                             <td><span class="bold">Order Subtotal:</span></td>
-                            <td class="right">$69</td>
+                            <% String orderSubtotal = (String)session.getAttribute("cartPrice"); %>
+                            <td class="right">$<%= orderSubtotal%></td>
                         </tr>
 
                         <tr>
                             <td><span class="bold">Shipping Cost:</span></td>
-                            <td class="right">$69</td>
+                            <td class="right">$5.00</td>
                         </tr>     
 
                         <tr>
                             <td><span class="bold">Order Total:</span></td>
-                            <td class="right">$69</td>
+                            <td class="right"><%= orderSubtotal + 5.00%></td>
                         </tr>       
                     </table>
             </div>
