@@ -29,6 +29,7 @@ public class UpdateUserServlet extends HttpServlet {
         HttpSession session = request.getSession();
         UserManagementDAO manager = (UserManagementDAO) session.getAttribute("userManager");
 
+        //get all previous attributes from SQL
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
@@ -45,6 +46,7 @@ public class UpdateUserServlet extends HttpServlet {
         String status = request.getParameter("status");
         session.setAttribute("status", status);
 
+        //update all attributes
         try {
             manager.updateUser(userId, firstName, lastName, email, password,
                     phoneNumber, streetNumber, streetName, streetType,

@@ -26,7 +26,7 @@ public class DeleteUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // grab the id from parameters (id = 1)
+        // grab the id from parameters id 
         try {
             String id = request.getParameter("id");
             HttpSession session = request.getSession();

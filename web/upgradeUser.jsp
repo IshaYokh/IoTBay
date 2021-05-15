@@ -10,9 +10,9 @@
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    // search that user by id
     String id = request.getParameter("id");
     UserManagementDAO manager = (UserManagementDAO) session.getAttribute("userManager");
-    // search that user by id
     User upgradeUser = manager.getUserById(Integer.parseInt(id));
     Staff upgradeStaff = manager.getStaff(upgradeUser.getUserID());
 %>
@@ -52,6 +52,8 @@
 
         <div class="container">
             <a href="listUser.jsp" class="btn btn-secondary my-4">Go Back</a>
+            
+            <!--Form to upgrade user which connects to STAFF SQL database using userID-->
             <form method="post" action="UpgradeUserServlet?id=<%=id%>">
 
                 <div class="d-flex">
@@ -69,7 +71,7 @@
                     <div class="mb-1 mx-2 w-100">
                         <label for="DOB" class="form-label">Date of Birth</label>
                         
-                        
+                        <!--To show previous assigned input data-->
                         <% if (upgradeStaff == null) { %>
                         
                         <input name="dob" value="" type="date" class="form-control" id="DOB">

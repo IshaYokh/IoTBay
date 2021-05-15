@@ -32,12 +32,14 @@ public class UpgradeUserServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         UserManagementDAO manager = (UserManagementDAO) session.getAttribute("userManager");
+        // get information from database to show on form
         try {
             int userID = Integer.parseInt(request.getParameter("id"));
             String DOB = request.getParameter("dob");
             int siteAccessLevel = Integer.parseInt(request.getParameter("staffAccessLevel"));
             Staff staff = manager.getStaff(userID);
 
+            // check if staff already exist
             if (staff == null) {
                 manager.addStaff(userID, DOB, siteAccessLevel);
             } else {

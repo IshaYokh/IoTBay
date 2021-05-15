@@ -37,6 +37,7 @@ public class UserManagementDAO {
 //        return null;
 //    }
 //Add a user-data into the database   
+    //add a user to the USERS table
     public void addUser(String firstName, String lastName, String email, String password,
             int phoneNumber, int streetNumber, String streetName, String streetType,
             String suburb, String state, int postcode, String country) throws SQLException {                   //code for add-operation       
@@ -49,6 +50,7 @@ public class UserManagementDAO {
                 + ")");
     }
 
+    //list out users within USERS table
     public List<User> getUsers() throws SQLException {
         String SQL = "SELECT * FROM \"USERS\"";
         ResultSet rs = st.executeQuery(SQL);
@@ -75,6 +77,7 @@ public class UserManagementDAO {
         return users;
     }
 
+    //get a user id from database
     public User getUserById(int id) throws SQLException {
         String SQL = "SELECT * FROM \"USERS\" WHERE USERID=" + id;
         ResultSet rs = st.executeQuery(SQL);
@@ -129,12 +132,9 @@ public class UserManagementDAO {
     public void deleteUser(int id) throws SQLException {
         String SQL = "DELETE FROM \"USERS\" WHERE USERID=" + id;
         st.executeUpdate(SQL);
-//        String SQL2 = "DELETE FROM \"STAFF\" WHERE USERID=" + id;
-//        st.executeUpdate(SQL2);
-//        String SQL3 = "DELETE FROM \"CUSTOMER\" WHERE USERID=" + id;
-//        st.executeUpdate(SQL3);
     }
 
+    //get a staff with userID foreign key from staff table
     public Staff getStaff(int userID) throws SQLException {
         String SQL = "SELECT * FROM \"STAFF\" WHERE USERID=" + userID;
         ResultSet rs = st.executeQuery(SQL);
@@ -150,12 +150,14 @@ public class UserManagementDAO {
         return null;
     }
 
+    //add a staff to staff table with userID as foreign key
     public void addStaff(int userID, String DOB, int siteAccessLevel) throws SQLException {                   //code for add-operation       
         st.executeUpdate("INSERT INTO \"STAFF\" (USERID, DOB, SITEACCESSLEVEL) VALUES ("
                 + "" + userID + ", " + " ' " + DOB + " ', " + "" + siteAccessLevel
                 + ")");
     }
-    
+
+    //upgrade staff using userID to find which staff
     public void upgradeStaff(int userID, String DOB, int siteAccessLevel) throws SQLException {                   //code for add-operation         
         String SQL = "UPDATE \"STAFF\" "
                 + "SET DOB=" + "'" + DOB + "',"
@@ -164,8 +166,9 @@ public class UserManagementDAO {
 
         st.executeUpdate(SQL);
     }
-    
-        public Customer getCustomer(int userID) throws SQLException {
+
+    //get a customer using userID as foreign key
+    public Customer getCustomer(int userID) throws SQLException {
         String SQL = "SELECT * FROM \"CUSTOMER\" WHERE USERID=" + userID;
         ResultSet rs = st.executeQuery(SQL);
         while (rs.next()) {
@@ -179,12 +182,14 @@ public class UserManagementDAO {
         return null;
     }
 
+    //add a customer, foreign key as userID
     public void addCustomer(int userID, int loyaltyPoints) throws SQLException {                   //code for add-operation       
         st.executeUpdate("INSERT INTO \"CUSTOMER\" (USERID, LOYALTYPOINTS) VALUES ("
                 + "" + userID + ", " + "" + loyaltyPoints
                 + ")");
     }
-    
+
+    //add customer with userID
     public void upgradeCustomer(int userID, int loyaltyPoints) throws SQLException {                   //code for add-operation         
         String SQL = "UPDATE \"CUSTOMER\" "
                 + "SET LOYALTYPOINTS=" + "" + loyaltyPoints + ""

@@ -43,6 +43,7 @@ public class CreateUserServlet extends HttpServlet {
 
         UserManagementValidator validator = new UserManagementValidator();
 
+        //Assign errorMessage with int to create if statement line 71. Each error can ++ errorMessage
         int errorMessage = 0;
 
         if (!validator.validateName(firstName)) {
@@ -65,6 +66,7 @@ public class CreateUserServlet extends HttpServlet {
             errorMessage++;
         }
 
+        //If no error message, create new user. Else reload the pagw showing validation errors
         try {
             if (errorMessage == 0) {
                 manager.addUser(firstName, lastName, email, password,

@@ -32,11 +32,14 @@ public class UpgradeCustomerServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         UserManagementDAO manager = (UserManagementDAO) session.getAttribute("userManager");
+        
+        //get information if customer already exist
         try {
             int userID = Integer.parseInt(request.getParameter("id"));
             int loyaltyPoints = Integer.parseInt(request.getParameter("loyaltyPoints"));
             Customer customer = manager.getCustomer(userID);
 
+            //check if customer already exist
             if (customer == null) {
                 manager.addCustomer(userID, loyaltyPoints);
             } else {

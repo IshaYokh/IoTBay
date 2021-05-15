@@ -45,7 +45,7 @@
         </div>
         <div class="placeholder"></div>
 
-        <div class="container">
+        <div class="container w-3000">
             <a href="admin.jsp" class="btn btn-secondary my-4">Go Back</a>
             <table class="table">
                 <thead>
@@ -84,6 +84,7 @@
                         <td><%=U.getPostcode()%></td>
                         <td><%=U.getCountry()%></td>
                         <td>
+                            <!--Link to buttons with href while assigning ID to to the next page for database management-->
                             <a class="btn btn-success" href="updateUser.jsp?id=<%=U.getUserID()%>">Update</a>
                             <a class="btn btn-danger" href="deleteUser.jsp?id=<%=U.getUserID()%>">Delete</a>
                             <a class="btn btn-info" href="upgradeUser.jsp?id=<%=U.getUserID()%>">Upgrade</a>

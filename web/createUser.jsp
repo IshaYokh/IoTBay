@@ -6,7 +6,9 @@
 
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%  String firstNameError = (String)session.getAttribute("firstNameError");
+
+<%  // validation 
+    String firstNameError = (String)session.getAttribute("firstNameError");
     String lastNameError = (String)session.getAttribute("lastNameError");
     String emailError = (String)session.getAttribute("emailError");
     String phoneError = (String)session.getAttribute("phoneError");
@@ -48,7 +50,7 @@
         <div class="container">
             <a href="admin.jsp" class="btn btn-secondary my-4">Go Back</a
 
-            <!--Create a form of list of required inputs to create a new user-->
+            <!--Form to create a user, connected to CreateUserServlet-->
 
             <form method="POST" action="CreateUserServlet">
 
@@ -107,8 +109,6 @@
                         <input name="streetType" type="text" class="form-control" id="STREETTYPE" max="12">
                     </div>
                 </div>
-
-
 
                 <div class="d-flex">
                     <div class="mb-1 mx-2 w-100">

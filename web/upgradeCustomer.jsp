@@ -9,9 +9,9 @@
 <%@page import="iotbay.g15.model.dao.UserManagementDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    String id = request.getParameter("id");
-    UserManagementDAO manager = (UserManagementDAO) session.getAttribute("userManager");
     // search that user by id
+    String id = request.getParameter("id");
+    UserManagementDAO manager = (UserManagementDAO) session.getAttribute("userManager");  
     User upgradeUser = manager.getUserById(Integer.parseInt(id));
     Customer upgradeCustomer = manager.getCustomer(upgradeUser.getUserID());
 %>
@@ -51,6 +51,8 @@
 
         <div class="container">
             <a href="listUser.jsp" class="btn btn-secondary my-4">Go Back</a>
+            
+            <!--Upgrade specific customer by checking assigned ID, connected to UpgradeCustomerServlet-->
             <form method="post" action="UpgradeCustomerServlet?id=<%=id%>">
 
                 <div class="d-flex">

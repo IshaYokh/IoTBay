@@ -8,9 +8,9 @@
 <%@page import="iotbay.g15.model.dao.UserManagementDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    // search that user by id
     String id = request.getParameter("id");
     UserManagementDAO manager = (UserManagementDAO) session.getAttribute("userManager");
-    // search that user by id
     User updateUser = manager.getUserById(Integer.parseInt(id));
     String status = (String) session.getAttribute("status");
 %>
@@ -51,6 +51,8 @@
 
         <div class="container">
             <a href="listUser.jsp" class="btn btn-secondary my-4">Go Back</a>
+            
+<!--            Form to update staff, within input previous information is included with getter-->
             <form method="post" action="UpdateUserServlet?id=<%=id%>">
 
                 <div class="d-flex">
@@ -120,11 +122,11 @@
                     </div>    
                 </div>
 
-                <select class="mb-1 mx-auto w-50 form-select" aria-label="Default select example" name="status">
+                    <!-- <select class="mb-1 mx-auto w-50 form-select" aria-label="Default select example" name="status"> -->
 
                     <% if (status == null) { %>
 
-                    <option value="active">Active</option>
+<!--                    <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
                     <% } else { %>
                     <% if (status == "active") { %>
@@ -132,19 +134,16 @@
                     <option value="inactive">Inactive</option>
                     <% } else { %>
                     <option value="active">Active</option>
-                    <option selected value="inactive">Inactive</option>
+                    <option selected value="inactive">Inactive</option>-->
                     <%}%>
 
                     <%}%>
-                </select>
+<!--                </select>-->
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">Update User</button>
                 </div>
-
             </form>
-
         </div>
-
     </body>
 </html>
