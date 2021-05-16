@@ -12,8 +12,8 @@
 <html lang="en">
     <head>
         <link href="css/style.css" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -37,14 +37,14 @@
                         }
                     %>
                     <a href="<%= path%>"><li class="login"><%= msg%></li></a>
-		</ul>
-	</div>
-	<div class="placeholder"></div>
+        </ul>
+    </div>
+    <div class="placeholder"></div>
         
         <!-- Order summary section -->
         <h1 class="checkout-header">Checkout</h1>
         <div class="back-to-cart">
-            <button href="#" type="submit"><i class="fas fa-arrow-left"></i> &nbsp;Go back to cart</button>
+            <button href="cart.jsp" type="submit"><i class="fas fa-arrow-left"></i> &nbsp;Go back to cart</button>
         </div>
            
         <div class="table-container">
@@ -67,7 +67,7 @@
                         <tr>
                             <td><span class="bold">Order Total:</span></td>
                             <% DecimalFormat decimalFormat = new DecimalFormat("0.00"); %>
-                            <td class="right">$<%= decimalFormat.format(Double.parseDouble(orderSubtotal) + 5.00)%></td>
+                            <td class="right">$<%= decimalFormat.format(orderSubtotal) + 5.00%></td>
                         </tr>       
                     </table>
             </div>
