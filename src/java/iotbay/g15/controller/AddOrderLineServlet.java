@@ -10,6 +10,7 @@ import iotbay.g15.model.User;
 import iotbay.g15.model.dao.OrderDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -24,23 +25,30 @@ import javax.servlet.http.HttpSession;
  *
  * @author rebecca
  */
-public class EmptyCartServlet extends HttpServlet{
+public class AddOrderLineServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
-        List<Item> cartData = (ArrayList) session.getAttribute("cartItems");
+        ArrayList<Item> cartData = (ArrayList) session.getAttribute("cartItems");
         ArrayList<Item> cart;
         OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
         User user = (User) session.getAttribute("user");
+        LocalDate orderDate = LocalDate.now();
+        String date = orderDate.toString();
+        
         try{
+            int orderID = orderDBManager.addOrder(user.getUserID(), date, "Pending");
+            for(Item item : cartData){
+                orderDBManager.addToOrderLine(item.getItemID(), orderID, item.getUserQuantity());
+            }
             orderDBManager.emptyCart(user.getUserID());
             cart = orderDBManager.getCart(user.getUserID());
             session.setAttribute("cartItems", cart);
-            session.setAttribute("cartPrice", 0);
+            
         } catch (SQLException ex) {
             Logger.getLogger(DeleteFromCartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("cart.jsp").include(request, response);
+        request.getRequestDispatcher("checkout.jsp").include(request, response);
         
     }
 }

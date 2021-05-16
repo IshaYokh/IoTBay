@@ -6,6 +6,7 @@
 package iotbay.g15.controller;
 import iotbay.g15.model.Order;
 import iotbay.g15.model.OrderLineItem;
+import iotbay.g15.model.User;
 import iotbay.g15.model.dao.OrderDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,25 +27,18 @@ public class OrderHistoryServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
         ArrayList<Order> orders = new ArrayList<Order>();
-        System.out.println("jjjjjjjjj");
         String userID = request.getParameter("userID");
-        OrderDAO manager = (OrderDAO) session.getAttribute("manager");
-        System.out.println("ssssss");
+        OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
         
-        int user = Integer.parseInt(userID);
-        System.out.println("The user ID is: " + user);
         
         try{
-            orders = manager.findAllCustomerOrders(user);
-            System.out.println("wgdsadasdadasdasdasdas");
+            orders = orderDBManager.findAllCustomerOrders(user.getUserID());
             session.setAttribute("orderList", orders);
-            System.out.println("hi:" + orders);
         }catch(SQLException ex){
             Logger.getLogger(OrderHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("uyyyy");
         }
-        
         
         request.getRequestDispatcher("orderhistory.jsp").include(request, response);
         

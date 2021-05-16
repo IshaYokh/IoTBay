@@ -25,7 +25,7 @@ public class AddToCartServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
-        
+        User user = (User) session.getAttribute("user");
         ArrayList<Item> cart = new ArrayList<Item>();
         //int itemQty;
         String itemID = request.getParameter("itemID");
@@ -40,25 +40,20 @@ public class AddToCartServlet extends HttpServlet{
         System.out.println("currentItem (Servlet): " + currentItem);
         //int currentItemInt = Integer.parseInt(currentItem);
         
-        OrderDAO manager = (OrderDAO) session.getAttribute("manager");
+        OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
         int qty = Integer.parseInt(quantity);
         int id = Integer.parseInt(itemID);
         int serial = Integer.parseInt(itemSerialNumber);
-        
-        User user = new User(1,"1","1","1","1","1","1","1","1","1","1","1","1");
-        session.setAttribute("user", user);
         
         
         Item item = new Item(id, serial, itemCategory,itemBrand,itemName,itemImage);
         int uID = user.getUserID();
         
         try{
-            manager.addToCart(uID, id, serial, itemCategory, itemBrand, itemName, itemImage, qty);
+            orderDBManager.addToCart(uID, id, serial, itemCategory, itemBrand, itemName, itemImage, qty);
             session.setAttribute("cartItems", cart);
-            cart = manager.getCart(uID);
+            cart = orderDBManager.getCart(uID);
             session.setAttribute("cartItems", cart);
-            //itemQty = manager.getQuantityInCart(uID, currentItemInt);
-            //session.setAttribute("iQty", itemQty);
             System.out.println("cart3: " + cart);
             session.setAttribute("cartItems", cart);
             currentItem = request.getParameter("currentItem");

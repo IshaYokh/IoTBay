@@ -32,12 +32,12 @@ public class DeleteFromCartServlet extends HttpServlet{
         String id = request.getParameter("itemID");
         int itemID = Integer.parseInt(id);
         ArrayList<Item> cart;
-        OrderDAO manager = (OrderDAO) session.getAttribute("manager");
+        OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
         User user = (User) session.getAttribute("user");
         try{
-            manager.removeFromCart(user.getUserID(), itemID);
-            cartData.remove(manager.getItemByID(user.getUserID(), itemID));
-            cart = manager.getCart(user.getUserID());
+            orderDBManager.removeFromCart(user.getUserID(), itemID);
+            cartData.remove(orderDBManager.getItemByID(user.getUserID(), itemID));
+            cart = orderDBManager.getCart(user.getUserID());
             session.setAttribute("cartItems", cart);
         } catch (SQLException ex) {
             Logger.getLogger(DeleteFromCartServlet.class.getName()).log(Level.SEVERE, null, ex);

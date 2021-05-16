@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 package iotbay.g15.controller;
+
 import iotbay.g15.model.Order;
+import iotbay.g15.model.User;
 import iotbay.g15.model.dao.OrderDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -20,29 +23,28 @@ import javax.servlet.http.HttpSession;
  *
  * @author rebecca
  */
-public class AddOrderServlet extends HttpServlet{
-    @Override
+public class FilterSearchServlet extends HttpServlet{
+     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
+        OrderManagementValidator validator = new OrderManagementValidator();
+        ArrayList<Order> orders = new ArrayList<Order>();
+        User user = (User) session.getAttribute("user");
         String orderID = request.getParameter("orderID");
-        //String userID = request.getParameter("userID");
-        //String courierID = request.getParameter("courierID");
         String orderDate = request.getParameter("orderDate");
-        String orderStatus = request.getParameter("orderStatus");
         
-        OrderDAO manager = (OrderDAO) session.getAttribute("manager");
-        System.out.println("ddddddddddddddddddd");
-        Order order = new Order(Integer.parseInt(orderID), orderDate, orderStatus);
+        
+        OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
+        int order = Integer.parseInt(orderID);
         
         try{
-            manager.addOrder(Integer.parseInt(orderID), "10/01/2000", orderStatus);
+            orders = orderDBManager.findAllCustomerOrdersFiltered(user.getUserID(), order, orderDate);
+            session.setAttribute("orderList", orders);
         }catch(SQLException ex){
-            Logger.getLogger(AddOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //response.getWriter().println("lol");
-        //session.setAttribute("orderInstance", "Order has been successfully added!");
-        //request.getRequestDispatcher("index.jsp").include(request, response);
-        response.sendRedirect("addOrder.jsp");
+        request.getRequestDispatcher("orderhistory.jsp").include(request, response);
+        
     }
 }

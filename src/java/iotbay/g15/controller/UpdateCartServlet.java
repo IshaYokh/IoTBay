@@ -27,17 +27,28 @@ public class UpdateCartServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
-        int itemUpdateQuantity = Integer.parseInt(request.getParameter("itemUpdateQuantity"));
-        int itemIDQuantityUpdate = Integer.parseInt(request.getParameter("itemIDQuantityUpdate"));
+        OrderManagementValidator validator = new OrderManagementValidator();
+        String itemUpdateQuantity = request.getParameter("itemUpdateQuantity"); //quantity
+        String itemIDQuantityUpdate = request.getParameter("itemIDQuantityUpdate"); //itemid
+        
+        if(!validator.validateInteger(itemUpdateQuantity)){
+            session.setAttribute("error", "Error! Enter a valid quantity!");
+            request.getRequestDispatcher("cart.jsp").include(request, response);
+            return;
+        }
+        int itemUpdateQuantity1 = Integer.parseInt(itemUpdateQuantity);
+        int itemIDQuantityUpdate1 = Integer.parseInt(itemIDQuantityUpdate);
+        
+        
         ArrayList<Item> cart;
         
-        OrderDAO manager = (OrderDAO) session.getAttribute("manager");
+        OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
         User user = (User) session.getAttribute("user");
         
         try{
-            manager.getItemByID(user.getUserID(), itemIDQuantityUpdate);
-            manager.updateItemQuantity(user.getUserID(), itemIDQuantityUpdate, itemUpdateQuantity);
-            cart = manager.getCart(user.getUserID());
+            orderDBManager.getItemByID(user.getUserID(), itemIDQuantityUpdate1);
+            orderDBManager.updateItemQuantity(user.getUserID(), itemIDQuantityUpdate1, itemUpdateQuantity1);
+            cart = orderDBManager.getCart(user.getUserID());
             session.setAttribute("cartItems", cart);
             
         }catch(SQLException ex){

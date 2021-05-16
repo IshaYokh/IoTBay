@@ -1,61 +1,60 @@
 body{
 	margin: 0px;
 	margin-top:-20px;
-	font-family: 'Bebas Neue', cursive;
+        font-family: 'Open Sans', sans-serif !important;
 }
 
 .navbar{
-	width:100%;
-	background-color: #173d7b;
-	padding-top:0.5em;
-	height:5em;
-	box-shadow:0 1px 5px rgb(190 190 190 / 50%);
-	position: fixed;
-	z-index: 999;
+	width:100% !important;
+	background-color: #173d7b !important;
+	padding-top:0.5em !important;
+	height:5em !important;
+	box-shadow:0 1px 5px rgb(190 190 190 / 50%) !important;
+	position: fixed !important;
+	z-index: 999 !important;
 }
 
 .navbar ul{
-	padding-top:0.7em;
+	padding-top:0.7em !important;
 }
 
 .navbar ul li{
-	display:inline;
-	padding-left:1em;
-	padding-right:1em;
-	text-align:center;
-	font-size:2em;
+	display:inline !important;
+	padding-left:1em !important;
+	padding-right:1em !important;
+	text-align:center !important;
+	font-size:2em !important;
+        font-family: 'Bebas Neue', cursive;
 
 }
 
 .logo{
-	margin-left:1em;
-	margin-right:0.5em;
-	float: left;
-	padding-top:0.4em;
-	width:10em;
+	margin-left:1em !important;
+	margin-right:0.5em !important;
+	float: left !important;
+	padding-top:0.4em !important;
+	width:10em !important;
 
 }
 
 .login{
-	float: right;
+	float: right !important;
 }
 
 .logo img{
-	margin-top: -65px;
-	display:block;
-	width: 95%;
-	margin-left:auto;
-	margin-right:auto;
-	padding-top:5em;
+	display:block !important;
+	width: 95% !important;
+	margin-left:auto !important;
+	margin-right:auto !important;
 }
 
 .navbar a{
-	text-decoration:none;
-	color: #fff;
+	text-decoration:none !important;
+	color: #fff !important;
 }
 
 .navbar a:hover{
-	color: #b3e0ff;	
+	color: #b3e0ff !important;	
 }
 
 .container{
@@ -372,6 +371,6 @@ input[type=text], input[type=password] {
 	margin-right: auto;
 }
 
-table #picture{
+#picture{
     max-width: 200px;
 }

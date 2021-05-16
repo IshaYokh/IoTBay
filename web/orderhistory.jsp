@@ -47,47 +47,62 @@
 	</div>
 	<div class="placeholder"></div>
         
-        <form method = "post" action = 'OrderHistoryServlet'>
-                
-                <label for="userID">User ID</label>
-                <input type="text" placeholder="Enter User ID" name="userID" required>
-
-                <button type="submit" class="btn-create">Insert User</button>
-            
-            </form>
+        <div class = "container border border-2 rounded">
+                <div class = "row border-2">
+                    <h3>Filter</h3>
+                </div>
+                <div class = "row border-2">
+                    <form method = "post">
+                        <div class ="mb-3">
+                            <label for="orderID" class="form-label">Order Number</label>
+                            <input type="number" class="form-control" placeholder="Enter Order Number" name="orderID" required>
+                        </div>
+                        <div class ="mb-3">
+                            <label for="orderDate" class="form-label">Order Date</label>
+                            <input type="Date" class="form-control" placeholder="Enter Order Date" name="orderDate" required>
+                        </div>
+                        <% String error = (String) session.getAttribute("errorFilter");
+                        if(error != null){ %>
+                        <p><%= error %></p> <% } else {}%>
+                        
+                            <button type="submit" formaction = "FilterSearchServlet" class="btn btn-primary">Search</button>
+                            <button type="submit" formaction = "OrderHistoryServlet" class="btn btn-primary" formnovalidate>Reset</button>
+                    </form>
+                </div>
+        </div>
         
-        <form method = "post" action = 'OrderHistoryServlet'>
-                
-                <label for="orderID">Order Number</label>
-                <input type="text" placeholder="Enter Order Number" name="orderID">
-                
-                <label for="orderDate">Order Date</label>
-                <input type="Date" placeholder="Enter Order Date" name="orderDate">
-
-                <button type="submit" class="btn-create">Search</button>
-            
-            </form>
-        
-
+        <div class="placeholder"></div>
         
             <%
                 if(orderData!= null){
                     for(Order O : orderData){%>
-            <div>
-                <p>Order Number: <%= O.getID() %></p>
-                <p>Order Date: <%= O.getOrderDate() %></p>
-                <p>Order Status: <%= O.getOrderStatus() %></p>
-                
-                <% List<Item> itemList = (ArrayList) O.getOrderedProducts();
-                    for (Item o : itemList){ %> 
-                <p>Item Name: <%= o.getItemName() %></p>
-                <img src="assets/items/<%= o.getItemImage() %>"/>
-                <% }
-                %>
-                
-                
-                
+            <div class = "container border border-2 rounded">
+                <div class = "row border-2 border-bottom">
+                    <div class = "col-md-auto"><p class="lead">Order Number: <%= O.getID() %></p></div>
+                    <div class = "col-md-auto"><p class="lead">Order Date: <%= O.getOrderDate() %></p></div>
+                    <div class = "col-md-auto"><p class="lead">Order Status: <%= O.getOrderStatus() %></p></div>
+                    <!--<div class = "col-md-auto"><p class="lead">Order Total: $$$$$</p></div>-->
+                </div>
+                     <br/>
+                    <% List<Item> itemList = (ArrayList) O.getOrderedProducts();
+                       for (Item o : itemList){ %> 
+                <div class = "row">
+                    <div class = "col-md-auto"><img id="picture" class="img-thumbnail border-2" src="assets/items/<%= o.getItemImage() %>"/></div>
+                    <div class = "col">
+                        <div class = "row">
+                            <div class = "col"><p class="lead"><%= o.getItemBrand() + " " +o.getItemName() %></p></div>
+                        </div>
+                        <div class = "row">
+                            <div class = "col-md-auto"><p>Item Price: <%= o.getItemPrice() %></p></div>
+                            <div class = "col-md-auto"><p>Item Quantity: <%= o.getUserQuantity() %></p></div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                    <% }
+                    %>
             </div>
+            <br/>
             <%
                 }}
             %>

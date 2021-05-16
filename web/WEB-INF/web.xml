@@ -29,6 +29,14 @@
         <servlet-name>EmptyCartServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.EmptyCartServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddOrderLineServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.AddOrderLineServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterSearchServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.FilterSearchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -56,6 +64,14 @@
     <servlet-mapping>
         <servlet-name>EmptyCartServlet</servlet-name>
         <url-pattern>/EmptyCartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddOrderLineServlet</servlet-name>
+        <url-pattern>/AddOrderLineServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterSearchServlet</servlet-name>
+        <url-pattern>/FilterSearchServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

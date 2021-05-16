@@ -75,6 +75,7 @@
             {  
                     cartPrice = cartPrice + I.getItemPrice();
                     session.setAttribute("cartPrice", cartPrice);
+                    String error = (String) session.getAttribute("error");
             %>
 
             <tr>
@@ -82,13 +83,15 @@
                 <td><%= I.getItemID() %></td>
                 <td><%= I.getItemBrand() %></td>
                 <td><%= I.getItemName() %></td>
-                <td><%= I.getItemPrice() %></td>
+                <td>$<%= I.getItemPrice() %></td>
                 <td>
                     <form method = "get" action = 'UpdateCartServlet'>
                         <input type="hidden" id="itemIDQuantityUpdate" name="itemIDQuantityUpdate" value="<%= I.getItemID() %>">
                         <input type="text" placeholder="#" name="itemUpdateQuantity" value="<%= I.getUserQuantity() %>" <br />
                         <button type="submit" class="btn btn-success" href="/UpdateCartServlet?itemUpdateQuantity=<%=I.getItemID()%>">Update</button>
                     </form>
+                        <% if(error != null){ %>
+                        <p><%= error %></p> <% } else {}%>
                 </td>
                 
                 <td>
@@ -110,7 +113,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <p>Subtotal: <%= session.getAttribute("cartPrice") %></p>
+                    <p>Subtotal: $<%= session.getAttribute("cartPrice") %></p>
                 </td>
                 <td>
                     <form method = "post" action = 'EmptyCartServlet'>
@@ -118,8 +121,8 @@
                     </form>
                 </td>
                 <td>
-                    <form method = "post" action = '#'>
-                <button type="submit" class="btn btn-success">Checkout</button>
+                    <form method = "post" action = 'AddOrderLineServlet'>
+                        <button type="submit" class="btn btn-success">Checkout</button>
                     </form>
                 </td>
             </tr>
