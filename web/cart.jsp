@@ -98,17 +98,9 @@
                         <a class="btn btn-danger" type="submit" href="/DeleteFromCartServlet?itemID=<%=I.getItemID()%>">Delete</a>
                 </td>
             </tr>
-            
-                
             <%
-                }}else{
-            %>
-            <p>Your cart is empty.</p>
-            <%
-                }
-            %>
-            
-            <tr>
+                }%>
+                <tr>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -128,6 +120,24 @@
             </tr>
                 
             </table>
+                
+                <%}else{
+            %>
+            <div class="position-relative">
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <div class="row">
+                        <div class="col">
+                            <h2 class="text-center">Your cart is empty.<br/>
+                                <a href="ViewCategoriesServlet"><button type="button" class="btn btn-primary">Click here to shop</button></a></h2>
+                        </div>
+                    </diV>
+                </div>
+            </div>
+            <%
+                }
+            %>
+            
+            
         </div>
     </div>
     </body>

@@ -43,10 +43,11 @@ private final Statement st1;
          String itemprice = rs1.getString(5);
          String itemquantity = rs1.getString(4);
          String itemserial = rs.getString(2);
+         String itemImage = rs.getString(6);
          int itemSerial = Integer.parseInt(itemserial);
          double itemPrice = Double.parseDouble(itemprice);
          int itemQuantity = Integer.parseInt(itemquantity);
-         item3 = new Item(itemID, itemSerial, itemcat, itembrand, itemname, itemPrice, itemQuantity);
+         item3 = new Item(itemID, itemSerial, itemcat, itembrand, itemname, itemImage, itemPrice, itemQuantity);
          return item3;
         }
     
@@ -93,6 +94,7 @@ private final Statement st1;
          String itemname = rs.getString(5);
          String itembrand = rs.getString(4);
          String itemID = rs.getString(1);
+         String itemImage = rs.getString(6);
          String fetch2 = "SELECT * from IOTBAY.CATALOGUE WHERE ITEMID = "+ itemID ;
          ResultSet rs1 = st1.executeQuery(fetch2);
          rs1.next();
@@ -103,11 +105,9 @@ private final Statement st1;
          int itemSerial = Integer.parseInt(itemserial);
          double itemPrice = Double.parseDouble(itemprice);
          int itemQuantity = Integer.parseInt(itemquantity);
-         Item item3 = new Item(itemid, itemSerial, itemcat, itembrand, itemname, itemPrice, itemQuantity);
+         Item item3 = new Item(itemid, itemSerial, itemcat, itembrand, itemname, itemImage, itemPrice, itemQuantity);
          proList.add(item3);
         }
-    
-    
     
      return proList;
     }
@@ -138,10 +138,10 @@ private final Statement st1;
     
      return proListImage;
     }
-    public void AddItem3(int itemID, int itemserial,String cat, String name, String brand, int quantity, double price) throws SQLException{
+    public void AddItem3(int itemID, int itemserial,String cat, String name, String brand, String itemImage, int quantity, double price) throws SQLException{
         
         String image = "nothing";
-        String fetch = "INSERT INTO IOTBAY.ITEM (ITEMID, ITEMSERIALNUMBER, ITEMCATEGORY, ITEMBRAND, ITEMNAME, ITEMIMAGE) VALUES (" +itemID+ ", " + itemserial + ", '" + cat + "', '" + brand +"', '" + name + "', '" + image +"')";
+        String fetch = "INSERT INTO IOTBAY.ITEM (ITEMID, ITEMSERIALNUMBER, ITEMCATEGORY, ITEMBRAND, ITEMNAME, ITEMIMAGE) VALUES (" +itemID+ ", " + itemserial + ", '" + cat + "', '" + brand +"', '" + name + "', '" + itemImage +"')";
         st.execute(fetch);
         
         

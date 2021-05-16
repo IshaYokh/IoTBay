@@ -31,12 +31,13 @@ public class Item {
     
     }
 
-    public Item(int itemID, int itemSerialNumber, String itemCategory, String itemBrand, String itemName, double productPrice, int productQuantity) {
+    public Item(int itemID, int itemSerialNumber, String itemCategory, String itemBrand, String itemName, String itemImage, double productPrice, int productQuantity) {
         this.itemID = itemID;
         this.itemSerialNumber = itemSerialNumber;
         this.itemCategory = itemCategory;
         this.itemBrand = itemBrand;
         this.itemName = itemName;
+        this.itemImage = itemImage;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
         userQuantity = 0;
