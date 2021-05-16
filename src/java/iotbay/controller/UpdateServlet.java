@@ -40,13 +40,13 @@ public class UpdateServlet extends HttpServlet {
         String lastName = request.getParameter("lname");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String phoneNumber = request.getParameter("number");
-        String streetNumber = request.getParameter("street-number");
+        int phoneNumber = Integer.parseInt(request.getParameter("number"));
+        int streetNumber = Integer.parseInt(request.getParameter("street-number"));
         String streetName = request.getParameter("street-name");
         String streetType = request.getParameter("street-type");
         String suburb = request.getParameter("suburb");
         String state = request.getParameter("state");
-        String postcode = request.getParameter("postcode");
+        int postcode = Integer.parseInt(request.getParameter("postcode"));
         String country = request.getParameter("country");
         CustomerDAO manager = (CustomerDAO)session.getAttribute("manager");
          

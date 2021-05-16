@@ -37,6 +37,7 @@
             Customer c = cd.findCustomer(email, password);
         %>
         <form action="UpdateServlet" method="post">
+            <h1 class="create-account-title">Update Account</h1>
             <table>
                 <tr><td>First Name: </td><td><input type="text" name="fname" value="<%=c.getFirstName()%>"></td></tr>
                 <tr><td>Last Name: </td><td><input type="text" name="lname" value="<%=c.getLastName()%>"></td></tr>

@@ -41,20 +41,19 @@ public class AddServlet extends HttpServlet {
         String lastName = request.getParameter("lname");
         String email = request.getParameter("email");
         String password = request.getParameter("pwd");
-        String phoneNumber = request.getParameter("number");
-        String streetNumber = request.getParameter("street-number");
+        int phoneNumber = Integer.parseInt(request.getParameter("number"));
+        int streetNumber = Integer.parseInt(request.getParameter("street-number"));
         String streetName = request.getParameter("street-name");
         String streetType = request.getParameter("street-type");
         String suburb = request.getParameter("suburb");
         String state = request.getParameter("state");
-        String postcode = request.getParameter("postcode");
+        int postcode = Integer.parseInt(request.getParameter("postcode"));
         String country = request.getParameter("country");
-        boolean status = Boolean.parseBoolean(request.getParameter("status"));
         String source = request.getParameter("source");
         Customer customer = new Customer(firstName, lastName,
                                          email, password, phoneNumber,
                                          streetNumber, streetName, streetType,
-                                         suburb, state, postcode, country, status);
+                                         suburb, state, postcode, country);
         CustomerDAO manager = (CustomerDAO)session.getAttribute("manager");
          
         try {       
@@ -66,7 +65,7 @@ public class AddServlet extends HttpServlet {
         }
         
         if (source.equals("register")) {
-                request.getRequestDispatcher("welcome.jsp").include(request, response);
+            request.getRequestDispatcher("welcome.jsp").include(request, response);
         } else {
             request.getRequestDispatcher("customerinfo.jsp").include(request, response);
         }

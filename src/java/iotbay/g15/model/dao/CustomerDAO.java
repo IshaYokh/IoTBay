@@ -16,7 +16,7 @@ public class CustomerDAO {
        st = conn.createStatement();   
     }
 
-    //Find user by id in the database   
+    //Find user by email in the database   
     public Customer findCustomer(String email, String password) throws SQLException {       
         String fetch = "select * from CUSTOMER where EMAIL = '" + email +
                                             "' and PASSWORD = '" + password + "'";
@@ -25,53 +25,51 @@ public class CustomerDAO {
         if (rs.next()){
             String firstName = rs.getString(1);
             String lastName = rs.getString(2);
-            String phoneNumber = rs.getString(5);
-            String streetNumber = rs.getString(6);
+            int phoneNumber = Integer.parseInt(rs.getString(5));
+            int streetNumber = Integer.parseInt(rs.getString(6));
             String streetName = rs.getString(7);
             String streetType = rs.getString(8);
             String suburb = rs.getString(9);
             String state = rs.getString(10);
-            String postcode = rs.getString(11);
+            int postcode = Integer.parseInt(rs.getString(11));
             String country = rs.getString(12);
-            boolean status = rs.getBoolean(13);
 
             return new Customer(firstName, lastName,
                                 email, password, phoneNumber,
                                 streetNumber, streetName, streetType,
-                                suburb, state, postcode, country, status);
+                                suburb, state, postcode, country);
         }
         
         return null;   
     }
 
     //Add a user-data into the database   
-    public void addCustomer(String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) throws SQLException {                   //code for add-operation       
+    public void addCustomer(String firstName, String lastName, String email, String password, int phoneNumber, int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country) throws SQLException {                   //code for add-operation       
         st.executeUpdate("INSERT INTO CUSTOMER (firstname, lastname, " +
                                                "email, password, phonenumber, " +
                                                "streetnumber, streetname, streettype, " +
-                                               "suburb,state, postcode, country, status) " +
+                                               "suburb,state, postcode, country) " +
                          "VALUES ('" + firstName + "', '" + lastName + "', '" +
-                                  email + "', '" + password + "', '" + phoneNumber + "', '" +
-                                  streetNumber + "', '" + streetName + "', '" + streetType + "', '" +
-                                  suburb + "', '" + state + "', '" + postcode + "', '" + country + "', true)");   
+                                  email + "', '" + password + "', " + phoneNumber + ", " +
+                                  streetNumber + ", '" + streetName + "', '" + streetType + "', '" +
+                                  suburb + "', '" + state + "', " + postcode + ", '" + country + "')");   
 
     }
 
     //update a user details in the database   
-    public void updateCustomer(String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country) throws SQLException {       
+    public void updateCustomer(String firstName, String lastName, String email, String password, int phoneNumber, int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country) throws SQLException {       
         //code for update-operation   
         st.executeUpdate("UPDATE CUSTOMER SET FIRSTNAME='" + firstName +
                                           "', LASTNAME='" + lastName +
-                                          "', PHONENUMBER='" + phoneNumber +
-                                          "', STREETNUMBER='" + streetNumber +
-                                          "', STREETNAME='" + streetName +
+                                          "', PHONENUMBER=" + phoneNumber +
+                                          ", STREETNUMBER=" + streetNumber +
+                                          ", STREETNAME='" + streetName +
                                           "', STREETTYPE='" + streetType +
                                           "', SUBURB='" + suburb +
                                           "', STATE='" + state +
-                                          "', POSTCODE='" + postcode +
-                                          "', COUNTRY='" + country +
-                         "' WHERE EMAIL = 'k' and password = 'k'");
-//                         "' WHERE EMAIL = '" + email + "' and PASSWORD = '" + password + "'");
+                                          "', POSTCODE=" + postcode +
+                                          ", COUNTRY='" + country +
+                         "' WHERE EMAIL = '" + email + "' and PASSWORD = '" + password + "'");
     }       
 
     //delete a user from the database   
@@ -90,20 +88,19 @@ public class CustomerDAO {
             String lastName = rs.getString(2);
             String email = rs.getString(3);
             String password = rs.getString(4);
-            String phoneNumber = rs.getString(5);
-            String streetNumber = rs.getString(6);
+            int phoneNumber = Integer.parseInt(rs.getString(5));
+            int streetNumber = Integer.parseInt(rs.getString(6));
             String streetName = rs.getString(7);
             String streetType = rs.getString(8);
             String suburb = rs.getString(9);
             String state = rs.getString(10);
-            String postcode = rs.getString(11);
+            int postcode = Integer.parseInt(rs.getString(11));
             String country = rs.getString(12);
-            boolean status = rs.getBoolean(13);
             
             customers.add(new Customer(firstName, lastName,
                                        email, password ,phoneNumber,
                                        streetNumber, streetName, streetType,
-                                       suburb, state, postcode, country, status));
+                                       suburb, state, postcode, country));
         }
         
         return customers;

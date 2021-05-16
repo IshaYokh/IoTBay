@@ -33,12 +33,12 @@
         <div class="placeholder"></div>
         
         <div>
+            <h1 class="create-account-title">Customer Information</h1>
             <form action="register.jsp">
                 <input type="hidden" name="source" value="customerinfo">
                 <button class="btn1">Create New Customer</button>
             </form>
             <table class="tbl1">
-                <caption class="welcome_title">Customer Information</caption>
                 <tr class="thead">
                     <td>First Name</td>
                     <td>Last Name</td>
@@ -51,7 +51,6 @@
                     <td>State</td>
                     <td>Postcode</td>
                     <td>Country</td>
-                    <td>Status</td>
                     <td>Edit</td>
                     <td>Delete</td>
                 </tr>
@@ -72,7 +71,6 @@
                         <td><p>${item.getState()}</p></td>
                         <td><p>${item.getPostcode()}</p></td>
                         <td><p>${item.getCountry()}</p></td>
-                        <td><p>${item.getStatus()}</p></td>
                         <td>
                             <form action="updatecustomer.jsp">
                                 <input type="hidden" name="email" value="${item.getEmail()}">
