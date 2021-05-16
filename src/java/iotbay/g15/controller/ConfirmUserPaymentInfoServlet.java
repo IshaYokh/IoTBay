@@ -12,29 +12,30 @@ import javax.servlet.http.HttpSession;
 import iotbay.g15.model.dao.*;
 import iotbay.g15.model.*;
 
-
 /**
  *
  * @author Isha Yokhanna
  * 
- * This servlet class is used to retrieve the customer's payment information
- * and display them on the view
- * 
+ * This servlet class runs when main.jsp is launched and it stores data in the session
+ * that validate if the user has payment info records in the database or not
  */
-public class ViewPaymentInfoServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("user");
-        PaymentInfo paymentInfo = null;
-        PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
+public class ConfirmUserPaymentInfoServlet extends HttpServlet{ 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException{
         
+        HttpSession session = request.getSession();
+        String userHasPaymentInfo = "false";
+        User user = (User)session.getAttribute("user");
+
+        PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
+
         try{
-            paymentInfo = paymentInfoDBmanager.getPaymentInfo(user.getUserID());
+            userHasPaymentInfo = paymentInfoDBmanager.hasUser(user.getUserID());
         }catch(SQLException ex){
-            Logger.getLogger(ViewPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConfirmUserPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        session.setAttribute("paymentInfo", paymentInfo);
+        session.setAttribute("userHasPaymentInfo", userHasPaymentInfo);
     }
-    
 }

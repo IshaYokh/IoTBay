@@ -56,6 +56,46 @@
         <servlet-class>iotbay.g15.controller.AddPaymentInfoServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ConfirmUserPaymentInfoServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.ConfirmUserPaymentInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewPaymentInfoServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.ViewPaymentInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePaymentInfoServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.UpdatePaymentInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletePaymentInfoServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.DeletePaymentInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updatePaymentInfoFromCheckoutServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.UpdatePaymentInfoFromCheckoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateAccDetailsFromCheckoutServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.UpdateAccDetailsFromCheckoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addPaymentInfoFromCheckoutServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.AddPaymentInfoFromCheckoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewPaymentHistoryServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.ViewPaymentHistoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchPaymentHistoryServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.SearchPaymentHistoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddPaymentServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.AddPaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>addItemServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.addItemServlet</servlet-class>
     </servlet>
@@ -178,6 +218,46 @@
     <servlet-mapping>
         <servlet-name>AddPaymentInfoServlet</servlet-name>
         <url-pattern>/AddPaymentInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmUserPaymentInfoServlet</servlet-name>
+        <url-pattern>/ConfirmUserPaymentInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewPaymentInfoServlet</servlet-name>
+        <url-pattern>/ViewPaymentInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePaymentInfoServlet</servlet-name>
+        <url-pattern>/UpdatePaymentInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePaymentInfoServlet</servlet-name>
+        <url-pattern>/DeletePaymentInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updatePaymentInfoFromCheckoutServlet</servlet-name>
+        <url-pattern>/updatePaymentInfoFromCheckoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateAccDetailsFromCheckoutServlet</servlet-name>
+        <url-pattern>/updateAccDetailsFromCheckoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addPaymentInfoFromCheckoutServlet</servlet-name>
+        <url-pattern>/addPaymentInfoFromCheckoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewPaymentHistoryServlet</servlet-name>
+        <url-pattern>/ViewPaymentHistoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchPaymentHistoryServlet</servlet-name>
+        <url-pattern>/SearchPaymentHistoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPaymentServlet</servlet-name>
+        <url-pattern>/AddPaymentServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreateUserServlet</servlet-name>

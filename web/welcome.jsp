@@ -39,6 +39,8 @@
 	<div class="welcome_title">
             <span> Welcome <%= fname1%>!</span>
 	</div>
+        <div class="placeholder"></div>
+        <div class="placeholder"></div>
         <div class="btns-container">
             <a href="index.jsp">
                 <button class="cont-shopping-btn">

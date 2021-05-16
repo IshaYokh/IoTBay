@@ -42,65 +42,129 @@
         <!-- PaymentInfo addition feedback box -->
         <% 
             String userName = user.getFirstName();
+            String url = "main.jsp";
+            String pageName = "account page";
+            String cancelButtonUrl = "main.jsp";
             try{
                 String paymentInfoAddFeedback = (String)session.getAttribute("paymentInfoAddFeedback");
-                if(paymentInfoAddFeedback.equals("success")){ %>
+                
+                try{
+                        String redirectedFromCheckout = (String)session.getAttribute("redirectedFromCheckout");
+                        if(redirectedFromCheckout.equals("true")){
+                            cancelButtonUrl = "checkout.jsp";
+                        }
+                    }catch(NullPointerException ex){
+                    }
+                
+                if(paymentInfoAddFeedback.equals("success")){ 
+                    session.setAttribute("userHasPaymentInfo", "true");
+                    session.removeAttribute("paymentInfoAddFeedback");
+                    
+                    try{
+                        String redirectedFromCheckout = (String)session.getAttribute("redirectedFromCheckout");
+                        if(redirectedFromCheckout.equals("true")){
+                            url = "checkout.jsp";
+                            pageName = "checkout page";
+                            cancelButtonUrl = "checkout.jsp";
+                        }
+                    }catch(NullPointerException ex){
+                    }
+        %> 
             <div class="paymentinfo-feedback">
-                <h1>Thanks <%= userName%>! your payment information has been added successfully! <a href="accountDetails.jsp">Return to account page</a></h1>
+                <h1>Thanks <%= userName%>! your payment information has been added successfully! <a href="<%= url%>">Return to <%= pageName%></a></h1>
             </div>
         <%
-            }}
+            }else if(paymentInfoAddFeedback.equals("alreadyExists")){
+        %>
+            
+        <div class="paymentinfo-fail-feedback">
+            <h1><i class="fas fa-exclamation-triangle"></i>&nbsp;Payment Information already exist</h1>
+        </div>
+        
+        <%}else if(paymentInfoAddFeedback.equals("fail")){%>
+        
+        <div class="paymentinfo-fail-feedback">
+            <h1><i class="fas fa-exclamation-triangle"></i>&nbsp;Something went wrong! please check the text inputs for feedback</h1>
+        </div>
+        
+        
+        <%
+            
+            }
+                session.removeAttribute(paymentInfoAddFeedback);
+                session.removeAttribute("redirectedFromCheckout");
+            }
             catch(NullPointerException ex){
             }
         %>
+            
+        <%
+            // Error validation variables
+            String streetNumberErr = (String)session.getAttribute("streetNumberErr");
+            String streetNameErr = (String)session.getAttribute("streetNameErr");
+            String streetTypeErr = (String)session.getAttribute("streetTypeErr");
+            String suburbErr = (String)session.getAttribute("suburbErr");
+            String stateErr = (String)session.getAttribute("stateErr");
+            String postcodeErr = (String)session.getAttribute("postcodeErr");
+            String countryErr = (String)session.getAttribute("countryErr");
+            String cardHolderNameErr = (String)session.getAttribute("cardHolderNameErr");
+            String cardNumberErr = (String)session.getAttribute("cardNumberErr");
+            String cardExpiryDateErr = (String)session.getAttribute("cardExpiryDateErr");
+            String cardCvcErr = (String)session.getAttribute("cardCvcErr");
+        %>
        
         <!-- Form for new card and billing details -->
-        <h1 class="card-details-title">Billing Address & Card Details</h1>
+        <h1 class="card-details-title">Add Billing Address & Card Details</h1>
         <div class="form" id="createForm">
             <form action="AddPaymentInfoServlet" method="post" class="form-container-update-card">
               <label for="street-number">Street Number</label>
-              <input type="text" placeholder="Enter Street number" name="street-number" required>
+              <input type="text" placeholder="<%=(streetNumberErr != null ? streetNumberErr : "Enter Street Number")%>" name="street-number" required>
               
               <label for="street-name">Street Name</label>
-              <input type="text" placeholder="Enter Street Name" name="street-name" required>
+              <input type="text" placeholder="<%=(streetNameErr != null ? streetNameErr : "Enter Street Name")%>" name="street-name" required>
               
               <label for="street-type">Street Type</label>
-              <input type="text" placeholder="Enter Street Type" name="street-type" required>
+              <input type="text" placeholder="<%=(streetTypeErr != null ? streetTypeErr : "Enter Street Type")%>" name="street-type" required>
               
               <label for="suburb">Suburb</label>
-              <input type="text" placeholder="Enter Suburb" name="suburb" required>
+              <input type="text" placeholder="<%=(suburbErr != null ? suburbErr : "Enter Suburb")%>" name="suburb" required>
           
               <label for="state">State</label>
-              <input type="text" placeholder="Enter State" name="state" required>
+              <input type="text" placeholder="<%=(stateErr != null ? stateErr : "Enter State")%>" name="state" required>
 
               <label for="postcode">Enter Postcode</label>
-              <input type="text" placeholder="Enter Postcode" name="postcode" required>
+              <input type="text" placeholder="<%=(postcodeErr != null ? postcodeErr : "Enter Postcode")%>" name="postcode" required>
               
               <label for="Country">Country</label>
-              <input type="text" placeholder="Enter Country" name="country" required>
+              <input type="text" placeholder="<%=(countryErr != null ? countryErr : "Enter Country")%>" name="country" required>
               
               <div class="placeholder"></div>
               
+              <h1>Payment methods allowed: <i class="fab fa-cc-mastercard"></i> &nbsp;Mastercard</h1>
+              
               <label for="card-holder-name">Card Holder Name</label>
-              <input type="text" placeholder="John Citizen" name="card-holder-name" required>
+              <input type="text" placeholder="<%=(cardHolderNameErr != null ? cardHolderNameErr : "John Citizen")%>" name="card-holder-name" required>
                 
               <label for="card-number">Card Number</label>
-              <input type="text" placeholder="0000 0000 0000 0000" name="card-number" required>
+              <input type="text" placeholder="<%=(cardNumberErr != null ? cardNumberErr : "0000 0000 0000 0000")%>" name="card-number" required>
               
               <label for="card-expiry-date">Expiry Date</label>
-              <input type="text" placeholder="MM/YYYY" name="card-expiry-date" min="2021-05-14">
+              <input type="text" placeholder="<%=(cardExpiryDateErr != null ? cardExpiryDateErr : "MM/YYYY")%>" name="card-expiry-date" required>
               
               <label for="card-cvc">CVC</label>
-              <input type="password" placeholder="000" name="card-cvc" required>
+              <input type="password" placeholder="<%=(cardCvcErr != null ? cardCvcErr : "000")%>" name="card-cvc" required>
               
               <!-- Submit or cancel buttons -->
               <div class="save-btn-container">
                 <button type="submit">Save</button>
               </div>
-              <div class="cancel-btn-container">
-                <button type="submit">Cancel</button>
-              </div>
             </form>
-        </div>  
+            <a href="<%= cancelButtonUrl%>">
+                <div class="cancel-btn-container">
+                    <button type="submit">Cancel</button>
+                </div>
+            </a>
+        </div>
+        <div class="placeholder"></div>
     </body>
 </html>

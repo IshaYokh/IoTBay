@@ -4,7 +4,9 @@
     Author     : Isha Yokhanna
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="iotbay.g15.model.User"%>
+<%@page import="iotbay.g15.model.PaymentInfo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -23,10 +25,11 @@
                     <a href="ViewCategoriesServlet"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
-                    <% 
+                    <%
                         String msg = "Sign up / Login";
                         String path = "login.jsp";
                         User user = (User)session.getAttribute("user");
+                        session.setAttribute("checkoutActive", "true");
                         
                         if(user != null){
                             msg = "My Account";
@@ -41,42 +44,116 @@
         <!-- Order summary section -->
         <h1 class="checkout-header">Checkout</h1>
         <div class="back-to-cart">
-            <button href="" type="submit"><--- Go back to cart</button>
+            <button href="#" type="submit"><i class="fas fa-arrow-left"></i> &nbsp;Go back to cart</button>
         </div>
-        <div class="order-summary">
+           
+        <div class="table-container">
+            
             <h3 class="ordersummary-header">Order summary</h3>
-            <h5>Order subtotal</h5>
-            <h5>Postage</h5>
-            <h4>Order total</h4>
-        </div>
-        
-        <!-- Shipping details section -->
-        <div class="shipping-details">
+            <div class="order-border">
+                <table border="1" class="order-table">
+                    <tbody>
+                        <tr>
+                            <td><span class="bold">Order Subtotal:</span></td>
+                            <% String orderSubtotal = (String)session.getAttribute("cartPrice"); %>
+                            <td class="right">$<%= orderSubtotal%></td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="bold">Shipping Cost:</span></td>
+                            <td class="right">$5.00</td>
+                        </tr>     
+
+                        <tr>
+                            <td><span class="bold">Order Total:</span></td>
+                            <% DecimalFormat decimalFormat = new DecimalFormat("0.00"); %>
+                            <td class="right">$<%= decimalFormat.format(Double.parseDouble(orderSubtotal) + 5.00)%></td>
+                        </tr>       
+                    </table>
+            </div>
+
+            
             <h3 class="shippingdetails-header">Shipping details</h3>
-            <h5>Shipping address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 77 jackson streeet</h5>
-            <button href="" type="submit" class="update-shipping">Update Shipping Details</button>
-            <button href="" type="submit" class="delete-shipping">Delete Shipping Details</button>
-        </div>
-        
-        <!-- Payment details section -->
-        <div class="payment-details">
+            <div class="shipping-border">
+                <!-- Shipping details section -->
+                 <table border="1" class="shipping-table">
+                    <tbody>
+                        <tr>
+                            <td><span class="bold">Shipping Address:</span></td>
+                            <%
+                                String Address = user.getStreetNumber() + " " + user.getStreetName() + " " +
+                                user.getStreetType() + " " + user.getSuburb() + " " + user.getState() + " " + user.getPostcode()
+                                + " " + user.getCountry();
+                            %>
+                            <td class="right"><%= Address%></td>
+                        </tr>     
+                 </table>
+                <div class="box-buttons">
+                    <a href="updateAccDetailsFromCheckoutServlet">
+                        <button type="submit" class="update-shipping">Update/Delete Shipping Details</button>
+                    </a>
+                </div>
+             </div>
+            
             <h3 class="paymentdetails-header">Payment details</h3>
-            <h5>Payment method &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mastercard ending with 4789</h5>
-            <h5>Billing address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 77 jackson streeet</h5>
-            <button href="" type="submit" class="view-payment">View Payment Details</button>
-            <a href="updatePaymentInfo.jsp">
-                <button class="updatepayment-btn">
-                    Update Payment Details
-                </button>
-            <a/>
-            <button href="" type="submit" class="delete-payment">Delete Payment Details</button>
+            <div class="payment-border">
+                <!-- Payment details section -->
+                
+                <%
+                    PaymentInfo paymentInfo = null;
+                    String cardLastFourDigits = "";
+                    boolean paymentInfoExists = false;
+                    try{
+                        paymentInfo = (PaymentInfo)session.getAttribute("paymentInfo");
+                        cardLastFourDigits = paymentInfo.getCardNumber().substring(paymentInfo.getCardNumber().length() - 4);
+                        paymentInfoExists = true;
+                        
+                        String streetNumber = Integer.toString(paymentInfo.getStreetNumber());
+                        String postcode = Integer.toString(paymentInfo.getPostcode());
+                        String billingAddress = streetNumber + " " + paymentInfo.getStreetName() + " " +
+                                paymentInfo.getStreetType() + " " + paymentInfo.getSuburb() + " " + paymentInfo.getState() + " " + postcode
+                                + " " + paymentInfo.getCountry();
+                %>
+                
+                <table border="1" class="payment-table">
+                    <tbody>
+                        <tr>
+                            <td><span class="bold">Payment Method:</span></td>
+                            <td class="right">Master card ending with <%= cardLastFourDigits%></td>
+                        </tr>
+
+                        <tr>
+                            <td><span class="bold">Billing Address:</span></td>
+                            <td class="right"><%= billingAddress%></td>
+                        </tr>
+                </table>
+                        
+                <%}catch(NullPointerException e){}%>
+                
+                <% if(!paymentInfoExists) {%>
+                <div class="no-paymentInfo-feedback">
+                    <h1><i class="fas fa-exclamation-triangle"></i> You don't have any payment information <a href="addPaymentInfoFromCheckoutServlet">click here to add payment details</a></h1>
+                </div>
+                
+                <%}else{%>
+
+                <div class="box-buttons">
+                    <a href="updatePaymentInfoFromCheckoutServlet">
+                        <button type="submit" class="delete-payment">Update/Delete Payment Details</button>
+                    </a>
+                </div>
+            </div>
         </div>
         
         <!-- Pay button -->
         <div class="pay-btn">
-            <button href="" type="submit" class="pay-btn">
-                <i class="fas fa-lock"></i> &nbsp;Proceed with payment
-            </button>
+            <% session.setAttribute("redirectedFromCheckout", "true"); %>
+            <form method="post" action="AddPaymentServlet">
+                <button type="submit" class="pay-btn">
+                    <i class="fas fa-lock"></i> &nbsp;Proceed with payment
+                </button>
+            </form>
+            <%}%>
         </div>
     </body>
 </html>

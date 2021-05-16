@@ -16,6 +16,8 @@
         <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>
     </head>	
     <body>
+        <jsp:include page="/ConfirmUserPaymentInfoServlet"/>
+        <jsp:include page="/ViewPaymentInfoServlet"/>
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
@@ -32,6 +34,28 @@
             </ul>
         </div>
         <div class="placeholder"></div>
+        
+        <% 
+            String checkoutActive = "false";
+            try{
+                checkoutActive = (String)session.getAttribute("checkoutActive");
+                if(checkoutActive.equals("true")){
+        %>
+                
+        <div class="unprocessed-paymentInfo-feedback">
+            <h1><i class="fas fa-exclamation-triangle"></i> You still have unprocessed payment in checkout
+                <a href="checkout.jsp">click here to return to checkout</a></h1>
+        </div>
+        
+        <%
+                }}catch(NullPointerException e){
+        %>
+        
+        <div class="placeholder"></div>
+        <div class="placeholder"></div>
+        
+        <% } %>
+        
         <div class="welcome_title">
             <span> Welcome back <%= accountName%>!</span>
 	</div>
@@ -52,9 +76,37 @@
                     </button>
                 </form>
             <a/>
-             
+            
             <br/>
             <br/>
+            
+            <%
+                // checking if a user has payment info records to decide wether to display add or edit payment info
+                
+                try{
+                    String userHasPaymentInfo = (String)session.getAttribute("userHasPaymentInfo");
+                    if(userHasPaymentInfo.equals("false")){
+            %>
+            
+            <a href="addPaymentInfo.jsp">
+                <button class="add-paymentinfo-btn">
+                    <i class="far fa-credit-card"></i> &nbsp;Add Payment Information
+                </button>
+            <a/>
+
+            <% 
+                }else{
+            %>
+
+            <a href="updatePaymentInfo.jsp">
+                <button class="add-paymentinfo-btn">
+                    <i class="far fa-credit-card"></i> &nbsp;View/Update/Delete Payment Information
+                </button>
+            <a/>
+
+            <% 
+                }}catch(NullPointerException ex){
+            %>
             
             <a href="addPaymentInfo.jsp">
                 <button class="add-paymentinfo-btn">
@@ -62,12 +114,23 @@
                 </button>
             <a/>
             
+            <% } %>
+            
             <br/>
             <br/>
             
             <a href="accountDetails.jsp">
                 <button class="account-details-btn">
                     <i class="fas fa-user-circle"></i> &nbsp;Account Details
+                </button>
+            <a/>
+            
+            <br/>
+            <br/>
+            
+            <a href="searchPaymentHistory.jsp">
+                <button class="search-payment-history-btn">
+                    <i class="fas fa-history"></i> &nbsp;Search Payment History
                 </button>
             <a/>
             

@@ -11,11 +11,33 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import iotbay.g15.model.dao.*;
 import iotbay.g15.model.*;
+import java.util.ArrayList;
 
 /**
  *
  * @author Isha Yokhanna
+ * 
+ * This servlet class will be used to view payment history list for a user
+ * 
  */
-public class ViewPaymentHistoryServlet {
-    
+public class ViewPaymentHistoryServlet extends HttpServlet{
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("user");
+        PaymentDAO paymentDBManager = (PaymentDAO)session.getAttribute("paymentDBManager");
+        PaymentInfoDAO paymentInfoDBManager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
+        ArrayList<Payment> payments = new ArrayList<>();
+        ArrayList<PaymentInfo> paymentInfos = new ArrayList<>();
+        
+        try{
+            payments = paymentDBManager.listAllPaymentInfos(user.getUserID());
+            paymentInfos = paymentInfoDBManager.listAllPaymentInfos(user.getUserID());
+        }catch(SQLException ex){
+            Logger.getLogger(ViewPaymentHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        session.setAttribute("payments", payments);
+        session.setAttribute("paymentInfos", paymentInfos);
+    }
 }

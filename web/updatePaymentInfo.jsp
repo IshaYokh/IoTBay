@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="iotbay.g15.model.User"%>
+<%@page import="iotbay.g15.model.PaymentInfo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -15,6 +16,7 @@
         <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <jsp:include page="/ViewPaymentInfoServlet"/>
         <!-- Navbar -->
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
@@ -38,73 +40,130 @@
 	</div>
 	<div class="placeholder"></div>
         
-        <!-- Form for updating billing and payment info -->
-        <h1 class="billing-address-title">Billing Address</h1>
+        
+        <!-- PaymentInfo update feedback box -->
+        <% 
+            String userName = user.getFirstName();
+            String url = "main.jsp";
+            String pageName = "account page";
+            String cancelButtonUrl = "main.jsp";
+            try{
+                String paymentInfoUpdateFeedback = (String)session.getAttribute("paymentInfoUpdateFeedback");
+                
+                try{
+                        String redirectedFromCheckout = (String)session.getAttribute("redirectedFromCheckout");
+                        if(redirectedFromCheckout.equals("true")){
+                            cancelButtonUrl = "checkout.jsp";
+                        }
+                    }catch(NullPointerException ex){
+                    }
+                
+                if(paymentInfoUpdateFeedback.equals("success")){ 
+                    session.setAttribute("userHasPaymentInfo", "true");
+                    session.removeAttribute("paymentInfoUpdateFeedback");
+                    
+                    try{
+                        String redirectedFromCheckout = (String)session.getAttribute("redirectedFromCheckout");
+                        if(redirectedFromCheckout.equals("true")){
+                            url = "checkout.jsp";
+                            pageName = "checkout page";
+                            cancelButtonUrl = "checkout.jsp";
+                        }
+                    }catch(NullPointerException ex){
+                    }
+        %> 
+            <div class="paymentinfo-feedback">
+                <h1>Thanks <%= userName%>! your payment information has been updated successfully! <a href="<%= url%>">Return to <%= pageName%></a></h1>
+            </div>
+        
+        <%      }else if(paymentInfoUpdateFeedback.equals("fail")){%>
+        
+        <div class="paymentinfo-fail-feedback">
+            <h1><i class="fas fa-exclamation-triangle"></i>&nbsp;Something went wrong! please check the text inputs for feedback</h1>
+        </div>
+        
+        <%
+            }
+                session.removeAttribute("redirectedFromCheckout");
+                session.removeAttribute("paymentInfoUpdateFeedback");
+            }
+            catch(NullPointerException ex){
+            }
+        %>
+       
+        <% 
+            // Grabbing customer payment info details
+            PaymentInfo paymentInfo = (PaymentInfo)session.getAttribute("paymentInfo");
+            
+            // Error validation variables
+            String streetNumberErr = (String)session.getAttribute("streetNumberErr");
+            String streetNameErr = (String)session.getAttribute("streetNameErr");
+            String streetTypeErr = (String)session.getAttribute("streetTypeErr");
+            String suburbErr = (String)session.getAttribute("suburbErr");
+            String stateErr = (String)session.getAttribute("stateErr");
+            String postcodeErr = (String)session.getAttribute("postcodeErr");
+            String countryErr = (String)session.getAttribute("countryErr");
+            String cardHolderNameErr = (String)session.getAttribute("cardHolderNameErr");
+            String cardNumberErr = (String)session.getAttribute("cardNumberErr");
+            String cardExpiryDateErr = (String)session.getAttribute("cardExpiryDateErr");
+            String cardCvcErr = (String)session.getAttribute("cardCvcErr");
+        %>
+        
+        <!-- Form for new card and billing details -->
+        <h1 class="card-details-title">View/Update/Delete Billing Address & Card Details</h1>
         <div class="form" id="createForm">
-            <form action="" method="post" class="form-container-update-billing">
-              
-              <label for="address-line-1">Address Line 1</label>
-              <input type="text" placeholder="Address Line 1" name="address-line-1" required>
-              
-              <label for="address-line-2">Address Line 1</label>
-              <input type="text" placeholder="Address Line 2" name="address-line-2">
-              
-              <label for="suburb">Suburb</label>
-              <input type="text" placeholder="Enter Suburb" name="suburb" required>
-          
-              <label for="state">State</label>
-              <input type="text" placeholder="Enter State" name="state" required>
-
-              <label for="postcode">Enter Postcode</label>
-              <input type="text" placeholder="Enter Postcode" name="postcode" required>
-
-              <label for="number">Phone Number</label>
-              <input type="text" placeholder="Enter Phone Number" name="number" required>
-
+            <form action="UpdatePaymentInfoServlet" method="post" class="form-container-update-card">
               <label for="street-number">Street Number</label>
-              <input type="text" placeholder="Enter Street Number" name="street-number" required>
+              <input type="text" value="<%=(streetNumberErr != null ? streetNumberErr : paymentInfo.getStreetNumber())%>" name="street-number" required>
 
               <label for="street-name">Street Name</label>
-              <input type="text" placeholder="Enter Street Name" name="street-name" required>
-
+              <input type="text" value="<%=(streetNameErr != null ? streetNameErr : paymentInfo.getStreetName())%>" name="street-name" required>
+              
               <label for="street-type">Street Type</label>
-              <input type="text" placeholder="Enter Street Type" name="street-type" required>
-
+              <input type="text" value="<%=(streetTypeErr != null ? streetTypeErr : paymentInfo.getStreetType())%>" name="street-type" required>
+              
               <label for="suburb">Suburb</label>
-              <input type="text" placeholder="Enter Suburb" name="suburb" required>
-
+              <input type="text" value="<%=(suburbErr != null ? suburbErr : paymentInfo.getSuburb())%>" name="suburb" required>
+          
               <label for="state">State</label>
-              <input type="text" placeholder="Enter State" name="state" required>
+              <input type="text" value="<%=(stateErr != null ? stateErr : paymentInfo.getState())%>" name="state" required>
 
-              <label for="postcode">Postcode</label>
-              <input type="text" placeholder="Enter Postcode" name="postcode" required>
-
+              <label for="postcode">Enter Postcode</label>
+              <input type="text" value="<%=(postcodeErr != null ? postcodeErr : paymentInfo.getPostcode())%>" name="postcode" required>
+              
               <label for="Country">Country</label>
-              <input type="text" placeholder="Enter Country" name="country" required>
-            </form>
-        </div>
-        <!-- Form for new card details -->
-        <h1 class="card-details-title">Card Details</h1>
-        <div class="form" id="createForm">
-            <form action="" method="post" class="form-container-update-card">
+              <input type="text" value="<%=(countryErr != null ? countryErr : paymentInfo.getCountry())%>" name="country" required>
               
+              <div class="placeholder"></div>
+              
+              <label for="card-holder-name">Card Holder Name</label>
+              <input type="text" value="<%=(cardHolderNameErr != null ? cardHolderNameErr : paymentInfo.getCardHolderName())%>" name="card-holder-name" required>
+                
               <label for="card-number">Card Number</label>
-              <input type="text" placeholder="Enter Card Number" name="card-number" required>
+              <input type="text" value="<%=(cardNumberErr != null ? cardNumberErr : paymentInfo.getCardNumber())%>" name="card-number" required>
               
-              <label for="expiry-date">Expiry Date</label>
-              <input type="text" placeholder="Enter Expiry Date" name="expiry-date">
+              <label for="card-expiry-date">Expiry Date</label>
+              <input type="text" value="<%=(cardExpiryDateErr != null ? cardExpiryDateErr : paymentInfo.getCardExpiryDate())%>" name="card-expiry-date">
               
               <label for="card-cvc">CVC</label>
-              <input type="password" placeholder="Enter Card CVC" name="card-cvc" required>
+              <input type="password" value="<%=(cardCvcErr != null ? cardCvcErr : paymentInfo.getCardCVC())%>" name="card-cvc" required>
+
+              <!-- Submit, Delete or cancel buttons -->
+              <div class="save-btn-container">
+                <button type="submit">Save</button>
+              </div>
             </form>
-            
-            <!-- Submit or cancel buttons -->
-            <div class="save-btn-container">
-                <button href="" type="submit">Save</button>
-            </div>
-            <div class="cancel-btn-container">
-                <button href="" type="submit">Cancel</button>
-            </div>
+            <a href="DeletePaymentInfoServlet">
+                <div class="delete-btn-container">
+                    <button type="submit">Delete</button>
+                </div>
+            </a>
+            <a href="<%= cancelButtonUrl%>">
+                <div class="cancel-btn-container">
+                    <button type="submit">Cancel</button>
+                </div>
+            </a>
         </div>
+        <div class="placeholder"></div>
     </body>
 </html>

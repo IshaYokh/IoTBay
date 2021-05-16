@@ -76,6 +76,7 @@
                     session.removeAttribute("accupdated");
                 %>
                 
+
                 <%
                     String passNoMatch = (String) session.getAttribute("passNoMatch1");
                     String emailUsed = (String) session.getAttribute("emailUsed1");
@@ -145,4 +146,3 @@
         </div>
     </body>
 </html>
-
