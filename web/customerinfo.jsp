@@ -73,8 +73,8 @@
                         <td><p>${item.getCountry()}</p></td>
                         <td>
                             <form action="updatecustomer.jsp">
-                                <input type="hidden" name="email" value="${item.getEmail()}">
-                                <input type="hidden" name="password" value="${item.getPassword()}">
+                                <input type="hidden" name="email2" value="${item.getEmail()}">
+                                <input type="hidden" name="password2" value="${item.getPassword()}">
                                 <button>edit</button>
                             </form>
                         </td>

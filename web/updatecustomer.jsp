@@ -31,9 +31,9 @@
         <div class="placeholder"></div>
         
         <%
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            CustomerDAO cd = (CustomerDAO)session.getAttribute("manager");
+            String email = request.getParameter("email2");
+            String password = request.getParameter("password2");
+            CustomerDAO cd = (CustomerDAO)session.getAttribute("customerDBManager");
             Customer c = cd.findCustomer(email, password);
         %>
         <form action="UpdateCustomerServlet" method="post">
