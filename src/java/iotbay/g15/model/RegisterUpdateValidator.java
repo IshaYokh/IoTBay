@@ -41,7 +41,7 @@ public class RegisterUpdateValidator {
     }
     
     public String validatePhone(String phone){
-        Pattern p = Pattern.compile("^\\d{8,13}$");
+        Pattern p = Pattern.compile("[0-9]{8,12}");
         Matcher m = p.matcher(phone);
         Boolean b = m.matches();
         if(b){
