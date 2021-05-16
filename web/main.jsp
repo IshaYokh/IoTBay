@@ -36,7 +36,7 @@
             <span> Welcome back <%= accountName%>!</span>
 	</div>
         <div class="btns-container">
-            <a href="#">
+            <a href="cart.jsp">
                 <button class="view-cart-btn">
                     <i class="fas fa-shopping-cart"></i> &nbsp;View Cart
                 </button>
@@ -46,9 +46,11 @@
             <br/>
             
             <a href="#">
-                <button class="view-orders-btn">
-                    <i class="fas fa-money-check"></i> &nbsp;View Orders
-                </button>
+                <form method = "post" action = 'OrderHistoryServlet'>
+                    <button class="view-orders-btn">
+                        <i class="fas fa-money-check"></i> &nbsp;View Orders
+                    </button>
+                </form>
             <a/>
              
             <br/>

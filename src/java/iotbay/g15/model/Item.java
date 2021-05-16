@@ -7,17 +7,28 @@ package iotbay.g15.model;
 
 /**
  *
- * @author Austin
+ * @author rebecca
  */
 public class Item {
-    int itemID;
-    int itemSerialNumber;
-    String itemCategory;
-    String itemBrand;
-    String itemName;
-    double productPrice;
-    int productQuantity;
-    int userQuantity;
+    private int itemID;
+    private int itemSerialNumber;
+    private String itemCategory;
+    private String itemBrand;
+    private String itemName;
+    private String itemImage;
+    private int userQuantity;
+    private double itemPrice;
+    private int productQuantity;
+    
+    public Item(int itemID, int itemSerialNumber, String itemCategory, String itemBrand, String itemName, String itemImage){
+        this.itemID = itemID;
+        this.itemSerialNumber = itemSerialNumber;
+        this.itemCategory = itemCategory;
+        this.itemBrand = itemBrand;
+        this.itemName = itemName;
+        this.itemImage = itemImage;
+    
+    }
 
     public Item(int itemID, int itemSerialNumber, String itemCategory, String itemBrand, String itemName, double productPrice, int productQuantity) {
         this.itemID = itemID;
@@ -28,17 +39,16 @@ public class Item {
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
         userQuantity = 0;
-        
     }
-    
-        public int getItemID() {
+
+    public int getItemID() {
         return itemID;
     }
 
     public void setItemID(int itemID) {
         this.itemID = itemID;
     }
-
+  
     public int getItemSerialNumber() {
         return itemSerialNumber;
     }
@@ -46,11 +56,63 @@ public class Item {
     public void setItemSerialNumber(int itemSerialNumber) {
         this.itemSerialNumber = itemSerialNumber;
     }
-
+  
     public String getItemCategory() {
         return itemCategory;
     }
 
+    public String getItemBrand() {
+        return itemBrand;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public String getItemImage() {
+        return itemImage;
+    }
+
+    public void setItemID(int itemID) {
+        this.itemID = itemID;
+    }
+
+    public void setItemSerialNumber(int itemSerialNumber) {
+        this.itemSerialNumber = itemSerialNumber;
+    }
+
+    public void setItemCategory(String itemCategory) {
+        this.itemCategory = itemCategory;
+    }
+
+    public void setItemBrand(String itemBrand) {
+        this.itemBrand = itemBrand;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public void setItemImage(String itemImage) {
+        this.itemImage = itemImage;
+    }
+    
+    public int getUserQuantity() {
+        return userQuantity;
+    }
+
+    public void setUserQuantity(int qty) {
+        this.userQuantity = qty;
+    }
+    
+    public double getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(double price) {
+        this.itemPrice = price;
+    }
+  
     public void setItemCategory(String itemCategory) {
         this.itemCategory = itemCategory;
     }

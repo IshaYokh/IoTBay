@@ -17,6 +17,7 @@ public class User implements Serializable{
     private int postcode;
     private String country;
 
+
     public User(int userID, String firstName, String lastName, String email, String password,
             int phoneNumber, int streetNumber, String streetName, String streetType,
             String suburb, String state, int postcode, String country) {
@@ -42,6 +43,14 @@ public class User implements Serializable{
         this.userID = userID;
     }
 
+    public int getUserID(){
+        return userID;
+    }
+    
+    public void setUserID(int userID){
+        this.userID = userID;
+    }
+    
     public String getFirstName() {
         return firstName;
     }

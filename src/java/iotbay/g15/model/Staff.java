@@ -30,6 +30,14 @@ public class Staff {
     public String getDOB() {
         return DOB;
     }
+  
+    public int getUserID() {
+        return userID;
+    }
+    
+    public void setUserID() {
+        this.userID = userID;
+    }
 
     public int getSiteAccessLevel() {
         return siteAccessLevel;
@@ -42,12 +50,5 @@ public class Staff {
     public void setSiteAccessLevel(int siteAccessLevel) {
         this.siteAccessLevel = siteAccessLevel;
     }
-    
-    public int getUserID() {
-        return userID;
-    }
-    
-    public void setUserID() {
-        this.userID = userID;
-    }
+
 }
