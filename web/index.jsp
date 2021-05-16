@@ -17,7 +17,7 @@
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
                 <ul>
-                    <a href="#"><li>Home</li></a>
+                    <a href="index.jsp"><li>Home</li></a>
                     <a href="ViewCategoriesServlet"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
@@ -39,32 +39,32 @@
 	<div class="mainpicture">
             <div class="buttons">
                 <h1>View our collection:</h1>
-                <a href="#"><div class="shopButton"><h2>Shop Now</h2></div></a>
+                <a href="ViewCategoriesServlet"><div class="shopButton"><h2>Shop Now</h2></div></a>
             </div>
 	</div>
 	<div class="smallerPictures">
             <div class="pic1">
                 <div class="buttonsSmall">
                     <h2>Software</h2>
-                    <a href="#"><div class="shopButtonSmall"><h3>Shop Now</h3></div></a>
+                    <a href="ViewCategoriesServlet"><div class="shopButtonSmall"><h3>Shop Now</h3></div></a>
 		</div>
             </div>
             <div class="pic2">
                 <div class="buttonsSmall">
                     <h2>Smart Devices</h2>
-                    <a href="#"><div class="shopButtonSmall"><h3>Shop Now</h3></div></a>
+                    <a href="ViewCategoriesServlet"><div class="shopButtonSmall"><h3>Shop Now</h3></div></a>
 		</div>
             </div>
             <div class="pic3">
                 <div class="buttonsSmall">
                     <h2>Cloud Systems</h2>
-                    <a href="#"><div class="shopButtonSmall"><h3>Shop Now</h3></div></a>
+                    <a href="ViewCategoriesServlet"><div class="shopButtonSmall"><h3>Shop Now</h3></div></a>
 		</div>
             </div>
             <div class="pic4">
                 <div class="buttonsSmall">
                     <h2>Data Transfer Systems</h2>
-                    <a href="#"><div class="shopButtonSmall"><h3>Shop Now</h3></div></a>
+                    <a href="ViewCategoriesServlet"><div class="shopButtonSmall"><h3>Shop Now</h3></div></a>
 		</div>
             </div>
             <div class="pic5">

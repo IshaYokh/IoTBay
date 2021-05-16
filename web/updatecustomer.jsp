@@ -20,7 +20,7 @@
             <div class="logo"><img src="assets/logo.png"/></div>
                 <ul>
                     <a href="index.jsp"><li>Home</li></a>
-                    <a href="#"><li>Store</li></a>
+                    <a href="ViewCategoriesServlet"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="LogoutServlet"><li class="login">Logout</li></a>
                     <a href="admin.jsp"><li class="login">Admin Portal</li></a>

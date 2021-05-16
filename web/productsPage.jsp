@@ -55,7 +55,7 @@
             
             <a href="ViewItemServlet?param=<%= proList.get(i).getItemID()%>">
                 <div class="catalogue-item">
-                    <img src="assets/items/<%= proImageList.get(i)%>.png" alt="Item">
+                    <img src="assets/items/<%= proImageList.get(i)%>" alt="Item">
                     <div class="catalogue-item-text-left">
                         <h1> <%= proList.get(i).getItemName()%></h1>
                         <p><%= proList.get(i).getProductPrice()%></p>

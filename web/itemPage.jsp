@@ -48,7 +48,7 @@
                 Item item = (Item)session.getAttribute("item");
                 int itemid = item.getItemID();
                 int qty = item.getProductQuantity();
-                double price = item.getProductPrice();
+                double price = item.getItemPrice();
                 int serialnumber = item.getItemSerialNumber();
                 String brandname = item.getItemBrand();
                 String category = item.getItemCategory();
@@ -61,7 +61,7 @@
                 <a href="ViewCategoriesServlet">Back to Catalogue</a>
             </div>
             <div class="item-left">
-                <img src="assets/items/<%= image%>.png" alt="Item">
+                <img src="assets/items/<%= image%>" alt="Item">
             </div>
             <div class="item-right">
                 <h1><%= name%></h1>
@@ -80,17 +80,25 @@
                 <div class="item-inline">
                     <h2>Available</h2><p><%= qty%></p>
                 </div>
-                <hr>
+                
+                <br/>
+                
+                <% if(user != null){ %>
                 <p>Quantity</p>
-                <form method="post" action="AddToCartServlet">
-                    <div class="number-input">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                        <input class="quantity" min="0" name="itemQuantity" placeholder="-" type="number">
-                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                    </div>
-                <br><br>
-                    <button class="cart" type="submit" onclick="add to cart">Add To Cart </button>
+                <form method = "post" action = 'AddToCartServlet'>
+                    <input type="hidden" placeholder="Enter Item ID" name="itemID" value="<%= item.getItemID() %>">
+                    <input type="hidden" placeholder="Enter Item Serial Number" name="itemSerialNumber" value="<%= item.getItemSerialNumber() %>">
+                    <input type="hidden" placeholder="Enter Item Category" name="itemCategory" value="<%= item.getItemCategory() %>">
+                    <input type="hidden" placeholder="Enter Item Brand" name="itemBrand" value="<%= item.getItemBrand() %>">
+                    <input type="hidden" placeholder="Enter Item Name" name="itemName" value="<%= item.getItemID() %>">
+                    <input type="hidden" placeholder="Enter Item Image" name="itemImage" value="<%= item.getItemImage() %>">
+                    <label for="itemQuantity">Item Quantity</label>
+                    <input type="text" placeholder="Enter Item Quantity" name="itemQuantity" value="1" required>
+                    <button type="submit" class="btn btn-primary">Add Item to Cart</button>
                 </form>
+                <% }else{ %>
+                <a href="login.jsp"><button class="btn btn-primary">Login to Shop</button></a>
+                    <% } %>
             </div>
         </div>
     </body>

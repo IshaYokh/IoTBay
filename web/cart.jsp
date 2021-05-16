@@ -30,8 +30,8 @@
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
                 <ul>
-                    <a href="#"><li>Home</li></a>
-                    <a href="#"><li>Store</li></a>
+                    <a href="index.jsp"><li>Home</li></a>
+                    <a href="ViewCategoriesServlet"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
                     <% 
@@ -79,7 +79,7 @@
             %>
 
             <tr>
-                <td><img id="picture" class="img-thumbnail" src="assets/items/<%= I.getItemImage() %>"/></td>
+                <td><img id="picture" class="img-thumbnail" src="assets/items/<%= I.getItemImage()%>"></td>
                 <td><%= I.getItemID() %></td>
                 <td><%= I.getItemBrand() %></td>
                 <td><%= I.getItemName() %></td>

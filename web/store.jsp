@@ -50,7 +50,7 @@
             <a href="ProductPageServlet?param1=<%= catList.get(i)%>">
                 <div class="catalogue-category">
                     <h1><%= catList.get(i) %></h1>
-                    <img src="assets/categories/<%=catList.get(i)%>.png" alt="sensor"/>
+                    <img src="assets/categories/<%=catList.get(i)%>.png"/>
                 </div>
             </a>
             <%}%>

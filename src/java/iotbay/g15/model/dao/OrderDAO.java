@@ -153,7 +153,7 @@ public class OrderDAO {
     }
     
     //add to cart
-    public void addToCart(int userID, int itemID, int serialNumber, String itemCategory, String itemBrand, String itemName, String itemImage, int itemQty, double itemPrice) throws SQLException{
+    public void addToCart(int userID, int itemID, int serialNumber, String itemCategory, String itemBrand, String itemName, String itemImage, int itemQty) throws SQLException{
         String fetch = "SELECT * FROM CART WHERE ITEMID = " + itemID + " AND USERID = " + userID;
         ResultSet rs = st.executeQuery(fetch);
         int i = 0;
@@ -163,7 +163,7 @@ public class OrderDAO {
         if(i > 0){
             st.executeUpdate("UPDATE CART SET ITEMQTY = " + itemQty + " WHERE ITEMID = " + itemID + " AND USERID = " + userID);
             }else{
-            st.executeUpdate("INSERT INTO CART (USERID, ITEMID, ITEMSERIALNUMBER, ITEMCATEGORY, ITEMBRAND, ITEMNAME, ITEMIMAGE, ITEMQTY, ITEMPRICE) VALUES (" + userID + ", " + itemID + ", " + serialNumber + ", '" + itemCategory + "', '" + itemBrand + "', '" + itemName + "', '" + itemImage + "', " + itemQty + ", " + itemPrice + ")");
+            st.executeUpdate("INSERT INTO CART (USERID, ITEMID, ITEMSERIALNUMBER, ITEMCATEGORY, ITEMBRAND, ITEMNAME, ITEMIMAGE, ITEMQTY) VALUES (" + userID + ", " + itemID + ", " + serialNumber + ", '" + itemCategory + "', '" + itemBrand + "', '" + itemName + "', '" + itemImage + "', " + itemQty + ")");
         
         }
     }
