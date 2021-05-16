@@ -57,7 +57,7 @@ public class RegisterServlet extends HttpServlet {
         if((validate.validateEmail(email)==null) && (validate.validatePassword(password)==null) && (validate.validatePhone(request.getParameter("number"))== null) 
             && (validate.validatePostCode(request.getParameter("postcode"))== null) &&(validate.validateStreetNo(request.getParameter("street-number"))== null) 
                 &&(validate.validateLname(request.getParameter("lname"))== null) &&(validate.validateFname(request.getParameter("fname"))== null)){
-            int phoneNumber = Integer.parseInt(validate.replaceNo(request.getParameter("number")));
+            int phoneNumber = Integer.parseInt(request.getParameter("number"));
             int streetNumber = Integer.parseInt(request.getParameter("street-number"));
             int postcode = Integer.parseInt(request.getParameter("postcode"));
             if (password.equals(password1)) { //checks if password and confirm password are true

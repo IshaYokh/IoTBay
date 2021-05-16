@@ -69,11 +69,7 @@ public class RegisterUpdateValidator {
         }else{
         return "Please Enter Valid Street Number";}
     }
-    public String replaceNo(String phone){
     
-        String phoneNo = phone.replaceFirst("+61", "0");
-        return phoneNo;
-    }
     public String validateFname(String name){
     
         Pattern p = Pattern.compile("[a-zA-Z]*");

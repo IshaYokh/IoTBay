@@ -17,20 +17,20 @@
     <body>
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
-            
+            <ul>
                 <a href="index.jsp"><li>Home</li></a>
                 <a href="#"><li>Store</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
-                
-             
-                <% 
-                    User user = (User)session.getAttribute("user");
+
+
+                <%
+                    User user = (User) session.getAttribute("user");
                     String accountName = user.getFirstName();
-                  
+
                 %>
                 <a href="main.jsp"><li class="login">My Account</li></a>
-            
+            </ul>
         </div>
         <div class="placeholder"></div>
         <div class="welcome_title">
