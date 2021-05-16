@@ -1,10 +1,12 @@
 <%-- 
     Document   : newjsp
     Created on : 04/04/2021, 11:08:33 AM
-    Author     : IshaYokh/kaushikdeshpande
+    Author     : IshaYokh/kaushikdeshpande/Tada33
 --%>
 <%@page import="iotbay.g15.model.User"%>
+<%@page import="iotbay.g15.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="CheckStaffServlet"/>
 <!doctype html>
 <html lang="en">
     <head>
@@ -20,11 +22,12 @@
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
                 <a href="index.jsp"><li>Home</li></a>
-                <a href="#"><li>Store</li></a>
+                <a href="ViewCategoriesServlet"><li>Store</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
-                <% 
-                    User user = (User)session.getAttribute("user");
+
+                <%
+                    User user = (User) session.getAttribute("user");
                     String accountName = user.getFirstName();
                 %>
                 <a href="main.jsp"><li class="login">My Account</li></a>
@@ -57,7 +60,7 @@
             <span> Welcome back <%= accountName%>!</span>
 	</div>
         <div class="btns-container">
-            <a href="#">
+            <a href="cart.jsp">
                 <button class="view-cart-btn">
                     <i class="fas fa-shopping-cart"></i> &nbsp;View Cart
                 </button>
@@ -67,9 +70,11 @@
             <br/>
             
             <a href="#">
-                <button class="view-orders-btn">
-                    <i class="fas fa-money-check"></i> &nbsp;View Orders
-                </button>
+                <form method = "post" action = 'OrderHistoryServlet'>
+                    <button class="view-orders-btn">
+                        <i class="fas fa-money-check"></i> &nbsp;View Orders
+                    </button>
+                </form>
             <a/>
             
             <br/>

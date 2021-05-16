@@ -30,19 +30,32 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
-        String email = request.getParameter("email");
+        String email = request.getParameter("email").toLowerCase();
         String password = request.getParameter("psw");
+        
+        
         try {
+            // check if user login details for User exsists 
             if (manager.checkUser(email, password)) {
                 //getUser();
                 User user1 = manager.getUser(email, password);
                 int userID = manager.getUserID(email, password);
-                manager.addlogslogin(userID);
+                //check if user ID is in staff
+                if(manager.checkifStaff(userID)){
+                    manager.addlogslogin(userID);
                 session.setAttribute("user", user1);
-                request.getRequestDispatcher("main.jsp").include(request, response);
+                    request.getRequestDispatcher("admin.jsp").include(request, response);
+                
+                
+                }
+                else{
+                    manager.addlogslogin(userID);
+                    session.setAttribute("user", user1);
+                    request.getRequestDispatcher("main.jsp").include(request, response);
+                }
 
             } else {
-
+                //else throws Incorrect Email or Password
                 session.setAttribute("incorrectpass", "Incorrect Email or Password");
                 request.getRequestDispatcher("login.jsp").include(request, response);
 

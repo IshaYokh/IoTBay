@@ -71,12 +71,12 @@ public class AddPaymentInfoServlet extends HttpServlet{
 
                     // Storing new data in the database
                     try{
-                        paymentInfoDBmanager.insertPaymentInfo(user.getID(), cardHolderName,
+                        paymentInfoDBmanager.insertPaymentInfo(user.getUserID(), cardHolderName,
                                 cardNumber, cardExpiryDate, cardCVCInt,
                                 streetNumberInt, streetName, streetType,
                                 suburb, state, postcodeInt, country,
                                 500.00, "true");
-                        paymentInfo = paymentInfoDBmanager.getPaymentInfo(user.getID());
+                        paymentInfo = paymentInfoDBmanager.getPaymentInfo(user.getUserID());
                         session.setAttribute("paymentInfoAddFeedback", "success");
 
                     }

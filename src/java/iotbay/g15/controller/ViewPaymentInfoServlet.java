@@ -29,7 +29,7 @@ public class ViewPaymentInfoServlet extends HttpServlet {
         PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
         
         try{
-            paymentInfo = paymentInfoDBmanager.getPaymentInfo(user.getID());
+            paymentInfo = paymentInfoDBmanager.getPaymentInfo(user.getUserID());
         }catch(SQLException ex){
             Logger.getLogger(ViewPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

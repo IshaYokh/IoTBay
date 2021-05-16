@@ -37,13 +37,13 @@ public class AddPaymentServlet extends HttpServlet{
         
         // Validate credit
         try{
-            paymentInfo = paymentInfoDBManager.getPaymentInfo(user.getID());
-            if(paymentInfo.getUserID() == user.getID()){
+            paymentInfo = paymentInfoDBManager.getPaymentInfo(user.getUserID());
+            if(paymentInfo.getUserID() == user.getUserID()){
                 try{
                     if(paymentInfo.getCredit() >= paymentAmount && redirectedFromCheckout.equals("true")){
                         // Deduct payment from credit and create payment in database if payment is successful
-                        paymentDBManager.insertPayment(order.getOrderID(), paymentInfo.getPaymentInfoID(), user.getID(), paymentDate.toString(), paymentAmount); //Uncomment when merged with "Order-Management" branch
-                        paymentInfoDBManager.updatePaymentInfoCredit(user.getID(), paymentInfo.getCredit() - paymentAmount);
+                        paymentDBManager.insertPayment(order.getID(), paymentInfo.getPaymentInfoID(), user.getUserID(), paymentDate.toString(), paymentAmount); //Uncomment when merged with "Order-Management" branch
+                        paymentInfoDBManager.updatePaymentInfoCredit(user.getUserID(), paymentInfo.getCredit() - paymentAmount);
                         //orderDBManager.updateOrderStatus(order.getOrderID(), "Processed");
                         paymentSuccessful = "true";
                     }

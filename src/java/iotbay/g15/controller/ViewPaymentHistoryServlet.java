@@ -31,8 +31,8 @@ public class ViewPaymentHistoryServlet extends HttpServlet{
         ArrayList<PaymentInfo> paymentInfos = new ArrayList<>();
         
         try{
-            payments = paymentDBManager.listAllPaymentInfos(user.getID());
-            paymentInfos = paymentInfoDBManager.listAllPaymentInfos(user.getID());
+            payments = paymentDBManager.listAllPaymentInfos(user.getUserID());
+            paymentInfos = paymentInfoDBManager.listAllPaymentInfos(user.getUserID());
         }catch(SQLException ex){
             Logger.getLogger(ViewPaymentHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

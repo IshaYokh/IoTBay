@@ -69,7 +69,7 @@ public class UpdatePaymentInfoServlet extends HttpServlet{
             User user = (User)session.getAttribute("user");
             
             try {
-                paymentInfoDBmanager.updatePaymentInfo(user.getID(), cardHolderName,
+                paymentInfoDBmanager.updatePaymentInfo(user.getUserID(), cardHolderName,
                         cardNumber, cardExpiryDate, cardCVCInt,
                         streetNumberInt, streetName, streetType,
                         suburb, state, postcodeInt, country);

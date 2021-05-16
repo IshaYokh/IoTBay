@@ -301,6 +301,7 @@ input[type=text], input[type=password], input[type=month] {
 
 .already-have-account a{
     text-align: left;
+    margin-right: 25%;
 }
 
 /* Login Page Styles */
@@ -602,9 +603,7 @@ order-table, .shipping-table, .payment-table{
     text-decoration: underline;
 }
 
-
-/* searchPaymentHistory page styles */
-
+/* viewPaymentHistory page styles */
 .search-payment-history-title{
     font-size: 20px;
     padding-top: 0.1em;
@@ -708,12 +707,25 @@ payment-history-table tr{
     width: 60%;
 
 }
+
 .table-wrapper-scroll-y {
     display: block;
 }
-.log-table{    
+
+/*Customer Info page styles */
+
+.btn1{
+        float: right;
 }
 
+table {
+        border-collapse: collapse;
+        border: solid 2px black;
+        width: 100%;
+}
+table th, table td {
+        border: solid 1px black;
+}
 
 /* deletePaymentInfo page styles */
 
@@ -761,4 +773,9 @@ payment-history-table tr{
     background-color: rgba(255, 0, 0, 0.5);
     padding: 5%;
     border-radius: 10px;
+}
+
+.thead{
+        background-color: navy;
+        color: white;
 }

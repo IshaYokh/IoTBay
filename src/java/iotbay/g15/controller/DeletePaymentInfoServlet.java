@@ -30,7 +30,7 @@ public class DeletePaymentInfoServlet extends HttpServlet{
         PaymentInfo paymentInfo = null;
         
         try{
-            paymentInfo = paymentInfoDBmanager.getPaymentInfo(user.getID());
+            paymentInfo = paymentInfoDBmanager.getPaymentInfo(user.getUserID());
             paymentInfoDBmanager.setInactive(paymentInfo.getPaymentInfoID());
             session.setAttribute("paymentInfoDeleted", "success");
         }catch(SQLException ex){

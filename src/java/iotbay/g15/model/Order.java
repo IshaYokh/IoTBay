@@ -1,51 +1,80 @@
 package iotbay.g15.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  *
- * @author Isha Yokhanna
+ * @author rebecca
  */
-public class Order {
+public class Order implements Serializable{
     private int orderID;
-    private int userID;
+    private Customer customer;
+    private ArrayList<Item> items;
+    private ArrayList<Item> cart;
     private String orderDate;
     private String orderStatus;
 
-    public Order(int orderID, int userID, String orderDate, String orderStatus) {
+    public Order(int orderID, String orderDate, String orderStatus){
         this.orderID = orderID;
-        this.userID = userID;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
+        this.items = new ArrayList<Item>();
+        this.cart = new ArrayList<Item>();
     }
 
-    public int getOrderID() {
+    public int getID() {
         return orderID;
     }
-
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
+    
+    public void setID(int ID) {
+        this.orderID = ID;
     }
 
-    public int getUserID() {
-        return userID;
+    public Customer getCustomer() {
+        return customer;
+    }
+    
+    public void setCustomer(Customer customer){
+        this.customer = customer;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public ArrayList<Item> getOrderedProducts(){
+        return items;
+    }
+    
+    public void addOrderedProduct(Item item){
+        items.add(item);
+    }
+    
+    public void setOrderedItems(ArrayList<Item> items){
+        this.items = items;
+    }
+    
+    public ArrayList<Item> getCart(){
+        return cart;
+    }
+    
+    public void addToCart(Item item){
+        cart.add(item);
+    }
+    
+    public void setCart(ArrayList<Item> items){
+        this.cart = items;
     }
 
-    public String getOrderDate() {
+    public String getOrderDate(){
         return orderDate;
     }
-
-    public void setOrderDate(String orderDate) {
+    
+    public void setOrderDate(String orderDate){
         this.orderDate = orderDate;
     }
 
-    public String getOrderStatus() {
+    public String getOrderStatus(){
         return orderStatus;
     }
-
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
+    public void setOrderStatus(String status){
+        this.orderStatus = status;
     }
 }

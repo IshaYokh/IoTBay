@@ -31,7 +31,7 @@ public class ConfirmUserPaymentInfoServlet extends HttpServlet{
         PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
 
         try{
-            userHasPaymentInfo = paymentInfoDBmanager.hasUser(user.getID());
+            userHasPaymentInfo = paymentInfoDBmanager.hasUser(user.getUserID());
         }catch(SQLException ex){
             Logger.getLogger(ConfirmUserPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

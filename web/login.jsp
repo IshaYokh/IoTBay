@@ -28,7 +28,7 @@
                 <a href="index.jsp">
                     <li>Home</li>
                 </a>
-                <a href="#">
+                <a href="ViewCategoriesServlet">
                     <li>Store</li>
                 </a>
                 <a href="#">
