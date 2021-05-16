@@ -70,7 +70,7 @@
             <br/>
             
             <a href="#">
-                <form method = "post" action = 'orderhistory.jsp'>
+                <form method = "post" action = 'OrderHistoryServlet'>
                     <button class="view-orders-btn">
                         <i class="fas fa-money-check"></i> &nbsp;View Orders
                     </button>

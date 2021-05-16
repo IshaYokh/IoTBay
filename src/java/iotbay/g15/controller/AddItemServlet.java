@@ -37,6 +37,7 @@ public class AddItemServlet extends HttpServlet {
         String itemCategory = request.getParameter("itemCategory");
         String itemBrand = request.getParameter("itemBrand");
         String itemName = request.getParameter("itemName");
+        String itemImage = request.getParameter("itemImage");
         String productPrice = request.getParameter("productPrice");
         String productQuantity = request.getParameter("productQuantity");
         int itemid = Integer.parseInt(itemID);
@@ -45,7 +46,7 @@ public class AddItemServlet extends HttpServlet {
         int itemQuantity = Integer.parseInt(productQuantity);
         
         try {
-            showItem.AddItem3(itemid, itemserial, itemCategory, itemName, itemBrand, itemQuantity, itemPrice);
+            showItem.AddItem3(itemid, itemserial, itemCategory, itemName, itemBrand, itemImage, itemQuantity, itemPrice);
             request.getRequestDispatcher("addItem.jsp").include(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(AddItemServlet.class.getName()).log(Level.SEVERE, null, ex);
