@@ -30,7 +30,7 @@
         <div class="placeholder"></div>
         
         <div class="form" id="createForm">
-            <form action="AddServlet" method="post" class="form-container-register">
+            <form action="AddCustomerServlet" method="post" class="form-container-register">
                 <h1 class="create-account-title">Create Account</h1>
 
                 <label for="fname">First Name</label>

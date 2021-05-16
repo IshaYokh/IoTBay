@@ -1,52 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
-        <servlet-name>AddServlet</servlet-name>
-        <servlet-class>iotbay.g15.controller.AddServlet</servlet-class>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.AddCustomerServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ConnServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.ConnServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteServlet</servlet-name>
-        <servlet-class>iotbay.g15.controller.DeleteServlet</servlet-class>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.DeleteCustomerServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EditServlet</servlet-name>
-        <servlet-class>iotbay.g15.controller.EditServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>iotbay.g15.controller.LoginServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateServlet</servlet-name>
-        <servlet-class>iotbay.g15.controller.UpdateServlet</servlet-class>
+        <servlet-name>UpdateCustomerServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.UpdateCustomerServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AddServlet</servlet-name>
-        <url-pattern>/AddServlet</url-pattern>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <url-pattern>/AddCustomerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DeleteServlet</servlet-name>
-        <url-pattern>/DeleteServlet</url-pattern>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <url-pattern>/DeleteCustomerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>EditServlet</servlet-name>
-        <url-pattern>/EditServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateServlet</servlet-name>
-        <url-pattern>/UpdateServlet</url-pattern>
+        <servlet-name>UpdateCustomerServlet</servlet-name>
+        <url-pattern>/UpdateCustomerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -79,7 +79,7 @@
                             </form>
                         </td>
                         <td>
-                            <form action="DeleteServlet" method="post">
+                            <form action="DeleteCustomerServlet" method="post">
                                 <input type="hidden" name="email" value="${item.getEmail()}">
                                 <button>delete</button>
                             </form>

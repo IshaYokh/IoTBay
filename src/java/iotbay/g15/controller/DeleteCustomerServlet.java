@@ -20,7 +20,7 @@ import java.io.IOException;
  *
  * @author tada33
  */
-public class DeleteServlet extends HttpServlet {
+public class DeleteCustomerServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,7 +43,7 @@ public class DeleteServlet extends HttpServlet {
             manager.deleteCustomer(email);
             session.setAttribute("deleted", "delete was successful");
         } catch (SQLException ex) {  
-            Logger.getLogger(DeleteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         response.sendRedirect("customerinfo.jsp");

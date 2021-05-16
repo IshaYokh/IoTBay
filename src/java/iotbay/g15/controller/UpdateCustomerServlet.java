@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import iotbay.g15.model.*;
 import iotbay.g15.model.dao.CustomerDAO;
 import java.io.IOException;
 
@@ -21,7 +20,7 @@ import java.io.IOException;
  *
  * @author tada33
  */
-public class AddServlet extends HttpServlet {
+public class UpdateCustomerServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,7 +39,7 @@ public class AddServlet extends HttpServlet {
         String firstName = request.getParameter("fname");
         String lastName = request.getParameter("lname");
         String email = request.getParameter("email");
-        String password = request.getParameter("pwd");
+        String password = request.getParameter("password");
         int phoneNumber = Integer.parseInt(request.getParameter("number"));
         int streetNumber = Integer.parseInt(request.getParameter("street-number"));
         String streetName = request.getParameter("street-name");
@@ -49,26 +48,19 @@ public class AddServlet extends HttpServlet {
         String state = request.getParameter("state");
         int postcode = Integer.parseInt(request.getParameter("postcode"));
         String country = request.getParameter("country");
-        String source = request.getParameter("source");
-        Customer customer = new Customer(firstName, lastName,
-                                         email, password, phoneNumber,
-                                         streetNumber, streetName, streetType,
-                                         suburb, state, postcode, country);
         CustomerDAO manager = (CustomerDAO)session.getAttribute("manager");
          
         try {       
-            session.setAttribute("customer", customer);
-            manager.addCustomer(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
-            session.setAttribute("added", "add was successful");
+            manager.updateCustomer(firstName, lastName,
+                                   email, password, phoneNumber,
+                                   streetNumber, streetName, streetType,
+                                   suburb, state, postcode, country);
+            session.setAttribute("updated", "update was successful");
         } catch (SQLException ex) {  
-            Logger.getLogger(AddServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateCustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        if (source.equals("register")) {
-            request.getRequestDispatcher("welcome.jsp").include(request, response);
-        } else {
-            request.getRequestDispatcher("customerinfo.jsp").include(request, response);
-        }
+        request.getRequestDispatcher("customerinfo.jsp").include(request, response);
     }
 }
  
