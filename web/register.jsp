@@ -42,16 +42,18 @@
         String postcodeErr = (String) session.getAttribute("postcodeErr");
         String phoneNoErr = (String) session.getAttribute("phoneNoErr");
         String streetNoErr = (String) session.getAttribute("streetNoErr");
+        String fnameErr = (String) session.getAttribute("fnameErr");
+        String lnameErr = (String) session.getAttribute("lnameErr");
         %>
         <div class="form" id="createForm">
             <form action="RegisterServlet" method="POST" class="form-container-register">
               <h1 class="create-account-title">Create Account</h1>
               
               <label for="fname">First Name</label>
-              <input type="text" placeholder="Enter First Name" name="fname" required>
+              <input type="text" placeholder="<%=(fnameErr != null ? fnameErr : "Enter First Name")%>" name="fname" required>
               
               <label for="lname">Last Name</label>
-              <input type="text" placeholder="Enter Last Name" name="lname" required>
+              <input type="text" placeholder="<%=(lnameErr != null ? lnameErr : "Enter Last Name")%>" name="lname" required>
               
               <label for="email">Email</label>
               <input type="text" name="email" placeholder="<%=(emailUsed != null ? emailUsed : "Enter Email")%>" required>

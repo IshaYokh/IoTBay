@@ -74,5 +74,25 @@ public class RegisterUpdateValidator {
         String phoneNo = phone.replaceFirst("+61", "0");
         return phoneNo;
     }
+    public String validateFname(String name){
+    
+        Pattern p = Pattern.compile("[a-zA-Z]*");
+        Matcher m = p.matcher(name);
+        Boolean b = m.matches();
+        if(b){
+        return null;
+        }else{
+        return "Please Enter Valid First Name";}
+    }
+    public String validateLname(String name){
+    
+        Pattern p = Pattern.compile("[a-zA-Z]*");
+        Matcher m = p.matcher(name);
+        Boolean b = m.matches();
+        if(b){
+        return null;
+        }else{
+        return "Please Enter Valid Last Name";}
+    }
 
 }

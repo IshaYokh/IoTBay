@@ -51,9 +51,12 @@ public class RegisterServlet extends HttpServlet {
         session.setAttribute("phoneNoErr", validate.validatePhone(request.getParameter("number")));
         session.setAttribute("postcodeErr", validate.validatePostCode(request.getParameter("postcode")));
         session.setAttribute("streetNoErr", validate.validateStreetNo(request.getParameter("street-number")));
-        
+        session.setAttribute("fnameErr", validate.validateFname(request.getParameter("fname")));
+        session.setAttribute("lnameErr", validate.validateLname(request.getParameter("lname")));
+        //this if statement checks if there are no errors, then registers user
         if((validate.validateEmail(email)==null) && (validate.validatePassword(password)==null) && (validate.validatePhone(request.getParameter("number"))== null) 
-            && (validate.validatePostCode(request.getParameter("postcode"))== null) &&(validate.validateStreetNo(request.getParameter("street-number"))== null)){
+            && (validate.validatePostCode(request.getParameter("postcode"))== null) &&(validate.validateStreetNo(request.getParameter("street-number"))== null) 
+                &&(validate.validateLname(request.getParameter("lname"))== null) &&(validate.validateFname(request.getParameter("fname"))== null)){
             int phoneNumber = Integer.parseInt(validate.replaceNo(request.getParameter("number")));
             int streetNumber = Integer.parseInt(request.getParameter("street-number"));
             int postcode = Integer.parseInt(request.getParameter("postcode"));
