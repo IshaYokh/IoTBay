@@ -44,7 +44,7 @@
         <!-- Order summary section -->
         <h1 class="checkout-header">Checkout</h1>
         <div class="back-to-cart">
-            <button href="#" type="submit"><i class="fas fa-arrow-left"></i> &nbsp;Go back to cart</button>
+            <button href="cart.jsp" type="submit"><i class="fas fa-arrow-left"></i> &nbsp;Go back to cart</button>
         </div>
            
         <div class="table-container">
@@ -67,7 +67,7 @@
                         <tr>
                             <td><span class="bold">Order Total:</span></td>
                             <% DecimalFormat decimalFormat = new DecimalFormat("0.00"); %>
-                            <td class="right">$<%= decimalFormat.format(Double.parseDouble(orderSubtotal) + 5.00)%></td>
+                            <td class="right">$<%= decimalFormat.format(orderSubtotal) + 5.00%></td>
                         </tr>       
                     </table>
             </div>

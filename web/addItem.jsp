@@ -42,7 +42,7 @@
         <div class="placeholder"></div>
         <div class="catalogue-addItem">
             <h1>Add Item</h1>
-            <form action="addItemServlet" method="post">
+            <form action="AddItemServlet" method="post">
                 <label for="itemID">itemID</label>
                 <input type="text" id="itemID" name="itemID">
                 

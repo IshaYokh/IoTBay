@@ -66,6 +66,7 @@ public class AddPaymentInfoServlet extends HttpServlet{
                     int streetNumberInt = Integer.parseInt(streetNumber);
                     int postcodeInt = Integer.parseInt(postcode);
                     int cardCVCInt = Integer.parseInt(cardCVC);
+                    
 
                     User user = (User)session.getAttribute("user");
 
