@@ -19,7 +19,7 @@
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
                 <ul>
-                    <a href="#"><li>Home</li></a>
+                    <a href="index.jsp"><li>Home</li></a>
                     <a href="ViewCategoriesServlet"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
