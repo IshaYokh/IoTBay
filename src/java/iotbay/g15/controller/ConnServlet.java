@@ -11,47 +11,60 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import iotbay.g15.model.dao.*;
-import iotbay.g15.model.dao.DBConnector;
-import iotbay.g15.model.dao.OrderDAO;
 
 public class ConnServlet extends HttpServlet {
-    private DBConnector db;
-    private OrderDAO orderDBManager;
-    private Connection conn;
-    @Override //Create and instance of DBConnector for the deployment session
+   private DBConnector db;
+   private Connection conn;
+   private PaymentInfoDAO paymentInfoDBmanager;
+   private LoginLogoutDAO manager;
+   private ShowItemDAO showItem;
+   private UserManagementDAO userManager;
+   private CustomerDAO customerDBManager;
+   private OrderDAO orderDBManager;
 
-    public void init() {
-        try {
+   @Override //Create and instance of DBConnector for the deployment session
+   public void init() {
+       try {
+           db = new DBConnector();
+       } catch (ClassNotFoundException | SQLException ex) {
+           Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+       }      
+   }
 
-            db = new DBConnector();
-        } catch (ClassNotFoundException | SQLException ex) {
+   @Override //Add the DBConnector, DBManager, Connection instances to the session
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+       response.setContentType("text/html;charset=UTF-8");       
+       HttpSession session = request.getSession();
+       conn = db.openConnection();       
 
-            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }      
-    }
+       try {
+           manager = new LoginLogoutDAO(conn);
+           paymentInfoDBmanager = new PaymentInfoDAO(conn);
+           showItem = new ShowItemDAO(conn);
+           userManager = new UserManagementDAO(conn);
+           customerDBManager = new CustomerDAO(conn);
+           orderDBManager = new OrderDAO(conn);
+       }
+       catch (SQLException ex){
+           Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+       }
 
-    @Override //Add the DBConnector, DBManager, Connection instances to the session
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");       
-        HttpSession session = request.getSession();
-        conn = db.getConnection();       
-        try {
-            orderDBManager = new OrderDAO(conn);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //export the DB manager to the view-session (JSPs)
-        session.setAttribute("orderDBManager", orderDBManager);           
-    }   
+       //export the DB managers to the view-session (JSPs)
+       session.setAttribute("manager", manager);
+       session.setAttribute("paymentInfoDBmanager", paymentInfoDBmanager);
+       session.setAttribute("showItem", showItem);
+       session.setAttribute("userManager", userManager);
+       session.setAttribute("customerDBManager", customerDBManager);
+       session.setAttribute("orderDBManager", orderDBManager); 
+   }
 
-    @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
-
-     public void destroy() {
-        try {
-            db.closeConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+   @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
+    public void destroy() {
+       try {
+           db.closeConnection();
+       } catch (SQLException ex) {
+           Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+       }
+   }
 }

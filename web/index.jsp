@@ -1,11 +1,11 @@
 <%-- 
     Document   : Index
     Created on : 06/04/2021, 00:00:00 AM
-    Author     : Rebecca Gong
+    Author     : Rebecca Gong, Tada33
 --%>
-<jsp:include page="/ConnServlet" flush="true"/>
-<%@page import="iotbay.g15.model.User"%>
+<%@page import="iotbay.g15.model.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="/ConnServlet" flush="true"/>
 <!doctype html>
 <html lang="en">
     <head>
@@ -18,15 +18,16 @@
             <div class="logo"><img src="assets/logo.png"/></div>
                 <ul>
                     <a href="#"><li>Home</li></a>
-                    <a href="#"><li>Store</li></a>
+                    <a href="ViewCategoriesServlet"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
+                    
                     <% 
                         String msg = "Sign up / Login";
                         String path = "login.jsp";
-                        User user = (User)session.getAttribute("user");
+                        Customer c = (Customer)session.getAttribute("customer");
                         
-                        if(user != null){
+                        if(c != null){
                             msg = "My Account";
                             path = "main.jsp";
                         }
@@ -70,6 +71,7 @@
                 <!--empty div-->
             </div>
 	</div>
+        <jsp:include page="/ConnServlet" flush="true"/>
     </body>
     <footer>
         <p>Copyright Not Group 14 2021</p>

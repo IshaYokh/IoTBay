@@ -1,10 +1,12 @@
 package iotbay.g15.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Isha Yokhanna
  */
-public class Payment {
+public class Payment implements Serializable{
     private int paymentID;
     private String invoice;
     private String paymentMethod;

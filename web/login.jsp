@@ -15,13 +15,20 @@
         <title>Login</title>
     </head>
     <body>
+        <%
+        String incorrectpass = (String) session.getAttribute("incorrectpass");
+        
+        %>
+        
+        
+        
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png" /></div>
             <ul>
                 <a href="index.jsp">
                     <li>Home</li>
                 </a>
-                <a href="#">
+                <a href="ViewCategoriesServlet">
                     <li>Store</li>
                 </a>
                 <a href="#">
@@ -40,7 +47,7 @@
     
         
         <div class="form-popup" id="loginForm">
-            <form action="welcome.jsp" method="post" class="form-container-login">
+            <form action="LoginServlet" method="post" class="form-container-login">
                 <h1>Login</h1>
                 
                 <label for="email"><b>Email</b></label>
@@ -50,6 +57,7 @@
                 <input type="password" placeholder="Enter Password" name="psw" required>
                 <p>Need an account? <a href="register.jsp">Sign Up</a></p>
                 <p>Forgot your password? <a href="#">Reset password</a></p>
+                <p><%=(incorrectpass != null ? incorrectpass : " ")%></p>
                 <button href="welcome.jsp" type="submit" class="btn login">Login</button>
             </form>
         </div>

@@ -5,20 +5,38 @@
  */
 package iotbay.g15.model;
 
+import java.sql.Date;
+
 /**
  *
- * @author rebecca
+ * @author Kevin
  */
-public class Staff extends User{
+public class Staff {
+
     private String DOB;
     private int siteAccessLevel;
-    public Staff(int userID,String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country, String DOB, int siteAccessLevel) {
-        super(userID, firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
+    private int userID;
+
+    public Staff() {
+        
+    }
+
+    public Staff(int userID, String DOB, int siteAccessLevel) {
+        this.userID = userID;
         this.DOB = DOB;
         this.siteAccessLevel = siteAccessLevel;
     }
+
     public String getDOB() {
         return DOB;
+    }
+  
+    public int getUserID() {
+        return userID;
+    }
+    
+    public void setUserID() {
+        this.userID = userID;
     }
 
     public int getSiteAccessLevel() {
@@ -32,4 +50,5 @@ public class Staff extends User{
     public void setSiteAccessLevel(int siteAccessLevel) {
         this.siteAccessLevel = siteAccessLevel;
     }
+
 }

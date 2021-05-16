@@ -11,6 +11,9 @@ test/
 nbproject/.DS_Store
 src/.DS_Store
 web/.DS_Store
+src/database/derby.log
+src/database/derby.properties
+src/database/
 
 # Compiled class file
 *.class

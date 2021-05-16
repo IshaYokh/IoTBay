@@ -1,31 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package iotbay.g15.model.dao;
 
+import iotbay.g15.model.dao.DB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author rebecca
- */
 public class DBConnector extends DB{
     private Connection conn = null;
-    
     public DBConnector() throws ClassNotFoundException, SQLException {
-    Class.forName(driver);
-    conn = DriverManager.getConnection(URL+db, dbuser, dbpass);
+        Class.forName(driver);
+        conn = DriverManager.getConnection(URL+db, dbuser, dbpass);
     }
 
-    public Connection getConnection(){
-    return conn;
+    // Returns an instance of the database connection
+    public Connection openConnection(){
+        return this.conn;
     }
-
+    
+    // Closes connection to the database
     public void closeConnection() throws SQLException {
-    conn.close();
+        this.conn.close();
     }
 }

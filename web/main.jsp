@@ -1,10 +1,12 @@
 <%-- 
     Document   : newjsp
     Created on : 04/04/2021, 11:08:33 AM
-    Author     : IshaYokh/kaushikdeshpande
+    Author     : IshaYokh/kaushikdeshpande/Tada33
 --%>
 <%@page import="iotbay.g15.model.User"%>
+<%@page import="iotbay.g15.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="CheckStaffServlet"/>
 <!doctype html>
 <html lang="en">
     <head>
@@ -18,11 +20,12 @@
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
                 <a href="index.jsp"><li>Home</li></a>
-                <a href="#"><li>Store</li></a>
+                <a href="ViewCategoriesServlet"><li>Store</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
-                <% 
-                    User user = (User)session.getAttribute("user");
+
+                <%
+                    User user = (User) session.getAttribute("user");
                     String accountName = user.getFirstName();
                 %>
                 <a href="main.jsp"><li class="login">My Account</li></a>
@@ -49,11 +52,20 @@
                     </button>
                 </form>
             <a/>
+             
+            <br/>
+            <br/>
+            
+            <a href="addPaymentInfo.jsp">
+                <button class="add-paymentinfo-btn">
+                    <i class="far fa-credit-card"></i> &nbsp;Add Payment Information
+                </button>
+            <a/>
             
             <br/>
             <br/>
             
-            <a href="#">
+            <a href="accountDetails.jsp">
                 <button class="account-details-btn">
                     <i class="fas fa-user-circle"></i> &nbsp;Account Details
                 </button>
@@ -71,7 +83,7 @@
             <br/>
             <br/>
             
-            <a href="logout.jsp">
+            <a href="LogoutServlet">
                 <button class="logout-btn">
                     <i class="fas fa-sign-out-alt"></i> &nbsp;Logout
                 </button>

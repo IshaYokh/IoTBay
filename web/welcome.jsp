@@ -1,7 +1,7 @@
 <%-- 
     Document   : newjsp
     Created on : 04/04/2021, 11:08:33 AM
-    Author     : IshaYokh/kaushikdeshpande
+    Author     : IshaYokh/kaushikdeshpande/Tada33
 --%>
 
 <%@page import="iotbay.g15.model.User"%>
@@ -15,44 +15,18 @@
 	<script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>	
     </head>	
     <body>
-        <% 
-            String firstName = request.getParameter("fname");
-            String lastName = request.getParameter("lname");
-            String email = request.getParameter("email");
-            String password = request.getParameter("psw");
-            String phoneNumber = request.getParameter("number");
-            String streetNumber = request.getParameter("street-number");
-            String streetName = request.getParameter("street-name");
-            String streetType = request.getParameter("street-type");
-            String suburb = request.getParameter("suburb");
-            String state = request.getParameter("state");
-            String postcode = request.getParameter("postcode");
-            String country = request.getParameter("country");
-        %>
-        
-        <%
-            if((firstName != null) && (lastName != null)){
-                User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
-                session.setAttribute("user", user);
-            }
-            else{
-                User user = (User)session.getAttribute("user");
-                firstName = user.getFirstName();
-            }
-        %>
-        
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
                 <a href="index.jsp"><li>Home</li></a>
-                <a href="#"><li>Store</li></a>
+                <a href="ViewCategoriesServlet"><li>Store</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
                 <% 
                     User user = (User)session.getAttribute("user");
                     String msg = "Sign up / Login";
                     String path = "login.jsp";
-                        
+                    String fname1 = user.getFirstName();
                     if(user != null){
                         msg = "My Account";
                         path = "main.jsp";
@@ -63,7 +37,7 @@
         </div>
         <div class="placeholder"></div>
 	<div class="welcome_title">
-            <span> Welcome <%= firstName%>!</span>
+            <span> Welcome <%= fname1%>!</span>
 	</div>
         <div class="btns-container">
             <a href="index.jsp">
