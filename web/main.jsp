@@ -3,6 +3,7 @@
     Created on : 04/04/2021, 11:08:33 AM
     Author     : IshaYokh/kaushikdeshpande/Tada33
 --%>
+<%@page import="iotbay.g15.model.User"%>
 <%@page import="iotbay.g15.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="CheckStaffServlet"/>

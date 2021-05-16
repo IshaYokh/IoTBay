@@ -25,7 +25,8 @@
                 <a href="#"><li>Store</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
-                <a href="login.jsp"><li class="login">Sign up / Login</li></a>
+                <a href="LogoutServlet"><li class="login">Logout</li></a>
+                <a href="admin.jsp"><li class="login">Admin Portal</li></a>
             </ul> 
         </div>
         <div class="placeholder"></div>
@@ -36,7 +37,6 @@
             <h1 class="create-account-title">Customer Information</h1>
             <form action="register.jsp">
                 <input type="hidden" name="source" value="customerinfo">
-                <button class="btn1">Create New Customer</button>
             </form>
             <table class="tbl1">
                 <tr class="thead">
@@ -55,7 +55,7 @@
                     <td>Delete</td>
                 </tr>
                 <%
-                    CustomerDAO cd = (CustomerDAO)session.getAttribute("manager");
+                    CustomerDAO cd = (CustomerDAO)session.getAttribute("customerDBManager");
                     ArrayList<Customer> customers = cd.fetchCustomer();
                 %>
                 <c:forEach items="<%=customers%>" var="item">

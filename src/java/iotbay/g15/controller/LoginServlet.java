@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
                 if(manager.checkifStaff(userID)){
                     manager.addlogslogin(userID);
                 session.setAttribute("user", user1);
-                    request.getRequestDispatcher("Admin.jsp").include(request, response);
+                    request.getRequestDispatcher("admin.jsp").include(request, response);
                 
                 
                 }

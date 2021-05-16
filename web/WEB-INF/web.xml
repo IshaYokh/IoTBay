@@ -72,10 +72,6 @@
         <servlet-class>iotbay.g15.controller.AddCustomerServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ConnServlet</servlet-name>
-        <servlet-class>iotbay.g15.controller.ConnServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>DeleteCustomerServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.DeleteCustomerServlet</servlet-class>
     </servlet>
@@ -115,7 +111,6 @@
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -153,7 +148,7 @@
         <url-pattern>/AddCustomerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-	<servlet-name>DeleteCustomerServlet</servlet-name>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
         <url-pattern>/DeleteCustomerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

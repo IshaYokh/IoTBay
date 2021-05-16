@@ -48,7 +48,7 @@ public class UpdateCustomerServlet extends HttpServlet {
         String state = request.getParameter("state");
         int postcode = Integer.parseInt(request.getParameter("postcode"));
         String country = request.getParameter("country");
-        CustomerDAO manager = (CustomerDAO)session.getAttribute("manager");
+        CustomerDAO manager = (CustomerDAO)session.getAttribute("customerDBManager");
          
         try {       
             manager.updateCustomer(firstName, lastName,

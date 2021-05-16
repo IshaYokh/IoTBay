@@ -54,7 +54,7 @@ public class AddCustomerServlet extends HttpServlet {
                                          email, password, phoneNumber,
                                          streetNumber, streetName, streetType,
                                          suburb, state, postcode, country);
-        CustomerDAO manager = (CustomerDAO)session.getAttribute("manager");
+        CustomerDAO manager = (CustomerDAO)session.getAttribute("customerDBManager");
          
         try {       
             session.setAttribute("customer", customer);

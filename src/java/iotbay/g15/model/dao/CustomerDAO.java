@@ -18,7 +18,7 @@ public class CustomerDAO {
 
     //Find user by email in the database   
     public Customer findCustomer(String email, String password) throws SQLException {       
-        String fetch = "select * from CUSTOMER where EMAIL = '" + email +
+        String fetch = "select * from USER where EMAIL = '" + email +
                                             "' and PASSWORD = '" + password + "'";
         ResultSet rs = st.executeQuery(fetch);
 
@@ -45,7 +45,7 @@ public class CustomerDAO {
 
     //Add a user-data into the database   
     public void addCustomer(String firstName, String lastName, String email, String password, int phoneNumber, int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country) throws SQLException {                   //code for add-operation       
-        st.executeUpdate("INSERT INTO CUSTOMER (firstname, lastname, " +
+        st.executeUpdate("INSERT INTO USER (firstname, lastname, " +
                                                "email, password, phonenumber, " +
                                                "streetnumber, streetname, streettype, " +
                                                "suburb,state, postcode, country) " +
@@ -59,7 +59,7 @@ public class CustomerDAO {
     //update a user details in the database   
     public void updateCustomer(String firstName, String lastName, String email, String password, int phoneNumber, int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country) throws SQLException {       
         //code for update-operation   
-        st.executeUpdate("UPDATE CUSTOMER SET FIRSTNAME='" + firstName +
+        st.executeUpdate("UPDATE USER SET FIRSTNAME='" + firstName +
                                           "', LASTNAME='" + lastName +
                                           "', PHONENUMBER=" + phoneNumber +
                                           ", STREETNUMBER=" + streetNumber +
@@ -75,11 +75,11 @@ public class CustomerDAO {
     //delete a user from the database   
     public void deleteCustomer(String email) throws SQLException{       
         //code for delete-operation   
-        st.executeUpdate("DELETE FROM CUSTOMER WHERE EMAIL='" + email + "'");
+        st.executeUpdate("DELETE FROM USER WHERE EMAIL='" + email + "'");
     }
 
     public ArrayList<Customer> fetchCustomer() throws SQLException{
-        String fetch = "select * from CUSTOMER order by 1";
+        String fetch = "select * from USER order by 1";
         ResultSet rs = st.executeQuery(fetch);
         ArrayList<Customer> customers = new ArrayList<>();
 
@@ -107,7 +107,7 @@ public class CustomerDAO {
     }
 
     public boolean checkCustomer(String email, String password) throws SQLException{
-        String fetch = "select * from CUSTOMER where EMAIL = '" + email + "' and password = '" + password + "'";
+        String fetch = "select * from USER where EMAIL = '" + email + "' and password = '" + password + "'";
         ResultSet rs = st.executeQuery(fetch);
 
         while (rs.next()){

@@ -4,7 +4,7 @@
     Author     : IshaYokh/kaushikdeshpande/Tada33
 --%>
 
-<%@page import="iotbay.g15.model.Customer"%>
+<%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -23,8 +23,7 @@
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
                 <% 
-                    Customer c = (Customer)session.getAttribute("customer");
-                    String firstName = c.getFirstName();
+                    User user = (User)session.getAttribute("user");
                     String msg = "Sign up / Login";
                     String path = "login.jsp";
                     String fname1 = user.getFirstName();

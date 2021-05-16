@@ -24,7 +24,8 @@ public class Customer {
     private int postcode;
     private String country;
 
-    public Customer(String firstName, String lastName, String email, String password, int phoneNumber, int streetNumber, String streetName, String streetType, String suburb, String state, int postcode, String country) {
+    public Customer(String firstName, String lastName, String email, String password, int phoneNumber, int streetNumber, String streetName,
+            String streetType, String suburb, String state, int postcode, String country) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

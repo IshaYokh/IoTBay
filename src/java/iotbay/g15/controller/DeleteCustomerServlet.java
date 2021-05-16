@@ -37,7 +37,7 @@ public class DeleteCustomerServlet extends HttpServlet {
                 
         HttpSession session = request.getSession();
         String email = request.getParameter("email");
-        CustomerDAO manager = (CustomerDAO)session.getAttribute("manager");
+        CustomerDAO manager = (CustomerDAO)session.getAttribute("customerDBManager");
          
         try {       
             manager.deleteCustomer(email);

@@ -5,7 +5,7 @@
  */
 package iotbay.g15.model.dao;
 
-import iotbay.g15.model.Customer;
+import iotbay.g15.model.CustomerUser;
 import iotbay.g15.model.Staff;
 import iotbay.g15.model.User;
 import java.sql.Connection;
@@ -168,12 +168,12 @@ public class UserManagementDAO {
     }
 
     //get a customer using userID as foreign key
-    public Customer getCustomer(int userID) throws SQLException {
+    public CustomerUser getCustomer(int userID) throws SQLException {
         String SQL = "SELECT * FROM \"CUSTOMER\" WHERE USERID=" + userID;
         ResultSet rs = st.executeQuery(SQL);
         while (rs.next()) {
             if (userID == rs.getInt("USERID")) {
-                return new Customer(
+                return new CustomerUser(
                         rs.getInt("LOYALTYPOINTS"),
                         rs.getInt("USERID")
                 );

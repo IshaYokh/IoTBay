@@ -22,8 +22,8 @@
                     <a href="index.jsp"><li>Home</li></a>
                     <a href="#"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
-                    <a href="#"><li>Contact</li></a>
-                    <a href="login.jsp"><li class="login">Sign up / Login</li></a>
+                    <a href="LogoutServlet"><li class="login">Logout</li></a>
+                    <a href="admin.jsp"><li class="login">Admin Portal</li></a>
 		</ul>
 	</div>
         <div class="placeholder"></div>

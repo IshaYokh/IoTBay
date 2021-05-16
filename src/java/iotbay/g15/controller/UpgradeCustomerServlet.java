@@ -5,7 +5,7 @@
  */
 package iotbay.g15.controller;
 
-import iotbay.g15.model.Customer;
+import iotbay.g15.model.CustomerUser;
 import iotbay.g15.model.Staff;
 import iotbay.g15.model.dao.UserManagementDAO;
 import java.io.IOException;
@@ -37,7 +37,7 @@ public class UpgradeCustomerServlet extends HttpServlet {
         try {
             int userID = Integer.parseInt(request.getParameter("id"));
             int loyaltyPoints = Integer.parseInt(request.getParameter("loyaltyPoints"));
-            Customer customer = manager.getCustomer(userID);
+            CustomerUser customer = manager.getCustomer(userID);
 
             //check if customer already exist
             if (customer == null) {
