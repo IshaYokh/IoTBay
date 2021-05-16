@@ -21,7 +21,7 @@
                     <a href="#"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
-                    <a href="customerinfo.jsp"><li>Customer Info</li></a>
+                    
                     <% 
                         String msg = "Sign up / Login";
                         String path = "login.jsp";

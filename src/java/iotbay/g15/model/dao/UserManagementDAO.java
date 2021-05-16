@@ -43,10 +43,10 @@ public class UserManagementDAO {
             String suburb, String state, int postcode, String country) throws SQLException {                   //code for add-operation       
         st.executeUpdate("INSERT INTO \"USERS\" (FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONENUMBER,"
                 + " STREETNUMBER, STREETNAME, STREETTYPE, SUBURB, STATE, POSTCODE, COUNTRY) VALUES ("
-                + " ' " + firstName + " ', " + " ' " + lastName + " ', " + " ' " + email + " ', "
-                + " ' " + password + " ', " + " " + phoneNumber + ", " + " " + streetNumber + " , " + " ' " + streetName + " ', "
-                + " ' " + streetType + " ', " + " ' " + suburb + " ', " + " ' " + state + " ', " + " " + postcode + ", "
-                + " ' " + country + " ' "
+                + "'" + firstName + "'," + "'" + lastName + "'," + "'" + email + "',"
+                + "'" + password + "'," + "" + phoneNumber + "," + "" + streetNumber + "," + "'" + streetName + "',"
+                + "'" + streetType + "'," + "'" + suburb + "'," + "'" + state + "'," + "" + postcode + ","
+                + "'" + country + "'"
                 + ")");
     }
 

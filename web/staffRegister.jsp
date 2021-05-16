@@ -52,15 +52,16 @@
               
               <label for="psw">Confirm Password</label>
               <input type="password" placeholder="Confirm Password" name="psw1" required>
-              <p class="already-have-account"><%=(passNoMatch != null ? passNoMatch : " ")%>
-
+              <p><%=(passNoMatch != null ? passNoMatch : " ")%>
+               <br/>
+               <br/>
               <label for="number">Phone Number</label>
               <input type="text" placeholder="<%=(phoneNoErr != null ? phoneNoErr : "Enter Phone Number")%>" name="number" required>
               
               <label for="dob">Date of Birth</label>
               <input type="date" placeholder="Enter Date of birth" name="dob" required>
-              <br>
-              <br>
+              <br/>
+              <br/>
               <label for="street-number">Street Number</label>
               <input type="text" placeholder="<%=streetNoErr != null ? streetNoErr : "Enter Street Number"%>" name="street-number" required>
 
