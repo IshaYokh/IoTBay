@@ -5,6 +5,7 @@
 --%>
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="CheckStaffServlet"/>
 <!doctype html>
 <html lang="en">
     <head>
@@ -21,9 +22,12 @@
                 <a href="#"><li>Store</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
-                <% 
-                    User user = (User)session.getAttribute("user");
+
+
+                <%
+                    User user = (User) session.getAttribute("user");
                     String accountName = user.getFirstName();
+
                 %>
                 <a href="main.jsp"><li class="login">My Account</li></a>
             </ul>

@@ -9,6 +9,8 @@ package iotbay.g15.controller;
  *
  * @author kaushikdeshpande
  */
+
+import iotbay.g15.model.RegisterUpdateValidator;
 import java.io.IOException;
 
 import java.sql.SQLException;
@@ -35,44 +37,60 @@ public class StaffRegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("psw");
         String password1 = request.getParameter("psw1");
-        String phoneNumber = request.getParameter("number");
-        String streetNumber = request.getParameter("street-number");
         String streetName = request.getParameter("street-name");
         String streetType = request.getParameter("street-type");
         String suburb = request.getParameter("suburb");
         String state = request.getParameter("state");
-        String postcode = request.getParameter("postcode");
         String country = request.getParameter("country");
-        String dob = request.getParameter("dob");
-        LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
-        if (password.equals(password1)) {
-            try {
-                if (manager.checkUserEmail(email)) { //email has not been used
+        //validates inputs
+        RegisterUpdateValidator validate = new RegisterUpdateValidator();
+        session.setAttribute("emailUsed",validate.validateEmail(email));
+        session.setAttribute("passNoMatch", validate.validatePassword(password));
+        session.setAttribute("phoneNoErr", validate.validatePhone(request.getParameter("number")));
+        session.setAttribute("postcodeErr", validate.validatePostCode(request.getParameter("postcode")));
+        session.setAttribute("streetNoErr", validate.validateStreetNo(request.getParameter("street-number")));
+        //validates inputs
+        if((validate.validateEmail(email)==null) && (validate.validatePassword(password)==null) && (validate.validatePhone(request.getParameter("number"))== null) 
+            && (validate.validatePostCode(request.getParameter("postcode"))== null) &&(validate.validateStreetNo(request.getParameter("street-number"))== null)){
+            int phoneNumber = Integer.parseInt(request.getParameter("number"));
+            int streetNumber = Integer.parseInt(request.getParameter("street-number"));
+            int postcode = Integer.parseInt(request.getParameter("postcode"));
+            String dob = request.getParameter("dob");
+            LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
+            if (password.equals(password1)) {
+                try {
+                    if (manager.checkUserEmail(email)) { //email has not been used
+                        manager.addUser(firstName, lastName, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, email);
+                        //getUserID
+                        int userID = manager.getUserID(email, password);
+                         User user = new User(userID, firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
+                        
+                        int userI = manager.getUserID(email, password);
+                        manager.addStaff(userI, dob);
+                        manager.addlogsregister(userI);
+                        session.setAttribute("user", user);
+                        request.getRequestDispatcher("Admin.jsp").include(request, response);
+                    } else {
+                        session.setAttribute("emailUsed", "Email has already been used please sign in");
+                        request.getRequestDispatcher("staffRegister.jsp").include(request, response);
 
-                    manager.addUser(firstName, lastName, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, email);
-                    //getUserID
-                    int userID = manager.getUserID(email, password);
-                    //TODO: commented out so code can compile
-                    //User user = new User(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, userID);
-                    //manager.addCustomer(userID);
-                    int userI = manager.getUserID(email, password);
-                    manager.addStaff(userI, dob);
-                    manager.addlogsregister(userI);
-                    //session.setAttribute("user", user);
-                    request.getRequestDispatcher("admin/admin.jsp").include(request, response);
-                } else {
-                    session.setAttribute("emailUsed", "Email has already been used please sign in");
-                    request.getRequestDispatcher("staffregister.jsp").include(request, response);
-
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.getMessage();
                 }
-            } catch (SQLException ex) {
-                //Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-                ex.getMessage();
+            } else {
+                session.setAttribute("passNoMatch", "Passwords do not Match");
+                request.getRequestDispatcher("staffRegister.jsp").include(request, response);
             }
-        } else {
-            session.setAttribute("passNoMatch", "Passwords do not Match");
-            request.getRequestDispatcher("staffregister.jsp").include(request, response);
+        }else{
+        
+            request.getRequestDispatcher("staffRegister.jsp").include(request, response);
+        
         }
+        
+        
+        
     }
 
 }
