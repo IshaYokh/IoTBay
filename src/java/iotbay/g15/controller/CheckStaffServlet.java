@@ -31,7 +31,7 @@ public class CheckStaffServlet extends HttpServlet {
         LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
         try {
             if(manager.checkifStaff(userID)){
-                request.getRequestDispatcher("Admin.jsp").forward(request, response);
+                request.getRequestDispatcher("admin.jsp").forward(request, response);
                 
             }
         } catch (SQLException ex) {

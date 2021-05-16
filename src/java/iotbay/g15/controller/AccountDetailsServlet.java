@@ -63,6 +63,7 @@ public class AccountDetailsServlet extends HttpServlet {
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
                 user.setEmail(email);
+                user.setPassword(password);
                 user.setPhoneNumber(phoneNumber);
                 user.setStreetNumber(streetNumber);
                 user.setStreetName(streetName);
