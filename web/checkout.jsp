@@ -66,8 +66,12 @@
 
                         <tr>
                             <td><span class="bold">Order Total:</span></td>
-                            <% DecimalFormat decimalFormat = new DecimalFormat("0.00"); %>
-                            <td class="right">$<%= decimalFormat.format(orderSubtotal) + 5.00%></td>
+                            <%try{%>
+                                <% DecimalFormat decimalFormat = new DecimalFormat("0.00"); %>
+                                <td class="right">$<%= decimalFormat.format(orderSubtotal) + 5.00%></td>
+                            <%}catch(IllegalArgumentException e){%>
+                            <td><span class="bold">Order Total:</span></td>
+                            <%}%>
                         </tr>       
                     </table>
             </div>
