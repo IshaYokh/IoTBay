@@ -39,6 +39,7 @@ public class ConnServlet extends HttpServlet {
            manager = new LoginLogoutDAO(conn);
            paymentInfoDBmanager = new PaymentInfoDAO(conn);
            userManager = new UserManagementDAO(conn);
+           manager = new CustomerDAO(conn);
        }
        catch (SQLException ex){
            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -48,6 +49,7 @@ public class ConnServlet extends HttpServlet {
        session.setAttribute("manager", manager);
        session.setAttribute("paymentInfoDBmanager", paymentInfoDBmanager);
        session.setAttribute("userManager", userManager);
+       session.setAttribute("manager", manager);
    }
 
    @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
@@ -58,4 +60,3 @@ public class ConnServlet extends HttpServlet {
            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
        }
    }
-}

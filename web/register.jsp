@@ -1,11 +1,14 @@
 <%-- 
     Document   : register
     Created on : 08/04/2021, 1:07:00 AM
-    Author     : Isha Yokhanna
+    Author     : Isha Yokhanna, Tada33
 --%>
 
 <%@page import="iotbay.g15.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -97,5 +100,4 @@
               </div>
             </form>
         </div>
-    
 </html>

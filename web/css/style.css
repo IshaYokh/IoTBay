@@ -571,5 +571,22 @@ payment-history-table tr{
 .table-wrapper-scroll-y {
         display: block;
 }
-.log-table{    
+
+/*Customer Info page styles */
+
+.btn1{
+        float: right;
+}
+table {
+        border-collapse: collapse;
+        border: solid 2px black;
+        width: 100%;
+}
+table th, table td {
+        border: solid 1px black;
+}
+
+.thead{
+        background-color: navy;
+        color: white;
 }

@@ -67,6 +67,22 @@
         <servlet-name>UpgradeCustomerServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.UpgradeCustomerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.AddCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConnServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.ConnServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.DeleteCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCustomerServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.UpdateCustomerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -99,6 +115,7 @@
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -130,6 +147,18 @@
     <servlet-mapping>
         <servlet-name>UpgradeCustomerServlet</servlet-name>
         <url-pattern>/UpgradeCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCustomerServlet</servlet-name>
+        <url-pattern>/AddCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+	<servlet-name>DeleteCustomerServlet</servlet-name>
+        <url-pattern>/DeleteCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCustomerServlet</servlet-name>
+        <url-pattern>/UpdateCustomerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

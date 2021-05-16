@@ -1,10 +1,10 @@
 <%-- 
     Document   : newjsp
     Created on : 04/04/2021, 11:08:33 AM
-    Author     : IshaYokh/kaushikdeshpande
+    Author     : IshaYokh/kaushikdeshpande/Tada33
 --%>
 
-<%@page import="iotbay.g15.model.User"%>
+<%@page import="iotbay.g15.model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
@@ -15,7 +15,6 @@
 	<script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>	
     </head>	
     <body>
-
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>
@@ -24,7 +23,8 @@
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
                 <% 
-                    User user = (User)session.getAttribute("user");
+                    Customer c = (Customer)session.getAttribute("customer");
+                    String firstName = c.getFirstName();
                     String msg = "Sign up / Login";
                     String path = "login.jsp";
                     String fname1 = user.getFirstName();
