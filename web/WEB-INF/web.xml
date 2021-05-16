@@ -2,27 +2,27 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>AddServlet</servlet-name>
-        <servlet-class>iotbay.controller.AddServlet</servlet-class>
+        <servlet-class>iotbay.g15.controller.AddServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ConnServlet</servlet-name>
-        <servlet-class>iotbay.controller.ConnServlet</servlet-class>
+        <servlet-class>iotbay.g15.controller.ConnServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteServlet</servlet-name>
-        <servlet-class>iotbay.controller.DeleteServlet</servlet-class>
+        <servlet-class>iotbay.g15.controller.DeleteServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditServlet</servlet-name>
-        <servlet-class>iotbay.controller.EditServlet</servlet-class>
+        <servlet-class>iotbay.g15.controller.EditServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>iotbay.controller.LoginServlet</servlet-class>
+        <servlet-class>iotbay.g15.controller.LoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateServlet</servlet-name>
-        <servlet-class>iotbay.controller.UpdateServlet</servlet-class>
+        <servlet-class>iotbay.g15.controller.UpdateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddServlet</servlet-name>
