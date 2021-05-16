@@ -127,9 +127,8 @@ public class PaymentInfoDAO {
     }
     
     // Checks if payment card info exist in the database
-    public boolean hasPaymentInfo(String cardHolderName, String cardNumber, String cardExpiryDate, int cardCVC) throws SQLException{
-        String sql = "SELECT * FROM PaymentInfo WHERE CardHolderName = '" + cardHolderName + "' AND CardNumber = " + cardNumber
-                + " AND CardExpiryDate = '" + cardExpiryDate + "'";
+    public boolean hasPaymentInfo(String cardNumber) throws SQLException{
+        String sql = "SELECT * FROM PaymentInfo WHERE CardNumber = '" + cardNumber + "' AND Active = 'true'";
         ResultSet resultSet = st.executeQuery(sql);
         
         int i = 0;

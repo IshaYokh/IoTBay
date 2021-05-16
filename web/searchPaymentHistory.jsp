@@ -42,6 +42,12 @@
 		</ul>
 	</div>
 	<div class="placeholder"></div>
+        
+        <%
+            // Validation variables
+            String paymentIDErr = (String)session.getAttribute("paymentIDErr");
+            boolean showEmptyCartMsg = true;
+        %>
 
         <div class="search-payment-history-title">
             <h1>Search Payment History</h1>
@@ -54,7 +60,7 @@
             <input type="date" placeholder="DD/MM/YYYY" name="date" required>
             
             <div class="search-btn-container">
-                <button href="" type="submit">Search</button>
+                <button type="submit">Search</button>
             </div>
         </form>
 
@@ -73,7 +79,13 @@
             </tr>
             
             <%
-                if(payments.size() == 0){%>
+                if(paymentIDErr != null){
+                    showEmptyCartMsg = false;
+            %>
+                <h1 class="empty-msg">Please enter a valid payment ID</h1>
+            <%
+                }    
+                if(payments.size() == 0 && showEmptyCartMsg){%>
                     <h1 class="empty-msg">Your payment history is empty!</h1>
             
             <%  }else{

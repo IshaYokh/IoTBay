@@ -37,26 +37,47 @@ public class UpdatePaymentInfoServlet extends HttpServlet{
         String cardExpiryDate = request.getParameter("card-expiry-date");
         String cardCVC = request.getParameter("card-cvc");
         
-        int streetNumberInt = Integer.parseInt(streetNumber);
-        int postcodeInt = Integer.parseInt(postcode);
-        int cardCVCInt = Integer.parseInt(cardCVC);
+        // Validation variables
+        PaymentValidator paymentValidator = new PaymentValidator();
         
-        User user = (User)session.getAttribute("user");
+        session.setAttribute("streetNumberErr", paymentValidator.validateStreetNo(streetNumber));
+        session.setAttribute("streetNameErr", paymentValidator.validateStreetName(streetName));
+        session.setAttribute("streetTypeErr", paymentValidator.validateStreetType(streetType));
+        session.setAttribute("suburbErr", paymentValidator.validateSuburb(suburb));
+        session.setAttribute("stateErr", paymentValidator.validateState(state));
+        session.setAttribute("postcodeErr", paymentValidator.validatePostcode(postcode));
+        session.setAttribute("countryErr", paymentValidator.validateCountry(country));
+        session.setAttribute("cardHolderNameErr", paymentValidator.validateCardHolderName(cardHolderName));
+        session.setAttribute("cardNumberErr", paymentValidator.validateCardNumber(cardNumber));
+        session.setAttribute("cardExpiryDateErr", paymentValidator.validateCardExpiryDate(cardExpiryDate));
+        session.setAttribute("cardCvcErr", paymentValidator.validateCardCVC(cardCVC));
         
+        session.setAttribute("paymentInfoUpdateFeedback", "fail");
         PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
         
-        try{
-            paymentInfoDBmanager.updatePaymentInfo(user.getID(), cardHolderName,
-                    cardNumber, cardExpiryDate, cardCVCInt,
-                    streetNumberInt, streetName, streetType,
-                    suburb, state, postcodeInt, country);
+        if((paymentValidator.validateStreetNo(streetNumber) == null) && (paymentValidator.validateStreetName(streetName) == null)
+                && (paymentValidator.validateStreetType(streetType) == null) && (paymentValidator.validateSuburb(suburb) == null)
+                && (paymentValidator.validateState(state) == null) && (paymentValidator.validatePostcode(postcode) == null)
+                && (paymentValidator.validateCountry(country) == null) && (paymentValidator.validateCardHolderName(cardHolderName) == null)
+                && (paymentValidator.validateCardNumber(cardNumber) == null) &&  (paymentValidator.validateCardExpiryDate(cardExpiryDate) == null)
+                && (paymentValidator.validateCardCVC(cardCVC) == null)){
+            
+            int cvc = Integer.parseInt(cardCVC);
+            int streetNumberInt = Integer.parseInt(streetNumber);
+            int postcodeInt = Integer.parseInt(postcode);
+            int cardCVCInt = Integer.parseInt(cardCVC);
+            User user = (User)session.getAttribute("user");
+            
+            try {
+                paymentInfoDBmanager.updatePaymentInfo(user.getID(), cardHolderName,
+                        cardNumber, cardExpiryDate, cardCVCInt,
+                        streetNumberInt, streetName, streetType,
+                        suburb, state, postcodeInt, country);
+                session.setAttribute("paymentInfoUpdateFeedback", "success");
+            } catch (SQLException ex) {
+                Logger.getLogger(UpdatePaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
-        catch (SQLException ex){
-            Logger.getLogger(UpdatePaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        session.setAttribute("paymentInfoUpdateFeedback", "success");
         request.getRequestDispatcher("updatePaymentInfo.jsp").include(request, response);
     }
     

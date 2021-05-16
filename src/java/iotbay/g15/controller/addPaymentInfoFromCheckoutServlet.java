@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
  * wants to add their payment info from the checkout page
  * 
  */
-public class addPaymentInfoFromCheckoutServlet extends HttpServlet{
+public class AddPaymentInfoFromCheckoutServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();

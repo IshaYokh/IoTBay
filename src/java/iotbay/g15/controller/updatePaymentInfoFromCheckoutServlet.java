@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
  * This servlet class will be used when a customer 
  * wants to update/delete their payment info from the checkout page
  */
-public class updatePaymentInfoFromCheckoutServlet extends HttpServlet{
+public class UpdatePaymentInfoFromCheckoutServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();

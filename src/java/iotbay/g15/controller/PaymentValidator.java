@@ -146,16 +146,13 @@ public class PaymentValidator {
         if(match.matches())
             return null;
         
-        return "Please enter a valid mastercard number (Tak a lok at the Anatomy of a Master Cards): e.g. xxxx xxxx xxxx xxxx";
+        return "Please enter a valid mastercard number (Tak a look at the Anatomy of a Master Cards)";
     }
     
     // Validates if the card expiry date input matches the format MM/YYYY
     public String validateCardExpiryDate(String cardExpiryDate){
         // Card expiry date regex pattern
-        String pattern = "^(0[1-9]|1[0-2])\\/?([0-9]{4})$";
-        
-        // Removing white spaces
-        cardExpiryDate = cardExpiryDate.replaceAll(" ", "");
+        String pattern = "^(0[1-9]|1[0-2])\\/?(([0-9]{4}|[0-9]{2})$)";
         
         Pattern regEx = Pattern.compile(pattern);
         Matcher match = regEx.matcher(cardExpiryDate);

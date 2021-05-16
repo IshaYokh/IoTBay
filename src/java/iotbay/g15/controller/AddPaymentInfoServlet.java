@@ -53,18 +53,16 @@ public class AddPaymentInfoServlet extends HttpServlet{
         // Getting the DAO instances from the session and creating model objects based on the data returned from the JSP view
         PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
         PaymentInfo paymentInfo = null;
-       
-        int cvc = Integer.parseInt(cardCVC);
-        
-        if(paymentValidator.validateStreetNo(streetNumber) == null && paymentValidator.validateStreetName(streetName) == null
-                && paymentValidator.validateStreetType(streetType) == null && paymentValidator.validateSuburb(suburb) == null
-                && paymentValidator.validateState(state) == null && paymentValidator.validatePostcode(postcode) == null
-                && paymentValidator.validateCountry(country) == null && paymentValidator.validateCardHolderName(cardHolderName) == null
-                && paymentValidator.validateCardNumber(cardNumber) == null && paymentValidator.validateCardCVC(cardCVC) == null){
+
+        if((paymentValidator.validateStreetNo(streetNumber) == null) && (paymentValidator.validateStreetName(streetName) == null)
+                && (paymentValidator.validateStreetType(streetType) == null) && (paymentValidator.validateSuburb(suburb) == null)
+                && (paymentValidator.validateState(state) == null) && (paymentValidator.validatePostcode(postcode) == null)
+                && (paymentValidator.validateCountry(country) == null) && (paymentValidator.validateCardHolderName(cardHolderName) == null)
+                && (paymentValidator.validateCardNumber(cardNumber) == null) && (paymentValidator.validateCardExpiryDate(cardExpiryDate) == null)
+                && (paymentValidator.validateCardCVC(cardCVC) == null)){
             try{
                 // Check if payment info already exist in the database
-                if(!paymentInfoDBmanager.hasPaymentInfo(cardHolderName, cardNumber, cardExpiryDate, cvc)){
-
+                if(!paymentInfoDBmanager.hasPaymentInfo(cardNumber)){
                     int streetNumberInt = Integer.parseInt(streetNumber);
                     int postcodeInt = Integer.parseInt(postcode);
                     int cardCVCInt = Integer.parseInt(cardCVC);

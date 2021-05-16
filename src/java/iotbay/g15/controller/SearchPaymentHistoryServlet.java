@@ -28,13 +28,19 @@ public class SearchPaymentHistoryServlet extends HttpServlet{
         String paymentDate = request.getParameter("date");
         PaymentDAO paymentDBManager = (PaymentDAO)session.getAttribute("paymentDBManager");
         ArrayList<Payment> payments = new ArrayList<>();
+         
+        // Validation variables
+        PaymentValidator paymentValidator = new PaymentValidator();
+        session.setAttribute("paymentIDErr", paymentValidator.validatePaymentIDSearchInput(paymentID));
         
-        int pID = Integer.parseInt(paymentID);
         
-        try{
-            payments = paymentDBManager.listAllPaymentInfos(pID, paymentDate);
-        }catch(SQLException ex){
-            Logger.getLogger(SearchPaymentHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        if(paymentValidator.validatePaymentIDSearchInput(paymentID) == null){
+            int pID = Integer.parseInt(paymentID);
+            try{
+                payments = paymentDBManager.listAllPaymentInfos(pID, paymentDate);
+            }catch(SQLException ex){
+                Logger.getLogger(SearchPaymentHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         session.setAttribute("payments", payments);

@@ -75,9 +75,17 @@
             <div class="paymentinfo-feedback">
                 <h1>Thanks <%= userName%>! your payment information has been updated successfully! <a href="<%= url%>">Return to <%= pageName%></a></h1>
             </div>
+        
+        <%      }else if(paymentInfoUpdateFeedback.equals("fail")){%>
+        
+        <div class="paymentinfo-fail-feedback">
+            <h1><i class="fas fa-exclamation-triangle"></i>&nbsp;Something went wrong! please check the text inputs for feedback</h1>
+        </div>
+        
         <%
             }
                 session.removeAttribute("redirectedFromCheckout");
+                session.removeAttribute("paymentInfoUpdateFeedback");
             }
             catch(NullPointerException ex){
             }
@@ -86,6 +94,19 @@
         <% 
             // Grabbing customer payment info details
             PaymentInfo paymentInfo = (PaymentInfo)session.getAttribute("paymentInfo");
+            
+            // Error validation variables
+            String streetNumberErr = (String)session.getAttribute("streetNumberErr");
+            String streetNameErr = (String)session.getAttribute("streetNameErr");
+            String streetTypeErr = (String)session.getAttribute("streetTypeErr");
+            String suburbErr = (String)session.getAttribute("suburbErr");
+            String stateErr = (String)session.getAttribute("stateErr");
+            String postcodeErr = (String)session.getAttribute("postcodeErr");
+            String countryErr = (String)session.getAttribute("countryErr");
+            String cardHolderNameErr = (String)session.getAttribute("cardHolderNameErr");
+            String cardNumberErr = (String)session.getAttribute("cardNumberErr");
+            String cardExpiryDateErr = (String)session.getAttribute("cardExpiryDateErr");
+            String cardCvcErr = (String)session.getAttribute("cardCvcErr");
         %>
         
         <!-- Form for new card and billing details -->
@@ -93,39 +114,39 @@
         <div class="form" id="createForm">
             <form action="UpdatePaymentInfoServlet" method="post" class="form-container-update-card">
               <label for="street-number">Street Number</label>
-              <input type="text" value="<%= paymentInfo.getStreetNumber()%>" name="street-number" required>
+              <input type="text" value="<%=(streetNumberErr != null ? streetNumberErr : paymentInfo.getStreetNumber())%>" name="street-number" required>
 
               <label for="street-name">Street Name</label>
-              <input type="text" value="<%= paymentInfo.getStreetName()%>" name="street-name" required>
+              <input type="text" value="<%=(streetNameErr != null ? streetNameErr : paymentInfo.getStreetName())%>" name="street-name" required>
               
               <label for="street-type">Street Type</label>
-              <input type="text" value="<%= paymentInfo.getStreetType()%>" name="street-type" required>
+              <input type="text" value="<%=(streetTypeErr != null ? streetTypeErr : paymentInfo.getStreetType())%>" name="street-type" required>
               
               <label for="suburb">Suburb</label>
-              <input type="text" value="<%= paymentInfo.getSuburb()%>" name="suburb" required>
+              <input type="text" value="<%=(suburbErr != null ? suburbErr : paymentInfo.getSuburb())%>" name="suburb" required>
           
               <label for="state">State</label>
-              <input type="text" value="<%= paymentInfo.getState()%>" name="state" required>
+              <input type="text" value="<%=(stateErr != null ? stateErr : paymentInfo.getState())%>" name="state" required>
 
               <label for="postcode">Enter Postcode</label>
-              <input type="text" value="<%= paymentInfo.getPostcode()%>" name="postcode" required>
+              <input type="text" value="<%=(postcodeErr != null ? postcodeErr : paymentInfo.getPostcode())%>" name="postcode" required>
               
               <label for="Country">Country</label>
-              <input type="text" value="<%= paymentInfo.getCountry()%>" name="country" required>
+              <input type="text" value="<%=(countryErr != null ? countryErr : paymentInfo.getCountry())%>" name="country" required>
               
               <div class="placeholder"></div>
               
               <label for="card-holder-name">Card Holder Name</label>
-              <input type="text" value="<%= paymentInfo.getCardHolderName()%>" name="card-holder-name" required>
+              <input type="text" value="<%=(cardHolderNameErr != null ? cardHolderNameErr : paymentInfo.getCardHolderName())%>" name="card-holder-name" required>
                 
               <label for="card-number">Card Number</label>
-              <input type="text" value="<%= paymentInfo.getCardNumber()%>" name="card-number" required>
+              <input type="text" value="<%=(cardNumberErr != null ? cardNumberErr : paymentInfo.getCardNumber())%>" name="card-number" required>
               
               <label for="card-expiry-date">Expiry Date</label>
-              <input type="text" value="<%= paymentInfo.getCardExpiryDate()%>" name="card-expiry-date">
+              <input type="text" value="<%=(cardExpiryDateErr != null ? cardExpiryDateErr : paymentInfo.getCardExpiryDate())%>" name="card-expiry-date">
               
               <label for="card-cvc">CVC</label>
-              <input type="password" value="<%= paymentInfo.getCardCVC()%>" name="card-cvc" required>
+              <input type="password" value="<%=(cardCvcErr != null ? cardCvcErr : paymentInfo.getCardCVC())%>" name="card-cvc" required>
 
               <!-- Submit, Delete or cancel buttons -->
               <div class="save-btn-container">

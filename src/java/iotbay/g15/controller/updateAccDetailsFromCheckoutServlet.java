@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
  * wants to update/delete their account details from the checkout page
  * 
  */
-public class updateAccDetailsFromCheckoutServlet extends HttpServlet{
+public class UpdateAccDetailsFromCheckoutServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();

@@ -78,7 +78,7 @@
         %>
             
         <div class="paymentinfo-fail-feedback">
-            <h1><i class="fas fa-exclamation-triangle"></i>&nbsp;Payment Information already exist></h1>
+            <h1><i class="fas fa-exclamation-triangle"></i>&nbsp;Payment Information already exist</h1>
         </div>
         
         <%}else if(paymentInfoAddFeedback.equals("fail")){%>
@@ -89,7 +89,9 @@
         
         
         <%
+            
             }
+                session.removeAttribute(paymentInfoAddFeedback);
                 session.removeAttribute("redirectedFromCheckout");
             }
             catch(NullPointerException ex){
@@ -145,7 +147,7 @@
               <input type="text" placeholder="<%=(cardNumberErr != null ? cardNumberErr : "0000 0000 0000 0000")%>" name="card-number" required>
               
               <label for="card-expiry-date">Expiry Date</label>
-              <input type="text" placeholder="<%=(cardExpiryDateErr != null ? cardExpiryDateErr : "MM/YYYY")%>" name="card-expiry-date" min="2021-05-14">
+              <input type="text" placeholder="<%=(cardExpiryDateErr != null ? cardExpiryDateErr : "MM/YYYY")%>" name="card-expiry-date" required>
               
               <label for="card-cvc">CVC</label>
               <input type="password" placeholder="<%=(cardCvcErr != null ? cardCvcErr : "000")%>" name="card-cvc" required>

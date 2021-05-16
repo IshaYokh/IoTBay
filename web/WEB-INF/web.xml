@@ -57,15 +57,15 @@
     </servlet>
     <servlet>
         <servlet-name>updatePaymentInfoFromCheckoutServlet</servlet-name>
-        <servlet-class>iotbay.g15.controller.updatePaymentInfoFromCheckoutServlet</servlet-class>
+        <servlet-class>iotbay.g15.controller.UpdatePaymentInfoFromCheckoutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>updateAccDetailsFromCheckoutServlet</servlet-name>
-        <servlet-class>iotbay.g15.controller.updateAccDetailsFromCheckoutServlet</servlet-class>
+        <servlet-class>iotbay.g15.controller.UpdateAccDetailsFromCheckoutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addPaymentInfoFromCheckoutServlet</servlet-name>
-        <servlet-class>iotbay.g15.controller.addPaymentInfoFromCheckoutServlet</servlet-class>
+        <servlet-class>iotbay.g15.controller.AddPaymentInfoFromCheckoutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ViewPaymentHistoryServlet</servlet-name>
@@ -155,7 +155,6 @@
         <servlet-name>AddPaymentServlet</servlet-name>
         <url-pattern>/AddPaymentServlet</url-pattern>
     </servlet-mapping>
-
     <session-config>
         <session-timeout>
 
