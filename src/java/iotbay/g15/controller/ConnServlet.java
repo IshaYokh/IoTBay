@@ -17,6 +17,7 @@ public class ConnServlet extends HttpServlet {
    private Connection conn;
    private PaymentInfoDAO paymentInfoDBmanager;
    private LoginLogoutDAO manager;
+   private ShowItemDAO showItem;
    private UserManagementDAO userManager;
    private CustomerDAO customerDBManager;
 
@@ -39,6 +40,7 @@ public class ConnServlet extends HttpServlet {
        try {
            manager = new LoginLogoutDAO(conn);
            paymentInfoDBmanager = new PaymentInfoDAO(conn);
+           showItem = new ShowItemDAO(conn);
            userManager = new UserManagementDAO(conn);
            customerDBManager = new CustomerDAO(conn);
        }
@@ -49,6 +51,7 @@ public class ConnServlet extends HttpServlet {
        //export the DB managers to the view-session (JSPs)
        session.setAttribute("manager", manager);
        session.setAttribute("paymentInfoDBmanager", paymentInfoDBmanager);
+       session.setAttribute("showItem", showItem);
        session.setAttribute("userManager", userManager);
        session.setAttribute("customerDBManager", customerDBManager);
    }
@@ -62,3 +65,4 @@ public class ConnServlet extends HttpServlet {
        }
    }
 }
+

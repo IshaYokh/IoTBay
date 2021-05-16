@@ -291,6 +291,11 @@ input[type=text], input[type=password], input[type=month] {
 
 .already-have-account{
     text-align: center;
+    margin-right: 7%;
+}
+
+.already-have-account a{
+    text-align: left;
     margin-right: 25%;
 }
 
@@ -485,12 +490,10 @@ input[type=text], input[type=password] {
     left: 60%;
 }
 
-
 .paymentinfo-feedback, .paymentinfo-deletion-feedback, .account-updated-feedback{
     padding-left: 20%;
     padding-right: 20%;
 }
-
 
 .paymentinfo-feedback h1, .paymentinfo-deletion-feedback h1, .account-updated-feedback h1{
     background-color: rgba(39, 174, 96, 0.5);
@@ -501,7 +504,6 @@ input[type=text], input[type=password] {
     border-radius: 5px;
     font-weight: 5;
 }
-
 
 .paymentinfo-feedback h1 a, .paymentinfo-deletion-feedback h1 a, .account-updated-feedback h1 a{
     color: blue;

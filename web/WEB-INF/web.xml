@@ -10,6 +10,10 @@
         <servlet-class>iotbay.g15.controller.RegisterServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ViewItemServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.ViewItemServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>CheckStaffServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.CheckStaffServlet</servlet-class>
     </servlet>
@@ -26,8 +30,16 @@
         <servlet-class>iotbay.g15.controller.AccountDetailsServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ProductPageServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.ProductPageServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AccLogsServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.AccLogsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewCategoriesServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.ViewCategoriesServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -42,6 +54,10 @@
     <servlet>
         <servlet-name>AddPaymentInfoServlet</servlet-name>
         <servlet-class>iotbay.g15.controller.AddPaymentInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addItemServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.addItemServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateUserServlet</servlet-name>
@@ -84,6 +100,17 @@
         <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>addItemServlet</servlet-name>
+        <url-pattern>/addItemServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCategoriesServlet</servlet-name>
+        <url-pattern>/ViewCategoriesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewItemServlet</servlet-name>
+        <url-pattern>/ViewItemServlet</url-pattern>
+    <servlet-mapping>
         <servlet-name>CheckStaffServlet</servlet-name>
         <url-pattern>/CheckStaffServlet</url-pattern>
     </servlet-mapping>
@@ -102,6 +129,10 @@
     <servlet-mapping>
         <servlet-name>AccLogsServlet</servlet-name>
         <url-pattern>/AccLogsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductPageServlet</servlet-name>
+        <url-pattern>/ProductPageServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
