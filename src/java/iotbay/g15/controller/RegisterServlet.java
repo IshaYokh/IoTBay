@@ -26,7 +26,6 @@ import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 
 public class RegisterServlet extends HttpServlet {
-
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -98,6 +97,3 @@ public class RegisterServlet extends HttpServlet {
     }
 
 }
-        
-        
-   

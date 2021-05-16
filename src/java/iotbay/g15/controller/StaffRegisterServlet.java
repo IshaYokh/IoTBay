@@ -60,7 +60,6 @@ public class StaffRegisterServlet extends HttpServlet {
             if (password.equals(password1)) {
                 try {
                     if (manager.checkUserEmail(email)) { //email has not been used
-
                         manager.addUser(firstName, lastName, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country, email);
                         //getUserID
                         int userID = manager.getUserID(email, password);
