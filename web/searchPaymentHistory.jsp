@@ -104,9 +104,9 @@
                            + "/" + payment.getPaymentDate().substring(0,4);
                 %>
                 <td><b>Mastercard number:</b> <%= paymentInfo.getCardNumber()%> <br><b>Expiry Date:</b>
-                    <%= paymentInfo.getCardExpiryDate()%> <br><b>CVC:</b> <%= paymentInfo.getCardCVC()%></td>
-                <%%>
-                
+                    <%= paymentInfo.getCardExpiryDate()%> <br><b>CVC:</b> <%= paymentInfo.getCardCVC()%>
+                    <br><b>Card Holder Name:</b><%= paymentInfo.getCardHolderName()%>
+                </td> 
                 <td><%= paymentDate%></td>
             </tr>
             
