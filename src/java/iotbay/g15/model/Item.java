@@ -19,6 +19,7 @@ public class Item {
     private int userQuantity;
     private double itemPrice;
     private int productQuantity;
+    private double productPrice;
     
     public Item(int itemID, int itemSerialNumber, String itemCategory, String itemBrand, String itemName, String itemImage){
         this.itemID = itemID;
@@ -73,14 +74,6 @@ public class Item {
         return itemImage;
     }
 
-    public void setItemID(int itemID) {
-        this.itemID = itemID;
-    }
-
-    public void setItemSerialNumber(int itemSerialNumber) {
-        this.itemSerialNumber = itemSerialNumber;
-    }
-
     public void setItemCategory(String itemCategory) {
         this.itemCategory = itemCategory;
     }
@@ -113,26 +106,6 @@ public class Item {
         this.itemPrice = price;
     }
   
-    public void setItemCategory(String itemCategory) {
-        this.itemCategory = itemCategory;
-    }
-
-    public String getItemBrand() {
-        return itemBrand;
-    }
-
-    public void setItemBrand(String itemBrand) {
-        this.itemBrand = itemBrand;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
     public double getProductPrice() {
         return productPrice;
     }
@@ -147,12 +120,5 @@ public class Item {
 
     public void setProductQuantity(int productQuantity) {
         this.productQuantity = productQuantity;
-    }
-    public int getUserQuantity(){
-    
-        return userQuantity;
-    }
-    public void setUserQuantity(int userQuantity) {
-        this.userQuantity = userQuantity;
     }
 }

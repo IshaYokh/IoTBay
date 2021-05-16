@@ -82,13 +82,15 @@
                 </div>
                 <hr>
                 <p>Quantity</p>
-                <div class="number-input">
-                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                    <input class="quantity" min="0" name="quantity" placeholder="-" type="number" min="1" max="5">
-                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                </div>
+                <form method="post" action="AddToCartServlet">
+                    <div class="number-input">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="itemQuantity" placeholder="-" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                    </div>
                 <br><br>
-                <button class="cart" type="button" onclick="add to cart">Add To Cart </button>
+                    <button class="cart" type="submit" onclick="add to cart">Add To Cart </button>
+                </form>
             </div>
         </div>
     </body>

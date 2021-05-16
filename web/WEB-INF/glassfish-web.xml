@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
 <glassfish-web-app error-url="" version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee (Links to an external site.)" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance (Links to an external site.)" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee (Links to an external site.) http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd (Links to an external site.)">
+  <context-root>/</context-root>
   <servlet>
     <servlet-name>ConnServlet</servlet-name>
     <servlet-class>iotbay.g15.controller.ConnServlet</servlet-class>
@@ -13,7 +14,7 @@
   <servlet>
     <servlet-name>AddPaymentInfoServlet</servlet-name>
     <servlet-class>iotbay.g15.controller.AddPaymentInfoServlet</servlet-class>
-   </servlet>
+  </servlet>
   <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>

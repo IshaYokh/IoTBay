@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package iotbay.g15.controller;
 
 import iotbay.g15.model.Item;
@@ -27,32 +22,29 @@ public class AddToCartServlet extends HttpServlet{
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         ArrayList<Item> cart = new ArrayList<Item>();
+        Item item = (Item) session.getAttribute("item");
         //int itemQty;
-        String itemID = request.getParameter("itemID");
-        String itemSerialNumber = request.getParameter("itemSerialNumber");
-        String itemCategory = request.getParameter("itemCategory");
-        String itemBrand = request.getParameter("itemBrand");
-        String itemName = request.getParameter("itemName");
-        String itemImage = request.getParameter("itemImage");
-        String quantity = request.getParameter("itemQuantity");
+        int itemID = item.getItemID();
+        int itemSerialNumber = item.getItemSerialNumber();
+        String itemCategory = item.getItemCategory();
+        String itemBrand = item.getItemBrand();
+        String itemName = item.getItemName();
+        String itemImage = item.getItemImage();
+        String itemQuantity = request.getParameter("itemQuantity");
+        int quantity = Integer.parseInt(itemQuantity);
+        double itemPrice = item.getItemPrice();
         
         String currentItem = request.getParameter("currentItem");
         System.out.println("currentItem (Servlet): " + currentItem);
         //int currentItemInt = Integer.parseInt(currentItem);
         
         OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
-        int qty = Integer.parseInt(quantity);
-        int id = Integer.parseInt(itemID);
-        int serial = Integer.parseInt(itemSerialNumber);
         
-        
-        Item item = new Item(id, serial, itemCategory,itemBrand,itemName,itemImage);
-        int uID = user.getUserID();
         
         try{
-            orderDBManager.addToCart(uID, id, serial, itemCategory, itemBrand, itemName, itemImage, qty);
+            orderDBManager.addToCart(user.getUserID(), itemID, itemSerialNumber, itemCategory, itemBrand, itemName, itemImage, quantity, itemPrice);
             session.setAttribute("cartItems", cart);
-            cart = orderDBManager.getCart(uID);
+            cart = orderDBManager.getCart(user.getUserID());
             session.setAttribute("cartItems", cart);
             System.out.println("cart3: " + cart);
             session.setAttribute("cartItems", cart);

@@ -26,7 +26,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 
-public class addItemServlet extends HttpServlet {
+public class AddItemServlet extends HttpServlet {
     
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,7 +48,7 @@ public class addItemServlet extends HttpServlet {
             showItem.AddItem3(itemid, itemserial, itemCategory, itemName, itemBrand, itemQuantity, itemPrice);
             request.getRequestDispatcher("addItem.jsp").include(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(addItemServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddItemServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
