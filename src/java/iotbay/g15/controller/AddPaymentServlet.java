@@ -21,7 +21,7 @@ public class AddPaymentServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
-        //Order order = (Order)session.getAttribute("order"); //Uncomment when merged with "Order-Management" branch
+        Order order = (Order)session.getAttribute("order"); //Uncomment when merged with "Order-Management" branch
         User user = (User)session.getAttribute("user");
         LocalDate paymentDate = LocalDate.now();
         String cartPrice = (String)session.getAttribute("cartPrice");
@@ -42,7 +42,7 @@ public class AddPaymentServlet extends HttpServlet{
                 try{
                     if(paymentInfo.getCredit() >= paymentAmount && redirectedFromCheckout.equals("true")){
                         // Deduct payment from credit and create payment in database if payment is successful
-                        //paymentDBManager.insertPayment(order.getOrderID(), paymentInfo.getPaymentInfoID(), user.getID(), paymentDate.toString(), paymentAmount); //Uncomment when merged with "Order-Management" branch
+                        paymentDBManager.insertPayment(order.getOrderID(), paymentInfo.getPaymentInfoID(), user.getID(), paymentDate.toString(), paymentAmount); //Uncomment when merged with "Order-Management" branch
                         paymentInfoDBManager.updatePaymentInfoCredit(user.getID(), paymentInfo.getCredit() - paymentAmount);
                         //orderDBManager.updateOrderStatus(order.getOrderID(), "Processed");
                         paymentSuccessful = "true";

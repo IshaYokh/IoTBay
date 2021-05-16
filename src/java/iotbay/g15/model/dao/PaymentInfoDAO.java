@@ -126,6 +126,23 @@ public class PaymentInfoDAO {
         return paymentInfo;
     }
     
+    // Checks if payment card info exist in the database
+    public boolean hasPaymentInfo(String cardHolderName, String cardNumber, String cardExpiryDate, int cardCVC) throws SQLException{
+        String sql = "SELECT * FROM PaymentInfo WHERE CardHolderName = '" + cardHolderName + "' AND CardNumber = " + cardNumber
+                + " AND CardExpiryDate = '" + cardExpiryDate + "'";
+        ResultSet resultSet = st.executeQuery(sql);
+        
+        int i = 0;
+        while(resultSet.next())
+            i++;
+
+        if(i > 0)
+            return true;
+
+        return false;
+    }
+    
+    // Sets payment info as inactive in the database
     public void setInactive(int paymentInfoID) throws SQLException{
         String sql = "UPDATE iotbay.PaymentInfo SET Active = 'false' WHERE PaymentInfoID = " + paymentInfoID;
         st.executeUpdate(sql);
@@ -133,7 +150,7 @@ public class PaymentInfoDAO {
     
     // Confirms if a user has payment info in the database
     public String hasUser(int userID) throws SQLException{
-        String sql = "SELECT * FROM PaymentInfo WHERE userID = " + userID + " AND Active = 'true'";
+        String sql = "SELECT * FROM PaymentInfo WHERE UserID = " + userID + " AND Active = 'true'";
         ResultSet resultSet = st.executeQuery(sql);
 
         int i = 0;

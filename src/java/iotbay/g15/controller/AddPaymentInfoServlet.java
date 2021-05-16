@@ -21,6 +21,7 @@ public class AddPaymentInfoServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
         
+        // Getting submitted inputs from addPaymentInfo view
         String streetNumber = request.getParameter("street-number");
         String streetName = request.getParameter("street-name");
         String streetType = request.getParameter("street-type");
@@ -33,32 +34,66 @@ public class AddPaymentInfoServlet extends HttpServlet{
         String cardExpiryDate = request.getParameter("card-expiry-date");
         String cardCVC = request.getParameter("card-cvc");
         
-        int streetNumberInt = Integer.parseInt(streetNumber);
-        int postcodeInt = Integer.parseInt(postcode);
-        int cardCVCInt = Integer.parseInt(cardCVC);
+        // Validation variables
+        PaymentValidator paymentValidator = new PaymentValidator();
         
-        User user = (User)session.getAttribute("user");
+        session.setAttribute("streetNumberErr", paymentValidator.validateStreetNo(streetNumber));
+        session.setAttribute("streetNameErr", paymentValidator.validateStreetName(streetName));
+        session.setAttribute("streetTypeErr", paymentValidator.validateStreetType(streetType));
+        session.setAttribute("suburbErr", paymentValidator.validateSuburb(suburb));
+        session.setAttribute("stateErr", paymentValidator.validateState(state));
+        session.setAttribute("postcodeErr", paymentValidator.validatePostcode(postcode));
+        session.setAttribute("countryErr", paymentValidator.validateCountry(country));
+        session.setAttribute("cardHolderNameErr", paymentValidator.validateCardHolderName(cardHolderName));
+        session.setAttribute("cardNumberErr", paymentValidator.validateCardNumber(cardNumber));
+        session.setAttribute("cardExpiryDateErr", paymentValidator.validateCardExpiryDate(cardExpiryDate));
+        session.setAttribute("cardCvcErr", paymentValidator.validateCardCVC(cardCVC));
+        session.setAttribute("paymentInfoAddFeedback", "fail");
         
         // Getting the DAO instances from the session and creating model objects based on the data returned from the JSP view
         PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
         PaymentInfo paymentInfo = null;
+       
+        int cvc = Integer.parseInt(cardCVC);
         
-        // Storing new data in the database
-        try{
-            paymentInfoDBmanager.insertPaymentInfo(user.getID(), cardHolderName,
-                    cardNumber, cardExpiryDate, cardCVCInt,
-                    streetNumberInt, streetName, streetType,
-                    suburb, state, postcodeInt, country,
-                    500.00, "true");
-            paymentInfo = paymentInfoDBmanager.getPaymentInfo(user.getID());
-            
-        }
-        catch (SQLException ex){
-            Logger.getLogger(AddPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        if(paymentValidator.validateStreetNo(streetNumber) == null && paymentValidator.validateStreetName(streetName) == null
+                && paymentValidator.validateStreetType(streetType) == null && paymentValidator.validateSuburb(suburb) == null
+                && paymentValidator.validateState(state) == null && paymentValidator.validatePostcode(postcode) == null
+                && paymentValidator.validateCountry(country) == null && paymentValidator.validateCardHolderName(cardHolderName) == null
+                && paymentValidator.validateCardNumber(cardNumber) == null && paymentValidator.validateCardCVC(cardCVC) == null){
+            try{
+                // Check if payment info already exist in the database
+                if(!paymentInfoDBmanager.hasPaymentInfo(cardHolderName, cardNumber, cardExpiryDate, cvc)){
+
+                    int streetNumberInt = Integer.parseInt(streetNumber);
+                    int postcodeInt = Integer.parseInt(postcode);
+                    int cardCVCInt = Integer.parseInt(cardCVC);
+
+                    User user = (User)session.getAttribute("user");
+
+                    // Storing new data in the database
+                    try{
+                        paymentInfoDBmanager.insertPaymentInfo(user.getID(), cardHolderName,
+                                cardNumber, cardExpiryDate, cardCVCInt,
+                                streetNumberInt, streetName, streetType,
+                                suburb, state, postcodeInt, country,
+                                500.00, "true");
+                        paymentInfo = paymentInfoDBmanager.getPaymentInfo(user.getID());
+                        session.setAttribute("paymentInfoAddFeedback", "success");
+
+                    }
+                    catch (SQLException ex){
+                        Logger.getLogger(AddPaymentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                else{
+                    session.setAttribute("paymentInfoAddFeedback", "alreadyExists");
+                }
+            }catch(SQLException ex){
+            }
         }
         
         // Storing feedback message of data insertion and redirecting the web page
-        session.setAttribute("paymentInfoAddFeedback", "success");
         session.setAttribute("paymentInfo", paymentInfo);
         request.getRequestDispatcher("addPaymentInfo.jsp").include(request, response);
     }
