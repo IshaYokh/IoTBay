@@ -50,7 +50,6 @@
               <label for="psw">Password</label>
               <input type="password" placeholder="<%=(passNoMatch != null ? "Enter Correct Password " : "Enter Password")%>" name="psw" required>
               
-
               <label for="psw">Confirm Password</label>
               <input type="password" placeholder="Confirm Password" name="psw1" required>
               <p class="already-have-account"><%=(passNoMatch != null ? passNoMatch : " ")%>

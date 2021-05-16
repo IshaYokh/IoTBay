@@ -39,7 +39,7 @@ public class DeleteAccServlet extends HttpServlet {
             int userID = manager.getUserID(email, password);
             manager.deleteCustomer(userID);
             manager.deleteUser(userID);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(DeleteAccServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

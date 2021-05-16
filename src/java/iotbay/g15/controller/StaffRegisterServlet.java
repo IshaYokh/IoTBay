@@ -9,6 +9,7 @@ package iotbay.g15.controller;
  *
  * @author kaushikdeshpande
  */
+
 import iotbay.g15.model.RegisterUpdateValidator;
 import java.io.IOException;
 
@@ -94,4 +95,3 @@ public class StaffRegisterServlet extends HttpServlet {
     }
 
 }
-    

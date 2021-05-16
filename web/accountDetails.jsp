@@ -84,9 +84,6 @@
                     String streetNoErr = (String) session.getAttribute("streetNoErr1");
                 %>
                 
-                
-                
-
                 <label for="fname">First Name</label>
                 <input type="text" value= "<%= user.getFirstName()%>" name="fname" >
 
@@ -126,6 +123,7 @@
                 <input type="text" value="<%= user.getPostcode()%>" name="postcode" >
                 <p class="already-have-account"><%=( postcodeErr!= null ? postcodeErr : " ")%></p>
 
+
                 <label for="Country">Country</label>
                 <input type="text" value="<%= user.getCountry()%>" name="country" >
                 <div class="placeholder"></div>
@@ -147,3 +145,4 @@
         </div>
     </body>
 </html>
+
