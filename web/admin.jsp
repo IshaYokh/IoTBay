@@ -25,17 +25,8 @@
                 <a href="#"><li>Store</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Contact</li></a>
-                        <%
-                            String msg = "Sign up / Login";
-                            String path = "login.jsp";
-                            User user = (User) session.getAttribute("user");
-
-                            if (user != null) {
-                                msg = "My Account";
-                                path = "main.jsp";
-                            }
-                        %>
-                <a href="<%= path%>"><li class="login"><%= msg%></li></a>
+                <a href="LogoutServlet"><li class="login">Logout</li></a>
+                <a href="admin.jsp"><li class="login">Admin Portal</li></a>
             </ul>
         </div>
         <div class="placeholder"></div>

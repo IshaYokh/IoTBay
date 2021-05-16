@@ -91,8 +91,10 @@
               <p>By creating an account you agree to our&nbsp;<a href="#">Terms & Privacy</a></p>
               <button type="submit" class="btn-create">Create Account</button>
               <div class="placeholder"></div>
-              <p class="already-have-account">Already have an account?&nbsp;<a href="login.jsp">Login</a></p>
-              <p class="already-have-account">Register as Staff here: &nbsp;<a href="staffRegister.jsp">Staff Register</a></p>
+              <div class="already-have-account">
+                  <p>Already have an account?&nbsp;<a href="login.jsp">Login</a></p>
+                  <p>Register as Staff here: &nbsp;<a href="staffRegister.jsp">Staff Register</a></p>
+              </div>
             </form>
         </div>
     

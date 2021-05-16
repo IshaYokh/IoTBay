@@ -69,7 +69,7 @@ public class StaffRegisterServlet extends HttpServlet {
                         manager.addStaff(userI, dob);
                         manager.addlogsregister(userI);
                         session.setAttribute("user", user);
-                        request.getRequestDispatcher("Admin.jsp").include(request, response);
+                        request.getRequestDispatcher("admin.jsp").include(request, response);
                     } else {
                         session.setAttribute("emailUsed", "Email has already been used please sign in");
                         request.getRequestDispatcher("staffRegister.jsp").include(request, response);
