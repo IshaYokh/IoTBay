@@ -45,7 +45,7 @@ public class AddPaymentInfoServlet extends HttpServlet{
         
         // Getting the DAO instances from the session and creating model objects based on the data returned from the JSP view
         PaymentInfoDAO paymentInfoDBmanager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
-        PaymentInfo paymentInfo = new PaymentInfo(paymentInfoID, user.getID(), cardNumber, cardExpiryDate, cardCVCInt, cardHolderName,
+        PaymentInfo paymentInfo = new PaymentInfo(paymentInfoID, user.getUserID(), cardNumber, cardExpiryDate, cardCVCInt, cardHolderName,
             streetNumberInt, streetName, streetType, suburb, state, postcodeInt, country, 500.00, true);
         
         // Storing new data in the database

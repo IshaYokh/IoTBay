@@ -5,10 +5,6 @@
  */
 package iotbay.g15.controller;
 
-/**
- *
- * @author kaushikdeshpande
- */
 import java.io.IOException;
 
 import java.sql.SQLException;
@@ -22,33 +18,37 @@ import javax.servlet.http.HttpSession;
 import iotbay.g15.model.User;
 import iotbay.g15.model.dao.LoginLogoutDAO;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 
-public class AccLogsServlet extends HttpServlet {
-
+public class CheckStaffServlet extends HttpServlet {
+        // checks if staff is in the current session than redirects to main staff page
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("user");
+        int userID = user.getUserID();
         LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
-
-        User user = (User) session.getAttribute("user");
-        String email = user.getEmail();
-        String password = user.getPassword();
         try {
-            //gets Arrays for the Account Log tables and sets them
-            int userID = manager.getUserID(email, password);
-            ArrayList logs = manager.getLogs(userID);
-            ArrayList tlogs = manager.getTLogs(userID);
-            session.setAttribute("logs", logs);
-            session.setAttribute("tlogs", tlogs);
-            request.getRequestDispatcher("accountLogs.jsp").include(request, response);
-
+            if(manager.checkifStaff(userID)){
+                request.getRequestDispatcher("Admin.jsp").forward(request, response);
+                
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(AccLogsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CheckStaffServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
-
-}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
