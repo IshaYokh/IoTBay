@@ -54,7 +54,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Manage Catalogue</h5>
                     <p class="card-text">Create Items</p>
-                    <a href="#" class="btn btn-primary  m-2">Create Item</a>
+                    <a href="addItem.jsp" class="btn btn-primary  m-2">Create Item</a>
                 </div>
             </div> 
 
@@ -62,7 +62,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Tada</h5>
                     <p class="card-text">Part 7</p>
-                    <a href="#" class="btn btn-primary  m-2">Access</a>
+                    <a href="customerinfo.jsp" class="btn btn-primary  m-2">Access</a>
                 </div>
             </div> 
         </div>
