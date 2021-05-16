@@ -296,6 +296,7 @@ input[type=text], input[type=password], input[type=month] {
 
 .already-have-account a{
     text-align: left;
+    margin-right: 25%;
 }
 
 /* Login Page Styles */
@@ -489,12 +490,12 @@ input[type=text], input[type=password] {
     left: 60%;
 }
 
-.paymentinfo-feedback{
+.paymentinfo-feedback, .paymentinfo-deletion-feedback, .account-updated-feedback{
     padding-left: 20%;
     padding-right: 20%;
 }
 
-.paymentinfo-feedback h1{
+.paymentinfo-feedback h1, .paymentinfo-deletion-feedback h1, .account-updated-feedback h1{
     background-color: rgba(39, 174, 96, 0.5);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
@@ -504,12 +505,11 @@ input[type=text], input[type=password] {
     font-weight: 5;
 }
 
-.paymentinfo-feedback h1 a{
+.paymentinfo-feedback h1 a, .paymentinfo-deletion-feedback h1 a, .account-updated-feedback h1 a{
     color: blue;
     font-size: 20px;
     text-decoration: underline;
 }
-
 
 /* viewPaymentHistory page styles */
 
@@ -573,5 +573,22 @@ payment-history-table tr{
 .table-wrapper-scroll-y {
         display: block;
 }
-.log-table{    
+
+/*Customer Info page styles */
+
+.btn1{
+        float: right;
+}
+table {
+        border-collapse: collapse;
+        border: solid 2px black;
+        width: 100%;
+}
+table th, table td {
+        border: solid 1px black;
+}
+
+.thead{
+        background-color: navy;
+        color: white;
 }

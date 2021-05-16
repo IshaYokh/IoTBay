@@ -1,7 +1,7 @@
 <%-- 
     Document   : newjsp
     Created on : 04/04/2021, 11:08:33 AM
-    Author     : IshaYokh/kaushikdeshpande
+    Author     : IshaYokh/kaushikdeshpande/Tada33
 --%>
 
 <%@page import="iotbay.g15.model.User"%>
@@ -15,7 +15,6 @@
 	<script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>	
     </head>	
     <body>
-
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
             <ul>

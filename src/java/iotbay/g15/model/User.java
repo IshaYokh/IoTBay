@@ -2,22 +2,25 @@ package iotbay.g15.model;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User implements Serializable{
     private int userID;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    private String phoneNumber;
-    private String streetNumber;
+    private int phoneNumber;
+    private int streetNumber;
     private String streetName;
     private String streetType;
     private String suburb;
     private String state;
-    private String postcode;
+    private int postcode;
     private String country;
 
-    public User(String firstName, String lastName, String email, String password, String phoneNumber, String streetNumber, String streetName, String streetType, String suburb, String state, String postcode, String country, int userID) {
+    public User(int userID, String firstName, String lastName, String email, String password,
+            int phoneNumber, int streetNumber, String streetName, String streetType,
+            String suburb, String state, int postcode, String country) {
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -30,6 +33,12 @@ public class User implements Serializable {
         this.state = state;
         this.postcode = postcode;
         this.country = country;
+    }
+    public int getUserID() {
+        return userID;
+    }
+    
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 
@@ -65,19 +74,19 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getStreetNumber() {
+    public int getStreetNumber() {
         return streetNumber;
     }
 
-    public void setStreetNumber(String streetNumber) {
+    public void setStreetNumber(int streetNumber) {
         this.streetNumber = streetNumber;
     }
 
@@ -113,11 +122,11 @@ public class User implements Serializable {
         this.state = state;
     }
 
-    public String getPostcode() {
+    public int getPostcode() {
         return postcode;
     }
 
-    public void setPostcode(String postcode) {
+    public void setPostcode(int postcode) {
         this.postcode = postcode;
     }
 
@@ -127,9 +136,5 @@ public class User implements Serializable {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-    
-    public int getID(){
-        return this.userID;
     }
 }

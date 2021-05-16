@@ -37,6 +37,7 @@ public class AccLogsServlet extends HttpServlet {
         String email = user.getEmail();
         String password = user.getPassword();
         try {
+            //gets Arrays for the Account Log tables and sets them
             int userID = manager.getUserID(email, password);
             ArrayList logs = manager.getLogs(userID);
             ArrayList tlogs = manager.getTLogs(userID);
