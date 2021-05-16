@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
-        String email = request.getParameter("email");
+        String email = request.getParameter("email").toLowerCase();
         String password = request.getParameter("psw");
         
         

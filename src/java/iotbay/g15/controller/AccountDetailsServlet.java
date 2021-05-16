@@ -30,7 +30,7 @@ public class AccountDetailsServlet extends HttpServlet {
         LoginLogoutDAO manager = (LoginLogoutDAO) session.getAttribute("manager");
         String firstName = request.getParameter("fname");
         String lastName = request.getParameter("lname");
-        String email = request.getParameter("email");
+        String email = request.getParameter("email").toLowerCase();
         String password = request.getParameter("pws");
         String streetName = request.getParameter("street-name");
         String streetType = request.getParameter("street-type");

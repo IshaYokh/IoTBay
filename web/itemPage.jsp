@@ -61,7 +61,7 @@
                 <a href="ViewCategoriesServlet">Back to Catalogue</a>
             </div>
             <div class="item-left">
-                <img src="assets/items/<%= image%>" alt="Item">
+                <img src="assets/items/<%= image%>.png" alt="Item">
             </div>
             <div class="item-right">
                 <h1><%= name%></h1>

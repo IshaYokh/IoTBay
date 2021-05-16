@@ -33,7 +33,7 @@ public class RegisterServlet extends HttpServlet {
         
         String firstName = request.getParameter("fname");
         String lastName = request.getParameter("lname");
-        String email = request.getParameter("email");
+        String email = request.getParameter("email").toLowerCase();
         String password = request.getParameter("psw");
         String password1 = request.getParameter("psw1");
         String streetName = request.getParameter("street-name");

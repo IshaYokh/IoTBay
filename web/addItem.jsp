@@ -34,14 +34,15 @@
                             path = "main.jsp";
                         }
                     %>
-                    <a href="<%= path%>"><li class="login"><%= msg%></li></a>
+                    <a href="LogoutServlet"><li class="login">Logout</li></a>
+                    <a href="admin.jsp"><li class="login">Admin Portal</li></a>
 		</ul>
 	</div>
 	<div class="placeholder"></div>
         <div class="placeholder"></div>
         <div class="catalogue-addItem">
             <h1>Add Item</h1>
-            <form action="addItemServlet" method="post" enctype="multipart/form-data">
+            <form action="addItemServlet" method="post">
                 <label for="itemID">itemID</label>
                 <input type="text" id="itemID" name="itemID">
                 
@@ -50,7 +51,6 @@
                 
                 <label for="itemCategory">itemCategory</label>
                 <input type="text" id="itemCategory" name="itemCategory">
-                <input type="file" name="file"> <br/>
                 
                 <label for="itemBrand">itemBrand</label>
                 <input type="text" id="itemBrand" name="itemBrand">

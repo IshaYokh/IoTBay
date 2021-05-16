@@ -148,7 +148,7 @@ private final Statement st1;
         //if suplier id exsists
          // get suplier if (itemID)
             //if suplier id exsists
-        String fetch1 = "INSERT INTO IOTBAY.CATALOGUE VALUES (2,"+ itemID+ ",'nothin', " + quantity + ", " + price + ")";
+        String fetch1 = "INSERT INTO IOTBAY.CATALOGUE VALUES (1,"+ itemID+ ",'nothin', " + quantity + ", " + price + ")";
         st1.execute(fetch1);
         
 

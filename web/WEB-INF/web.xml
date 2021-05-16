@@ -110,6 +110,7 @@
     <servlet-mapping>
         <servlet-name>ViewItemServlet</servlet-name>
         <url-pattern>/ViewItemServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CheckStaffServlet</servlet-name>
         <url-pattern>/CheckStaffServlet</url-pattern>
