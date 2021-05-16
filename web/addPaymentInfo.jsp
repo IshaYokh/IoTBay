@@ -140,6 +140,8 @@
               
               <div class="placeholder"></div>
               
+              <h1>Payment methods allowed: <i class="fab fa-cc-mastercard"></i> &nbsp;Mastercard</h1>
+              
               <label for="card-holder-name">Card Holder Name</label>
               <input type="text" placeholder="<%=(cardHolderNameErr != null ? cardHolderNameErr : "John Citizen")%>" name="card-holder-name" required>
                 
