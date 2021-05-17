@@ -3,7 +3,7 @@
 ## Table of contents:
 - [Description](#Description)
 - [Requirements](#Requirements)
-- [Deployment](#Deployment)
+- [Deployment](#Deployment-&-database)
 
 ## Description:
 This web application is based on Model-View-Controller architecture. It uses java server pages, servlets and Derby database.
