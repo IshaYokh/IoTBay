@@ -1,7 +1,7 @@
 body{
     margin: 0px;
     margin-top:-20px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif !important;
 }
 
 .navbar{
@@ -784,4 +784,8 @@ table th, table td {
 .thead{
         background-color: navy;
         color: white;
+}
+
+#picture{
+    max-width:200px !important;
 }

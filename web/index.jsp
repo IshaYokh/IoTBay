@@ -20,13 +20,12 @@
                     <a href="ViewCategoriesServlet"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
-                    
                     <% 
                         String msg = "Sign up / Login";
                         String path = "login.jsp";
-                        Customer c = (Customer)session.getAttribute("customer");
+                        User user = (User)session.getAttribute("user");
                         
-                        if(c != null){
+                        if(user != null){
                             msg = "My Account";
                             path = "main.jsp";
                         }
