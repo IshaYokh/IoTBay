@@ -146,7 +146,7 @@ public class PaymentValidator {
         if(match.matches())
             return null;
         
-        return "Please enter a valid mastercard number (Tak a look at the Anatomy of a Master Cards)";
+        return "Please enter a valid mastercard number (Take a look at the Anatomy of a Mastercards)";
     }
     
     // Validates if the card expiry date input matches the format MM/YYYY
