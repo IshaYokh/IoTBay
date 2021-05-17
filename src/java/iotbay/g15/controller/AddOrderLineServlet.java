@@ -48,7 +48,7 @@ public class AddOrderLineServlet extends HttpServlet{
         } catch (SQLException ex) {
             Logger.getLogger(DeleteFromCartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("cart.jsp").include(request, response);
+        request.getRequestDispatcher("checkout.jsp").include(request, response);
         
     }
 }

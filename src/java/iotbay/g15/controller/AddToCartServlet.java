@@ -36,7 +36,8 @@ public class AddToCartServlet extends HttpServlet{
         String quantity = request.getParameter("itemQuantity");
         
         String currentItem = request.getParameter("currentItem");
-        
+        String itemPrice = request.getParameter("itemPrice");
+        double itemprice = Double.parseDouble(itemPrice);
         OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
         int qty = Integer.parseInt(quantity);
         int id = Integer.parseInt(itemID);
@@ -47,7 +48,7 @@ public class AddToCartServlet extends HttpServlet{
         int uID = user.getUserID();
         
         try{
-            orderDBManager.addToCart(uID, id, serial, itemCategory, itemBrand, itemName, itemImage, qty); //adding to cart
+            orderDBManager.addToCart(uID, id, serial, itemCategory, itemBrand, itemName, itemImage, qty, itemprice); //adding to cart
             session.setAttribute("cartItems", cart);
             cart = orderDBManager.getCart(uID);
             session.setAttribute("cartItems", cart);

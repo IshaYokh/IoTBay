@@ -48,7 +48,7 @@
                 Item item = (Item)session.getAttribute("item");
                 int itemid = item.getItemID();
                 int qty = item.getProductQuantity();
-                double price = item.getItemPrice();
+                double price = item.getProductPrice();
                 int serialnumber = item.getItemSerialNumber();
                 String brandname = item.getItemBrand();
                 String category = item.getItemCategory();
@@ -92,6 +92,7 @@
                     <input type="hidden" placeholder="Enter Item Brand" name="itemBrand" value="<%= item.getItemBrand() %>">
                     <input type="hidden" placeholder="Enter Item Name" name="itemName" value="<%= item.getItemID() %>">
                     <input type="hidden" placeholder="Enter Item Image" name="itemImage" value="<%= item.getItemImage() %>">
+                    <input type="hidden" placeholder="Enter Item Image" name="itemPrice" value="<%= price %>">
                     <label for="itemQuantity">Item Quantity</label>
                     <input type="text" placeholder="Enter Item Quantity" name="itemQuantity" required>
                     <button type="submit" class="btn btn-primary">Add Item to Cart</button>
