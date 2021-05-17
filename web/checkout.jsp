@@ -131,21 +131,7 @@
                 </table>
                         
                 <%}catch(NullPointerException e){}%>
-                
-                <% String isPaid = (String)session.getAttribute("isPaid");
-                   boolean disabled = false;
-                
-                try{
-                    if(isPaid.equals("true")){
-                        disabled = true;
-                %>
-                    <div class="no-paymentInfo-feedback">
-                        <h1><i class="fas fa-exclamation-triangle"></i> You have already paid for this order. Go back to <a href="ViewCategoriesServlet">store</a> and select new
-                        products to create a new order</h1>
-                    </div>
-                    <%session.removeAttribute("isPaid");}%>
-                <%}catch(NullPointerException ex){}%>
-                
+
                 <%if(!paymentInfoExists) {%>
                 <div class="no-paymentInfo-feedback">
                     <h1><i class="fas fa-exclamation-triangle"></i> You don't have any payment information <a href="addPaymentInfoFromCheckoutServlet">click here to add payment details</a></h1>
@@ -161,14 +147,13 @@
         
         <!-- Pay button -->
         <div class="pay-btn">
-            <% session.setAttribute("redirectedFromCheckout", "true");
-            if(!disabled){ %>
+            <% session.setAttribute("redirectedFromCheckout", "true"); %>
             <form method="post" action="AddPaymentServlet">
                 <button type="submit" class="pay-btn">
                     <i class="fas fa-lock"></i> &nbsp;Proceed with payment
                 </button>
             </form>
-            <%}}%>
+            <%}%>
         </div>
     </body>
 </html>

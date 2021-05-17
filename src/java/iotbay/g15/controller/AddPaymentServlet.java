@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import iotbay.g15.model.dao.*;
 import iotbay.g15.model.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -35,6 +36,8 @@ public class AddPaymentServlet extends HttpServlet{
         String paymentSuccessful = "false";
         String redirectedFromCheckout = (String)session.getAttribute("redirectedFromCheckout");
         
+        ArrayList<Item> cart;
+        
         // Validate credit
         try{
             paymentInfo = paymentInfoDBManager.getPaymentInfo(user.getUserID());
@@ -45,6 +48,9 @@ public class AddPaymentServlet extends HttpServlet{
                         paymentDBManager.insertPayment(order.getID(), paymentInfo.getPaymentInfoID(), user.getUserID(), paymentDate.toString(), paymentAmount);
                         paymentInfoDBManager.updatePaymentInfoCredit(user.getUserID(), paymentInfo.getCredit() - paymentAmount);
                         orderDBManager.updateOrderStatus(order.getID(), "Processed");
+                        orderDBManager.emptyCart(user.getUserID());
+                        cart = orderDBManager.getCart(user.getUserID());
+                        session.setAttribute("cartItems", cart);
                         paymentSuccessful = "true";
                     }
                 }catch(NullPointerException ex){

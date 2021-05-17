@@ -104,7 +104,7 @@
                 <div class="col"></div>
                 <div class="col"></div>
                 <div class="col"></div>
-                <div class="col"><p>Subtotal: $<%= session.getAttribute("cartPrice") %></p></div>
+                <div class="col"></div>
                 <div class="col"><form method = "post" action = 'EmptyCartServlet'>
                         <button type="submit" class="btn btn-danger">Empty Cart</button>
                     </form></div>

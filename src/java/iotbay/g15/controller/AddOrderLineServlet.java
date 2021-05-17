@@ -42,7 +42,7 @@ public class AddOrderLineServlet extends HttpServlet{
             for(Item item : cartData){
                 orderDBManager.addToOrderLine(item.getItemID(), orderID, item.getUserQuantity());
             }
-            orderDBManager.emptyCart(user.getUserID());
+
             cart = orderDBManager.getCart(user.getUserID());
             Order order = new Order(orderID, orderDate.toString(), "Pending");
             session.setAttribute("order", order);
