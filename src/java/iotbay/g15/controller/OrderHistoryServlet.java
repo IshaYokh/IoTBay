@@ -29,7 +29,6 @@ public class OrderHistoryServlet extends HttpServlet{
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         ArrayList<Order> orders = new ArrayList<Order>();
-        String userID = request.getParameter("userID");
         OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
         
         

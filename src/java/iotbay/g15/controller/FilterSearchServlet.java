@@ -27,18 +27,18 @@ public class FilterSearchServlet extends HttpServlet{
      @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
-        OrderManagementValidator validator = new OrderManagementValidator();
+        OrderManagementValidator validator = new OrderManagementValidator(); //validator
         ArrayList<Order> orders = new ArrayList<Order>();
         User user = (User) session.getAttribute("user");
         String orderID = request.getParameter("orderID");
-        String orderDate = request.getParameter("orderDate");
+        String orderDate = request.getParameter("orderDate"); //params
         
         
         OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
         int order = Integer.parseInt(orderID);
         
         try{
-            orders = orderDBManager.findAllCustomerOrdersFiltered(user.getUserID(), order, orderDate);
+            orders = orderDBManager.findAllCustomerOrdersFiltered(user.getUserID(), order, orderDate); //find all orders but filtered
             session.setAttribute("orderList", orders);
         }catch(SQLException ex){
             Logger.getLogger(OrderHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -19,6 +19,7 @@
 <html>
     <head>
         <link href="css/style.css" rel="stylesheet">
+        <link href="css/styleBootstrap.css" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -79,7 +80,7 @@
             %>
 
              <div class="row border-2">
-                <div class="col"><img id="picture" class="img-thumbnail" src="assets/items/<%= I.getItemImage()%>"></div>
+                <div class="col"><img id="picture" class="img-thumbnail" src="assets/items/<%= I.getItemImage()%>"></div> <!--  -->
                 <div class="col"><%= I.getItemID() %></div>
                 <div class="col"><%= I.getItemBrand() %></div>
                 <div class="col"><%= I.getItemName() %></div>
@@ -102,9 +103,14 @@
                 <div class="col"></div>
                 <div class="col"></div>
                 <div class="col"></div>
+                <div class="col"><p>Subtotal: $<%= session.getAttribute("cartPrice") %></p></div>
+                <div class="col"><form method = "post" action = 'EmptyCartServlet'>
+                        <button type="submit" class="btn btn-danger">Empty Cart</button>
+                    </form></div>
                 <div class="col">
-                        <button formation="EmptyCartServlet" type="submit" class="btn btn-danger">Empty Cart</button>
-                        <a href="checkout.jsp"><button formaction="AddOrderLineServlet" type="submit" class="btn btn-success">Checkout</button></a>
+                        <form method = "post" action = 'AddOrderLineServlet'>
+                        <button type="submit" class="btn btn-success">Checkout</button>
+                    </form>
                 </div>
             </div>
         </div>

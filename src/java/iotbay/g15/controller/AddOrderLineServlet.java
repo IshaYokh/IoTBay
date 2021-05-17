@@ -33,7 +33,7 @@ public class AddOrderLineServlet extends HttpServlet{
         ArrayList<Item> cart;
         OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
         User user = (User) session.getAttribute("user");
-        LocalDate orderDate = LocalDate.now();
+        LocalDate orderDate = LocalDate.now(); //orderDate
         String date = orderDate.toString();
         
         try{
@@ -48,7 +48,7 @@ public class AddOrderLineServlet extends HttpServlet{
         } catch (SQLException ex) {
             Logger.getLogger(DeleteFromCartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("checkout.jsp").include(request, response);
+        request.getRequestDispatcher("cart.jsp").include(request, response);
         
     }
 }

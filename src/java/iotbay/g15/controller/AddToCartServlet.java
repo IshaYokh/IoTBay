@@ -27,7 +27,6 @@ public class AddToCartServlet extends HttpServlet{
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         ArrayList<Item> cart = new ArrayList<Item>();
-        //int itemQty;
         String itemID = request.getParameter("itemID");
         String itemSerialNumber = request.getParameter("itemSerialNumber");
         String itemCategory = request.getParameter("itemCategory");
@@ -37,8 +36,6 @@ public class AddToCartServlet extends HttpServlet{
         String quantity = request.getParameter("itemQuantity");
         
         String currentItem = request.getParameter("currentItem");
-        System.out.println("currentItem (Servlet): " + currentItem);
-        //int currentItemInt = Integer.parseInt(currentItem);
         
         OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
         int qty = Integer.parseInt(quantity);
@@ -50,14 +47,12 @@ public class AddToCartServlet extends HttpServlet{
         int uID = user.getUserID();
         
         try{
-            orderDBManager.addToCart(uID, id, serial, itemCategory, itemBrand, itemName, itemImage, qty);
+            orderDBManager.addToCart(uID, id, serial, itemCategory, itemBrand, itemName, itemImage, qty); //adding to cart
             session.setAttribute("cartItems", cart);
             cart = orderDBManager.getCart(uID);
             session.setAttribute("cartItems", cart);
-            System.out.println("cart3: " + cart);
-            session.setAttribute("cartItems", cart);
             currentItem = request.getParameter("currentItem");
-            System.out.println("currentItem2 (Servlet): " + currentItem);
+            System.out.println("currentItem2 (Servlet): " + currentItem); //works
         }catch(SQLException ex){
             Logger.getLogger(AddToCartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

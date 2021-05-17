@@ -72,7 +72,7 @@ public class OrderDAO {
     return orderList;
     }
     
-        //read user's order history
+        //read user's order history but filtered!
     public ArrayList<Order> findAllCustomerOrdersFiltered(int userID, int orderID, String orderDate) throws SQLException{
         java.sql.Date dateFormat = java.sql.Date.valueOf(orderDate);
         int count = 0;
@@ -118,7 +118,7 @@ public class OrderDAO {
     return orderList;
     }
     
-        //add to orderline
+        //add to orderline db
     public void addToOrderLine(int itemID, int orderID, int qty) throws SQLException{
         String fetch = "SELECT * FROM ORDERLINE WHERE ORDERID = " + orderID + " AND ITEMID =" + itemID;
         ResultSet rs = st.executeQuery(fetch);
@@ -148,6 +148,7 @@ public class OrderDAO {
         return orderID;
     }
     
+    //update order status on db
     public void updateOrderStatus(int orderID, String orderStatus)throws SQLException{
         st.executeUpdate("UPDATE ORDERS SET ORDERSTATUS = '" + orderStatus + "' WHERE ORDERID = " + orderID);
     }
@@ -168,6 +169,7 @@ public class OrderDAO {
         }
     }
     
+    //get cart
     public ArrayList<Item> getCart(int user) throws SQLException{
         ArrayList<Item> cart = new ArrayList<Item>();
         String fetch = "SELECT * FROM CART WHERE USERID = " + user;
@@ -192,18 +194,19 @@ public class OrderDAO {
             }
         return cart;
     }
-   
+   //get quantity of item in a cart
     public int getQuantityInCart(int user, int item) throws SQLException{
         String fetch = "SELECT ITEMQTY FROM CART WHERE USERID = " + user + " AND ITEMID = " + item;
         ResultSet rs = st.executeQuery(fetch);
         int count = 0;
             while(rs.next()){
-                String itemQty = rs.getString("ITEMQTY");
-                count = Integer.parseInt(itemQty);
+                int itemQty = rs.getInt("ITEMQTY");
+                count = itemQty;
             }
         return count;
     }
     
+    //get item by id in cart
     public Item getItemByID(int userID, int item) throws SQLException{
         for(Item i : this.getCart(userID)){
             if(i.getItemID() == item){
@@ -224,10 +227,12 @@ public class OrderDAO {
         return price;
     }**/
     
+    //update item quantity in cart
     public void updateItemQuantity(int user, int item, int itemQty) throws SQLException{
         st.executeUpdate("UPDATE CART SET ITEMQTY = " + itemQty + " WHERE ITEMID = " + item + " AND USERID = " + user);
     }
     
+    //remove 1 item from cart
     public void removeFromCart(int user, int item) throws SQLException{
         String fetch = "DELETE FROM CART WHERE USERID = " + user + " AND ITEMID = " + item;
         try{
@@ -237,6 +242,7 @@ public class OrderDAO {
         }
     }
     
+    //empty cart
     public void emptyCart(int user) throws SQLException{
         String fetch = "DELETE FROM CART WHERE USERID = " + user;
         try{

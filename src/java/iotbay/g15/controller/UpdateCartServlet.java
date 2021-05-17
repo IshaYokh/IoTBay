@@ -31,11 +31,12 @@ public class UpdateCartServlet extends HttpServlet{
         String itemUpdateQuantity = request.getParameter("itemUpdateQuantity"); //quantity
         String itemIDQuantityUpdate = request.getParameter("itemIDQuantityUpdate"); //itemid
         
-        if(!validator.validateInteger(itemUpdateQuantity)){
+        if(!validator.validateInteger(itemUpdateQuantity)){ //validator
             session.setAttribute("error", "Error! Enter a valid quantity!");
             request.getRequestDispatcher("cart.jsp").include(request, response);
             return;
         }
+        
         int itemUpdateQuantity1 = Integer.parseInt(itemUpdateQuantity);
         int itemIDQuantityUpdate1 = Integer.parseInt(itemIDQuantityUpdate);
         

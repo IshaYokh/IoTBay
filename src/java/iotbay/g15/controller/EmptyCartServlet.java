@@ -28,15 +28,15 @@ public class EmptyCartServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
-        List<Item> cartData = (ArrayList) session.getAttribute("cartItems");
+        //List<Item> cartData = (ArrayList) session.getAttribute("cartItems");
         ArrayList<Item> cart;
         OrderDAO orderDBManager = (OrderDAO) session.getAttribute("orderDBManager");
         User user = (User) session.getAttribute("user");
         try{
             orderDBManager.emptyCart(user.getUserID());
             cart = orderDBManager.getCart(user.getUserID());
-            session.setAttribute("cartItems", cart);
-            session.setAttribute("cartPrice", 0);
+            session.setAttribute("cartItems", cart); //grab current cart
+            session.setAttribute("cartPrice", 0); //reset running subtotal attribute
         } catch (SQLException ex) {
             Logger.getLogger(DeleteFromCartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

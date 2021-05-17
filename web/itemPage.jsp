@@ -93,7 +93,7 @@
                     <input type="hidden" placeholder="Enter Item Name" name="itemName" value="<%= item.getItemID() %>">
                     <input type="hidden" placeholder="Enter Item Image" name="itemImage" value="<%= item.getItemImage() %>">
                     <label for="itemQuantity">Item Quantity</label>
-                    <input type="text" placeholder="Enter Item Quantity" name="itemQuantity" value="1" required>
+                    <input type="text" placeholder="Enter Item Quantity" name="itemQuantity" required>
                     <button type="submit" class="btn btn-primary">Add Item to Cart</button>
                 </form>
                 <% }else{ %>

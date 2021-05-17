@@ -40,7 +40,6 @@ public class Item {
         this.itemImage = itemImage;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
-        userQuantity = 0;
     }
 
     public int getItemID() {
