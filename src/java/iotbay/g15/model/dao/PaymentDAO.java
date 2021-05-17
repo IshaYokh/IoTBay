@@ -106,4 +106,19 @@ public class PaymentDAO {
         
         return payment;
      }
+     
+     // Confirms if a user has payment info in the database
+     public boolean hasOrder(int orderID) throws SQLException{
+        String sql = "SELECT * FROM Payment WHERE OrderID = " + orderID;
+        ResultSet resultSet = st.executeQuery(sql);
+
+        int i = 0;
+        while(resultSet.next())
+            i++;
+
+        if(i > 0)
+            return true;
+
+        return false;
+    }
 }

@@ -12,8 +12,8 @@
 <html lang="en">
     <head>
         <link href="css/style.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/49ea9400a6.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -37,14 +37,16 @@
                         }
                     %>
                     <a href="<%= path%>"><li class="login"><%= msg%></li></a>
-        </ul>
-    </div>
-    <div class="placeholder"></div>
+		</ul>
+	</div>
+	<div class="placeholder"></div>
         
         <!-- Order summary section -->
         <h1 class="checkout-header">Checkout</h1>
         <div class="back-to-cart">
-            <button href="cart.jsp" type="submit"><i class="fas fa-arrow-left"></i> &nbsp;Go back to cart</button>
+            <a href="cart.jsp">
+                <button type="submit"><i class="fas fa-arrow-left"></i> &nbsp;Go back to cart</button>
+            </a>
         </div>
            
         <div class="table-container">
@@ -66,12 +68,8 @@
 
                         <tr>
                             <td><span class="bold">Order Total:</span></td>
-                            <%try{%>
-                                <% DecimalFormat decimalFormat = new DecimalFormat("0.00"); %>
-                                <td class="right">$<%= decimalFormat.format(orderSubtotal) + 5.00%></td>
-                            <%}catch(IllegalArgumentException e){%>
-                            <td><span class="bold">Order Total:</span></td>
-                            <%}%>
+                            <% DecimalFormat decimalFormat = new DecimalFormat("0.00"); %>
+                            <td class="right">$<%= decimalFormat.format(Double.parseDouble(orderSubtotal) + 5.00)%></td>
                         </tr>       
                     </table>
             </div>
@@ -134,13 +132,25 @@
                         
                 <%}catch(NullPointerException e){}%>
                 
-                <% if(!paymentInfoExists) {%>
+                <% String isPaid = (String)session.getAttribute("isPaid");
+                   boolean disabled = false;
+                
+                try{
+                    if(isPaid.equals("true")){
+                        disabled = true;
+                %>
+                    <div class="no-paymentInfo-feedback">
+                        <h1><i class="fas fa-exclamation-triangle"></i> You have already paid for this order. Go back to <a href="ViewCategoriesServlet">store</a> and select new
+                        products to create a new order</h1>
+                    </div>
+                    <%session.removeAttribute("isPaid");}%>
+                <%}catch(NullPointerException ex){}%>
+                
+                <%if(!paymentInfoExists) {%>
                 <div class="no-paymentInfo-feedback">
                     <h1><i class="fas fa-exclamation-triangle"></i> You don't have any payment information <a href="addPaymentInfoFromCheckoutServlet">click here to add payment details</a></h1>
                 </div>
-                
                 <%}else{%>
-
                 <div class="box-buttons">
                     <a href="updatePaymentInfoFromCheckoutServlet">
                         <button type="submit" class="delete-payment">Update/Delete Payment Details</button>
@@ -151,13 +161,14 @@
         
         <!-- Pay button -->
         <div class="pay-btn">
-            <% session.setAttribute("redirectedFromCheckout", "true"); %>
+            <% session.setAttribute("redirectedFromCheckout", "true");
+            if(!disabled){ %>
             <form method="post" action="AddPaymentServlet">
                 <button type="submit" class="pay-btn">
                     <i class="fas fa-lock"></i> &nbsp;Proceed with payment
                 </button>
             </form>
-            <%}%>
+            <%}}%>
         </div>
     </body>
 </html>

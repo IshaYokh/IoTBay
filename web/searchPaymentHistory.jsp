@@ -24,8 +24,8 @@
         <div class="navbar">
             <div class="logo"><img src="assets/logo.png"/></div>
                 <ul>
-                    <a href="#"><li>Home</li></a>
-                    <a href="#"><li>Store</li></a>
+                    <a href="index.jsp"><li>Home</li></a>
+                    <a href="ViewCategoriesServlet"><li>Store</li></a>
                     <a href="#"><li>About</li></a>
                     <a href="#"><li>Contact</li></a>
                     <% 
@@ -105,7 +105,7 @@
                 %>
                 <td><b>Mastercard number:</b> <%= paymentInfo.getCardNumber()%> <br><b>Expiry Date:</b>
                     <%= paymentInfo.getCardExpiryDate()%> <br><b>CVC:</b> <%= paymentInfo.getCardCVC()%>
-                    <br><b>Card Holder Name:</b><%= paymentInfo.getCardHolderName()%>
+                    <br><b>Card Holder Name:</b> <%= paymentInfo.getCardHolderName()%>
                 </td> 
                 <td><%= paymentDate%></td>
             </tr>

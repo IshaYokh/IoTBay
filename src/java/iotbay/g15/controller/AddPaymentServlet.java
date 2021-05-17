@@ -21,7 +21,7 @@ public class AddPaymentServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
-        Order order = (Order)session.getAttribute("order"); //Uncomment when merged with "Order-Management" branch
+        Order order = (Order)session.getAttribute("order");
         User user = (User)session.getAttribute("user");
         LocalDate paymentDate = LocalDate.now();
         String cartPrice = (String)session.getAttribute("cartPrice");
@@ -29,7 +29,7 @@ public class AddPaymentServlet extends HttpServlet{
         
         PaymentDAO paymentDBManager = (PaymentDAO)session.getAttribute("paymentDBManager");
         PaymentInfoDAO paymentInfoDBManager = (PaymentInfoDAO)session.getAttribute("paymentInfoDBmanager");
-        //OrderDAO orderDBManager = (OrderDAO)session.getAttribute("orderDBManager"); //Uncomment when merged with "Order-Management" branch
+        OrderDAO orderDBManager = (OrderDAO)session.getAttribute("orderDBManager");
         PaymentInfo paymentInfo = null;
         
         String paymentSuccessful = "false";
@@ -40,14 +40,15 @@ public class AddPaymentServlet extends HttpServlet{
             paymentInfo = paymentInfoDBManager.getPaymentInfo(user.getUserID());
             if(paymentInfo.getUserID() == user.getUserID()){
                 try{
-                    if(paymentInfo.getCredit() >= paymentAmount && redirectedFromCheckout.equals("true")){
+                    if(paymentInfo.getCredit() >= paymentAmount && redirectedFromCheckout.equals("true") && !paymentDBManager.hasOrder(order.getID())){
                         // Deduct payment from credit and create payment in database if payment is successful
-                        paymentDBManager.insertPayment(order.getID(), paymentInfo.getPaymentInfoID(), user.getUserID(), paymentDate.toString(), paymentAmount); //Uncomment when merged with "Order-Management" branch
+                        paymentDBManager.insertPayment(order.getID(), paymentInfo.getPaymentInfoID(), user.getUserID(), paymentDate.toString(), paymentAmount);
                         paymentInfoDBManager.updatePaymentInfoCredit(user.getUserID(), paymentInfo.getCredit() - paymentAmount);
-                        //orderDBManager.updateOrderStatus(order.getOrderID(), "Processed");
+                        orderDBManager.updateOrderStatus(order.getID(), "Processed");
                         paymentSuccessful = "true";
                     }
-                }catch(NullPointerException ex){}
+                }catch(NullPointerException ex){
+                    }
                 }
         }catch(SQLException ex){
             Logger.getLogger(AddPaymentServlet.class.getName()).log(Level.SEVERE, null, ex);

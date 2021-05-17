@@ -6,6 +6,7 @@
 package iotbay.g15.controller;
 
 import iotbay.g15.model.Item;
+import iotbay.g15.model.Order;
 import iotbay.g15.model.User;
 import iotbay.g15.model.dao.OrderDAO;
 import java.io.IOException;
@@ -43,6 +44,8 @@ public class AddOrderLineServlet extends HttpServlet{
             }
             orderDBManager.emptyCart(user.getUserID());
             cart = orderDBManager.getCart(user.getUserID());
+            Order order = new Order(orderID, orderDate.toString(), "Pending");
+            session.setAttribute("order", order);
             session.setAttribute("cartItems", cart);
             
         } catch (SQLException ex) {

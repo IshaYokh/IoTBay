@@ -44,6 +44,7 @@
             <% String paymentResult = (String)session.getAttribute("paymentSuccessful"); 
                if(paymentResult.equals("true")){
                    session.removeAttribute("checkoutActive");
+                   session.setAttribute("isPaid", "true");
             %>
             <div class="successful-payment">
                 <h1><i class="fas fa-check-circle"></i>&nbsp;Thanks <%= user.getFirstName()%>! your payment has been successfully received! 
