@@ -53,20 +53,20 @@
             ArrayList orders = (ArrayList) session.getAttribute("orderList");
             if(cartData!= null){
         %>
-        <div class='container'>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Item ID</th>
-                    <th>Item Brand</th>
-                    <th>Item Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th></th>
-                </tr>    
-            </thead>
-            <tbody>
+        
+        
+           
+        
+        <div class="container border border-2 rounded">
+            <div class="row border-2">
+                <div class="col"></div>
+                <div class="col">Item ID</div>
+                <div class="col">Item Brand</div>
+                <div class="col">Item Name</div>
+                <div class="col">Price</div>
+                <div class="col">Quantity</div>
+                <div class="col"></div>
+            </div>
 
             <% 
                 double cartPrice = 0;
@@ -78,48 +78,36 @@
                     String error = (String) session.getAttribute("error");
             %>
 
-            <tr>
-                <td><img id="picture" class="img-thumbnail" src="assets/items/<%= I.getItemImage()%>"></td>
-                <td><%= I.getItemID() %></td>
-                <td><%= I.getItemBrand() %></td>
-                <td><%= I.getItemName() %></td>
-                <td>$<%= I.getItemPrice() %></td>
-                <td>
-                    <form method = "get" action = 'UpdateCartServlet'>
+             <div class="row border-2">
+                <div class="col"><img id="picture" class="img-thumbnail" src="assets/items/<%= I.getItemImage()%>"></div>
+                <div class="col"><%= I.getItemID() %></div>
+                <div class="col"><%= I.getItemBrand() %></div>
+                <div class="col"><%= I.getItemName() %></div>
+                <div class="col">$<%= I.getItemPrice() %></div>
+                <div class="col"><form method = "get" action = 'UpdateCartServlet'>
                         <input type="hidden" id="itemIDQuantityUpdate" name="itemIDQuantityUpdate" value="<%= I.getItemID() %>">
                         <input type="text" placeholder="#" name="itemUpdateQuantity" value="<%= I.getUserQuantity() %>" <br />
                         <button type="submit" class="btn btn-success" href="/UpdateCartServlet?itemUpdateQuantity=<%=I.getItemID()%>">Update</button>
+                        <a class="btn btn-danger" type="submit" href="/DeleteFromCartServlet?itemID=<%=I.getItemID()%>">Delete</a>
                     </form>
                         <% if(error != null){ %>
                         <p><%= error %></p> <% } else {}%>
-                </td>
-                
-                <td>
-                        <a class="btn btn-danger" type="submit" href="/DeleteFromCartServlet?itemID=<%=I.getItemID()%>">Delete</a>
-                </td>
-            </tr>
+                </div>
+                <div class="col"></div>
+            </div>
             <%
                 }%>
-                <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <p>Subtotal: $<%= session.getAttribute("cartPrice") %></p>
-                </td>
-                <td>
-                    <form method = "post" action = 'EmptyCartServlet'>
-                        <button type="submit" class="btn btn-danger">Empty Cart</button>
-                    </form>
-                </td>
-                <td>
-                    <form method = "post" action = 'AddOrderLineServlet'>
-                        <button type="submit" class="btn btn-success">Checkout</button>
-                    </form>
-                </td>
-            </tr>
-                
-            </table>
+                <div class="row">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col">
+                        <button formation="EmptyCartServlet" type="submit" class="btn btn-danger">Empty Cart</button>
+                        <a href="checkout.jsp"><button formaction="AddOrderLineServlet" type="submit" class="btn btn-success">Checkout</button></a>
+                </div>
+            </div>
+        </div>
                 
                 <%}else{
             %>
