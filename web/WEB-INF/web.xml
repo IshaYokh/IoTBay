@@ -96,8 +96,8 @@
         <servlet-class>iotbay.g15.controller.AddPaymentServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>addItemServlet</servlet-name>
-        <servlet-class>iotbay.g15.controller.addItemServlet</servlet-class>
+        <servlet-name>AddItemServlet</servlet-name>
+        <servlet-class>iotbay.g15.controller.AddItemServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateUserServlet</servlet-name>
@@ -168,8 +168,8 @@
         <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>addItemServlet</servlet-name>
-        <url-pattern>/addItemServlet</url-pattern>
+        <servlet-name>AddItemServlet</servlet-name>
+        <url-pattern>/AddItemServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewCategoriesServlet</servlet-name>

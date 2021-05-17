@@ -75,7 +75,8 @@
                     
             {  
                     cartPrice = cartPrice + I.getItemPrice();
-                    session.setAttribute("cartPrice", cartPrice);
+                    String cartPriceStr = String.valueOf(cartPrice);
+                    session.setAttribute("cartPrice", cartPriceStr);
                     String error = (String) session.getAttribute("error");
             %>
 
