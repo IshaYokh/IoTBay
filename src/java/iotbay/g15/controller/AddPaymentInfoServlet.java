@@ -61,15 +61,14 @@ public class AddPaymentInfoServlet extends HttpServlet{
                 && (paymentValidator.validateCardNumber(cardNumber) == null) && (paymentValidator.validateCardExpiryDate(cardExpiryDate) == null)
                 && (paymentValidator.validateCardCVC(cardCVC) == null)){
             try{
+                User user = (User)session.getAttribute("user");
+                
                 // Check if payment info already exist in the database
-                if(!paymentInfoDBmanager.hasPaymentInfo(cardNumber)){
+                if(!paymentInfoDBmanager.hasPaymentInfo(cardNumber, user.getUserID())){
                     int streetNumberInt = Integer.parseInt(streetNumber);
                     int postcodeInt = Integer.parseInt(postcode);
                     int cardCVCInt = Integer.parseInt(cardCVC);
                     
-
-                    User user = (User)session.getAttribute("user");
-
                     // Storing new data in the database
                     try{
                         paymentInfoDBmanager.insertPaymentInfo(user.getUserID(), cardHolderName,
