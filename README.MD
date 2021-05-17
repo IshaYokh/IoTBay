@@ -33,4 +33,4 @@ This web application is based on Model-View-Controller architecture. It uses jav
 - Move the file to *lib* folder in the project directory
 - Within NetBeans, Right-Click on the project in the *Projects* section in the side menu, click on **Resolve Reference Problems** -> **Resolve** and choose the Java Servlet API JAR file that you moved to the **lib** folder
 
-**Note** to avoid issues with running the web app within NetBeans, you must select the web browsers that are not in the With Netbeans Connector section. Don't choose any of the web browsers in the ***With Netbeans Connector** section. It will cause issues, and the project won't run.
+**Note** to avoid issues with running the web app within NetBeans, you must select the web browsers that are not in the With Netbeans Connector section. **Don't choose any of the web browsers in the With Netbeans Connector section**. It will cause issues, and the project won't run.
